@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karan's Quality Spirits | Spirit of Progress</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+
+    <!-- Luxury Light Preloader Overlay -->
+    <div id="pageLoader" class="loader-overlay light-loader">
+        <div class="loader-content">
+            <!-- Brand Crest Logo -->
+            <img src="assets/logo.png" alt="Karan's Quality Spirits Logo" class="loader-logo">
+            <!-- <h1 class="loader-brand-title">KARAN'S</h1> -->
+            <span class="loader-brand-subtitle">QUALITY SPIRITS</span>
+        </div>
+        
+        <!-- Animated Golden Vector Line Structure -->
+        <div class="loader-line-container">
+            <svg class="loader-svg-line" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,60 Q300,10 600,60 T1200,60" fill="none" stroke="#8c6b23" stroke-width="2" class="line-path-1" />
+                <path d="M0,60 C250,110 500,10 750,80 C1000,20 1100,70 1200,60" fill="none" stroke="#d8b467" stroke-width="1.5" stroke-dasharray="6,6" class="line-path-2" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Light Age Verification Modal Popup Overlay -->
+    <div id="ageModal" class="age-modal-overlay light-age-overlay">
+        <div class="age-modal-card light-age-card">
+            <!-- Crest Logo -->
+            <img src="assets/logo.png" alt="Karan's Quality Spirits Crest" class="age-modal-logo">
+            
+            <h2 class="age-modal-title">AGE VERIFICATION</h2>
+            <p class="age-modal-subtitle">Welcome to Karan's Quality Spirits</p>
+            <hr class="age-modal-divider">
+            
+            <p class="age-modal-question">Are you 21 years of age or older?</p>
+            <span class="age-modal-legal">You must be of legal drinking age in your country of residence to enter.</span>
+            
+            <!-- Choice Buttons -->
+            <div class="age-modal-buttons">
+                <button id="ageYesBtn" class="age-btn age-btn-yes">YES, I AM 21 OR OLDER</button>
+                <button id="ageNoBtn" class="age-btn age-btn-no">NO, I AM UNDER 21</button>
+            </div>
+
+            <!-- Access Denied Warning Box -->
+            <div id="accessDeniedMsg" class="access-denied-box" style="display: none;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9534f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <p>Access Denied. You must be 21 years of age or older to view this website.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Light Video Hero (BANNER UNTOUCHED AS REQUESTED) -->
+    <div class="hero-container">
+        <!-- Background Video -->
+        <video autoplay loop muted playsinline id="bgVideo" class="hero-video-bg">
+            <source src="assets/background.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-overlay"></div>
+
+        <!-- Top Navigation Bar (Light Theme) -->
+        <header class="navbar">
+            <div class="nav-container">
+                <!-- Brand Logo Left -->
+                <a href="#" class="brand-logo-link">
+                    <img src="assets/logo.png" alt="Karan's Quality Spirits Logo" class="brand-logo-img">
+                </a>
+
+                <!-- Center Nav Links -->
+                <nav class="nav-links-wrapper">
+                    <ul class="nav-menu">
+                        <li><a href="#our-story" class="nav-item">OUR STORY</a></li>
+                        <li><a href="#spirits" class="nav-item">OUR BRANDS</a></li>
+                        <li><a href="#process" class="nav-item">PROCESS</a></li>
+                        <li><a href="#rnd-quality" class="nav-item">R&amp;D + QUALITY</a></li>
+                        <li><a href="#global-presence" class="nav-item">GLOBAL REACH</a></li>
+                        <li><a href="#contact" class="nav-item">CONTACT US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Bottom Hero Overlay Section -->
+        <div class="hero-bottom-content">
+            <!-- Headline Above Line -->
+            <div class="hero-headline-wrapper">
+                <h1 class="hero-main-title zigzag-left">Inside our strategy</h1>
+            </div>
+
+            <!-- Divider Line -->
+            <hr class="hero-divider reveal-line-grow delay-1">
+
+            <!-- Content Grid Below Line -->
+            <div class="hero-bottom-grid">
+                <div class="hero-description zigzag-left delay-2">
+                    <p>From the consumer behaviours shaping global spirits to our category strategies, growth opportunities and the capabilities we're building for the future, explore our Capital Markets Day presentations on demand.</p>
+                </div>
+
+                <div class="hero-action zigzag-right delay-2">
+                    <a href="#strategy" class="hero-cta-btn">
+                        <span>Find out more about our strategy</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Section: Our Story -->
+    <section class="story-section" id="our-story">
+        <div class="story-container">
+            <!-- Left Column: Title & Headline -->
+            <div class="story-left">
+                <span class="story-label zigzag-left">OUR STORY</span>
+                <h2 class="story-headline zigzag-right delay-1">GLOWING AMBER<br>SINCE DAY ONE</h2>
+            </div>
+
+            <!-- Right Column: Paragraphs & CTA -->
+            <div class="story-right">
+                <p class="story-paragraph zigzag-left delay-2">
+                   We undertake production and export of Ethanol (ENA) and also supply absolute alcohol (perfume grade). Our brand is synonymous with superior quality 'Liquor'. We are proud to produce a wide range of products with innovative packaging and pricing. Our understanding of the market demand and ability to effectively gauge and satisfy consumer wants has been a pivotal factor responsible for driving consistent growth.
+                </p>
+                <p class="story-paragraph zigzag-right delay-3">
+                   Our comprehensive range of brands and distribution enables us to reach a wider target audience at every occasion across the world. Deejay Distilleries Pvt. Ltd made its foray into the international markets a few years ago and is today considered one of the leading exporters of bottled alcohol in regions like West Africa, Middle East and South-East Asia. In the domestic market, we have a robust and expanding distribution chain in Maharashtra and also undertake inter-state export of our brands to Pondicherry, Delhi, Daman & Diu etc.
+                </p>
+                <a href="#read-story" class="story-btn zigzag-up delay-4">READ OUR STORY</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third Section: Staggered Spirit Collection Showcase (Exact Reference Match) -->
+    <section class="spirits-section" id="spirits">
+        <div class="spirits-container">
+            <!-- Header Section -->
+            <div class="spirits-header">
+                <div class="header-top-row">
+                    <span class="story-label zigzag-left">SPIRITS COLLECTION</span>
+                </div>
+                <h2 class="spirits-title zigzag-right delay-1">Crafted to Perfection</h2>
+            </div>
+
+            <!-- Staggered Spirit Cards Grid -->
+            <div class="spirits-stagger-grid reveal-scale delay-2" id="spiritsGrid">
+                
+                <!-- Spirit Card 1: Seaside Gin -->
+                <div class="stagger-spirit-card stagger-pos-1" data-category="gin">
+                    <div class="spirit-card-bg">
+                        <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80" alt="Seaside Gin Background" class="bg-photo">
+                        <span class="card-vertical-title">SEASIDE GIN</span>
+                        <a href="#view-seaside" class="card-view-square-btn">VIEW</a>
+                    </div>
+                </div>
+
+                <!-- Spirit Card 2: Beacon Gin -->
+                <div class="stagger-spirit-card stagger-pos-2" data-category="gin">
+                    <div class="spirit-card-bg">
+                        <img src="https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=800&q=80" alt="Beacon Gin Background" class="bg-photo">
+                        <span class="card-vertical-title">BEACON GIN</span>
+                        <a href="#view-beacon" class="card-view-square-btn">VIEW</a>
+                    </div>
+                </div>
+
+                <!-- Spirit Card 6: Single Malt Reserve -->
+                <div class="stagger-spirit-card stagger-pos-3" data-category="whiskey">
+                    <div class="spirit-card-bg">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" alt="Single Malt Reserve Background" class="bg-photo">
+                        <span class="card-vertical-title">SINGLE MALT</span>
+                        <a href="#view-reserve" class="card-view-square-btn">VIEW</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Fourth Section: Our Process (Dark Atmospheric Liquor Video Background) -->
+    <section class="process-section light-process-section" id="process">
+        <div class="process-bg-wrapper" id="processBgWrapper">
+            <video class="process-bg-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1920&q=80">
+                <source src="beer_video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="process-vignette light-process-vignette"></div>
+
+        <div class="process-content light-process-content">
+            <span class="process-script light-script zigzag-left">Craft &amp; Heritage</span>
+            <h2 class="process-headline light-headline zigzag-right delay-1">Our Process</h2>
+            <p class="process-paragraph light-paragraph zigzag-left delay-2">
+                From the meticulous selection of locally harvested grains and mountain spring water to our slow copper pot distillation and oak barrel aging, every step of our process is guided by master distillers dedicated to creating spirits of exceptional character.
+            </p>
+            <a href="#explore-process" class="process-btn light-process-btn zigzag-up delay-3">EXPLORE OUR DISTILLERY</a>
+        </div>
+    </section>
+
+    <!-- Fifth Section: R&D + QUALITY Showcase (Creative Unique Liquid Style) -->
+    <section class="rnd-section" id="rnd-quality">
+        <div class="rnd-container">
+            <!-- Header Row -->
+            <div class="rnd-header">
+                <div class="rnd-header-left">
+                    <span class="rnd-badge zigzag-left">R&amp;D + QUALITY</span>
+                    <h2 class="rnd-title zigzag-right delay-1">Where Science Meets Craftsmanship</h2>
+                </div>
+                <div class="rnd-header-right">
+                    <p class="rnd-header-desc zigzag-left delay-2">From molecular spirit alchemy to master copper distillation, exploring the technology, innovation, and liquid perfection behind every bottle.</p>
+                </div>
+            </div>
+
+            <!-- Creative Liquid-Styled Accordion Stage -->
+            <div class="rnd-accordion-container reveal-scale delay-2" id="rndAccordion">
+                
+                <!-- Pillar 1: RESEARCH & DEV -->
+                <div class="accordion-column active" data-pillar="0">
+                    <div class="collapsed-strip">
+                        <span class="strip-gold-indicator"></span>
+                        <span class="strip-label">LIQUID R&amp;D</span>
+                    </div>
+
+                    <div class="expanded-content">
+                        <div class="rnd-clean-card">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1600&q=80" alt="Liquid R&D Alchemy" class="rnd-card-img">
+                            <div class="rnd-card-overlay">
+                                <span class="rnd-card-badge">01 — MOLECULAR ALCHEMY</span>
+                                <h3 class="rnd-card-title">RESEARCH &amp; DEV</h3>
+                                <p class="rnd-card-text">Advanced flavor extraction &amp; botanical liquid experimentation defining next-generation spirit expressions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: QUALITY CONTROL -->
+                <div class="accordion-column" data-pillar="1">
+                    <div class="collapsed-strip">
+                        <span class="strip-gold-indicator"></span>
+                        <span class="strip-label">QUALITY CONTROL</span>
+                    </div>
+
+                    <div class="expanded-content">
+                        <div class="rnd-clean-card">
+                            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=80" alt="Purity Quality Control" class="rnd-card-img">
+                            <div class="rnd-card-overlay">
+                                <span class="rnd-card-badge">02 — PURITY &amp; CLARITY</span>
+                                <h3 class="rnd-card-title">QUALITY CONTROL</h3>
+                                <p class="rnd-card-text">Purity testing and cold-filtration ensuring crystal clarity and batch consistency across every pour.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: PRODUCTION -->
+                <div class="accordion-column" data-pillar="2">
+                    <div class="collapsed-strip">
+                        <span class="strip-gold-indicator"></span>
+                        <span class="strip-label">DISTILLATION SCALE</span>
+                    </div>
+
+                    <div class="expanded-content">
+                        <div class="rnd-clean-card">
+                            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1600&q=80" alt="Copper Still Distillation" class="rnd-card-img">
+                            <div class="rnd-card-overlay">
+                                <span class="rnd-card-badge">03 — COPPER DISTILLATION</span>
+                                <h3 class="rnd-card-title">PRODUCTION SCALE</h3>
+                                <p class="rnd-card-text">Custom hand-hammered copper pot stills operating with precision thermal control for maximum spirit smoothness.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 4: CRAFTSMANSHIP -->
+                <div class="accordion-column" data-pillar="3">
+                    <div class="collapsed-strip">
+                        <span class="strip-gold-indicator"></span>
+                        <span class="strip-label">OAK CRAFTSMANSHIP</span>
+                    </div>
+
+                    <div class="expanded-content">
+                        <div class="rnd-clean-card">
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1600&q=80" alt="Oak Barrel Aging" class="rnd-card-img">
+                            <div class="rnd-card-overlay">
+                                <span class="rnd-card-badge">04 — OAK MATURATION</span>
+                                <h3 class="rnd-card-title">CRAFTSMANSHIP</h3>
+                                <p class="rnd-card-text">Aged in charred American &amp; French oak casks, developing deep amber hues and complex vanilla oak notes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation Arrow Controls -->
+                <div class="accordion-nav-controls">
+                    <button class="accordion-arrow-btn" id="accPrevBtn" aria-label="Previous Pillar">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="accordion-arrow-btn" id="accNextBtn" aria-label="Next Pillar">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sixth Section: GLOBAL PRESENCE (High-Res Online Unsplash Global Cityscape Images) -->
+    <section class="global-section" id="global-presence">
+        <div class="global-container">
+            <!-- Header Row -->
+            <div class="global-header">
+                <div class="global-header-left">
+                    <span class="global-badge zigzag-left">06 — GLOBAL PRESENCE</span>
+                    <h2 class="global-title zigzag-right delay-1">Distilled in India.<br>Built for Global Reach.</h2>
+                </div>
+                <div class="global-header-right">
+                    <blockquote class="global-quote zigzag-left delay-2">
+                        "From our home in India to markets around the world."
+                    </blockquote>
+                    <p class="global-quote-author zigzag-left delay-3">— Karan's Quality Spirits Global Reach</p>
+                </div>
+            </div>
+
+            <!-- Main Image-Based Feature Showcase Stage -->
+            <div class="global-feature-stage reveal-scale delay-2">
+                <!-- Left Feature Image Card -->
+                <div class="global-img-card">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80" alt="India Origin Hub" class="global-stage-img" id="globalStageImg">
+                    <div class="global-img-overlay">
+                        <span class="global-img-tag" id="globalImgTag">DISTILLERY ORIGIN &amp; HEADQUARTERS</span>
+                        <h3 class="global-img-title" id="globalImgTitle">INDIA (HQ)</h3>
+                    </div>
+                </div>
+
+                <!-- Right Feature Information Panel -->
+                <div class="global-info-panel">
+                    <span class="panel-sub-label zigzag-left" id="panelSubLabel">OUR HOME ORIGIN</span>
+                    <h3 class="panel-main-quote zigzag-right delay-1" id="panelMainQuote">From our home in India to markets around the world.</h3>
+                    <p class="panel-description zigzag-left delay-2" id="panelDescription">
+                        Home to our master copper pot stills distillery and mountain spring water source. Crafted with artisanal dedication to supply premium single malts and craft spirits across India and major export destinations.
+                    </p>
+
+                    <!-- Metrics Grid -->
+                    <div class="panel-metrics-grid zigzag-up delay-3">
+                        <div class="panel-metric-item">
+                            <span class="metric-number" id="gMetric1">30+ Yrs</span>
+                            <span class="metric-label" id="gLabel1">Distillation Heritage</span>
+                        </div>
+                        <div class="panel-metric-item">
+                            <span class="metric-number" id="gMetric2">100%</span>
+                            <span class="metric-label" id="gLabel2">Authentic Crafting</span>
+                        </div>
+                        <div class="panel-metric-item">
+                            <span class="metric-number" id="gMetric3">25+</span>
+                            <span class="metric-label" id="gLabel3">Export Destinations</span>
+                        </div>
+                    </div>
+
+                    <a href="#global-markets" class="panel-cta-btn zigzag-up delay-4">
+                        <span>Explore Global Distribution Capabilities</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom 5-Region Image Cards Grid -->
+            <div class="global-region-cards-grid reveal-up delay-3">
+                <!-- Region Card 1: India -->
+                <div class="region-card active" data-region="0">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=600&q=80" alt="India" class="r-card-img">
+                    <div class="r-card-overlay">
+                        <span class="r-card-code">01</span>
+                        <h4 class="r-card-title">INDIA</h4>
+                    </div>
+                </div>
+
+                <!-- Region Card 2: Middle East -->
+                <div class="region-card" data-region="1">
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80" alt="Middle East" class="r-card-img">
+                    <div class="r-card-overlay">
+                        <span class="r-card-code">02</span>
+                        <h4 class="r-card-title">MIDDLE EAST</h4>
+                    </div>
+                </div>
+
+                <!-- Region Card 3: Africa -->
+                <div class="region-card" data-region="2">
+                    <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=600&q=80" alt="Africa" class="r-card-img">
+                    <div class="r-card-overlay">
+                        <span class="r-card-code">03</span>
+                        <h4 class="r-card-title">AFRICA</h4>
+                    </div>
+                </div>
+
+                <!-- Region Card 4: South-East Asia -->
+                <div class="region-card" data-region="3">
+                    <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=600&q=80" alt="South-East Asia" class="r-card-img">
+                    <div class="r-card-overlay">
+                        <span class="r-card-code">04</span>
+                        <h4 class="r-card-title">SE ASIA</h4>
+                    </div>
+                </div>
+
+                <!-- Region Card 5: International Markets -->
+                <div class="region-card" data-region="4">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="International Markets" class="r-card-img">
+                    <div class="r-card-overlay">
+                        <span class="r-card-code">05</span>
+                        <h4 class="r-card-title">GLOBAL</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seventh Section: NEW STORIES / INSIDE DEEJAY (High-Res Online Unsplash Editorial Images) -->
+    <section class="stories-section" id="news-editorial">
+        <div class="stories-container">
+            <!-- Header Row -->
+            <div class="stories-header">
+                <div class="stories-header-left">
+                    <span class="stories-badge zigzag-left">07 — EDITORIAL</span>
+                    <h2 class="stories-title zigzag-right delay-1">New Stories.<br>Inside Deejay.</h2>
+                </div>
+                <div class="stories-header-right">
+                    <p class="stories-header-desc zigzag-left delay-2">
+                        A dedicated editorial journal ensuring the brand continuously communicates new developments, master craftsmanship, and global industry moments post-launch.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Horizontal Editorial Slider Track -->
+            <div class="stories-track-wrapper reveal-up delay-1" id="storiesTrackWrapper">
+                <div class="stories-track" id="storiesTrack">
+                    
+                    <!-- Editorial Card 1: BRAND STORIES -->
+                    <div class="story-card-item reveal-flip delay-1">
+                        <div class="story-img-box">
+                            <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=1000&q=80" alt="Brand Stories" class="story-card-img">
+                            <div class="story-card-vignette"></div>
+                            <span class="story-category-tag">BRAND STORIES</span>
+                        </div>
+                        <div class="story-card-body">
+                            <h3 class="story-card-headline">The Story Behind the Spirit</h3>
+                            <p class="story-card-teaser">Thought &amp; craftsmanship behind a signature expression, from grain selection to French oak maturity.</p>
+                            <a href="#read-story-1" class="story-card-link">
+                                <span>Read Story</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Editorial Card 2: CRAFT & PROCESS -->
+                    <div class="story-card-item reveal-flip delay-2">
+                        <div class="story-img-box">
+                            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=1000&q=80" alt="Craft & Process" class="story-card-img">
+                            <div class="story-card-vignette"></div>
+                            <span class="story-category-tag">CRAFT &amp; PROCESS</span>
+                        </div>
+                        <div class="story-card-body">
+                            <h3 class="story-card-headline">Inside the Craft</h3>
+                            <p class="story-card-teaser">A look into the people and copper distillation processes behind every bottle of Karan's Reserve.</p>
+                            <a href="#read-story-2" class="story-card-link">
+                                <span>Explore</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Editorial Card 3: NEWS & EVENTS -->
+                    <div class="story-card-item reveal-flip delay-3">
+                        <div class="story-img-box">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1000&q=80" alt="News & Events" class="story-card-img">
+                            <div class="story-card-vignette"></div>
+                            <span class="story-category-tag">NEWS &amp; EVENTS</span>
+                        </div>
+                        <div class="story-card-body">
+                            <h3 class="story-card-headline">Latest From Deejay</h3>
+                            <p class="story-card-teaser">Company updates, international spirits competitions, and exclusive global launch moments.</p>
+                            <a href="#read-story-3" class="story-card-link">
+                                <span>View All Stories</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Editorial Card 4: BOTANICAL HERITAGE -->
+                    <div class="story-card-item reveal-flip delay-4">
+                        <div class="story-img-box">
+                            <img src="https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1000&q=80" alt="Botanical Heritage" class="story-card-img">
+                            <div class="story-card-vignette"></div>
+                            <span class="story-category-tag">BOTANICAL HERITAGE</span>
+                        </div>
+                        <div class="story-card-body">
+                            <h3 class="story-card-headline">Sourcing Wild Botanicals</h3>
+                            <p class="story-card-teaser">Harvesting wild lavender and coastal kelp along mountain streams for our craft gin expressions.</p>
+                            <a href="#read-story-4" class="story-card-link">
+                                <span>Read Story</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eighth Section: CONTACT US (Atmospheric Background Video & Glass Form) -->
+    <section class="contact-section" id="contact">
+        <!-- Background Video with Overlay -->
+        <div class="contact-bg-wrapper">
+            <video class="contact-bg-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1920&q=80">
+                <source src="assets/background.mp4" type="video/mp4">
+            </video>
+            <div class="contact-video-overlay"></div>
+        </div>
+
+        <div class="contact-container">
+            <!-- Header Row -->
+            <div class="contact-header">
+                <span class="contact-badge zigzag-left">08 — CONTACT US</span>
+                <h2 class="contact-title zigzag-right delay-1">Get in Touch With Karan's Quality Spirits</h2>
+                <p class="contact-desc zigzag-left delay-2">
+                    We welcome inquiries from global distributors, media partners, spirit connoisseurs, and prospective team members. Send us a message and our executive team will respond promptly.
+                </p>
+            </div>
+
+            <!-- Contact Form Card Container -->
+            <div class="contact-form-wrapper reveal-scale delay-1">
+                <form id="contactForm" class="contact-custom-form" onsubmit="event.preventDefault(); return false;">
+                    
+                    <!-- 2-Column Inputs Grid (Top 4 Fields) -->
+                    <div class="contact-grid">
+                        
+                        <!-- Field 1: Your Name* (Icon: User) -->
+                        <div class="input-line-group">
+                            <input type="text" id="contactName" name="name" class="line-input" placeholder="Your Name*" required>
+                            <span class="input-icon-right">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- Field 2: Your Email* (Icon: Mail) -->
+                        <div class="input-line-group">
+                            <input type="email" id="contactEmail" name="email" class="line-input" placeholder="Your Email *" required>
+                            <span class="input-icon-right">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- Field 3: Phone No. (Icon: Phone) -->
+                        <div class="input-line-group">
+                            <input type="tel" id="contactPhone" name="phone" class="line-input" placeholder="Phone No.">
+                            <span class="input-icon-right">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- Field 4: Subject (Icon: Info) -->
+                        <div class="input-line-group">
+                            <input type="text" id="contactSubject" name="subject" class="line-input" placeholder="Subject">
+                            <span class="input-icon-right">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                </svg>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- Full-Width Field 5: Message (Icon: Chat Bubble) -->
+                    <div class="input-line-group full-width-line">
+                        <textarea id="contactMessage" name="message" class="line-input line-textarea" placeholder="Message" rows="3"></textarea>
+                        <span class="input-icon-right textarea-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+                            </svg>
+                        </span>
+                    </div>
+
+                    <!-- Centered Golden Pill Submit Button -->
+                    <div class="contact-submit-wrapper">
+                        <button type="submit" id="contactSubmitBtn" class="golden-pill-btn">
+                            <span>Send Message</span>
+                        </button>
+                    </div>
+
+                    <!-- Submission Success Notification Toast -->
+                    <div id="contactSuccessToast" class="contact-toast" style="display: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#28a745" stroke-width="2.5">
+                            <path d="M22 11.08V12a10 10 10 11-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <p>Thank you! Your message has been sent successfully. Our team will contact you shortly.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ninth Section: MINIMAL MOUNTAIN FOOTER (Reference Match) -->
+    <footer class="minimal-mountain-footer" id="footer">
+        <!-- Background Image with Ambient Overlay & Smooth Zoom Effect -->
+        <div class="footer-bg-wrapper">
+            <img src="footerimg.jfif" alt="Footer Background" class="footer-bg-img">
+            <div class="footer-overlay"></div>
+        </div>
+
+        <!-- Top Horizontal Divider with Center Brand Logo -->
+        <div class="footer-top-divider reveal-up">
+            <span class="divider-line"></span>
+            <div class="footer-logo-wrapper">
+                <a href="#" class="footer-logo-link" aria-label="Karan's Quality Spirits">
+                    <img src="assets/logo.png" alt="Karan's Quality Spirits Logo" class="footer-logo-img">
+                </a>
+            </div>
+            <span class="divider-line"></span>
+        </div>
+
+        <div class="footer-content-container reveal-up delay-1">
+            <!-- Navigation Links Grid/Rows (Matching Header Menu) -->
+            <nav class="footer-nav-menu">
+                <div class="footer-nav-row primary-links">
+                    <a href="#our-story">OUR STORY</a>
+                    <a href="#spirits">OUR BRANDS</a>
+                    <a href="#process">PROCESS</a>
+                    <a href="#rnd-quality">R&amp;D + QUALITY</a>
+                    <a href="#global-presence">GLOBAL REACH</a>
+                    <a href="#contact">CONTACT US</a>
+                </div>
+            </nav>
+
+            <!-- Social Media Round Circle Buttons -->
+            <div class="footer-social-row">
+                <a href="#" class="social-circle-btn" aria-label="Instagram">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-circle-btn" aria-label="Facebook">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-circle-btn" aria-label="X (Twitter)">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-circle-btn" aria-label="Pinterest">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.592 0 12.017 0z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Disclaimer & Copyright Block (Karan's Quality Spirits / Deejay Distilleries) -->
+            <div class="footer-legal-copy">
+                <p>Karan's Quality Spirits &bull; Deejay Distilleries Pvt. Ltd. &copy;2026 Karan's Quality Spirits. All rights reserved. Please drink responsibly. Premium spirits crafted &amp; distilled in India for global markets.</p>
+                <p class="legal-sub-tag">Karan's Quality Spirits &bull; Spirit of Progress</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Core & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <script>
+        // ==========================================================================
+        // GSAP & SCROLLTRIGGER LUXURY ANIMATION ENGINE (60/120fps Hardware Accelerated)
+        // ==========================================================================
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // --- 1. Preloader & Age Verification Modal Management ---
+        const pageLoader = document.getElementById('pageLoader');
+        const ageModal = document.getElementById('ageModal');
+        const ageYesBtn = document.getElementById('ageYesBtn');
+        const ageNoBtn = document.getElementById('ageNoBtn');
+        const accessDeniedMsg = document.getElementById('accessDeniedMsg');
+
+        window.addEventListener('load', () => {
+            if (pageLoader) {
+                setTimeout(() => {
+                    gsap.to(pageLoader, {
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: 'power3.inOut',
+                        onComplete: () => {
+                            pageLoader.style.visibility = 'hidden';
+                            pageLoader.style.display = 'none';
+                            
+                            // Trigger Hero Entrance Animation
+                            playHeroEntrance();
+
+                            // Check Age Verification
+                            const isAgeVerified = localStorage.getItem('karan_age_verified');
+                            if (isAgeVerified !== 'true' && ageModal) {
+                                setTimeout(() => {
+                                    ageModal.classList.add('active');
+                                    gsap.fromTo('.age-modal-card', 
+                                        { scale: 0.85, opacity: 0, y: 30 },
+                                        { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: 'back.out(1.4)' }
+                                    );
+                                }, 400);
+                            }
+                        }
+                    });
+                }, 1800);
+            } else {
+                playHeroEntrance();
+            }
+        });
+
+        // Age Verification Modal Actions
+        if (ageYesBtn && ageModal) {
+            ageYesBtn.addEventListener('click', () => {
+                localStorage.setItem('karan_age_verified', 'true');
+                gsap.to(ageModal, {
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'power2.inOut',
+                    onComplete: () => {
+                        ageModal.style.visibility = 'hidden';
+                        ageModal.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        if (ageNoBtn && accessDeniedMsg) {
+            ageNoBtn.addEventListener('click', () => {
+                accessDeniedMsg.style.display = 'flex';
+                gsap.from(accessDeniedMsg, { y: 15, opacity: 0, duration: 0.4, ease: 'power2.out' });
+                ageYesBtn.disabled = true;
+                ageNoBtn.disabled = true;
+                gsap.to([ageYesBtn, ageNoBtn], { opacity: 0.4, duration: 0.3 });
+            });
+        }
+
+        // --- 2. Smooth Navigation with GSAP ScrollToPlugin ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || targetId === '') return;
+                const targetElem = document.querySelector(targetId);
+                if (targetElem) {
+                    e.preventDefault();
+                    gsap.to(window, {
+                        duration: 1.2,
+                        scrollTo: { y: targetElem, offsetY: 0 },
+                        ease: 'power3.inOut'
+                    });
+                }
+            });
+        });
+
+        // --- 3. Hero Section Entrance Animation ---
+        function playHeroEntrance() {
+            const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+            heroTl
+                .fromTo('.navbar', 
+                    { y: -35, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 1.0 }
+                )
+                .fromTo('.hero-main-title', 
+                    { y: 50, opacity: 0, rotateX: -15 }, 
+                    { y: 0, opacity: 1, rotateX: 0, duration: 1.2 }, 
+                    '-=0.6'
+                )
+                .fromTo('.hero-divider', 
+                    { scaleX: 0, transformOrigin: 'left center' }, 
+                    { scaleX: 1, duration: 1.2, ease: 'power2.inOut' }, 
+                    '-=0.8'
+                )
+                .fromTo(['.hero-description', '.hero-action'], 
+                    { y: 35, opacity: 0 }, 
+                    { y: 0, opacity: 1, stagger: 0.15, duration: 1.0 }, 
+                    '-=0.8'
+                );
+
+            // Hero Video & Content Continuous Scroll Scrub Parallax
+            gsap.to('#bgVideo', {
+                yPercent: 30,
+                scale: 1.15,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero-container',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            gsap.to('.hero-bottom-content', {
+                yPercent: -35,
+                opacity: 0.15,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero-container',
+                    start: 'top top',
+                    end: '75% top',
+                    scrub: 1
+                }
+            });
+        }
+
+        // --- 4. Section 2: Our Story GSAP Scroll & Parallax Animations ---
+        const storySection = document.getElementById('our-story');
+        if (storySection) {
+            // Entrance Timeline
+            const storyTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#our-story',
+                    start: 'top 75%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            storyTl
+                .fromTo('#our-story .story-label', 
+                    { x: -40, opacity: 0 }, 
+                    { x: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }
+                )
+                .fromTo('#our-story .story-headline', 
+                    { y: 45, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 1.1, ease: 'power3.out' }, 
+                    '-=0.6'
+                )
+                .fromTo('#our-story .story-paragraph', 
+                    { y: 35, opacity: 0 }, 
+                    { y: 0, opacity: 1, stagger: 0.2, duration: 1.0, ease: 'power3.out' }, 
+                    '-=0.7'
+                )
+                .fromTo('#our-story .story-btn', 
+                    { scale: 0.92, y: 20, opacity: 0 }, 
+                    { scale: 1, y: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.4)' }, 
+                    '-=0.5'
+                );
+
+            // Headline Continuous Scrub Translation
+            gsap.to('#our-story .story-headline', {
+                xPercent: 5,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#our-story',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.5
+                }
+            });
+
+            // Column Differential Parallax on Scroll
+            if (window.innerWidth > 900) {
+                gsap.to('#our-story .story-left', {
+                    y: -45,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#our-story',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+
+                gsap.to('#our-story .story-right', {
+                    y: 35,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#our-story',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+            }
+        }
+
+        // --- 5. Section 3: Spirits Collection GSAP Scroll & Parallax Animations ---
+        const spiritsSection = document.getElementById('spirits');
+        if (spiritsSection) {
+            // Header Reveal
+            gsap.fromTo(['#spirits .story-label', '#spirits .spirits-title', '#spirits .filter-pill'], 
+                { y: 35, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    stagger: 0.08, 
+                    duration: 1.0, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#spirits',
+                        start: 'top 75%'
+                    }
+                }
+            );
+
+            // Spirits Title Continuous Drift on Scroll
+            gsap.to('#spirits .spirits-title', {
+                xPercent: -4,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#spirits',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.5
+                }
+            });
+
+            // Staggered Spirit Cards Cascade
+            gsap.fromTo('.stagger-spirit-card', 
+                { y: 90, opacity: 0, scale: 0.92 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1, 
+                    stagger: 0.18, 
+                    duration: 1.2, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#spiritsGrid',
+                        start: 'top 80%'
+                    }
+                }
+            );
+
+            // Spirit Card Inner Images Parallax Window Effect
+            gsap.utils.toArray('#spirits .bg-photo').forEach(img => {
+                gsap.to(img, {
+                    yPercent: -18,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: img.closest('.stagger-spirit-card'),
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+            });
+
+            // Cards Multi-Layer Depth Parallax
+            if (window.innerWidth > 900) {
+                gsap.to('.stagger-pos-1', {
+                    y: -35,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#spirits',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1.2
+                    }
+                });
+                gsap.to('.stagger-pos-2', {
+                    y: 25,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#spirits',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1.2
+                    }
+                });
+                gsap.to('.stagger-pos-3', {
+                    y: 60,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#spirits',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1.2
+                    }
+                });
+            }
+        }
+
+        // --- 6. Section 4: Our Process GSAP Scroll & Parallax Animations ---
+        const processSec = document.getElementById('process');
+        if (processSec) {
+            // Process Video Deep Parallax Scrub & Zoom
+            gsap.to('.process-bg-video', {
+                yPercent: 28,
+                scale: 1.15,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#process',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            // Content Elevation Scrub
+            gsap.to('.process-content', {
+                yPercent: -18,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#process',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.2
+                }
+            });
+
+            // Process Content Reveal Timeline
+            const processTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#process',
+                    start: 'top 70%'
+                }
+            });
+
+            processTl
+                .fromTo('.process-script', 
+                    { x: -40, opacity: 0 }, 
+                    { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out' }
+                )
+                .fromTo('.process-headline', 
+                    { y: 50, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }, 
+                    '-=0.6'
+                )
+                .fromTo('.process-paragraph', 
+                    { y: 35, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out' }, 
+                    '-=0.6'
+                )
+                .fromTo('.process-btn', 
+                    { scale: 0.9, y: 20, opacity: 0 }, 
+                    { scale: 1, y: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.4)' }, 
+                    '-=0.5'
+                );
+        }
+
+        // --- 7. Section 5: R&D + Quality Showcase GSAP & Parallax Animations ---
+        const rndSec = document.getElementById('rnd-quality');
+        if (rndSec) {
+            // Header Reveal
+            gsap.fromTo(['.rnd-badge', '.rnd-title', '.rnd-header-desc'], 
+                { y: 40, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    stagger: 0.12, 
+                    duration: 1.1, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#rnd-quality',
+                        start: 'top 75%'
+                    }
+                }
+            );
+
+            // Title Scrub Float
+            gsap.to('.rnd-title', {
+                xPercent: 4,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#rnd-quality',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.5
+                }
+            });
+
+            // Accordion Container Entrance & Scrub Elevation
+            gsap.fromTo('#rndAccordion', 
+                { y: 60, opacity: 0, scale: 0.96 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1, 
+                    duration: 1.2, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#rndAccordion',
+                        start: 'top 80%'
+                    }
+                }
+            );
+
+            gsap.to('#rndAccordion', {
+                y: -25,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#rnd-quality',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            // Card Inner Images Parallax Scrub
+            gsap.utils.toArray('.rnd-card-img').forEach(img => {
+                gsap.to(img, {
+                    yPercent: -15,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#rndAccordion',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+            });
+
+            gsap.fromTo('.accordion-column', 
+                { opacity: 0 }, 
+                { 
+                    opacity: 1, 
+                    stagger: 0.08, 
+                    duration: 0.8, 
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '#rndAccordion',
+                        start: 'top 80%'
+                    }
+                }
+            );
+        }
+
+        // --- 8. Section 6: Global Presence GSAP & Parallax Animations ---
+        const globalSec = document.getElementById('global-presence');
+        if (globalSec) {
+            // Header Reveal
+            gsap.fromTo(['.global-badge', '.global-title', '.global-quote', '.global-quote-author'], 
+                { y: 40, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    stagger: 0.1, 
+                    duration: 1.1, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#global-presence',
+                        start: 'top 75%'
+                    }
+                }
+            );
+
+            // Title Scrub Drift
+            gsap.to('.global-title', {
+                xPercent: -4,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#global-presence',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.5
+                }
+            });
+
+            // Feature Stage Entrance & Scrub Parallax
+            gsap.fromTo('.global-feature-stage', 
+                { y: 60, opacity: 0, scale: 0.96 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1, 
+                    duration: 1.2, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.global-feature-stage',
+                        start: 'top 80%'
+                    }
+                }
+            );
+
+            // Global Main Stage Image Parallax
+            gsap.to('#globalStageImg', {
+                yPercent: -16,
+                scale: 1.06,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.global-feature-stage',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            // Bottom 5 Region Cards Cascade
+            gsap.fromTo('.region-card', 
+                { y: 50, opacity: 0, scale: 0.92 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1, 
+                    stagger: 0.08, 
+                    duration: 1.0, 
+                    ease: 'back.out(1.3)',
+                    scrollTrigger: {
+                        trigger: '.global-region-cards-grid',
+                        start: 'top 85%'
+                    }
+                }
+            );
+
+            // Region Cards Inner Photo Parallax Scrub
+            gsap.utils.toArray('.r-card-img').forEach(img => {
+                gsap.to(img, {
+                    yPercent: -18,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '.global-region-cards-grid',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+            });
+
+            // Trigger Metric Increment Counters on Scroll
+            ScrollTrigger.create({
+                trigger: '.panel-metrics-grid',
+                start: 'top 85%',
+                onEnter: triggerMetricCounters
+            });
+        }
+
+        // Metric Increment Counters
+        let countersAnimated = false;
+        function triggerMetricCounters() {
+            if (countersAnimated) return;
+            countersAnimated = true;
+
+            const metric1 = document.getElementById('gMetric1');
+            const metric2 = document.getElementById('gMetric2');
+            const metric3 = document.getElementById('gMetric3');
+
+            animateCounter(metric1, 0, 30, 1600, '+ Yrs');
+            animateCounter(metric2, 0, 100, 1800, '%');
+            animateCounter(metric3, 0, 25, 1500, '+');
+        }
+
+        function animateCounter(elem, start, end, duration, suffix = '') {
+            if (!elem) return;
+            const obj = { val: start };
+            gsap.to(obj, {
+                val: end,
+                duration: duration / 1000,
+                ease: 'power2.out',
+                onUpdate: () => {
+                    elem.textContent = Math.floor(obj.val) + suffix;
+                },
+                onComplete: () => {
+                    elem.textContent = end + suffix;
+                }
+            });
+        }
+
+        // --- 9. Section 7: Editorial Stories GSAP & Parallax Animations ---
+        const storiesSec = document.getElementById('news-editorial');
+        if (storiesSec) {
+            // Header Reveal
+            gsap.fromTo(['.stories-badge', '.stories-title', '.stories-header-desc', '.story-arrow-btn'], 
+                { y: 40, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    stagger: 0.1, 
+                    duration: 1.1, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#news-editorial',
+                        start: 'top 75%'
+                    }
+                }
+            );
+
+            // Title Scrub Float
+            gsap.to('.stories-title', {
+                xPercent: 5,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#news-editorial',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1.5
+                }
+            });
+
+            // Story Cards 3D Cascade
+            gsap.fromTo('.story-card-item', 
+                { y: 65, opacity: 0, rotationY: -8 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    rotationY: 0, 
+                    stagger: 0.12, 
+                    duration: 1.2, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#storiesTrackWrapper',
+                        start: 'top 80%'
+                    }
+                }
+            );
+
+            // Story Card Inner Photos Parallax Scrub
+            gsap.utils.toArray('.story-card-img').forEach(img => {
+                gsap.to(img, {
+                    yPercent: -18,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#storiesTrackWrapper',
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: 1
+                    }
+                });
+            });
+        }
+
+        // --- 10. Section 8: Contact Us GSAP & Parallax Animations ---
+        const contactSec = document.getElementById('contact');
+        if (contactSec) {
+            // Contact Video Parallax Scrub
+            gsap.to('.contact-bg-video', {
+                yPercent: 25,
+                scale: 1.12,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#contact',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            // Contact Form Wrapper Elevation Scrub
+            gsap.to('.contact-form-wrapper', {
+                y: -35,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#contact',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+
+            // Header Reveal
+            gsap.fromTo(['.contact-badge', '.contact-title', '.contact-desc'], 
+                { y: 40, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    stagger: 0.12, 
+                    duration: 1.1, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '#contact',
+                        start: 'top 75%'
+                    }
+                }
+            );
+
+            // Contact Form Wrapper & Inputs Reveal
+            gsap.fromTo('.contact-form-wrapper', 
+                { y: 60, opacity: 0, scale: 0.96 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1, 
+                    duration: 1.2, 
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.contact-form-wrapper',
+                        start: 'top 80%'
+                    }
+                }
+            );
+
+            gsap.fromTo('.input-line-group', 
+                { y: 25, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    stagger: 0.08, 
+                    duration: 0.9, 
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '.contact-form-wrapper',
+                        start: 'top 80%'
+                    }
+                }
+            );
+
+            gsap.fromTo('.golden-pill-btn', 
+                { scale: 0.9, opacity: 0 }, 
+                { 
+                    scale: 1, 
+                    opacity: 1, 
+                    duration: 0.9, 
+                    ease: 'back.out(1.4)',
+                    scrollTrigger: {
+                        trigger: '.contact-form-wrapper',
+                        start: 'top 75%'
+                    }
+                }
+            );
+        }
+
+        // --- 11. Section 9: Footer GSAP & Parallax Animations ---
+        const footerElem = document.getElementById('footer');
+        if (footerElem) {
+            // Footer Background Mountain Image Parallax Scrub
+            gsap.to('.footer-bg-img', {
+                yPercent: -22,
+                scale: 1.08,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '#footer',
+                    start: 'top bottom',
+                    end: 'bottom bottom',
+                    scrub: 1
+                }
+            });
+
+            gsap.fromTo('.footer-top-divider', 
+                { scaleX: 0, transformOrigin: 'center center', opacity: 0 }, 
+                { 
+                    scaleX: 1, 
+                    opacity: 1, 
+                    duration: 1.2, 
+                    ease: 'power3.inOut',
+                    scrollTrigger: {
+                        trigger: '#footer',
+                        start: 'top 85%'
+                    }
+                }
+            );
+
+            gsap.fromTo('.footer-logo-img', 
+                { scale: 0.75, opacity: 0 }, 
+                { 
+                    scale: 1, 
+                    opacity: 1, 
+                    duration: 1.0, 
+                    ease: 'back.out(1.4)',
+                    scrollTrigger: {
+                        trigger: '#footer',
+                        start: 'top 85%'
+                    }
+                }
+            );
+
+            gsap.fromTo('.footer-nav-row a', 
+                { y: 20, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    stagger: 0.05, 
+                    duration: 0.8, 
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '.footer-nav-menu',
+                        start: 'top 92%'
+                    }
+                }
+            );
+
+            gsap.fromTo('.social-circle-btn', 
+                { scale: 0, opacity: 0 }, 
+                { 
+                    scale: 1, 
+                    opacity: 1, 
+                    stagger: 0.08, 
+                    duration: 0.6, 
+                    ease: 'back.out(2)',
+                    scrollTrigger: {
+                        trigger: '.footer-social-row',
+                        start: 'top 92%'
+                    }
+                }
+            );
+
+            gsap.fromTo('.footer-legal-copy', 
+                { y: 15, opacity: 0 }, 
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 0.9, 
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: '.footer-legal-copy',
+                        start: 'top 96%'
+                    }
+                }
+            );
+        }
+
+        // --- 12. Interactive 3D Card Hover Tilt Effect ---
+        function initCardTilt(cards) {
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const rotateX = (-y / rect.height) * 8;
+                    const rotateY = (x / rect.width) * 8;
+                    gsap.to(card, {
+                        rotationX: rotateX,
+                        rotationY: rotateY,
+                        y: -6,
+                        duration: 0.35,
+                        ease: 'power2.out',
+                        transformPerspective: 800
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        rotationX: 0,
+                        rotationY: 0,
+                        y: 0,
+                        duration: 0.5,
+                        ease: 'power3.out'
+                    });
+                });
+            });
+        }
+
+        initCardTilt(document.querySelectorAll('.stagger-spirit-card, .story-card-item, .rnd-clean-card'));
+
+        // --- 13. Spirit Collection Category Filter Pills ---
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const staggerCards = document.querySelectorAll('.stagger-spirit-card');
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                const filter = pill.getAttribute('data-filter');
+                staggerCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('hidden-card');
+                        gsap.fromTo(card, 
+                            { opacity: 0, scale: 0.9 }, 
+                            { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }
+                        );
+                    } else {
+                        card.classList.add('hidden-card');
+                    }
+                });
+            });
+        });
+
+        // --- 14. Vertical Liquid Light Accordion Gallery ---
+        const accordionColumns = document.querySelectorAll('.accordion-column');
+        const accPrevBtn = document.getElementById('accPrevBtn');
+        const accNextBtn = document.getElementById('accNextBtn');
+        let activePillarIndex = 0;
+
+        function setActivePillar(index) {
+            if (!accordionColumns || accordionColumns.length === 0) return;
+            if (index < 0) index = accordionColumns.length - 1;
+            if (index >= accordionColumns.length) index = 0;
+            activePillarIndex = index;
+
+            accordionColumns.forEach((col, i) => {
+                if (i === activePillarIndex) {
+                    col.classList.add('active');
+                } else {
+                    col.classList.remove('active');
+                }
+            });
+        }
+
+        accordionColumns.forEach((col, i) => {
+            col.addEventListener('click', (e) => {
+                if (e.target.closest('.accordion-nav-controls')) return;
+                setActivePillar(i);
+            });
+        });
+
+        if (accPrevBtn) {
+            accPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setActivePillar(activePillarIndex - 1);
+            });
+        }
+
+        if (accNextBtn) {
+            accNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setActivePillar(activePillarIndex + 1);
+            });
+        }
+
+        // --- 15. Global Presence Interactive Region Switcher ---
+        const regionPills = document.querySelectorAll('.region-pill');
+        const regionCards = document.querySelectorAll('.region-card');
+        const globalStageImg = document.getElementById('globalStageImg');
+        const globalImgTag = document.getElementById('globalImgTag');
+        const globalImgTitle = document.getElementById('globalImgTitle');
+        const panelSubLabel = document.getElementById('panelSubLabel');
+        const panelMainQuote = document.getElementById('panelMainQuote');
+        const panelDescription = document.getElementById('panelDescription');
+        const gMetric1 = document.getElementById('gMetric1');
+        const gLabel1 = document.getElementById('gLabel1');
+        const gMetric2 = document.getElementById('gMetric2');
+        const gLabel2 = document.getElementById('gLabel2');
+        const gMetric3 = document.getElementById('gMetric3');
+        const gLabel3 = document.getElementById('gLabel3');
+
+        const regionData = [
+            {
+                img: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80',
+                tag: 'DISTILLERY ORIGIN & HEADQUARTERS',
+                title: 'INDIA (HQ)',
+                sub: 'OUR HOME ORIGIN',
+                quote: '"From our home in India to markets around the world."',
+                desc: 'Home to our master copper pot stills distillery and mountain spring water source. Crafted with artisanal dedication to supply premium single malts and craft spirits across India and major export destinations.',
+                m1: '30+ Yrs', l1: 'Distillation Heritage',
+                m2: '100%', l2: 'Authentic Crafting',
+                m3: '25+', l3: 'Export Destinations'
+            },
+            {
+                img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
+                tag: 'STRATEGIC DISTRIBUTION HUB',
+                title: 'MIDDLE EAST',
+                sub: 'GULF & TRAVEL RETAIL MARKETS',
+                quote: '"Explore international presence and distribution capabilities."',
+                desc: 'Distributing premium spirits across key gulf markets, luxury five-star hospitality venues, high-end lounges, and international travel retail hubs.',
+                m1: '12+', l1: 'Export Markets',
+                m2: '250K+', l2: 'Bottles Distributed',
+                m3: '100%', l3: 'Import Compliance'
+            },
+            {
+                img: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80',
+                tag: 'EMERGING GROWTH MARKET',
+                title: 'AFRICA',
+                sub: 'PREMIUM HOSPITALITY SEGMENTS',
+                quote: '"Bringing rich artisanal Indian spirits to African consumers."',
+                desc: 'Rapidly expanding presence across key luxury hospitality segments and vibrant premium nightlife venues in major African capital cities.',
+                m1: '8+', l1: 'Key Capital Cities',
+                m2: '45%', l2: 'YoY Growth Rate',
+                m3: '100%', l3: 'Quality Consistency'
+            },
+            {
+                img: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80',
+                tag: 'HIGH-GROWTH REGION',
+                title: 'SOUTH-EAST ASIA',
+                sub: 'MIXOLOGY & CRAFT BOUTIQUES',
+                quote: '"Partnering with Asia\'s top mixology bars & boutiques."',
+                desc: 'Established strategic distribution networks in Singapore, Thailand, and Vietnam, supplying luxury hotel bars and world-renowned cocktail lounges.',
+                m1: '150+', l1: 'Partner Cocktail Bars',
+                m2: '15+', l2: 'Spirits Awards Won',
+                m3: '5 Star', l3: 'Hotel Placements'
+            },
+            {
+                img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+                tag: 'GLOBAL EXPANSION MARKETS',
+                title: 'INTERNATIONAL MARKETS',
+                sub: 'EUROPE & NORTH AMERICA',
+                quote: '"Competing at the highest level of global spirit excellence."',
+                desc: 'Expanding across European and North American spirit boutiques, representing Indian distillation mastery on the international stage.',
+                m1: '25+', l1: 'Global Destinations',
+                m2: '100%', l2: 'Import Certification',
+                m3: 'Top Tier', l3: 'Global Recognition'
+            }
+        ];
+
+        function switchGlobalRegion(index) {
+            regionPills.forEach((p, i) => p.classList.toggle('active', i === index));
+            regionCards.forEach((c, i) => c.classList.toggle('active', i === index));
+
+            const d = regionData[index];
+            if (d) {
+                gsap.to(globalStageImg, {
+                    opacity: 0.3,
+                    duration: 0.2,
+                    onComplete: () => {
+                        globalStageImg.src = d.img;
+                        gsap.to(globalStageImg, { opacity: 1, duration: 0.35 });
+                    }
+                });
+
+                globalImgTag.textContent = d.tag;
+                globalImgTitle.textContent = d.title;
+                panelSubLabel.textContent = d.sub;
+                panelMainQuote.textContent = d.quote;
+                panelDescription.textContent = d.desc;
+                gMetric1.textContent = d.m1;
+                gLabel1.textContent = d.l1;
+                gMetric2.textContent = d.m2;
+                gLabel2.textContent = d.l2;
+                gMetric3.textContent = d.m3;
+                gLabel3.textContent = d.l3;
+
+                // Subtle punch animation on info panel
+                gsap.fromTo('.global-info-panel', 
+                    { opacity: 0.7, y: 8 }, 
+                    { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }
+                );
+            }
+        }
+
+        regionPills.forEach((pill, i) => {
+            pill.addEventListener('click', () => switchGlobalRegion(i));
+        });
+
+        regionCards.forEach((card, i) => {
+            card.addEventListener('click', () => switchGlobalRegion(i));
+        });
+
+        // --- 16. Editorial Stories Horizontal Slider ---
+        const storiesTrackWrapper = document.getElementById('storiesTrackWrapper');
+        const storyPrevBtn = document.getElementById('storyPrevBtn');
+        const storyNextBtn = document.getElementById('storyNextBtn');
+
+        if (storiesTrackWrapper && storyPrevBtn && storyNextBtn) {
+            storyNextBtn.addEventListener('click', () => {
+                storiesTrackWrapper.scrollBy({ left: 420, behavior: 'smooth' });
+            });
+            storyPrevBtn.addEventListener('click', () => {
+                storiesTrackWrapper.scrollBy({ left: -420, behavior: 'smooth' });
+            });
+        }
+
+        // --- 17. Contact Form Submission Toast ---
+        const contactForm = document.getElementById('contactForm');
+        const contactSuccessToast = document.getElementById('contactSuccessToast');
+
+        if (contactForm && contactSuccessToast) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                contactSuccessToast.style.display = 'flex';
+                gsap.fromTo(contactSuccessToast, 
+                    { y: 20, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }
+                );
+                contactForm.reset();
+                setTimeout(() => {
+                    gsap.to(contactSuccessToast, {
+                        opacity: 0,
+                        duration: 0.4,
+                        onComplete: () => { contactSuccessToast.style.display = 'none'; }
+                    });
+                }, 6000);
+            });
+        }
+    </script>
+</body>
+</html>

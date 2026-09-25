@@ -373,8 +373,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 }
 
 .nav-container {
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -474,8 +474,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
     bottom: 3.5rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     z-index: 10;
     padding: 0;
 }
@@ -613,8 +613,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 }
 
 .story-container {
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -703,8 +703,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 }
 
 .spirits-container {
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -794,8 +794,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 .stagger-spirit-card {
     position: relative;
     width: 100%;
-    max-width: 380px;
-    height: 480px;
+    max-width: 330px;
+    height: 520px;
     margin: 0 auto;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
 }
@@ -807,49 +807,66 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 /* Card Background Image Box */
 .spirit-card-bg {
     position: absolute;
-    top: 30px;
-    right: 0;
-    width: 72%;
-    height: 420px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 490px;
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    background-color: #d8d5cb;
+    border-radius: 24px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease;
+    background:#fff;
+    border: 1px solid rgba(140, 107, 35, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px 40px 20px;
 }
 
 .stagger-spirit-card:hover .spirit-card-bg {
-    transform: translate3d(0, -6px, 0);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    transform: translate3d(0, -8px, 0);
+    box-shadow: 0 24px 50px rgba(140, 107, 35, 0.18), 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: rgba(140, 107, 35, 0.38);
 }
 
 .bg-photo {
     width: 100%;
-    height: 118%;
-    object-fit: cover;
-    border-radius: 20px;
-    will-change: transform;
+    height: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.16));
+    will-change: transform, filter;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .stagger-spirit-card:hover .bg-photo {
-    transform: scale(1.08);
+    transform: translateY(-6px) scale(1.04);
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.24));
 }
 
 /* Vertical Title Text running up the right side */
 .card-vertical-title {
     position: absolute;
-    top: 25px;
-    right: 6px;
+    top: 20px;
+    right: 12px;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #8c6b23;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 5px;
+    border-radius: 6px;
+    border: 1px solid rgba(140, 107, 35, 0.22);
     text-transform: uppercase;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
     z-index: 3;
     pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: none;
 }
 
 /* Square Teal CTA View Button on Bottom-Right Corner */
@@ -857,26 +874,29 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 72px;
+    width: 78px;
     height: 48px;
-    background-color: #8c6b23;
+    background: linear-gradient(135deg, #8c6b23, #a8832f);
     color: #ffffff;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    border-radius: 12px 0 20px 0;
+    border-radius: 14px 0 24px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     z-index: 4;
-    transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    box-shadow: 0 4px 15px rgba(140, 107, 35, 0.3);
+    display: none;
 }
 
 .card-view-square-btn:hover {
-    background-color: #1a1a1a;
-    transform: scale(1.05);
+    background: #1a1a1a;
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 /* Floating Spirit Bottle overlapping left portion */
@@ -916,10 +936,11 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
     }
     .stagger-spirit-card {
         max-width: 340px;
-        height: 440px;
+        height: 470px;
     }
     .spirit-card-bg {
-        height: 380px;
+        height: 450px;
+        padding: 20px 16px 36px 16px;
     }
     .stagger-floating-bottle {
         height: 430px;
@@ -996,8 +1017,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 .process-content.light-process-content {
     position: relative;
     z-index: 10;
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto 2rem auto;
 }
 
@@ -1068,8 +1089,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 }
 
 .rnd-container {
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -1344,8 +1365,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 }
 
 .global-container {
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -1461,6 +1482,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
     margin-bottom: 3.5rem;
     overflow: hidden;
+    display: none;
 }
 .global-img-card {
     position: relative;
@@ -1596,6 +1618,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
+    display: none;
 }
 
 .region-card {
@@ -1667,8 +1690,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 }
 
 .stories-container {
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -1967,20 +1990,15 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(251, 249, 245, 0.96) 0%,
-        rgba(251, 249, 245, 0.90) 50%,
-        rgba(251, 249, 245, 0.97) 100%
-    );
+      background: linear-gradient(to bottom, rgba(251, 249, 245, 0.96) 0%, rgb(251 249 245 / 44%) 50%, rgb(251 249 245 / 10%) 100%);
     z-index: 2;
 }
 
 .contact-container {
     position: relative;
     z-index: 10;
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -2215,8 +2233,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto 3.5rem auto;
     padding: 0;
 }
@@ -2257,8 +2275,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 .footer-content-container {
     position: relative;
     z-index: 5;
-    width: 90%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 70%;
     margin: 0 auto;
     padding: 0;
     display: flex;
@@ -2365,6 +2383,21 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, label, li, blockquo
 }
 
 @media (max-width: 900px) {
+    .nav-container,
+    .hero-bottom-content,
+    .story-container,
+    .spirits-container,
+    .process-content.light-process-content,
+    .rnd-container,
+    .global-container,
+    .stories-container,
+    .contact-container,
+    .footer-top-divider,
+    .footer-content-container {
+        width: 90%;
+        max-width: 90%;
+    }
+    
     .nav-menu { display: none; }
     .hero-bottom-grid { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
     .hero-main-title { font-size: 2.2rem; }

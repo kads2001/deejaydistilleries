@@ -413,6 +413,31 @@ $(document).ready(function () {
 
   initZoomBanner();
 
+  // 10. Style Showcase Filter & Arrows Controls
+  function initStyleShowcase() {
+    const $tabs = $('.filter-pill-btn');
+    const $grid = $('.style-gallery-grid');
+    const $prevBtn = $('#showcasePrev');
+    const $nextBtn = $('#showcaseNext');
+
+    $tabs.on('click', function () {
+      $tabs.removeClass('active');
+      $(this).addClass('active');
+    });
+
+    if ($grid.length && $prevBtn.length && $nextBtn.length) {
+      const scrollAmount = 300;
+      $prevBtn.on('click', function () {
+        $grid.get(0).scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      $nextBtn.on('click', function () {
+        $grid.get(0).scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
+  }
+
+  initStyleShowcase();
+
   // 10. Initialize AOS (Animate On Scroll)
   if (typeof AOS !== 'undefined') {
     AOS.init({

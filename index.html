@@ -35,25 +35,31 @@
 
     <header class="site-header">
       <div class="nav-container">
+        <!-- Left Navigation -->
+        <nav class="nav-left" aria-label="Left Navigation">
+          <a href="#about" class="nav-custom-link">OUR STORY</a>
+          <a href="#brands" class="nav-custom-link">OUR BRANDS</a>
+          <a href="#products" class="nav-custom-link">PROCESS</a>
+          <a href="#products" class="nav-custom-link">R&amp;D + QUALITY</a>
+          <a href="#about" class="nav-custom-link">GLOBAL REACH</a>
+        </nav>
+
+        <!-- Center Brand Logo -->
         <div class="brand-center">
           <a href="index.html" title="Deejay Distilleries">
             <img src="assets/images/logo.png" alt="Deejay Distilleries Royal Crest" class="brand-crest-logo">
           </a>
         </div>
 
-        <div class="nav-inner">
-        <nav class="nav-left" aria-label="Left Navigation">
-          <a href="#story" class="nav-custom-link">OUR STORY</a>
-          <a href="#brands" class="nav-custom-link">OUR BRANDS</a>
-          <a href="#process" class="nav-custom-link">PROCESS</a>
-          <a href="#rd-quality" class="nav-custom-link">R&amp;D + QUALITY</a>
-          <a href="#global-reach" class="nav-custom-link">GLOBAL REACH</a>
-        </nav>
-
-        <nav class="nav-right" aria-label="Right Navigation">
-          <a href="#exports" class="btn-nav-contact">EXPORTS</a>
+        <!-- Right Navigation: Action Buttons + Social Icons Beside -->
+        <div class="nav-right" aria-label="Right Navigation">
+          <a href="#products" class="btn-nav-contact">EXPORTS</a>
           <a href="#contact" class="btn-nav-contact">CONTACT US</a>
-        </nav>
+          <div class="nav-socials">
+            <a href="#" class="nav-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="nav-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="nav-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
         </div>
 
         <button class="mobile-nav-toggle d-lg-none" id="mobileMenuOpen" aria-label="Open Navigation">
@@ -65,14 +71,19 @@
 
     <div class="mobile-nav-menu" id="mobileNavDrawer">
       <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close Navigation">&times;</button>
-      <img src="assets/images/logo.svg" alt="Logo" style="height: 60px; margin-bottom: 20px;">
-      <a href="#story" class="nav-custom-link">OUR STORY</a>
+      <img src="assets/images/logo.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
+      <a href="#about" class="nav-custom-link">OUR STORY</a>
       <a href="#brands" class="nav-custom-link">OUR BRANDS</a>
-      <a href="#process" class="nav-custom-link">PROCESS</a>
-      <a href="#rd-quality" class="nav-custom-link">R&amp;D + QUALITY</a>
-      <a href="#global-reach" class="nav-custom-link">GLOBAL REACH</a>
-      <a href="#exports" class="nav-custom-link">EXPORTS</a>
+      <a href="#products" class="nav-custom-link">PROCESS</a>
+      <a href="#products" class="nav-custom-link">R&amp;D + QUALITY</a>
+      <a href="#about" class="nav-custom-link">GLOBAL REACH</a>
+      <a href="#products" class="nav-custom-link">EXPORTS</a>
       <a href="#contact" class="btn-nav-contact" style="margin-top: 16px;">CONTACT US</a>
+      <div class="nav-socials" style="border-left: none; padding-left: 0; margin-top: 24px; justify-content: center;">
+        <a href="#" class="nav-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="nav-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="nav-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
     </div>
     <div class="hero-bottom-content">
       <div class="hero-bottom-container">
@@ -83,9 +94,29 @@
             and South-East Asia.
           </p>
         </div>
-        <div class="hero-action-btns">
-          <a href="#about" class="btn-hero-solid">ABOUT US</a>
-          <a href="#products" class="btn-hero-outline">EXPLORE PRODUCTS</a>
+        <div class="hero-bottom-right-area">
+          <!-- <div class="hero-action-btns">
+            <a href="#about" class="btn-hero-solid">ABOUT US</a>
+            <a href="#products" class="btn-hero-outline">EXPLORE PRODUCTS</a>
+          </div> -->
+
+          <!-- Video Switcher Cards + Play/Pause Button -->
+          <div class="hero-video-switcher-wrap">
+            <div class="hero-video-cards">
+              <div class="hero-video-card active" data-video-src="assets/videos/file.mp4" title="Video 1: Distillery Craft">
+                <img src="assets/images/video_thumb1.webp" alt="Distillery Craft" class="hero-card-thumb">
+              </div>
+              <div class="hero-video-card" data-video-src="assets/videos/beer_video.mp4" title="Video 2: Botanical Essence">
+                <img src="assets/images/video_thumb2.webp" alt="Botanical Essence" class="hero-card-thumb">
+              </div>
+              <div class="hero-video-card" data-video-src="assets/videos/file1.mov" title="Video 3: Heritage & Aging">
+                <img src="assets/images/video_thumb3.webp" alt="Heritage & Aging" class="hero-card-thumb">
+              </div>
+            </div>
+            <!-- <button class="hero-video-toggle-btn" id="heroVideoToggle" aria-label="Pause or Play Video" title="Pause / Play Video">
+              <i class="bi bi-pause-fill"></i>
+            </button> -->
+          </div>
         </div>
 
       </div>
@@ -131,7 +162,113 @@
 
     <!-- Parallax Barrel Warehouse Image Frame -->
     <div class="about-parallax-wrapper" data-aos="fade-up">
+      <img src="assets/images/dist2.png" alt="Karan's Quality Spirits Barrel Warehouse" class="about-parallax-img">
+      <div class="about-parallax-overlay"></div>
       <div class="about-parallax-badge">KARAN'S QUALITY SPIRITS</div>
+    </div>
+  </section>
+
+  <!-- ================= RECENT LAUNCHES SECTION ================= -->
+  <section class="recent-launches-section" id="recent-launches">
+    <div class="recent-launches-container">
+      
+      <!-- Section Header -->
+      <div class="recent-launches-header" data-aos="fade-up">
+        <div class="recent-launches-header-left">
+          <!-- <span class="recent-launches-tagline">NEW ARRIVALS</span> -->
+          <h2 class="recent-launches-title">Recent Launches</h2>
+        </div>
+        <div class="recent-launches-header-right">
+          <a href="#brands" class="recent-launches-view-all">
+            VIEW ALL RELEASES <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2-Column Split Grid -->
+      <div class="recent-launches-grid">
+        
+        <!-- Launch Card 1: Grand Master's Vodka -->
+        <div class="launch-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="launch-card-bg" style="background-image: url('assets/images/recent_launch_vodka.webp');"></div>
+          <div class="launch-card-overlay"></div>
+          <div class="launch-card-content">
+            <h3 class="launch-card-title">GRAND MASTER'S<br>VODKA</h3>
+            <p class="launch-card-desc">
+              Grand Master's is a youthful vodka brand with exciting flavours, perfect for those looking to explore and try something new.
+            </p>
+            <div class="launch-card-footer">
+              <a href="#brands" class="launch-card-link">
+                EXPLORE FLAVOURS <i class="bi bi-arrow-right"></i>
+              </a>
+              <div class="launch-pagination">
+                <span class="launch-page-num active">1</span>
+                <span class="launch-page-num">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="launch-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="launch-card-bg" style="background-image: url('assets/images/recent_launch_vodka.webp');"></div>
+          <div class="launch-card-overlay"></div>
+          <div class="launch-card-content">
+            <h3 class="launch-card-title">GRAND MASTER'S<br>VODKA</h3>
+            <p class="launch-card-desc">
+              Grand Master's is a youthful vodka brand with exciting flavours, perfect for those looking to explore and try something new.
+            </p>
+            <div class="launch-card-footer">
+              <a href="#brands" class="launch-card-link">
+                EXPLORE FLAVOURS <i class="bi bi-arrow-right"></i>
+              </a>
+              <div class="launch-pagination">
+                <span class="launch-page-num active">1</span>
+                <span class="launch-page-num">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="launch-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="launch-card-bg" style="background-image: url('assets/images/recent_launch_vodka.webp');"></div>
+          <div class="launch-card-overlay"></div>
+          <div class="launch-card-content">
+            <h3 class="launch-card-title">GRAND MASTER'S<br>VODKA</h3>
+            <p class="launch-card-desc">
+              Grand Master's is a youthful vodka brand with exciting flavours, perfect for those looking to explore and try something new.
+            </p>
+            <div class="launch-card-footer">
+              <a href="#brands" class="launch-card-link">
+                EXPLORE FLAVOURS <i class="bi bi-arrow-right"></i>
+              </a>
+              <div class="launch-pagination">
+                <span class="launch-page-num active">1</span>
+                <span class="launch-page-num">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Launch Card 2: Indica Red Rum -->
+        <div class="launch-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="launch-card-bg" style="background-image: url('assets/images/recent_launch_rum.webp');"></div>
+          <div class="launch-card-overlay"></div>
+          <div class="launch-card-content">
+            <h3 class="launch-card-title">INDICA RED<br>RUM</h3>
+            <p class="launch-card-desc">
+              Indica Red is a bold, smooth rum for those who enjoy a rich and distinctive drinking experience.
+            </p>
+            <div class="launch-card-footer">
+              <a href="#brands" class="launch-card-link">
+                EXPLORE PRODUCTS <i class="bi bi-arrow-right"></i>
+              </a>
+              <div class="launch-pagination">
+                <span class="launch-page-num active">1</span>
+                <span class="launch-page-num">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -155,14 +292,14 @@
             <a href="#brands" class="flavour-cta-btn">
               EXPLORE ALL BRANDS <i class="bi bi-arrow-right"></i>
             </a>
-            <div class="flavour-slider-controls">
+            <!-- <div class="flavour-slider-controls">
               <button class="slider-nav-btn" id="flavourPrevBtn" aria-label="Previous Slide">
                 <i class="bi bi-chevron-left"></i>
               </button>
               <button class="slider-nav-btn" id="flavourNextBtn" aria-label="Next Slide">
                 <i class="bi bi-chevron-right"></i>
               </button>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -257,6 +394,32 @@
     </div>
   </section>
 
+  <!-- ================= IMMERSIVE ZOOM IMAGE BANNER SECTION ================= -->
+  <section class="zoom-banner-section" id="craft-distillation">
+    <div class="zoom-banner-wrapper">
+      <img src="assets/images/zoomimg.jpeg" alt="State of the Art Pure Distillation" class="zoom-banner-img">
+      <div class="zoom-banner-overlay"></div>
+      
+      <!-- <div class="zoom-banner-container">
+        <div class="zoom-banner-content" data-aos="fade-up">
+          <span class="zoom-banner-badge">DEEJAY CRAFT DISTILLATION</span>
+          <h2 class="zoom-banner-title">
+            Mastering The Art &amp; Science <br>of Pure Distillation.
+          </h2>
+          <p class="zoom-banner-desc">
+            From precision multi-column copper rectifiers to rare grain botanicals, every drop undergoes rigorous temperature-controlled aging for an unmistakably refined finish.
+          </p>
+          <div class="zoom-banner-action">
+            <a href="#products" class="zoom-banner-btn">
+              EXPLORE OUR PROCESS <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+  </section>
+
   <!-- ================= PRODUCT INNOVATIONS & NEWS SECTION (NO BORDER RADIUS) ================= -->
   <section class="product-news-section" id="products">
     <div class="product-news-container">
@@ -264,7 +427,6 @@
       <!-- Section Header with Heading, Paragraph and CTA (Strictly No Border Radius) -->
       <div class="product-news-header-row" data-aos="fade-up">
         <div class="product-news-header-left">
-          <!-- <span class="product-news-tagline">PRODUCT INNOVATIONS &amp; RELEASES</span> -->
           <h2 class="product-news-heading">Pioneering Spirits &amp; Global Milestones</h2>
           <p class="product-news-para">
             From new vodka flavor launches and artisanal distillation expansions to showcasing our portfolio at premier
@@ -501,8 +663,14 @@
     </div>
   </section>
 
-  <!-- ================= SITE FOOTER ================= -->
+  <!-- ================= SITE FOOTER WITH VIDEO BACKGROUND ================= -->
   <footer class="site-footer">
+    <video id="footerBgVideo" class="footer-video-bg" autoplay muted loop playsinline preload="auto">
+      <source src="assets/videos/beer_video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="footer-video-overlay"></div>
+
     <div class="footer-container">
 
       <!-- Top 4-Column Grid -->

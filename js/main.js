@@ -74,21 +74,60 @@ $(document).ready(function () {
     if (lenis) lenis.start();
   });
 
-  // 4. Video Sound / Playback Controls
-  const $bgVideo = $('#heroBgVideo');
-  const $soundToggle = $('#videoSoundToggle');
+  // 4. Hero Video Switcher Cards & Play/Pause Controls
+  const $heroVideo = $('#heroBgVideo');
+  const $videoCards = $('.hero-video-card');
+  const $videoToggleBtn = $('#heroVideoToggle');
 
-  if ($bgVideo.length && $soundToggle.length) {
-    $soundToggle.on('click', function () {
-      const videoEl = $bgVideo.get(0);
-      if (videoEl.muted) {
-        videoEl.muted = false;
-        $soundToggle.html('<i class="bi bi-volume-up-fill"></i>');
-      } else {
-        videoEl.muted = true;
-        $soundToggle.html('<i class="bi bi-volume-mute-fill"></i>');
-      }
+  if ($heroVideo.length) {
+    const videoEl = $heroVideo.get(0);
+
+    // Switch video when clicking any card
+    $videoCards.on('click', function () {
+      const $card = $(this);
+      if ($card.hasClass('active')) return;
+
+      const videoSrc = $card.attr('data-video-src');
+      if (!videoSrc) return;
+
+      $videoCards.removeClass('active');
+      $card.addClass('active');
+
+      // Smooth opacity cross-fade
+      $heroVideo.css({ transition: 'opacity 0.35s ease', opacity: 0 });
+
+      setTimeout(function () {
+        // Change source and load
+        $heroVideo.attr('src', videoSrc);
+        videoEl.load();
+        const playPromise = videoEl.play();
+        if (playPromise !== undefined) {
+          playPromise.then(function () {
+            $heroVideo.css('opacity', 1);
+            if ($videoToggleBtn.length) {
+              $videoToggleBtn.html('<i class="bi bi-pause-fill"></i>');
+            }
+          }).catch(function () {
+            $heroVideo.css('opacity', 1);
+          });
+        } else {
+          $heroVideo.css('opacity', 1);
+        }
+      }, 350);
     });
+
+    // Toggle Play/Pause on Gold Circular Button
+    if ($videoToggleBtn.length) {
+      $videoToggleBtn.on('click', function () {
+        if (videoEl.paused) {
+          videoEl.play();
+          $videoToggleBtn.html('<i class="bi bi-pause-fill"></i>');
+        } else {
+          videoEl.pause();
+          $videoToggleBtn.html('<i class="bi bi-play-fill"></i>');
+        }
+      });
+    }
   }
 
   // 5. Universal Smooth Anchor Scrolling (Local & Cross-Page Hashes)
@@ -326,6 +365,53 @@ $(document).ready(function () {
       $newsletterForm.get(0).reset();
     });
   }
+
+  // 9. Interactive Smooth Scroll Zoom Effect for Zoom Banner Section
+  function initZoomBanner() {
+    const zoomSections = document.querySelectorAll('.zoom-banner-section');
+    if (!zoomSections.length) return;
+
+    function handleZoom() {
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      zoomSections.forEach(function (section) {
+        const rect = section.getBoundingClientRect();
+        const img = section.querySelector('.zoom-banner-img');
+        if (!img) return;
+
+        // When section enters the viewport
+        if (rect.bottom >= 0 && rect.top <= windowHeight) {
+          const totalDistance = windowHeight + rect.height;
+          // Progress from 0.0 to 1.0
+          const progress = Math.min(Math.max((windowHeight - rect.top) / totalDistance, 0), 1);
+          
+          // Smoothly scale from 1.0 to 1.25 as user scrolls down
+          const scale = (1.0 + progress * 0.22).toFixed(3);
+          img.style.transform = `scale(${scale})`;
+        }
+      });
+    }
+
+    if (lenis) {
+      lenis.on('scroll', handleZoom);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            handleZoom();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', handleZoom);
+    handleZoom();
+  }
+
+  initZoomBanner();
 
   // 10. Initialize AOS (Animate On Scroll)
   if (typeof AOS !== 'undefined') {

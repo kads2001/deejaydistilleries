@@ -9,27 +9,72 @@
 $(document).ready(function () {
   'use strict';
 
-  // 1. Navbar Scroll Transition
-  $(window).on('scroll', function () {
-    if ($(this).scrollTop() > 40) {
+  // 1. Initialize Smooth Scrolling Engine (Lenis + Native Smooth Fallback)
+  let lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+      infinite: false
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+
+  // Smooth Scroll Helper Function
+  function smoothScrollTo(target, offset) {
+    const targetOffset = typeof offset !== 'undefined' ? offset : -70;
+    if (!target) return;
+
+    if (lenis) {
+      lenis.scrollTo(target, { offset: targetOffset, duration: 1.2 });
+    } else {
+      const elTop = $(target).offset() ? $(target).offset().top : 0;
+      $('html, body').stop().animate({
+        scrollTop: Math.max(0, elTop + targetOffset)
+      }, 700);
+    }
+  }
+
+  // 2. Navbar Scroll Transition
+  function handleNavScroll() {
+    const scrollPos = lenis ? lenis.scroll : $(window).scrollTop();
+    if (scrollPos > 40) {
       $('.site-header').addClass('scrolled');
     } else {
       $('.site-header').removeClass('scrolled');
     }
-  });
+  }
 
-  // 2. Mobile Navigation Toggle
+  if (lenis) {
+    lenis.on('scroll', handleNavScroll);
+  } else {
+    $(window).on('scroll', handleNavScroll);
+  }
+
+  // 3. Mobile Navigation Toggle
   $('#mobileMenuOpen').on('click', function () {
     $('#mobileNavDrawer').addClass('active');
     $('body').css('overflow', 'hidden');
+    if (lenis) lenis.stop();
   });
 
-  $('#mobileMenuClose, .mobile-nav-menu .nav-custom-link').on('click', function () {
+  $('#mobileMenuClose, .mobile-nav-menu .nav-custom-link, .mobile-nav-menu .btn-nav-contact').on('click', function () {
     $('#mobileNavDrawer').removeClass('active');
     $('body').css('overflow', 'auto');
+    if (lenis) lenis.start();
   });
 
-  // 3. Video Sound / Playback Controls
+  // 4. Video Sound / Playback Controls
   const $bgVideo = $('#heroBgVideo');
   const $soundToggle = $('#videoSoundToggle');
 
@@ -46,18 +91,52 @@ $(document).ready(function () {
     });
   }
 
-  // 4. Smooth Anchor Scrolling
-  $('a[href^="#"]').on('click', function (e) {
-    const target = $(this.getAttribute('href'));
-    if (target.length) {
+  // 5. Universal Smooth Anchor Scrolling (Local & Cross-Page Hashes)
+  $(document).on('click', 'a[href*="#"]', function (e) {
+    const href = $(this).attr('href');
+    if (!href || href === '#' || href === '#!') return;
+
+    // Determine target selector
+    let targetSelector = '';
+    if (href.startsWith('#')) {
+      targetSelector = href;
+    } else if (href.includes('#')) {
+      const parts = href.split('#');
+      const pagePart = parts[0];
+      const hashPart = '#' + parts[1];
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+      if (pagePart === '' || pagePart === currentPath || (pagePart === 'index.html' && (currentPath === '' || currentPath === 'index.html'))) {
+        targetSelector = hashPart;
+      }
+    }
+
+    if (targetSelector && $(targetSelector).length) {
       e.preventDefault();
-      $('html, body').stop().animate({
-        scrollTop: target.offset().top - 70
-      }, 700);
+      smoothScrollTo(targetSelector, -70);
+
+      // Close mobile nav drawer if open
+      $('#mobileNavDrawer').removeClass('active');
+      $('body').css('overflow', 'auto');
+      if (lenis) lenis.start();
+
+      // Update URL hash without jump
+      if (history.pushState) {
+        history.pushState(null, null, targetSelector);
+      }
     }
   });
 
-  // 5. Active Smooth Parallax Effect on About Us Image
+  // Handle URL hash on initial page load with smooth scroll
+  if (window.location.hash) {
+    setTimeout(function () {
+      const $initialTarget = $(window.location.hash);
+      if ($initialTarget.length) {
+        smoothScrollTo($initialTarget.get(0), -70);
+      }
+    }, 250);
+  }
+
+  // 6. Active Smooth Parallax Effect on About Us Image
   function initParallax() {
     const parallaxWrappers = document.querySelectorAll('.about-parallax-wrapper');
     if (!parallaxWrappers.length) return;
@@ -84,16 +163,20 @@ $(document).ready(function () {
       });
     }
 
-    let isTicking = false;
-    window.addEventListener('scroll', function () {
-      if (!isTicking) {
-        window.requestAnimationFrame(function () {
-          handleParallax();
-          isTicking = false;
-        });
-        isTicking = true;
-      }
-    }, { passive: true });
+    if (lenis) {
+      lenis.on('scroll', handleParallax);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            handleParallax();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
 
     window.addEventListener('resize', handleParallax);
     handleParallax();
@@ -101,7 +184,7 @@ $(document).ready(function () {
 
   initParallax();
 
-  // 6. Luxury Pinned / Sticky Horizontal Scroll for 8 Brand Cards
+  // 7. Luxury Pinned / Sticky Horizontal Scroll for 8 Brand Cards
   function initStickyFlavourScroll() {
     const $section = $('#brands');
     const $track = $('#flavourSliderTrack');
@@ -148,16 +231,20 @@ $(document).ready(function () {
       }
     }
 
-    let isTicking = false;
-    window.addEventListener('scroll', function () {
-      if (!isTicking) {
-        window.requestAnimationFrame(function () {
-          updateStickyScroll();
-          isTicking = false;
-        });
-        isTicking = true;
-      }
-    }, { passive: true });
+    if (lenis) {
+      lenis.on('scroll', updateStickyScroll);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            updateStickyScroll();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
 
     window.addEventListener('resize', updateStickyScroll);
     updateStickyScroll();
@@ -174,14 +261,18 @@ $(document).ready(function () {
         const step = getStepWidth();
         const stepScroll = (step / maxHorizontal) * scrollableDistance;
 
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        const currentScroll = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
         const sectionTop = currentScroll + rect.top;
         const targetScroll = Math.min(sectionTop + scrollableDistance, currentScroll + stepScroll);
 
-        window.scrollTo({
-          top: targetScroll,
-          behavior: 'smooth'
-        });
+        if (lenis) {
+          lenis.scrollTo(targetScroll, { duration: 0.8 });
+        } else {
+          window.scrollTo({
+            top: targetScroll,
+            behavior: 'smooth'
+          });
+        }
       });
     }
 
@@ -196,14 +287,18 @@ $(document).ready(function () {
         const step = getStepWidth();
         const stepScroll = (step / maxHorizontal) * scrollableDistance;
 
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        const currentScroll = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
         const sectionTop = currentScroll + rect.top;
         const targetScroll = Math.max(sectionTop, currentScroll - stepScroll);
 
-        window.scrollTo({
-          top: targetScroll,
-          behavior: 'smooth'
-        });
+        if (lenis) {
+          lenis.scrollTo(targetScroll, { duration: 0.8 });
+        } else {
+          window.scrollTo({
+            top: targetScroll,
+            behavior: 'smooth'
+          });
+        }
       });
     }
   }
@@ -232,12 +327,21 @@ $(document).ready(function () {
     });
   }
 
-  // 9. Ensure Video Autoplays on Modern Browsers
-  if ($bgVideo.length) {
-    const videoElem = $bgVideo.get(0);
-    videoElem.play().catch(function (error) {
-      console.log('Video autoplay prevented by browser policy:', error);
+  // 10. Initialize AOS (Animate On Scroll)
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 50,
+      delay: 0
     });
+
+    if (lenis) {
+      lenis.on('scroll', function () {
+        AOS.refresh();
+      });
+    }
   }
 });
 

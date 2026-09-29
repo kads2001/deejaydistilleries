@@ -858,12 +858,18 @@
     </div>
   </section>
 
-  <!-- ================= SITE FOOTER WITH VIDEO BACKGROUND ================= -->
-  <footer class="site-footer">
-    <video id="footerBgVideo" class="footer-video-bg" autoplay muted loop playsinline preload="auto">
-      <source src="assets/videos/beer_video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <!-- ================= SITE FOOTER WITH ANIMATED RISING BUBBLES ================= -->
+  <footer class="site-footer" id="siteFooter">
+    <!-- Animated Bubbles Background Texture Layers (footerbg1.jpg) -->
+    <div class="footer-bubble-bg-layer layer-back"></div>
+    <div class="footer-bubble-bg-layer layer-mid"></div>
+    <div class="footer-bubble-bg-layer layer-front"></div>
+    
+    <!-- Dynamic Rising Effervescent Bubbles Canvas -->
+    <canvas id="footerBubblesCanvas" class="footer-bubbles-canvas"></canvas>
+    
+    <!-- Warm Ambient Bottom Light & Readability Overlay -->
+    <div class="footer-ambient-glow"></div>
     <div class="footer-video-overlay"></div>
 
     <div class="footer-container">

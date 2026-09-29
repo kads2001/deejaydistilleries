@@ -2682,41 +2682,120 @@ body {
   box-shadow: 0px 6px 20px rgba(112, 85, 16, 0.35);
 }
 
-/* ================= SITE FOOTER (WITH VIDEO BACKGROUND) ================= */
+/* ================= SITE FOOTER (WITH ANIMATED RISING BUBBLES & FOOTERBG1) ================= */
 .site-footer {
   position: relative;
-  background-color: #0b0c10;
+  background-color: #06070a;
+  background: radial-gradient(ellipse at 50% 100%, #151a24 0%, #0b0e15 50%, #050609 100%);
   color: #ffffff;
   padding-top: 90px;
   padding-bottom: 36px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
   width: 100%;
   overflow: hidden;
 }
 
-/* Footer Background Video */
-.footer-video-bg {
+/* Moving Bubbles Texture Layers using footerbg1.jpg */
+.footer-bubble-bg-layer {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/footerbg1.jpg');
+  background-repeat: repeat;
   pointer-events: none;
+  mix-blend-mode: screen;
+  filter: invert(1) brightness(1.3) contrast(1.2);
+  will-change: background-position;
+  z-index: 1;
 }
 
-/* Footer Video Overlay */
+.footer-bubble-bg-layer.layer-back {
+  background-size: 380px auto;
+  opacity: 0.16;
+  animation: footerBubblesRiseSlow 30s linear infinite;
+}
+
+.footer-bubble-bg-layer.layer-mid {
+  background-size: 580px auto;
+  opacity: 0.26;
+  animation: footerBubblesRiseMid 18s linear infinite;
+}
+
+.footer-bubble-bg-layer.layer-front {
+  background-size: 780px auto;
+  opacity: 0.38;
+  animation: footerBubblesRiseFast 11s linear infinite;
+}
+
+@keyframes footerBubblesRiseSlow {
+  0% {
+    background-position: 0px 0px;
+  }
+  50% {
+    background-position: 30px -600px;
+  }
+  100% {
+    background-position: 0px -1200px;
+  }
+}
+
+@keyframes footerBubblesRiseMid {
+  0% {
+    background-position: 0px 0px;
+  }
+  50% {
+    background-position: -45px -750px;
+  }
+  100% {
+    background-position: 0px -1500px;
+  }
+}
+
+@keyframes footerBubblesRiseFast {
+  0% {
+    background-position: 0px 0px;
+  }
+  50% {
+    background-position: 60px -900px;
+  }
+  100% {
+    background-position: 0px -1800px;
+  }
+}
+
+/* Floating Rising 3D Bubble Canvas */
+.footer-bubbles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Footer Warm Ambient Light at Bottom */
+.footer-ambient-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: radial-gradient(ellipse at 50% 115%, rgba(212, 175, 55, 0.18) 0%, rgba(184, 134, 11, 0.06) 45%, transparent 75%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Footer Text Legibility Overlay */
 .footer-video-overlay {
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(10, 12, 16, 0.90) 0%, rgba(10, 12, 16, 0.82) 45%, rgba(10, 12, 16, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(8, 10, 15, 0.85) 0%, rgba(8, 10, 15, 0.62) 40%, rgba(5, 6, 9, 0.88) 100%);
   z-index: 2;
   pointer-events: none;
 }

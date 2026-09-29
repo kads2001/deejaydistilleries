@@ -438,7 +438,259 @@ $(document).ready(function () {
 
   initStyleShowcase();
 
-  // 10. Initialize AOS (Animate On Scroll)
+  // 11. Interactive Rising Effervescent Bubbles System for Footer
+  function initFooterBubbles() {
+    const canvas = document.getElementById('footerBubblesCanvas');
+    const footer = document.querySelector('.site-footer');
+    if (!canvas || !footer) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = window.devicePixelRatio || 1;
+    let bubbles = [];
+    let animationFrameId = null;
+    let isVisible = true;
+    let mouse = { x: -1000, y: -1000, active: false };
+
+    function resize() {
+      const rect = footer.getBoundingClientRect();
+      width = rect.width || window.innerWidth;
+      height = rect.height || 450;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function createBubble(isInitial) {
+      const r = Math.random();
+      // Radius distribution: mostly fine effervescent beads (2-7px) with occasional lush statement bubbles (8-18px)
+      let radius;
+      if (r < 0.6) {
+        radius = 2 + Math.random() * 4;
+      } else if (r < 0.9) {
+        radius = 6 + Math.random() * 6;
+      } else {
+        radius = 12 + Math.random() * 8;
+      }
+
+      // Buoyancy: larger bubbles rise faster with realistic fluid dynamics
+      const baseSpeed = 0.6 + (radius * 0.12) + Math.random() * 0.8;
+      const startY = isInitial ? Math.random() * height : height + radius + Math.random() * 50;
+
+      // Color variation: Crystal White with subtle Warm Champagne Gold accents
+      const isGold = Math.random() > 0.45;
+
+      return {
+        x: Math.random() * width,
+        y: startY,
+        radius: radius,
+        baseRadius: radius,
+        speedY: baseSpeed,
+        swaySpeed: 0.015 + Math.random() * 0.025,
+        swayAmp: 0.8 + (radius * 0.18) + Math.random() * 1.5,
+        swayOffset: Math.random() * Math.PI * 2,
+        phase: Math.random() * Math.PI * 2,
+        opacity: 0.25 + Math.random() * 0.55,
+        isGold: isGold,
+        wobble: 0
+      };
+    }
+
+    function initParticles() {
+      bubbles = [];
+      // Dynamic count based on screen width
+      const bubbleCount = width < 768 ? 35 : 65;
+      for (let i = 0; i < bubbleCount; i++) {
+        bubbles.push(createBubble(true));
+      }
+    }
+
+    function drawBubble(b) {
+      // Calculate horizontal wobble
+      b.phase += b.swaySpeed;
+      const swayX = Math.sin(b.phase + b.swayOffset) * b.swayAmp;
+      const curX = b.x + swayX;
+      const curY = b.y;
+      const rad = b.radius;
+
+      if (curY < -rad * 2 || curY > height + rad * 2) return;
+
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(b.opacity, 0.9));
+
+      // 1. Soft Outer Atmosphere Glow
+      const glowGrad = ctx.createRadialGradient(curX, curY, rad * 0.2, curX, curY, rad * 1.35);
+      if (b.isGold) {
+        glowGrad.addColorStop(0, 'rgba(235, 205, 120, 0.25)');
+        glowGrad.addColorStop(0.7, 'rgba(212, 175, 55, 0.1)');
+        glowGrad.addColorStop(1, 'rgba(212, 175, 55, 0)');
+      } else {
+        glowGrad.addColorStop(0, 'rgba(255, 255, 255, 0.28)');
+        glowGrad.addColorStop(0.7, 'rgba(200, 220, 255, 0.08)');
+        glowGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      }
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(curX, curY, rad * 1.35, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 2. Translucent Glass Shell
+      const shellGrad = ctx.createRadialGradient(
+        curX - rad * 0.35, curY - rad * 0.35, rad * 0.1,
+        curX, curY, rad
+      );
+      if (b.isGold) {
+        shellGrad.addColorStop(0, 'rgba(255, 250, 220, 0.45)');
+        shellGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.15)');
+        shellGrad.addColorStop(0.9, 'rgba(180, 140, 40, 0.35)');
+        shellGrad.addColorStop(1, 'rgba(255, 235, 160, 0.85)');
+      } else {
+        shellGrad.addColorStop(0, 'rgba(255, 255, 255, 0.55)');
+        shellGrad.addColorStop(0.5, 'rgba(220, 235, 255, 0.12)');
+        shellGrad.addColorStop(0.9, 'rgba(160, 195, 240, 0.35)');
+        shellGrad.addColorStop(1, 'rgba(255, 255, 255, 0.9)');
+      }
+
+      ctx.beginPath();
+      ctx.arc(curX, curY, rad, 0, Math.PI * 2);
+      ctx.fillStyle = shellGrad;
+      ctx.fill();
+
+      // 3. Crisp Glass Border Rim
+      ctx.strokeStyle = b.isGold ? 'rgba(255, 235, 160, 0.7)' : 'rgba(255, 255, 255, 0.8)';
+      ctx.lineWidth = Math.max(0.6, rad * 0.08);
+      ctx.stroke();
+
+      // 4. Specular Gleam / Light Highlight (Top-Left)
+      const highlightX = curX - rad * 0.38;
+      const highlightY = curY - rad * 0.38;
+      const highlightRad = Math.max(0.8, rad * 0.28);
+
+      ctx.beginPath();
+      ctx.arc(highlightX, highlightY, highlightRad, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.92)';
+      ctx.fill();
+
+      // Secondary micro gleam
+      if (rad > 6) {
+        ctx.beginPath();
+        ctx.arc(curX + rad * 0.3, curY + rad * 0.32, rad * 0.14, 0, Math.PI * 2);
+        ctx.fillStyle = b.isGold ? 'rgba(255, 230, 140, 0.65)' : 'rgba(255, 255, 255, 0.65)';
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    function animate() {
+      if (!isVisible) {
+        animationFrameId = requestAnimationFrame(animate);
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < bubbles.length; i++) {
+        const b = bubbles[i];
+
+        // Move upward
+        b.y -= b.speedY;
+
+        // Subtle mouse repulsion / interactive drift
+        if (mouse.active) {
+          const dx = b.x - mouse.x;
+          const dy = b.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100 && dist > 0) {
+            const force = (100 - dist) / 100;
+            b.x += (dx / dist) * force * 1.5;
+            b.y -= force * 1.2;
+          }
+        }
+
+        // Keep inside bounds horizontally
+        if (b.x < 0) b.x = width;
+        if (b.x > width) b.x = 0;
+
+        // Reset if reached above top
+        if (b.y < -b.radius * 2) {
+          const fresh = createBubble(false);
+          bubbles[i] = fresh;
+        }
+
+        drawBubble(b);
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    // Interactive mouse spawn on hover
+    footer.addEventListener('mousemove', function (e) {
+      const rect = footer.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active = true;
+
+      // Occasionally add sparkling micro-effervescence near cursor
+      if (Math.random() < 0.25 && bubbles.length < 90) {
+        const microBubble = createBubble(false);
+        microBubble.x = mouse.x + (Math.random() - 0.5) * 30;
+        microBubble.y = mouse.y + (Math.random() - 0.5) * 20;
+        microBubble.radius = 1.5 + Math.random() * 3.5;
+        microBubble.speedY = 1.2 + Math.random() * 1.8;
+        bubbles.push(microBubble);
+        if (bubbles.length > 95) bubbles.shift();
+      }
+    });
+
+    footer.addEventListener('mouseleave', function () {
+      mouse.active = false;
+    });
+
+    // Touch support for mobile devices
+    footer.addEventListener('touchmove', function (e) {
+      if (e.touches && e.touches[0]) {
+        const rect = footer.getBoundingClientRect();
+        mouse.x = e.touches[0].clientX - rect.left;
+        mouse.y = e.touches[0].clientY - rect.top;
+        mouse.active = true;
+      }
+    }, { passive: true });
+
+    footer.addEventListener('touchend', function () {
+      mouse.active = false;
+    });
+
+    // IntersectionObserver to pause rendering when footer is not in view
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          isVisible = entry.isIntersecting;
+        });
+      }, { threshold: 0.05 });
+      observer.observe(footer);
+    }
+
+    window.addEventListener('resize', function () {
+      resize();
+    });
+
+    resize();
+    initParticles();
+    animate();
+  }
+
+  initFooterBubbles();
+
+  // 12. Initialize AOS (Animate On Scroll)
   if (typeof AOS !== 'undefined') {
     AOS.init({
       duration: 800,
@@ -455,4 +707,5 @@ $(document).ready(function () {
     }
   }
 });
+
 

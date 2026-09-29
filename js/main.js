@@ -9,19 +9,22 @@
 $(document).ready(function () {
   'use strict';
 
-  // 1. Initialize Smooth Scrolling Engine (Lenis + Native Smooth Fallback)
+  // 1. Initialize High-Performance Smooth Scrolling Engine (Lenis)
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.3,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-      infinite: false
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.6,
+      infinite: false,
+      autoResize: true
     });
+
+    window.lenis = lenis;
 
     function raf(time) {
       lenis.raf(time);
@@ -175,7 +178,131 @@ $(document).ready(function () {
     }, 250);
   }
 
-  // 6. Active Smooth Parallax Effect on About Us Image
+  // 6. Interactive Scroll Transition: Team Images Fly from Inline Text to Middle Position (Slow & Seamless Text Collapse)
+  function initTeamImagesScrollTransition() {
+    const section = document.getElementById('about');
+    const card1 = document.getElementById('aboutTeamCard1');
+    const card2 = document.getElementById('aboutTeamCard2');
+    const slot1 = document.getElementById('inlineTeamSlot1');
+    const slot2 = document.getElementById('inlineTeamSlot2');
+
+    if (!section || !card1 || !card2 || !slot1 || !slot2) return;
+
+    const pairs = [
+      { card: card1, slot: slot1 },
+      { card: card2, slot: slot2 }
+    ];
+
+    let metrics = [];
+
+    function measure() {
+      // Temporarily restore natural DOM layout to measure original geometry
+      pairs.forEach(function (p) {
+        p.card.style.transform = 'none';
+        p.slot.style.width = '';
+        p.slot.style.margin = '';
+        p.slot.style.opacity = '';
+      });
+
+      metrics = pairs.map(function (p) {
+        const sRect = p.slot.getBoundingClientRect();
+        const cRect = p.card.getBoundingClientRect();
+        return {
+          deltaX: sRect.left - cRect.left,
+          deltaY: sRect.top - cRect.top,
+          slotWidth: sRect.width || 78,
+          slotMargin: 8,
+          scaleX: cRect.width > 0 ? (sRect.width || 78) / cRect.width : 0.3,
+          scaleY: cRect.height > 0 ? (sRect.height || 44) / cRect.height : 0.22,
+          slotRadius: 10,
+          cardRadius: 18
+        };
+      });
+
+      update();
+    }
+
+    function update() {
+      if (!metrics.length) return;
+
+      const secRect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      // Slow, extended scroll window (from section entering at 85% of viewport down past top)
+      const animStart = windowHeight * 0.85;
+      const animEnd = -windowHeight * 0.10;
+      const scrollRange = animStart - animEnd;
+
+      const currentScroll = animStart - secRect.top;
+      let rawProgress = scrollRange > 0 ? currentScroll / scrollRange : 1;
+      rawProgress = Math.max(0, Math.min(1, rawProgress));
+
+      // Gentle, smooth easing for a slow, high-end motion
+      const progress = rawProgress < 0.5
+        ? 2 * rawProgress * rawProgress
+        : -1 + (4 - 2 * rawProgress) * rawProgress;
+
+      // Collapse inline text space smoothly as images move down (no patch or leftover gap)
+      const collapseFactor = Math.max(0, Math.min(1, progress * 1.5));
+
+      pairs.forEach(function (p, idx) {
+        const m = metrics[idx];
+        if (!m) return;
+
+        // Animate card position & scale down to the team row
+        const curX = m.deltaX * (1 - progress);
+        const curY = m.deltaY * (1 - progress);
+        const curScaleX = m.scaleX + (1 - m.scaleX) * progress;
+        const curScaleY = m.scaleY + (1 - m.scaleY) * progress;
+
+        const curRadius = m.slotRadius + (m.cardRadius - m.slotRadius) * progress;
+        const effectiveRadius = curRadius / Math.min(curScaleX, curScaleY);
+
+        p.card.style.transformOrigin = '0 0';
+        p.card.style.transform = `translate3d(${curX.toFixed(2)}px, ${curY.toFixed(2)}px, 0px) scale(${curScaleX.toFixed(4)}, ${curScaleY.toFixed(4)})`;
+        p.card.style.borderRadius = `${effectiveRadius.toFixed(1)}px`;
+
+        // Elevation shadow effect as it expands and lands in its final card place
+        const shadowAlpha = (0.02 + 0.06 * progress).toFixed(3);
+        const shadowY = Math.round(3 + 7 * progress);
+        const shadowBlur = Math.round(6 + 19 * progress);
+        p.card.style.boxShadow = `0 ${shadowY}px ${shadowBlur}px rgba(0, 0, 0, ${shadowAlpha})`;
+
+        // Smoothly close the gap in the lead text paragraph
+        const curWidth = (m.slotWidth * (1 - collapseFactor)).toFixed(1);
+        const curMargin = (m.slotMargin * (1 - collapseFactor)).toFixed(1);
+        p.slot.style.width = curWidth + 'px';
+        p.slot.style.margin = `0 ${curMargin}px`;
+        p.slot.style.opacity = (1 - collapseFactor).toFixed(2);
+      });
+    }
+
+    if (lenis) {
+      lenis.on('scroll', update);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            update();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+
+    // Initial setup after brief layout settle
+    setTimeout(measure, 120);
+    setTimeout(measure, 600);
+  }
+
+  initTeamImagesScrollTransition();
+
+  // 7. Active Smooth Parallax Effect on About Us Image
   function initParallax() {
     const parallaxWrappers = document.querySelectorAll('.about-parallax-wrapper');
     if (!parallaxWrappers.length) return;

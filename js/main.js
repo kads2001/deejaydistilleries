@@ -733,6 +733,56 @@ $(document).ready(function () {
 
   initStyleShowcase();
 
+  // 10.1 Interactive Scroll Stacking Effect for Craft Beer Cards
+  function initBeerStackScroll() {
+    const $cards = $('.beer-stack-card');
+    if ($cards.length < 2) return;
+
+    function updateStacking() {
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      $cards.each(function (index) {
+        if (index === $cards.length - 1) return; // Top/last card does not scale down
+
+        const nextCard = $cards.get(index + 1);
+        if (!nextCard) return;
+
+        const nextRect = nextCard.getBoundingClientRect();
+
+        // Progress of NEXT card sliding over THIS card (0 = next card entering viewport bottom, 1 = next card at top)
+        const progress = Math.min(Math.max((windowHeight - nextRect.top) / windowHeight, 0), 1);
+
+        // Smooth 3D stack scale (1.0 -> 0.92), brightness (1.0 -> 0.65), and slight upward parallax
+        const scale = 1 - progress * 0.08;
+        const brightness = 1 - progress * 0.35;
+        const translateY = progress * -18;
+
+        this.style.transform = `scale(${scale.toFixed(4)}) translateY(${translateY.toFixed(1)}px)`;
+        this.style.filter = `brightness(${brightness.toFixed(3)})`;
+      });
+    }
+
+    if (lenis) {
+      lenis.on('scroll', updateStacking);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            updateStacking();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', updateStacking);
+    setTimeout(updateStacking, 100);
+  }
+
+  initBeerStackScroll();
+
   // 11. Interactive Rising Effervescent Bubbles System for Footer
   function initFooterBubbles() {
     const canvas = document.getElementById('footerBubblesCanvas');

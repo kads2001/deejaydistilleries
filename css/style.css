@@ -2405,6 +2405,85 @@ body {
   box-shadow: 0px 6px 20px rgba(212, 175, 55, 0.45);
 }
 
+/* ================= CRAFT BEER SCROLL STACKING SECTION ================= */
+.beer-stack-section {
+  position: relative;
+  width: 100%;
+  /* background-color: #0b0d11; */
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.beer-stack-container {
+  position: relative;
+  width: 100%;
+}
+
+.beer-stack-card {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform, filter;
+  transform-origin: center top;
+  /* box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.45); */
+}
+
+.beer-stack-card:nth-child(1) {
+  z-index: 1;
+  background-color: #f7f7f7;
+}
+
+.beer-stack-card:nth-child(2) {
+  z-index: 2;
+  background-color: #277e38;
+}
+
+.beer-stack-card:nth-child(3) {
+  z-index: 3;
+  background-color: #121418;
+}
+
+.beer-stack-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beer-stack-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Responsive Styles for Craft Beer Stacking */
+@media (max-width: 991px) {
+  .beer-stack-card {
+    height: 90vh;
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+  .beer-stack-card {
+    height: 80vh;
+    min-height: 420px;
+  }
+}
+
 /* ================= PRODUCT INNOVATIONS & NEWS SECTION ================= */
 .product-news-section {
   background-color: #e5e5e5;

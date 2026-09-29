@@ -29,7 +29,7 @@ button, input, select, textarea, a, img, div, span, section, header, footer {
 html {
   width: 100%;
   overflow-x: clip;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 html.lenis, html.lenis body {
@@ -48,7 +48,7 @@ html.lenis, html.lenis body {
   overflow: hidden;
 }
 
-.lenis.lenis-scrolling iframe {
+.lenis.lenis-smooth iframe {
   pointer-events: none;
 }
 
@@ -662,14 +662,22 @@ body {
   font-size: 32px;
   line-height: 1.44;
   font-weight: 500;
-  color: #11141a;
+  color: #000;
   letter-spacing: -0.3px;
   margin: 0;
 }
 
+.about-overview-lead .scroll-fill-word {
+  display: inline;
+  color: #000;
+  opacity: 0.22;
+  transition: opacity 0.06s linear;
+  will-change: opacity;
+}
+
 .about-lead-muted {
-  color: #8c93a0;
-  font-weight: 400;
+  color: inherit;
+  font-weight: inherit;
 }
 
 /* Inline Slots inside lead text (No background/border patch) */
@@ -751,7 +759,7 @@ body {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.35;
-  color: #11141a;
+  color: #000;
   margin: 0;
 }
 
@@ -760,7 +768,7 @@ body {
   align-items: center;
   gap: 6px;
   background-color: #c8f322;
-  color: #11141a;
+  color: #000;
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
@@ -813,7 +821,7 @@ body {
   font-family: var(--font-main);
   font-size: 46px;
   font-weight: 700;
-  color: #11141a;
+  color: #000;
   line-height: 1.1;
   margin-bottom: 8px;
   letter-spacing: -0.5px;
@@ -954,7 +962,7 @@ body {
   font-size: 40px;
   font-weight: 600;
   line-height: 1.25;
-  color: #11141a;
+  color: #000;
   letter-spacing: -0.5px;
   margin: 0;
 }
@@ -1133,7 +1141,7 @@ body {
   font-size: 44px;
   font-weight: 600;
   line-height: 1.2;
-  color: #11141a;
+  color: #000;
   letter-spacing: -0.5px;
   margin: 0;
 }
@@ -1166,8 +1174,8 @@ body {
   justify-content: center;
   padding: 8px 24px;
   border-radius: 50px !important;
-  border: 1px solid #11141a;
-  color: #11141a;
+  border: 1px solid #000;
+  color: #000;
   font-family: var(--font-main);
   font-size: 12px;
   font-weight: 600;
@@ -1178,7 +1186,7 @@ body {
 }
 
 .btn-shop-pill:hover {
-  background-color: #11141a;
+  background-color: #000;
   color: #ffffff;
 }
 
@@ -1216,14 +1224,14 @@ body {
 }
 
 .filter-pill-btn:hover {
-  border-color: #11141a;
-  color: #11141a;
+  border-color: #000;
+  color: #000;
 }
 
 .filter-pill-btn.active {
-  background-color: #11141a;
+  background-color: #000;
   color: #ffffff;
-  border-color: #11141a;
+  border-color: #000;
 }
 
 .style-nav-arrows {
@@ -1238,7 +1246,7 @@ body {
   border-radius: 50% !important;
   border: 1px solid #e2e4e8;
   background-color: #ffffff;
-  color: #11141a;
+  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1248,9 +1256,9 @@ body {
 }
 
 .showcase-nav-btn:hover {
-  background-color: #11141a;
+  background-color: #000;
   color: #ffffff;
-  border-color: #11141a;
+  border-color: #000;
 }
 
 /* Product Cards Grid */
@@ -1312,7 +1320,7 @@ body {
   align-self: flex-start;
   background-color: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
-  color: #11141a;
+  color: #000;
   font-family: var(--font-main);
   font-size: 11px;
   font-weight: 700;
@@ -1348,11 +1356,11 @@ body {
 
 .brand-strip-item i {
   font-size: 22px;
-  color: #11141a;
+  color: #000;
 }
 
 .brand-strip-item:hover {
-  color: #11141a;
+  color: #000;
 }
 
 /* Responsive Styles for Style Showcase */
@@ -2157,7 +2165,7 @@ body {
     font-size: 57px;
     line-height: 60px;
     letter-spacing: normal;
-    color: #1a1a1a;
+    color: #000;
     margin-bottom: 14px;
 }
 .product-news-para {

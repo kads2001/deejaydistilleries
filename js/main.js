@@ -13,13 +13,13 @@ $(document).ready(function () {
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.3,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.1,
-      touchMultiplier: 1.6,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
       infinite: false,
       autoResize: true
     });
@@ -301,6 +301,109 @@ $(document).ready(function () {
   }
 
   initTeamImagesScrollTransition();
+
+  // 6b. Scroll-Driven Text Progressive Color Fill (Muted Gray -> Solid Black)
+  function initScrollTextFill() {
+    const leadElem = document.querySelector('.about-overview-lead');
+    if (!leadElem) return;
+
+    // Process nodes to wrap individual words into spans while preserving inline slots
+    function prepareWords(container) {
+      const childNodes = Array.from(container.childNodes);
+      const wordSpans = [];
+
+      childNodes.forEach(function (node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent;
+          if (!text.trim()) return;
+
+          const fragment = document.createDocumentFragment();
+          const tokens = text.split(/(\s+)/);
+
+          tokens.forEach(function (token) {
+            if (/\S/.test(token)) {
+              const span = document.createElement('span');
+              span.className = 'scroll-fill-word';
+              span.textContent = token;
+              fragment.appendChild(span);
+              wordSpans.push(span);
+            } else if (token) {
+              fragment.appendChild(document.createTextNode(token));
+            }
+          });
+
+          container.replaceChild(fragment, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.classList.contains('about-inline-slot')) {
+            // Keep inline slots intact
+            return;
+          } else {
+            const subSpans = prepareWords(node);
+            wordSpans.push.apply(wordSpans, subSpans);
+          }
+        }
+      });
+
+      return wordSpans;
+    }
+
+    const words = prepareWords(leadElem);
+    if (!words.length) return;
+
+    function updateFill() {
+      const rect = leadElem.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      // Smooth scroll range from entering viewport to upper reading line
+      const startY = windowHeight * 0.85;
+      const endY = windowHeight * 0.20;
+      const scrollRange = startY - endY;
+
+      const rawProgress = (startY - rect.top) / scrollRange;
+      const progress = Math.max(0, Math.min(1, rawProgress));
+
+      const totalWords = words.length;
+      const spread = 0.06; // continuous word transition window
+
+      words.forEach(function (wordSpan, index) {
+        const wordStart = (index / totalWords) * (1 - spread);
+        const wordEnd = wordStart + spread;
+
+        let wordProgress = 0;
+        if (progress >= wordEnd) {
+          wordProgress = 1;
+        } else if (progress <= wordStart) {
+          wordProgress = 0;
+        } else {
+          wordProgress = (progress - wordStart) / spread;
+        }
+
+        // Smoothly interpolate from muted 0.22 to bold black 1.00
+        const opacity = (0.22 + 0.78 * wordProgress).toFixed(3);
+        wordSpan.style.opacity = opacity;
+      });
+    }
+
+    if (lenis) {
+      lenis.on('scroll', updateFill);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            updateFill();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', updateFill);
+    updateFill();
+  }
+
+  initScrollTextFill();
 
   // 7. Active Smooth Parallax Effect on About Us Image
   function initParallax() {
@@ -717,9 +820,22 @@ $(document).ready(function () {
       ctx.restore();
     }
 
+    function startAnimation() {
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    }
+
+    function stopAnimation() {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    }
+
     function animate() {
       if (!isVisible) {
-        animationFrameId = requestAnimationFrame(animate);
+        stopAnimation();
         return;
       }
 
@@ -801,6 +917,11 @@ $(document).ready(function () {
       const observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           isVisible = entry.isIntersecting;
+          if (isVisible) {
+            startAnimation();
+          } else {
+            stopAnimation();
+          }
         });
       }, { threshold: 0.05 });
       observer.observe(footer);
@@ -812,7 +933,7 @@ $(document).ready(function () {
 
     resize();
     initParticles();
-    animate();
+    startAnimation();
   }
 
   initFooterBubbles();
@@ -821,17 +942,18 @@ $(document).ready(function () {
   if (typeof AOS !== 'undefined') {
     AOS.init({
       duration: 800,
-      easing: 'ease-out-cubic',
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
       once: true,
       offset: 50,
       delay: 0
     });
 
-    if (lenis) {
-      lenis.on('scroll', function () {
-        AOS.refresh();
-      });
-    }
+    window.addEventListener('resize', function () {
+      AOS.refresh();
+    });
+    window.addEventListener('load', function () {
+      AOS.refresh();
+    });
   }
 });
 

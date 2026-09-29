@@ -574,6 +574,71 @@ $(document).ready(function () {
 
   initStickyFlavourScroll();
 
+  // 7.1 Pinned Horizontal Scroll for Modern Solutions & Benefits Section
+  function initStickyBenefitsScroll() {
+    const $section = $('#benefits');
+    const $track = $('#benefitsSliderTrack');
+    const $wrapper = $('#benefitsSliderWrapper');
+    const $progressBar = $('#benefitsProgressBar');
+
+    if (!$section.length || !$track.length || !$wrapper.length) return;
+
+    const trackEl = $track.get(0);
+    const wrapperEl = $wrapper.get(0);
+    const sectionEl = $section.get(0);
+    const progressEl = $progressBar.length ? $progressBar.get(0) : null;
+
+    function getMaxHorizontal() {
+      return Math.max(0, trackEl.scrollWidth - wrapperEl.clientWidth);
+    }
+
+    function updateBenefitsScroll() {
+      const rect = sectionEl.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const scrollableDistance = rect.height - windowHeight;
+
+      if (scrollableDistance <= 0) {
+        trackEl.style.transform = 'translate3d(0px, 0px, 0px)';
+        if (progressEl) progressEl.style.width = '20%';
+        return;
+      }
+
+      // When the top of the section reaches or passes the top of viewport
+      const scrolled = -rect.top;
+      const progress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
+      const maxHorizontal = getMaxHorizontal();
+      const currentX = progress * maxHorizontal;
+
+      trackEl.style.transform = `translate3d(-${currentX.toFixed(2)}px, 0px, 0px)`;
+
+      if (progressEl) {
+        const fillPercent = 20 + progress * 80;
+        progressEl.style.width = `${fillPercent.toFixed(1)}%`;
+      }
+    }
+
+    if (lenis) {
+      lenis.on('scroll', updateBenefitsScroll);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            updateBenefitsScroll();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', updateBenefitsScroll);
+    // Initial call
+    setTimeout(updateBenefitsScroll, 100);
+  }
+
+  initStickyBenefitsScroll();
+
   // 7. Minimalist Contact Form Submission Handler
   const $contactForm = $('#minimalContactForm');
   if ($contactForm.length) {
@@ -955,6 +1020,78 @@ $(document).ready(function () {
       AOS.refresh();
     });
   }
+
+  // 13. Interactive Button Text Wave Effect on Hover
+  function initButtonWaveEffect() {
+    const selectors = [
+      '.btn-nav-contact',
+      '.btn-hero-solid',
+      '.btn-hero-outline',
+      '.btn-lime-pill',
+      '.btn-shop-pill',
+      '.flavour-cta-btn',
+      '.zoom-banner-btn',
+      '.product-news-cta-btn',
+      '.blogs-view-all-btn',
+      '.btn-contact-submit',
+      '.footer-newsletter-btn',
+      '.filter-pill-btn',
+      '.btn-wave',
+      '.btn'
+    ].join(', ');
+
+    $(selectors).each(function () {
+      const $btn = $(this);
+      if ($btn.hasClass('has-wave-effect')) return;
+      $btn.addClass('has-wave-effect');
+
+      function processNode(node, counter) {
+        const childNodes = Array.from(node.childNodes);
+        childNodes.forEach((child) => {
+          if (child.nodeType === Node.TEXT_NODE) {
+            const text = child.nodeValue;
+            if (text && text.trim().length > 0) {
+              const fragment = document.createDocumentFragment();
+              for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                const span = document.createElement('span');
+                span.className = 'wave-char';
+                if (ch === ' ') {
+                  span.innerHTML = '&nbsp;';
+                  span.classList.add('wave-space');
+                } else {
+                  span.textContent = ch;
+                }
+                span.style.setProperty('--char-idx', counter.val++);
+                fragment.appendChild(span);
+              }
+              node.replaceChild(fragment, child);
+            }
+          } else if (child.nodeType === Node.ELEMENT_NODE && !$(child).is('i, svg, img, input, textarea')) {
+            processNode(child, counter);
+          }
+        });
+      }
+
+      const counter = { val: 0 };
+      processNode(this, counter);
+    });
+
+    // Replay wave animation crisply on every hover entry
+    $(document).on('mouseenter', '.has-wave-effect, .btn-wave', function () {
+      const chars = this.querySelectorAll('.wave-char');
+      if (!chars.length) return;
+      chars.forEach((c) => {
+        c.style.animation = 'none';
+      });
+      void this.offsetWidth; // Force DOM reflow
+      chars.forEach((c) => {
+        c.style.animation = '';
+      });
+    });
+  }
+
+  initButtonWaveEffect();
 });
 
 

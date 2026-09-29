@@ -167,7 +167,7 @@ footer {
   border-radius: 0px !important;
 }
 
-/* ================= BUTTON TEXT WAVE EFFECT ON HOVER ================= */
+/* ================= BUTTON & HEADING TEXT WAVE EFFECT ================= */
 .has-wave-effect {
   position: relative;
 }
@@ -185,7 +185,7 @@ footer {
   width: 0.28em;
 }
 
-/* Staggered fluid wave ripple across characters */
+/* Staggered fluid wave ripple across button characters */
 .has-wave-effect:hover .wave-char,
 .btn-wave:hover .wave-char {
   animation: btnTextWave 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -211,6 +211,68 @@ footer {
 
   100% {
     transform: translateY(0px);
+  }
+}
+
+/* Heading Wave Text Effect (Continuous Fluid Ripple & Hover Surge) */
+.has-heading-wave {
+  position: relative;
+  display: inline-block;
+  overflow: visible !important;
+  cursor: default;
+}
+
+.heading-wave-char {
+  display: inline-block;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: headingContinuousWave 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--char-idx, 0) * 0.075s);
+  transition: transform 0.2s ease;
+}
+
+.heading-wave-char.wave-space {
+  display: inline-block;
+  width: 0.28em;
+}
+
+/* Fluid Continuous Sine Wave Animation */
+@keyframes headingContinuousWave {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-10px) rotate(-1.5deg);
+  }
+
+  60% {
+    transform: translateY(4px) rotate(1deg);
+  }
+
+  80% {
+    transform: translateY(-2px) rotate(-0.5deg);
+  }
+}
+
+/* Prominent Hover Surge */
+.has-heading-wave:hover .heading-wave-char {
+  animation: headingHoverSurge 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  animation-delay: calc(var(--char-idx, 0) * 0.04s);
+}
+
+@keyframes headingHoverSurge {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+
+  30% {
+    transform: translateY(-16px) scale(1.08);
+  }
+
+  65% {
+    transform: translateY(4px) scale(0.97);
   }
 }
 
@@ -258,19 +320,58 @@ body {
   display: flex;
 }
 
-.hero-banner-wrapper {
+/* ================= HERO BANNER (NORMAL HORIZONTAL SCROLLER ON SCROLL) ================= */
+.hero-scroll-section {
   position: relative;
+  width: 100%;
+  height: 380vh; /* Extended scroll track for a slower, smoother horizontal slide experience */
+  background-color: #06070a;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-banner-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   min-height: 680px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
 }
 
-/* Background Video */
-.hero-video-bg {
+/* Scroller Track & Slides */
+.hero-scroller-track-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-scroller-track {
+  display: flex;
+  width: 300vw;
+  height: 100%;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.05s linear;
+}
+
+.hero-scroller-slide {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero-slide-video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -290,9 +391,36 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgb(10 12 16 / 26%) 0%, rgb(10 12 16 / 41%) 40%, rgb(10 12 16 / 30%) 70%, rgb(10 12 16 / 54%) 100%);
+  background: linear-gradient(180deg, rgba(6, 7, 10, 0.38) 0%, rgba(6, 7, 10, 0.22) 40%, rgba(6, 7, 10, 0.3) 70%, rgba(6, 7, 10, 0.68) 100%);
   z-index: 2;
   pointer-events: none;
+}
+
+.hero-slide-content {
+  position: relative;
+  z-index: 10;
+  padding-bottom: 90px;
+  width: 100%;
+}
+
+/* Floating Controls (Video switcher cards) */
+.hero-floating-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 25;
+  padding-bottom: 90px;
+  pointer-events: none;
+}
+
+.hero-controls-container {
+  pointer-events: auto;
+}
+
+.hero-controls-left-spacer {
+  max-width: 580px;
+  flex: 1;
 }
 
 /* ================= HEADER / NAVIGATION ================= */
@@ -404,7 +532,7 @@ body {
   padding-bottom: 9px;
   padding-left: 20px;
   padding-right: 20px;
-  border-radius: 0px !important;
+  border-radius: 25px !important;
   border: 1px solid rgba(255, 255, 255, 0.85);
   background: transparent;
   transition: all 0.3s ease;
@@ -489,21 +617,33 @@ body {
   max-width: 580px;
 }
 
+.hero-slide-text {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.hero-slide-text.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hero-main-title {
   font-family: var(--font-main);
   font-weight: 600;
-  font-size: 90px;
+  font-size: 80px;
   letter-spacing: normal;
   line-height: 1;
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 12px;
-  /* text-shadow: 0px 3px 12px rgba(0, 0, 0, 0.8); */
 }
 
 .hero-tagline {
   font-family: var(--font-main);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   font-style: italic;
   color: #eceff1;
@@ -598,18 +738,43 @@ body {
 .hero-video-cards {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .hero-video-card {
   position: relative;
-  width: 180px;
-  height: 120px;
+  width: 170px;
+  height: 105px;
   cursor: pointer;
   overflow: hidden;
-  /* border: 1.5px solid rgba(255, 255, 255, 0.4); */
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   background: #000000;
-  transition: all 0.3s ease;
+  opacity: 0.65;
+  transition: all 0.35s ease;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-video-card:hover {
+  opacity: 0.95;
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-video-card.active {
+  opacity: 1;
+  border-color: #d4af37;
+  transform: translateY(-4px);
+  box-shadow: 0px 0px 20px rgba(212, 175, 55, 0.45), 0px 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.hero-card-thumb-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .hero-video-card .hero-card-thumb {
@@ -618,22 +783,40 @@ body {
   object-fit: cover;
   object-position: center;
   display: block;
-  opacity: 0.65;
-  transition: opacity 0.3s ease, transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .hero-video-card:hover .hero-card-thumb {
-  opacity: 0.95;
   transform: scale(1.08);
 }
 
-/* .hero-video-card.active {
-  border: 2px solid #ffffff;
-  box-shadow: 0px 0px 14px rgba(255, 255, 255, 0.7), 0px 4px 12px rgba(0, 0, 0, 0.5);
-} */
+.hero-card-meta-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-family: var(--font-main);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  z-index: 5;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
+  text-transform: uppercase;
+}
 
-.hero-video-card.active .hero-card-thumb {
-  opacity: 1;
+.hero-card-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #d4af37;
+  z-index: 6;
+  transition: width 0.1s linear;
+}
+
+.hero-video-card.active .hero-card-progress-bar {
+  width: 100%;
 }
 
 /* Circular Play/Pause Button (Matching reference design) */
@@ -1191,7 +1374,7 @@ body {
   background-color: #ffffff;
   position: relative;
   width: 100%;
-  height: 280vh; /* Provides scroll track distance for horizontal animation */
+  height: 360vh; /* Extended scroll track distance for a slower, graceful horizontal card reveal */
 }
 
 .benefits-sticky-container {
@@ -1385,7 +1568,7 @@ body {
 /* Responsive Styles for Benefits Solutions */
 @media (max-width: 991px) {
   .benefits-solutions-section {
-    height: 240vh;
+    height: 300vh;
   }
 
   .benefits-solutions-container {
@@ -1402,7 +1585,7 @@ body {
 
 @media (max-width: 576px) {
   .benefits-solutions-section {
-    height: 220vh;
+    height: 260vh;
   }
 
   .benefits-header {

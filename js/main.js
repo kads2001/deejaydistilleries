@@ -13,13 +13,13 @@ $(document).ready(function () {
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.6,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 0.65,
+      touchMultiplier: 1.1,
       infinite: false,
       autoResize: true
     });
@@ -77,61 +77,114 @@ $(document).ready(function () {
     if (lenis) lenis.start();
   });
 
-  // 4. Hero Video Switcher Cards & Play/Pause Controls
-  const $heroVideo = $('#heroBgVideo');
-  const $videoCards = $('.hero-video-card');
-  const $videoToggleBtn = $('#heroVideoToggle');
+  // 4. Hero Banner Normal Horizontal Scroller on Mouse Scroll
+  function initHeroScrollBanner() {
+    const $section = $('#hero-banner');
+    const $track = $('#heroScrollerTrack');
+    const $cards = $('.hero-video-card');
+    const $videos = $('.hero-slide-video');
 
-  if ($heroVideo.length) {
-    const videoEl = $heroVideo.get(0);
+    if (!$section.length || !$track.length) return;
 
-    // Switch video when clicking any card
-    $videoCards.on('click', function () {
-      const $card = $(this);
-      if ($card.hasClass('active')) return;
+    const sectionEl = $section.get(0);
+    const trackEl = $track.get(0);
 
-      const videoSrc = $card.attr('data-video-src');
-      if (!videoSrc) return;
-
-      $videoCards.removeClass('active');
-      $card.addClass('active');
-
-      // Smooth opacity cross-fade
-      $heroVideo.css({ transition: 'opacity 0.35s ease', opacity: 0 });
-
-      setTimeout(function () {
-        // Change source and load
-        $heroVideo.attr('src', videoSrc);
-        videoEl.load();
-        const playPromise = videoEl.play();
-        if (playPromise !== undefined) {
-          playPromise.then(function () {
-            $heroVideo.css('opacity', 1);
-            if ($videoToggleBtn.length) {
-              $videoToggleBtn.html('<i class="bi bi-pause-fill"></i>');
-            }
-          }).catch(function () {
-            $heroVideo.css('opacity', 1);
-          });
-        } else {
-          $heroVideo.css('opacity', 1);
-        }
-      }, 350);
+    // Ensure all slide videos play muted
+    $videos.each(function () {
+      this.muted = true;
+      const p = this.play();
+      if (p !== undefined) p.catch(() => {});
     });
 
-    // Toggle Play/Pause on Gold Circular Button
-    if ($videoToggleBtn.length) {
-      $videoToggleBtn.on('click', function () {
-        if (videoEl.paused) {
-          videoEl.play();
-          $videoToggleBtn.html('<i class="bi bi-pause-fill"></i>');
+    function updateHeroScroll() {
+      const rect = sectionEl.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const scrollableDistance = rect.height - windowHeight;
+
+      if (scrollableDistance <= 0) {
+        trackEl.style.transform = 'translate3d(0px, 0px, 0px)';
+        $cards.removeClass('active').first().addClass('active');
+        return;
+      }
+
+      const scrolled = -rect.top;
+      const progress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
+
+      // 3 slides = 2 full viewport widths of total horizontal scroll translation
+      const maxHorizontal = window.innerWidth * 2;
+      const currentTranslateX = progress * maxHorizontal;
+
+      trackEl.style.transform = `translate3d(-${currentTranslateX.toFixed(2)}px, 0px, 0px)`;
+
+      // Determine active slide card
+      let activeIndex = 0;
+      if (progress < 0.33) {
+        activeIndex = 0;
+      } else if (progress < 0.66) {
+        activeIndex = 1;
+      } else {
+        activeIndex = 2;
+      }
+
+      // Update Card Active states & progress bars
+      $cards.each(function (i) {
+        const $bar = $(this).find('.hero-card-progress-bar');
+        if (i === activeIndex) {
+          $(this).addClass('active');
+          let cardProgress = 0;
+          if (activeIndex === 0) cardProgress = progress / 0.33;
+          else if (activeIndex === 1) cardProgress = (progress - 0.33) / 0.33;
+          else cardProgress = (progress - 0.66) / 0.34;
+          $bar.css('width', `${Math.min(Math.max(cardProgress * 100, 0), 100)}%`);
         } else {
-          videoEl.pause();
-          $videoToggleBtn.html('<i class="bi bi-play-fill"></i>');
+          $(this).removeClass('active');
+          $bar.css('width', i < activeIndex ? '100%' : '0%');
         }
       });
     }
+
+    // Click on any card to smoothly scroll into that card's slide position
+    $cards.on('click', function () {
+      const index = parseInt($(this).attr('data-video-index'), 10) || 0;
+      const rect = sectionEl.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const scrollableDistance = rect.height - windowHeight;
+      const currentScroll = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
+      const sectionTop = currentScroll + rect.top;
+
+      let targetProgress = 0;
+      if (index === 1) targetProgress = 0.50;
+      if (index === 2) targetProgress = 0.98;
+
+      const targetScroll = sectionTop + (targetProgress * scrollableDistance);
+
+      if (lenis) {
+        lenis.scrollTo(targetScroll, { duration: 0.8 });
+      } else {
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      }
+    });
+
+    if (lenis) {
+      lenis.on('scroll', updateHeroScroll);
+    } else {
+      let isTicking = false;
+      window.addEventListener('scroll', function () {
+        if (!isTicking) {
+          window.requestAnimationFrame(function () {
+            updateHeroScroll();
+            isTicking = false;
+          });
+          isTicking = true;
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('resize', updateHeroScroll);
+    setTimeout(updateHeroScroll, 100);
   }
+
+  initHeroScrollBanner();
 
   // 5. Universal Smooth Anchor Scrolling (Local & Cross-Page Hashes)
   $(document).on('click', 'a[href*="#"]', function (e) {
@@ -1142,6 +1195,110 @@ $(document).ready(function () {
   }
 
   initButtonWaveEffect();
+
+  // 14. Interactive Heading Text Wave Effect (Hover & In-View Scroll Reveal)
+  function initHeadingWaveEffect() {
+    const headingSelectors = [
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+      '.hero-main-title',
+      '.benefits-section-title',
+      '.style-showcase-title',
+      '.beer-stack-title',
+      '.zoom-banner-title',
+      '.product-news-title',
+      '.blogs-section-title',
+      '.contact-title',
+      '.about-hero-title',
+      '.about-story-title',
+      '.flavour-section-title'
+    ].join(', ');
+
+    $(headingSelectors).each(function () {
+      const $heading = $(this);
+      if ($heading.hasClass('has-heading-wave') || $heading.find('.heading-wave-char').length > 0) return;
+      // Skip paragraphs or special lead containers that have slots
+      if ($heading.hasClass('about-overview-lead') || $heading.find('.about-inline-slot').length > 0) return;
+
+      $heading.addClass('has-heading-wave');
+
+      function processNode(node, counter) {
+        const childNodes = Array.from(node.childNodes);
+        childNodes.forEach((child) => {
+          if (child.nodeType === Node.TEXT_NODE) {
+            const text = child.nodeValue;
+            if (text && text.trim().length > 0) {
+              const fragment = document.createDocumentFragment();
+              for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                const span = document.createElement('span');
+                span.className = 'heading-wave-char';
+                if (ch === ' ') {
+                  span.innerHTML = '&nbsp;';
+                  span.classList.add('wave-space');
+                } else {
+                  span.textContent = ch;
+                }
+                span.style.setProperty('--char-idx', counter.val++);
+                fragment.appendChild(span);
+              }
+              node.replaceChild(fragment, child);
+            }
+          } else if (child.nodeType === Node.ELEMENT_NODE && !$(child).is('i, svg, img, input, textarea, button, a, .about-inline-slot')) {
+            processNode(child, counter);
+          }
+        });
+      }
+
+      const counter = { val: 0 };
+      processNode(this, counter);
+    });
+
+    // Replay wave animation on hover entry
+    $(document).on('mouseenter', '.has-heading-wave', function () {
+      const $el = $(this);
+      const chars = this.querySelectorAll('.heading-wave-char');
+      if (!chars.length) return;
+      $el.removeClass('wave-in-view');
+      chars.forEach((c) => {
+        c.style.animation = 'none';
+      });
+      void this.offsetWidth; // Force DOM reflow
+      chars.forEach((c) => {
+        c.style.animation = '';
+      });
+      $el.addClass('wave-in-view');
+      setTimeout(() => {
+        $el.removeClass('wave-in-view');
+      }, 1600);
+    });
+
+    // Animate wave on in-view scroll entry
+    if ('IntersectionObserver' in window) {
+      const headingObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const $heading = $(entry.target);
+            $heading.addClass('wave-in-view');
+            setTimeout(() => {
+              $heading.removeClass('wave-in-view');
+            }, 1600);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.has-heading-wave').forEach((el) => {
+        headingObserver.observe(el);
+      });
+    }
+  }
+
+  initHeadingWaveEffect();
 });
 
 

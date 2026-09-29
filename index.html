@@ -17,118 +17,157 @@
 </head>
 
 <body>
-  <div class="hero-banner-wrapper">
-    <video id="heroBgVideo" class="hero-video-bg" autoplay muted loop playsinline preload="auto">
-      <source src="assets/videos/file.mp4" type="video/mp4">
-      <source src="file.mp4" type="video/mp4">
-      <source src="assets/videos/beer_video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-video-overlay"></div>
-    <!-- <button class="video-control-btn" id="videoSoundToggle" title="Toggle Sound" aria-label="Toggle sound">
-      <i class="bi bi-volume-mute-fill"></i>
-    </button> -->
+  <!-- ================= HERO BANNER (NORMAL HORIZONTAL SCROLLER ON SCROLL) ================= -->
+  <section class="hero-scroll-section" id="hero-banner">
+    <div class="hero-banner-sticky">
 
-    <header class="site-header">
-      <div class="nav-container">
+      <!-- Persistent Header (Same for all 3 slides) -->
+      <header class="site-header">
+        <div class="nav-container">
 
-           <!-- Center Brand Logo -->
-        <div class="brand-center">
-          <a href="index.html" title="Deejay Distilleries">
-            <img src="assets/images/logo.png" alt="Deejay Distilleries Royal Crest" class="brand-crest-logo">
-          </a>
+          <!-- Center Brand Logo -->
+          <div class="brand-center">
+            <a href="index.html" title="Deejay Distilleries">
+              <img src="assets/images/logo.png" alt="Deejay Distilleries Royal Crest" class="brand-crest-logo">
+            </a>
+          </div>
+
+          <!-- Right Navigation -->
+          <div class="nav-right" aria-label="Right Navigation">
+            <nav class="menu" aria-label="Left Navigation">
+              <a href="#about" class="nav-custom-link">OUR STORY</a>
+              <a href="#brands" class="nav-custom-link">OUR BRANDS</a>
+              <a href="#products" class="nav-custom-link">PROCESS</a>
+              <a href="#products" class="nav-custom-link">R&amp;D + QUALITY</a>
+              <a href="#about" class="nav-custom-link">GLOBAL REACH</a>
+            </nav>
+
+            <a href="#products" class="btn-nav-contact">EXPORTS</a>
+          </div>
+
+          <button class="mobile-nav-toggle d-lg-none" id="mobileMenuOpen" aria-label="Open Navigation">
+            <i class="bi bi-list"></i>
+          </button>
+
         </div>
-        <!-- Left Navigation -->
-      
+      </header>
 
-     
-
-         
-
-       
-        <!-- Right Navigation: Action Buttons + Social Icons Beside -->
-        <div class="nav-right" aria-label="Right Navigation">
-        
-          <!-- <a href="#contact" class="btn-nav-contact">CONTACT US</a> -->
-          <!-- <div class="nav-socials">
-            <a href="#" class="nav-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="nav-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="nav-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          </div> -->
-             <nav class="menu" aria-label="Left Navigation">
-          <a href="#about" class="nav-custom-link">OUR STORY</a>
-          <a href="#brands" class="nav-custom-link">OUR BRANDS</a>
-          <a href="#products" class="nav-custom-link">PROCESS</a>
-          <a href="#products" class="nav-custom-link">R&amp;D + QUALITY</a>
-          <a href="#about" class="nav-custom-link">GLOBAL REACH</a>
-        </nav>
-
-          <a href="#products" class="btn-nav-contact">EXPORTS</a>
+      <!-- Mobile Drawer Menu -->
+      <div class="mobile-nav-menu" id="mobileNavDrawer">
+        <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close Navigation">&times;</button>
+        <img src="assets/images/logo.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
+        <a href="#about" class="nav-custom-link">OUR STORY</a>
+        <a href="#brands" class="nav-custom-link">OUR BRANDS</a>
+        <a href="#products" class="nav-custom-link">PROCESS</a>
+        <a href="#products" class="nav-custom-link">R&amp;D + QUALITY</a>
+        <a href="#about" class="nav-custom-link">GLOBAL REACH</a>
+        <a href="#products" class="nav-custom-link">EXPORTS</a>
+        <a href="#contact" class="btn-nav-contact" style="margin-top: 16px;">CONTACT US</a>
+        <div class="nav-socials" style="border-left: none; padding-left: 0; margin-top: 24px; justify-content: center;">
+          <a href="#" class="nav-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="nav-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="nav-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
         </div>
-
-        <button class="mobile-nav-toggle d-lg-none" id="mobileMenuOpen" aria-label="Open Navigation">
-          <i class="bi bi-list"></i>
-        </button>
-
       </div>
-    </header>
 
-    <div class="mobile-nav-menu" id="mobileNavDrawer">
-      <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close Navigation">&times;</button>
-      <img src="assets/images/logo.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
-      <a href="#about" class="nav-custom-link">OUR STORY</a>
-      <a href="#brands" class="nav-custom-link">OUR BRANDS</a>
-      <a href="#products" class="nav-custom-link">PROCESS</a>
-      <a href="#products" class="nav-custom-link">R&amp;D + QUALITY</a>
-      <a href="#about" class="nav-custom-link">GLOBAL REACH</a>
-      <a href="#products" class="nav-custom-link">EXPORTS</a>
-      <a href="#contact" class="btn-nav-contact" style="margin-top: 16px;">CONTACT US</a>
-      <div class="nav-socials" style="border-left: none; padding-left: 0; margin-top: 24px; justify-content: center;">
-        <a href="#" class="nav-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="nav-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="nav-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      </div>
-    </div>
-    <div class="hero-bottom-content">
-      <div class="hero-bottom-container">
-        <div class="hero-title-area">
-          <h1 class="hero-main-title">DEEJAY DISTILLERIES</h1>
-          <p class="hero-tagline">
-            One of the leading manufacturer &amp; exporters of bottled alcohol in regions like West Africa, Middle East
-            and South-East Asia.
-          </p>
-        </div>
-        <div class="hero-bottom-right-area">
-          <!-- <div class="hero-action-btns">
-            <a href="#about" class="btn-hero-solid">ABOUT US</a>
-            <a href="#products" class="btn-hero-outline">EXPLORE PRODUCTS</a>
-          </div> -->
-
-          <!-- Video Switcher Cards + Play/Pause Button -->
-          <div class="hero-video-switcher-wrap">
-            <div class="hero-video-cards">
-              <div class="hero-video-card active" data-video-src="assets/videos/file.mp4"
-                title="Video 1: Distillery Craft">
-                <img src="assets/images/video_thumb1.webp" alt="Distillery Craft" class="hero-card-thumb">
-              </div>
-              <div class="hero-video-card" data-video-src="assets/videos/beer_video.mp4"
-                title="Video 2: Botanical Essence">
-                <img src="assets/images/video_thumb2.webp" alt="Botanical Essence" class="hero-card-thumb">
-              </div>
-              <div class="hero-video-card" data-video-src="assets/videos/file1.mov" title="Video 3: Heritage & Aging">
-                <img src="assets/images/video_thumb3.webp" alt="Heritage & Aging" class="hero-card-thumb">
+      <!-- Scroller Track with 3 Fullscreen Slides (Normal Scroller Motion) -->
+      <div class="hero-scroller-track-wrap" id="heroScrollerWrap">
+        <div class="hero-scroller-track" id="heroScrollerTrack">
+          
+          <!-- Slide 1: Distillery Craft -->
+          <div class="hero-scroller-slide" data-slide-index="0">
+            <video class="hero-slide-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/videos/file.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-slide-content">
+              <div class="hero-bottom-container">
+                <div class="hero-title-area">
+                  <h1 class="hero-main-title">DEEJAY DISTILLERIES</h1>
+                  <p class="hero-tagline">
+                    One of the leading manufacturer &amp; exporters of bottled alcohol in regions like West Africa, Middle East and South-East Asia.
+                  </p>
+                </div>
               </div>
             </div>
-            <!-- <button class="hero-video-toggle-btn" id="heroVideoToggle" aria-label="Pause or Play Video" title="Pause / Play Video">
-              <i class="bi bi-pause-fill"></i>
-            </button> -->
+          </div>
+
+          <!-- Slide 2: Botanical Essence -->
+          <div class="hero-scroller-slide" data-slide-index="1">
+            <video class="hero-slide-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/videos/beer_video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-slide-content">
+              <div class="hero-bottom-container">
+                <div class="hero-title-area">
+                  <h1 class="hero-main-title">BOTANICAL ESSENCE</h1>
+                  <p class="hero-tagline">
+                    Crafting world-class artisanal spirits with precision distillation and rare grain botanicals.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Heritage & Aging -->
+          <div class="hero-scroller-slide" data-slide-index="2">
+            <video class="hero-slide-video" autoplay muted loop playsinline preload="auto">
+              <source src="assets/videos/file.mp4" type="video/mp4">
+              <source src="assets/videos/file1.mov" type="video/quicktime">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-slide-content">
+              <div class="hero-bottom-container">
+                <div class="hero-title-area">
+                  <h1 class="hero-main-title">HERITAGE &amp; AGING</h1>
+                  <p class="hero-tagline">
+                    Mastercraft heritage with temperature-controlled maturation for an unmistakably refined finish.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Persistent Bottom Floating Controls & Video Cards -->
+      <div class="hero-floating-controls">
+        <div class="hero-bottom-container hero-controls-container">
+          <div class="hero-controls-left-spacer"></div>
+          <div class="hero-bottom-right-area">
+            <div class="hero-video-switcher-wrap">
+              <div class="hero-video-cards">
+                <div class="hero-video-card active" data-video-index="0" title="Slide 1: Distillery Craft">
+                  <div class="hero-card-thumb-box">
+                    <img src="assets/images/video_thumb1.webp" alt="Distillery Craft" class="hero-card-thumb">
+                  </div>
+                  <div class="hero-card-meta-tag">01 &bull; CRAFT</div>
+                  <div class="hero-card-progress-bar"></div>
+                </div>
+                <div class="hero-video-card" data-video-index="1" title="Slide 2: Botanical Essence">
+                  <div class="hero-card-thumb-box">
+                    <img src="assets/images/video_thumb2.webp" alt="Botanical Essence" class="hero-card-thumb">
+                  </div>
+                  <div class="hero-card-meta-tag">02 &bull; ESSENCE</div>
+                  <div class="hero-card-progress-bar"></div>
+                </div>
+                <div class="hero-video-card" data-video-index="2" title="Slide 3: Heritage & Aging">
+                  <div class="hero-card-thumb-box">
+                    <img src="assets/images/video_thumb3.webp" alt="Heritage & Aging" class="hero-card-thumb">
+                  </div>
+                  <div class="hero-card-meta-tag">03 &bull; AGING</div>
+                  <div class="hero-card-progress-bar"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
 
-  </div>
+    </div>
+  </section>
 
   <!-- ================= HERO TICKER BADGE STRIP ================= -->
   <div class="hero-ticker-strip">
@@ -368,17 +407,17 @@
 
         <!-- Panel 1: ROSÉ -->
         <div class="wine-triptych-item">
-          <img src="assets/images/proimg2.png" alt="ROSÉ - Fruité &amp; Délicat" class="wine-triptych-img">
+          <img src="assets/images/proimg1.jpeg" alt="ROUGE - Riche &amp; Généreux" class="wine-triptych-img">
         </div>
 
         <!-- Panel 2: BLANC -->
         <div class="wine-triptych-item">
-          <img src="assets/images/proimg3.png" alt="BLANC - Frais &amp; Élégant" class="wine-triptych-img">
+            <img src="assets/images/proimg1.jpeg" alt="ROUGE - Riche &amp; Généreux" class="wine-triptych-img">
         </div>
 
         <!-- Panel 3: ROUGE -->
         <div class="wine-triptych-item">
-          <img src="assets/images/proimg1.png" alt="ROUGE - Riche &amp; Généreux" class="wine-triptych-img">
+          <img src="assets/images/proimg1.jpeg" alt="ROUGE - Riche &amp; Généreux" class="wine-triptych-img">
         </div>
 
       </div>

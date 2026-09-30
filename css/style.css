@@ -306,13 +306,12 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 128%;
-  height: 128%;
-  transform: translate3d(-50%, -50%, 0) scale(1.04);
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
   object-fit: cover;
-  object-position: center 38%;
+  object-position: center;
   z-index: 1;
-  will-change: transform;
   transition: filter 0.3s ease;
 }
 
@@ -373,6 +372,20 @@ body {
     opacity: 0.35;
     transform: scale(1.0);
   }
+}
+
+/* Dynamic Animated Smoke & Mist Particle Canvas */
+.hero-smoke-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+  opacity: 0.88;
+  will-change: transform;
 }
 
 .hero-slide-video,
@@ -1218,6 +1231,35 @@ body {
   position: relative;
 }
 
+/* Docked Bottle Slot inside About section */
+.about-docked-bottle-slot {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 4;
+}
+
+.about-docked-bottle-slot.docked {
+  opacity: 1;
+}
+
+.about-docked-bottle-img {
+  height: 480px;
+  max-height: 55vh;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.45));
+}
+
 .about-team-cards-wrap {
   display: flex;
   align-items: center;
@@ -1367,6 +1409,10 @@ body {
     padding-left: 0;
   }
 
+  .about-docked-bottle-slot {
+    display: none;
+  }
+
   .float-grapes {
     width: 240px;
     right: -10px;
@@ -1487,6 +1533,33 @@ body {
   padding-top: var(--section-py, 90px);
   padding-bottom: var(--section-py, 90px);
   box-sizing: border-box;
+}
+
+/* Section 3 Docked Bottle Slot */
+.benefits-docked-bottle-slot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.benefits-docked-bottle-slot.docked {
+  opacity: 1;
+}
+
+.benefits-docked-bottle-img {
+  height: 520px;
+  max-height: 65vh;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.45));
 }
 
 .benefits-solutions-container {
@@ -1910,6 +1983,39 @@ body {
 
 .wine-triptych-item:hover .wine-triptych-img {
   transform: scale(1.025);
+}
+
+.showcase-landing-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-docked-bottle-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.showcase-landing-card.docked .showcase-docked-bottle-wrap {
+  opacity: 1;
+}
+
+.showcase-docked-bottle-img {
+  height: 520px;
+  max-height: 68%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.75));
 }
 
 /* Bottom Partner / Brand Strip */
@@ -2854,10 +2960,42 @@ body {
   transform: translateX(4px);
 }
 
-/* Center Spacer to allow full view of the centered bottle */
+/* Center Spacer to allow full view of the centered bottle & docked bottle */
 .beer-stack-center-spacer {
+  position: relative;
   min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
+}
+
+.stack-docked-bottle-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.stack-docked-bottle-wrap.docked {
+  opacity: 1;
+}
+
+.stack-docked-bottle-img {
+  height: 540px;
+  max-height: 70vh;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 30px rgba(230, 81, 0, 0.3));
 }
 
 /* Right Column */

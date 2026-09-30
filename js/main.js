@@ -13,13 +13,13 @@ $(document).ready(function () {
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.6,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.65,
-      touchMultiplier: 1.1,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.2,
       infinite: false,
       autoResize: true
     });
@@ -77,11 +77,18 @@ $(document).ready(function () {
     if (lenis) lenis.start();
   });
 
-  // 4. Global Floating 3D Bottle - Section Centering, Dynamic Image Morphing & Scroll Motion
+  // 4. Global Floating 3D Bottle - Multi-stage Section Journey, Sticking & Image Morphing
   function initGlobalFloatingBottle() {
     const $bottleWrap = $('#pageGlobalBottleWrap');
     const $layerA = $('#pageBottleLayerA');
     const $layerB = $('#pageBottleLayerB');
+
+    const $aboutDockedSlot = $('#aboutDockedBottleSlot');
+    const $benefitsDockedSlot = $('#benefitsDockedBottleSlot');
+    const $stackDocked1 = $('#stackDockedBottle1');
+    const $stackDocked2 = $('#stackDockedBottle2');
+    const $stackDocked3 = $('#stackDockedBottle3');
+    const $showcaseLandingCard = $('#showcaseBottleLandingCard');
 
     if (!$bottleWrap.length || (!$layerA.length && !$layerB.length)) return;
 
@@ -106,12 +113,28 @@ $(document).ready(function () {
       }
     }
 
+    function setDockedState($el, isDocked) {
+      if (!$el || !$el.length) return;
+      if (isDocked) {
+        if (!$el.hasClass('docked')) $el.addClass('docked');
+      } else {
+        if ($el.hasClass('docked')) $el.removeClass('docked');
+      }
+    }
+
     function updateBottlePosition() {
       const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
       const windowWidth = window.innerWidth;
       const isMobile = windowWidth <= 767;
       const isTablet = windowWidth <= 991;
+
+      // Section references
+      const $heroSection = $('#hero-banner');
+      const $aboutSection = $('#about');
+      const $benefitsSection = $('#benefits');
+      const $stackSection = $('#craft-beer-stack');
+      const $showcaseSection = $('#showcase');
 
       // Check if near footer section to fade out
       const $footer = $('.site-footer');
@@ -122,95 +145,195 @@ $(document).ready(function () {
           return;
         }
       }
-      wrapEl.style.opacity = '1';
 
-      // Section-by-section image mapping & particular point triggers
-      const viewportPoint = scrollY + (windowHeight * 0.45);
-      const $aboutSection = $('#about');
-      const $benefitsSection = $('#benefits');
-      const $stackSection = $('#craft-beer-stack');
-      const $showcaseSection = $('#showcase');
+      // Max horizontal travel for Section 2 (About)
+      const maxLeftX = isMobile ? -(windowWidth * 0.18) : (isTablet ? -(windowWidth * 0.26) : -(windowWidth * 0.32));
 
-      let targetImageSrc = 'assets/images/black_blue.png';
+      // Calculate section boundaries
+      const aboutTop = $aboutSection.length ? $aboutSection.offset().top : windowHeight;
+      const aboutHeight = $aboutSection.length ? $aboutSection.outerHeight() : windowHeight;
+      const aboutBottom = aboutTop + aboutHeight;
+      const heroHoldEnd = 50;
+      const aboutArrive = Math.min(aboutTop - (windowHeight * 0.22), 380);
+      const aboutHoldEnd = aboutBottom - (windowHeight * 0.35);
 
-      if ($showcaseSection.length && viewportPoint >= $showcaseSection.offset().top) {
-        // Section 5: Style Showcase (Wine Varietals)
-        targetImageSrc = 'assets/images/proimg1.png';
-      } else if ($stackSection.length && viewportPoint >= $stackSection.offset().top) {
-        // Section 4: Craft Beer Stack (Dynamic bottle per card)
-        const stackTop = $stackSection.offset().top;
-        const stackHeight = $stackSection.outerHeight();
-        const stackProgress = Math.min(Math.max((viewportPoint - stackTop) / stackHeight, 0), 1);
+      const benefitsTop = $benefitsSection.length ? $benefitsSection.offset().top : aboutBottom + 500;
+      const benefitsHeight = $benefitsSection.length ? $benefitsSection.outerHeight() : windowHeight;
+      const benefitsBottom = benefitsTop + benefitsHeight;
 
-        if (stackProgress < 0.35) {
-          targetImageSrc = 'assets/images/recent_launch_vodka1.png';
-        } else if (stackProgress < 0.70) {
-          targetImageSrc = 'assets/images/recent_launch_vodka2.png';
-        } else {
-          targetImageSrc = 'assets/images/recent_launch_vodka3.png';
-        }
-      } else if ($benefitsSection.length && viewportPoint >= $benefitsSection.offset().top) {
-        // Section 3: Modern Solutions / Benefits (Distillery Spirit)
-        targetImageSrc = 'assets/images/dist2.png';
-      } else if ($aboutSection.length && viewportPoint >= $aboutSection.offset().top) {
-        // Section 2: About Story (Tangawisi Premium Liqueur)
-        targetImageSrc = 'assets/images/tangawisi2.png';
-      } else {
-        // Section 1: Hero Banner (Black & Blue Cafe Rhum)
-        targetImageSrc = 'assets/images/black_blue.png';
-      }
+      const stackTop = $stackSection.length ? $stackSection.offset().top : benefitsBottom + 500;
+      const stackHeight = $stackSection.length ? $stackSection.outerHeight() : windowHeight;
+      const stackBottom = stackTop + stackHeight;
 
-      setBottleImage(targetImageSrc);
+      const showcaseTop = $showcaseSection.length ? $showcaseSection.offset().top : stackBottom + 500;
+      const showcaseHeight = $showcaseSection.length ? $showcaseSection.outerHeight() : windowHeight;
+      const showcaseBottom = showcaseTop + showcaseHeight;
 
-      // Default center position & scaling
       let targetX = 0;
       let targetY = 0;
       let scale = 1.0;
+      let targetImageSrc = 'assets/images/black_blue.png';
+      let showFloatingBottle = true;
 
-      const maxLeftX = isMobile ? -(windowWidth * 0.18) : (isTablet ? -(windowWidth * 0.26) : -(windowWidth * 0.32));
+      // ================= SECTION 5: STYLE SHOWCASE =================
+      if ($showcaseSection.length && scrollY + windowHeight >= showcaseTop) {
+        // Check if user scrolled completely past showcase -> END of animation
+        if (scrollY > showcaseBottom - (windowHeight * 0.2)) {
+          showFloatingBottle = false;
+          setDockedState($showcaseLandingCard, true);
+          setDockedState($stackDocked3, true);
+          setDockedState($stackDocked2, true);
+          setDockedState($stackDocked1, true);
+          setDockedState($benefitsDockedSlot, true);
+          setDockedState($aboutDockedSlot, true);
+          wrapEl.style.opacity = '0';
+          return;
+        }
 
-      if ($aboutSection.length) {
-        const aboutTop = $aboutSection.offset().top;
-        const aboutHeight = $aboutSection.outerHeight();
-        const aboutBottom = aboutTop + aboutHeight;
+        targetImageSrc = 'assets/images/proimg1.png';
+        setDockedState($stackDocked3, true);
+        setDockedState($stackDocked2, true);
+        setDockedState($stackDocked1, true);
+        setDockedState($benefitsDockedSlot, true);
+        setDockedState($aboutDockedSlot, true);
 
-        // Transition zone from Section 1 (Hero) into Section 2 (About)
-        const startTransition = Math.max(0, aboutTop - windowHeight);
-        const fullTransition = aboutTop - (windowHeight * 0.15);
+        if ($showcaseLandingCard.length) {
+          const cardEl = $showcaseLandingCard.get(0);
+          const cardRect = cardEl.getBoundingClientRect();
+          const cardCenterX = cardRect.left + (cardRect.width / 2);
+          const cardCenterY = cardRect.top + (cardRect.height / 2);
 
-        if (scrollY < startTransition) {
-          // Section 1 (Hero): Center
-          targetX = 0;
-          scale = 1.0;
-        } else if (scrollY >= startTransition && scrollY <= fullTransition) {
-          // Smooth glide from Center to Left
-          const t = (scrollY - startTransition) / (fullTransition - startTransition);
-          const easeT = Math.sin(t * (Math.PI / 2));
-          targetX = easeT * maxLeftX;
-          scale = 1.0 - (easeT * 0.12);
-        } else if (scrollY > fullTransition && scrollY <= aboutBottom) {
-          // Section 2 (About): Steady on Left Side
-          targetX = maxLeftX;
-          scale = 0.88;
-        } else {
-          // Transition from About towards next sections (returning to center)
-          if ($stackSection.length) {
-            const stackTop = $stackSection.offset().top;
-            if (scrollY < stackTop) {
-              const returnT = Math.min(Math.max((scrollY - aboutBottom) / (stackTop - aboutBottom), 0), 1);
-              const easeReturn = Math.sin(returnT * (Math.PI / 2));
-              targetX = (1 - easeReturn) * maxLeftX;
-              scale = 0.88 + (easeReturn * 0.17);
-            } else {
-              targetX = 0;
-              scale = 1.05;
-            }
+          const cardTargetX = cardCenterX - (windowWidth / 2);
+          const cardTargetY = cardCenterY - (windowHeight / 2);
+
+          // Fast-acting single-scroll docking interpolation into card center
+          const dockProgress = Math.min(Math.max((scrollY + (windowHeight * 0.78) - showcaseTop) / (windowHeight * 0.45), 0), 1);
+          const easeDock = 1 - Math.pow(1 - dockProgress, 3);
+
+          targetX = easeDock * cardTargetX;
+          targetY = easeDock * cardTargetY;
+          scale = 1.05 - (easeDock * (isMobile ? 0.28 : 0.22));
+
+          if (dockProgress >= 0.88) {
+            setDockedState($showcaseLandingCard, true);
+            showFloatingBottle = false;
           } else {
-            targetX = 0;
-            scale = 1.0;
+            setDockedState($showcaseLandingCard, false);
+            showFloatingBottle = true;
           }
+        } else {
+          targetX = 0;
+          targetY = 0;
+          scale = 0.82;
         }
       }
+      // ================= SECTION 4: CRAFT BEER STACK =================
+      else if ($stackSection.length && scrollY + windowHeight >= stackTop) {
+        setDockedState($showcaseLandingCard, false);
+        setDockedState($benefitsDockedSlot, true);
+        setDockedState($aboutDockedSlot, true);
+
+        const stackProgress = Math.min(Math.max((scrollY + (windowHeight * 0.45) - stackTop) / stackHeight, 0), 1);
+
+        if (stackProgress < 0.33) {
+          // Card 1 Active (Pilsner)
+          targetImageSrc = 'assets/images/recent_launch_vodka1.png';
+          setDockedState($stackDocked1, false);
+          setDockedState($stackDocked2, false);
+          setDockedState($stackDocked3, false);
+        } else if (stackProgress < 0.66) {
+          // Card 2 Active (Strawberry Vodka) - Card 1 is locked/docked
+          targetImageSrc = 'assets/images/recent_launch_vodka2.png';
+          setDockedState($stackDocked1, true);
+          setDockedState($stackDocked2, false);
+          setDockedState($stackDocked3, false);
+        } else {
+          // Card 3 Active (Dark Lager) - Cards 1 and 2 are locked/docked
+          targetImageSrc = 'assets/images/recent_launch_vodka3.png';
+          setDockedState($stackDocked1, true);
+          setDockedState($stackDocked2, true);
+          setDockedState($stackDocked3, false);
+        }
+
+        targetX = 0;
+        targetY = 0;
+        scale = isMobile ? 0.95 : 1.05;
+      }
+      // ================= SECTION 3: MODERN SOLUTIONS & BENEFITS =================
+      else if ($benefitsSection.length && scrollY + windowHeight >= benefitsTop) {
+        setDockedState($showcaseLandingCard, false);
+        setDockedState($stackDocked1, false);
+        setDockedState($stackDocked2, false);
+        setDockedState($stackDocked3, false);
+        setDockedState($aboutDockedSlot, true);
+
+        targetImageSrc = 'assets/images/dist2.png';
+        targetX = 0;
+        targetY = 0;
+        scale = 0.95;
+
+        // If scrolling near exit towards Stack, dock Section 3
+        if (scrollY >= benefitsBottom - (windowHeight * 0.25)) {
+          setDockedState($benefitsDockedSlot, true);
+        } else {
+          setDockedState($benefitsDockedSlot, false);
+        }
+      }
+      // ================= SECTION 2: ABOUT SECTION & HERO TRANSITION =================
+      else if ($aboutSection.length) {
+        setDockedState($showcaseLandingCard, false);
+        setDockedState($stackDocked1, false);
+        setDockedState($stackDocked2, false);
+        setDockedState($stackDocked3, false);
+        setDockedState($benefitsDockedSlot, false);
+
+        let aboutSlotX = maxLeftX;
+        if ($aboutDockedSlot.length && $aboutDockedSlot.is(':visible')) {
+          const slotEl = $aboutDockedSlot.get(0);
+          const slotRect = slotEl.getBoundingClientRect();
+          if (slotRect.width > 0) {
+            const slotCenterX = slotRect.left + (slotRect.width / 2);
+            aboutSlotX = slotCenterX - (windowWidth / 2);
+          }
+        }
+
+        if (scrollY <= heroHoldEnd) {
+          // Hero Fix Plateau (Center)
+          targetImageSrc = 'assets/images/black_blue.png';
+          targetX = 0;
+          targetY = 0;
+          scale = 1.0;
+          setDockedState($aboutDockedSlot, false);
+        } else if (scrollY > heroHoldEnd && scrollY < aboutArrive) {
+          // Fast single-scroll glide to About position
+          targetImageSrc = 'assets/images/black_blue.png';
+          const t = Math.min(Math.max((scrollY - heroHoldEnd) / (aboutArrive - heroHoldEnd), 0), 1);
+          const easeT = 1 - Math.pow(1 - t, 3);
+          targetX = easeT * aboutSlotX;
+          targetY = 0;
+          scale = 1.0 - (easeT * 0.12);
+          setDockedState($aboutDockedSlot, false);
+        } else if (scrollY >= aboutArrive && scrollY <= aboutHoldEnd) {
+          // About Fix Plateau (Holds fixed at Left side of Section 2)
+          targetImageSrc = 'assets/images/black_blue.png';
+          targetX = aboutSlotX;
+          targetY = 0;
+          scale = 0.88;
+          setDockedState($aboutDockedSlot, false);
+        } else {
+          // Release from About (Section 2 locks its bottle, new bottle emerges towards Benefits)
+          setDockedState($aboutDockedSlot, true);
+          targetImageSrc = 'assets/images/dist2.png';
+
+          const returnT = Math.min(Math.max((scrollY - aboutHoldEnd) / (Math.max(benefitsTop - aboutHoldEnd, 1)), 0), 1);
+          const easeReturn = 1 - Math.pow(1 - returnT, 3);
+          targetX = (1 - easeReturn) * aboutSlotX;
+          targetY = 0;
+          scale = 0.88 + (easeReturn * 0.07);
+        }
+      }
+
+      setBottleImage(targetImageSrc);
 
       if (isMobile) {
         scale *= 0.85;
@@ -218,6 +341,7 @@ $(document).ready(function () {
         scale *= 0.92;
       }
 
+      wrapEl.style.opacity = showFloatingBottle ? '1' : '0';
       wrapEl.style.transform = `translate3d(calc(-50% + ${targetX.toFixed(2)}px), calc(-50% + ${targetY.toFixed(2)}px), 0px) scale(${scale.toFixed(3)})`;
     }
 
@@ -240,7 +364,7 @@ $(document).ready(function () {
     setTimeout(updateBottlePosition, 100);
   }
 
-  initGlobalFloatingBottle();
+  // initGlobalFloatingBottle();
 
   // 4b. Hero Mountain Interactive Scroll & Hover Parallax Engine
   function initHeroMountainParallax() {
@@ -334,7 +458,283 @@ $(document).ready(function () {
     renderMountainScene();
   }
 
-  initHeroMountainParallax();
+  // initHeroMountainParallax();
+
+  // 4c. Hero Animated Smoke & Mist Particle Canvas
+  function initHeroSmokeCanvas() {
+    const canvas = document.getElementById('heroSmokeCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let isVisible = true;
+
+    // Mouse tracking for fluid smoke interaction
+    const mouse = {
+      x: -9999,
+      y: -9999,
+      vx: 0,
+      vy: 0,
+      lastX: -9999,
+      lastY: -9999,
+      isHovering: false
+    };
+
+    const $heroSection = $('#hero-banner');
+
+    $heroSection.on('mousemove', function (e) {
+      const rect = canvas.getBoundingClientRect();
+      const newX = (e.clientX - rect.left) * (width / rect.width);
+      const newY = (e.clientY - rect.top) * (height / rect.height);
+      if (mouse.lastX !== -9999) {
+        mouse.vx = newX - mouse.lastX;
+        mouse.vy = newY - mouse.lastY;
+      }
+      mouse.x = newX;
+      mouse.y = newY;
+      mouse.lastX = newX;
+      mouse.lastY = newY;
+      mouse.isHovering = true;
+    });
+
+    $heroSection.on('mouseleave', function () {
+      mouse.isHovering = false;
+      mouse.x = -9999;
+      mouse.y = -9999;
+      mouse.vx = 0;
+      mouse.vy = 0;
+      mouse.lastX = -9999;
+      mouse.lastY = -9999;
+    });
+
+    // Create offscreen smoke puff sprite templates for ultra-fast rendering
+    function createSmokePuffSprite(tint) {
+      const spriteSize = 256;
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = spriteSize;
+      offCanvas.height = spriteSize;
+      const offCtx = offCanvas.getContext('2d');
+
+      const center = spriteSize / 2;
+      const grad = offCtx.createRadialGradient(center, center, 0, center, center, center);
+
+      if (tint === 'gold') {
+        grad.addColorStop(0, 'rgba(255, 220, 140, 0.45)');
+        grad.addColorStop(0.35, 'rgba(235, 190, 110, 0.22)');
+        grad.addColorStop(0.7, 'rgba(200, 160, 90, 0.08)');
+        grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      } else if (tint === 'warm') {
+        grad.addColorStop(0, 'rgba(255, 245, 230, 0.40)');
+        grad.addColorStop(0.35, 'rgba(240, 225, 210, 0.20)');
+        grad.addColorStop(0.7, 'rgba(210, 200, 190, 0.06)');
+        grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      } else {
+        // Pure atmospheric white / cool mountain mist
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+        grad.addColorStop(0.35, 'rgba(240, 245, 255, 0.22)');
+        grad.addColorStop(0.7, 'rgba(200, 215, 235, 0.07)');
+        grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      }
+
+      offCtx.fillStyle = grad;
+      offCtx.beginPath();
+      offCtx.arc(center, center, center, 0, Math.PI * 2);
+      offCtx.fill();
+
+      return offCanvas;
+    }
+
+    const sprites = {
+      white: createSmokePuffSprite('white'),
+      warm: createSmokePuffSprite('warm'),
+      gold: createSmokePuffSprite('gold')
+    };
+
+    const spriteKeys = ['white', 'white', 'warm', 'gold'];
+
+    // Particle class
+    class SmokeParticle {
+      constructor(isInitial = false) {
+        this.reset(isInitial);
+      }
+
+      reset(isInitial = false) {
+        this.spriteKey = spriteKeys[Math.floor(Math.random() * spriteKeys.length)];
+        this.sprite = sprites[this.spriteKey];
+
+        // Distribution across canvas
+        this.x = Math.random() * (width || window.innerWidth);
+        this.y = isInitial ? (Math.random() * (height || window.innerHeight)) : ((height || window.innerHeight) + (Math.random() * 80));
+
+        // Velocities
+        this.baseVx = (Math.random() - 0.48) * 0.45;
+        this.baseVy = -0.35 - (Math.random() * 0.55);
+        this.vx = this.baseVx;
+        this.vy = this.baseVy;
+
+        // Size expansion
+        this.size = 140 + (Math.random() * 180);
+        this.maxSize = this.size * (1.6 + Math.random() * 0.8);
+        this.growthRate = 0.25 + (Math.random() * 0.35);
+
+        // Rotation
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotSpeed = (Math.random() - 0.5) * 0.006;
+
+        // Alpha & Lifetime
+        this.maxAlpha = 0.25 + (Math.random() * 0.35);
+        this.alpha = isInitial ? (Math.random() * this.maxAlpha) : 0;
+        this.fadeInRate = 0.008 + (Math.random() * 0.008);
+        this.fadeOutRate = 0.004 + (Math.random() * 0.004);
+        this.state = isInitial ? 'active' : 'fade-in';
+
+        // Organic wobble
+        this.wobbleAngle = Math.random() * Math.PI * 2;
+        this.wobbleSpeed = 0.015 + (Math.random() * 0.02);
+      }
+
+      update(scrollEffect) {
+        // Lifecycle
+        if (this.state === 'fade-in') {
+          this.alpha += this.fadeInRate;
+          if (this.alpha >= this.maxAlpha) {
+            this.alpha = this.maxAlpha;
+            this.state = 'active';
+          }
+        } else if (this.state === 'active') {
+          if (this.y < height * 0.25) {
+            this.state = 'fade-out';
+          }
+        } else if (this.state === 'fade-out') {
+          this.alpha -= this.fadeOutRate;
+          if (this.alpha <= 0) {
+            this.reset();
+            return;
+          }
+        }
+
+        // Size expansion
+        if (this.size < this.maxSize) {
+          this.size += this.growthRate;
+        }
+
+        // Wobble & rotation
+        this.wobbleAngle += this.wobbleSpeed;
+        const wobbleX = Math.sin(this.wobbleAngle) * 0.35;
+        this.rotation += this.rotSpeed;
+
+        // Interactive mouse disturbance / swirl force
+        if (mouse.isHovering && mouse.x > 0 && mouse.y > 0) {
+          const dx = this.x - mouse.x;
+          const dy = this.y - mouse.y;
+          const distSq = (dx * dx) + (dy * dy);
+          const maxDist = 220;
+          const maxDistSq = maxDist * maxDist;
+
+          if (distSq < maxDistSq && distSq > 10) {
+            const dist = Math.sqrt(distSq);
+            const force = (1 - (dist / maxDist)) * 0.85;
+            const normX = dx / dist;
+            const normY = dy / dist;
+
+            // Push outward and swirl around cursor
+            this.vx += (normX * force * 1.8) + (mouse.vx * 0.04);
+            this.vy += (normY * force * 1.8) + (mouse.vy * 0.04);
+          }
+        }
+
+        // Damping velocity back to atmospheric baseline
+        this.vx += (this.baseVx + wobbleX - this.vx) * 0.04;
+        this.vy += (this.baseVy - (scrollEffect * 1.2) - this.vy) * 0.04;
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Out of bounds check
+        if (this.y < -this.size || this.x < -this.size || this.x > width + this.size) {
+          this.reset();
+        }
+      }
+
+      draw(context) {
+        if (this.alpha <= 0.005) return;
+        context.save();
+        context.globalAlpha = this.alpha;
+        context.translate(this.x, this.y);
+        context.rotate(this.rotation);
+        context.drawImage(this.sprite, -this.size / 2, -this.size / 2, this.size, this.size);
+        context.restore();
+      }
+    }
+
+    // Initialize particles
+    let particles = [];
+    const particleCount = window.innerWidth <= 767 ? 26 : 48;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = rect.width || window.innerWidth;
+      height = rect.height || (window.innerHeight * 1.1);
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new SmokeParticle(true));
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Scroll listener for viewport visibility & responsiveness
+    let lastScrollY = 0;
+    let scrollVelocity = 0;
+
+    function renderSmoke() {
+      const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
+      const windowHeight = window.innerHeight;
+
+      // Check if hero is visible in viewport
+      if (scrollY > windowHeight * 1.25) {
+        if (isVisible) isVisible = false;
+        requestAnimationFrame(renderSmoke);
+        return;
+      }
+
+      isVisible = true;
+
+      scrollVelocity = Math.min(Math.max((scrollY - lastScrollY) * 0.08, 0), 2.5);
+      lastScrollY = scrollY;
+
+      // Clear previous frame
+      ctx.clearRect(0, 0, width, height);
+
+      // Decay mouse velocity
+      mouse.vx *= 0.85;
+      mouse.vy *= 0.85;
+
+      // Update and draw all smoke particles
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update(scrollVelocity);
+        particles[i].draw(ctx);
+      }
+
+      requestAnimationFrame(renderSmoke);
+    }
+
+    renderSmoke();
+  }
+
+  // initHeroSmokeCanvas();
 
   // 5. Universal Smooth Anchor Scrolling (Local & Cross-Page Hashes)
   $(document).on('click', 'a[href*="#"]', function (e) {

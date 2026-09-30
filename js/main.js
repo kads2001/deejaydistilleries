@@ -77,15 +77,34 @@ $(document).ready(function () {
     if (lenis) lenis.start();
   });
 
-  // 4. Global Floating 3D Bottle - Section Centering & Scroll Motion
+  // 4. Global Floating 3D Bottle - Section Centering, Dynamic Image Morphing & Scroll Motion
   function initGlobalFloatingBottle() {
     const $bottleWrap = $('#pageGlobalBottleWrap');
-    const $bottleImg = $('#pageGlobalBottleImg');
+    const $layerA = $('#pageBottleLayerA');
+    const $layerB = $('#pageBottleLayerB');
 
-    if (!$bottleWrap.length || !$bottleImg.length) return;
+    if (!$bottleWrap.length || (!$layerA.length && !$layerB.length)) return;
 
     const wrapEl = $bottleWrap.get(0);
-    const imgEl = $bottleImg.get(0);
+    let currentImageSrc = 'assets/images/black_blue.png';
+    let activeLayer = 'A';
+
+    function setBottleImage(newSrc) {
+      if (!newSrc || newSrc === currentImageSrc) return;
+      currentImageSrc = newSrc;
+
+      if (activeLayer === 'A') {
+        $layerB.attr('src', newSrc);
+        $layerB.addClass('active');
+        $layerA.removeClass('active');
+        activeLayer = 'B';
+      } else {
+        $layerA.attr('src', newSrc);
+        $layerA.addClass('active');
+        $layerB.removeClass('active');
+        activeLayer = 'A';
+      }
+    }
 
     function updateBottlePosition() {
       const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
@@ -105,13 +124,50 @@ $(document).ready(function () {
       }
       wrapEl.style.opacity = '1';
 
+      // Section-by-section image mapping & particular point triggers
+      const viewportPoint = scrollY + (windowHeight * 0.45);
+      const $aboutSection = $('#about');
+      const $benefitsSection = $('#benefits');
+      const $stackSection = $('#craft-beer-stack');
+      const $showcaseSection = $('#showcase');
+
+      let targetImageSrc = 'assets/images/black_blue.png';
+
+      if ($showcaseSection.length && viewportPoint >= $showcaseSection.offset().top) {
+        // Section 5: Style Showcase (Wine Varietals)
+        targetImageSrc = 'assets/images/proimg1.png';
+      } else if ($stackSection.length && viewportPoint >= $stackSection.offset().top) {
+        // Section 4: Craft Beer Stack (Dynamic bottle per card)
+        const stackTop = $stackSection.offset().top;
+        const stackHeight = $stackSection.outerHeight();
+        const stackProgress = Math.min(Math.max((viewportPoint - stackTop) / stackHeight, 0), 1);
+
+        if (stackProgress < 0.35) {
+          targetImageSrc = 'assets/images/recent_launch_vodka1.png';
+        } else if (stackProgress < 0.70) {
+          targetImageSrc = 'assets/images/recent_launch_vodka2.png';
+        } else {
+          targetImageSrc = 'assets/images/recent_launch_vodka3.png';
+        }
+      } else if ($benefitsSection.length && viewportPoint >= $benefitsSection.offset().top) {
+        // Section 3: Modern Solutions / Benefits (Distillery Spirit)
+        targetImageSrc = 'assets/images/dist2.png';
+      } else if ($aboutSection.length && viewportPoint >= $aboutSection.offset().top) {
+        // Section 2: About Story (Tangawisi Premium Liqueur)
+        targetImageSrc = 'assets/images/tangawisi2.png';
+      } else {
+        // Section 1: Hero Banner (Black & Blue Cafe Rhum)
+        targetImageSrc = 'assets/images/black_blue.png';
+      }
+
+      setBottleImage(targetImageSrc);
+
       // Default center position & scaling
       let targetX = 0;
       let targetY = 0;
       let scale = 1.0;
 
       const maxLeftX = isMobile ? -(windowWidth * 0.18) : (isTablet ? -(windowWidth * 0.26) : -(windowWidth * 0.32));
-      const $aboutSection = $('#about');
 
       if ($aboutSection.length) {
         const aboutTop = $aboutSection.offset().top;
@@ -138,7 +194,6 @@ $(document).ready(function () {
           scale = 0.88;
         } else {
           // Transition from About towards next sections (returning to center)
-          const $stackSection = $('#craft-beer-stack');
           if ($stackSection.length) {
             const stackTop = $stackSection.offset().top;
             if (scrollY < stackTop) {
@@ -164,7 +219,6 @@ $(document).ready(function () {
       }
 
       wrapEl.style.transform = `translate3d(calc(-50% + ${targetX.toFixed(2)}px), calc(-50% + ${targetY.toFixed(2)}px), 0px) scale(${scale.toFixed(3)})`;
-      imgEl.style.transform = 'none';
     }
 
     if (lenis) {
@@ -234,40 +288,43 @@ $(document).ready(function () {
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
       const scrollProgress = Math.min(Math.max(scrollY / (windowHeight * 1.1), 0), 1);
 
-      // Smooth mouse interpolation
-      currentMouseX += (targetMouseX - currentMouseX) * 0.07;
-      currentMouseY += (targetMouseY - currentMouseY) * 0.07;
+      // Snappy smooth mouse interpolation
+      currentMouseX += (targetMouseX - currentMouseX) * 0.085;
+      currentMouseY += (targetMouseY - currentMouseY) * 0.085;
 
-      // 1. Mountain Background Zoom & Elevation
-      const mountainScale = 1.02 + (scrollProgress * 0.16) + (isHovering ? 0.02 : 0);
-      const mountainX = currentMouseX * -28;
-      const mountainY = (currentMouseY * -18) - (scrollProgress * 45);
-      imgEl.style.transform = `translate3d(calc(-50% + ${mountainX.toFixed(2)}px), calc(-50% + ${mountainY.toFixed(2)}px), 0px) scale(${mountainScale.toFixed(3)})`;
+      // 1. Mountain Background Zoom, Elevation & 3D Tilt
+      const mountainScale = 1.05 + (scrollProgress * 0.18) + (isHovering ? 0.05 : 0);
+      const mountainX = currentMouseX * -65;
+      const mountainY = (currentMouseY * -42) - (scrollProgress * 50);
+      const tiltX = currentMouseY * -6.5;
+      const tiltY = currentMouseX * 7.5;
+      
+      imgEl.style.transform = `translate3d(calc(-50% + ${mountainX.toFixed(2)}px), calc(-50% + ${mountainY.toFixed(2)}px), 0px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale(${mountainScale.toFixed(3)})`;
 
-      // 2. Foreground Mountain Fog Layer 1
+      // 2. Foreground Mountain Fog Layer 1 (Strong Depth Shift)
       if (fog1El) {
-        const fog1X = (currentMouseX * -55) - (scrollProgress * 140);
-        const fog1Y = (currentMouseY * -28) - (scrollProgress * 30);
-        const fog1Opacity = 0.40 + (scrollProgress * 0.25) + (isHovering ? 0.10 : 0);
-        fog1El.style.transform = `translate3d(${fog1X.toFixed(2)}px, ${fog1Y.toFixed(2)}px, 0px)`;
-        fog1El.style.opacity = Math.min(fog1Opacity, 0.85).toFixed(2);
+        const fog1X = (currentMouseX * -110) - (scrollProgress * 160);
+        const fog1Y = (currentMouseY * -55) - (scrollProgress * 35);
+        const fog1Opacity = (isHovering ? 0.70 : 0.48) + (scrollProgress * 0.20);
+        fog1El.style.transform = `translate3d(${fog1X.toFixed(2)}px, ${fog1Y.toFixed(2)}px, 0px) scale(${isHovering ? 1.05 : 1.0})`;
+        fog1El.style.opacity = Math.min(fog1Opacity, 0.90).toFixed(2);
       }
 
-      // 3. Midground Mountain Fog Layer 2
+      // 3. Midground Mountain Fog Layer 2 (Opposing Depth Shift)
       if (fog2El) {
-        const fog2X = (currentMouseX * 40) + (scrollProgress * 100);
-        const fog2Y = (currentMouseY * 20) - (scrollProgress * 20);
-        const fog2Opacity = 0.30 + (scrollProgress * 0.20) + (isHovering ? 0.08 : 0);
-        fog2El.style.transform = `translate3d(${fog2X.toFixed(2)}px, ${fog2Y.toFixed(2)}px, 0px)`;
-        fog2El.style.opacity = Math.min(fog2Opacity, 0.75).toFixed(2);
+        const fog2X = (currentMouseX * 80) + (scrollProgress * 120);
+        const fog2Y = (currentMouseY * 38) - (scrollProgress * 25);
+        const fog2Opacity = (isHovering ? 0.60 : 0.38) + (scrollProgress * 0.18);
+        fog2El.style.transform = `translate3d(${fog2X.toFixed(2)}px, ${fog2Y.toFixed(2)}px, 0px) scale(${isHovering ? 1.04 : 1.0})`;
+        fog2El.style.opacity = Math.min(fog2Opacity, 0.85).toFixed(2);
       }
 
-      // 4. Sunlight Sweep & Ambient Ray Shimmer
+      // 4. Sunlight Sweep & Spotlight Shimmer (Follows Cursor)
       if (lightEl) {
-        const lightX = currentMouseX * 50;
-        const lightY = currentMouseY * 25;
-        const lightOpacity = isHovering ? 0.55 : (0.25 + (scrollProgress * 0.25));
-        lightEl.style.transform = `translate3d(${lightX.toFixed(2)}px, ${lightY.toFixed(2)}px, 0px) scale(${(1.0 + scrollProgress * 0.1).toFixed(2)})`;
+        const lightX = currentMouseX * 110;
+        const lightY = currentMouseY * 55;
+        const lightOpacity = isHovering ? 0.75 : (0.30 + (scrollProgress * 0.25));
+        lightEl.style.transform = `translate3d(${lightX.toFixed(2)}px, ${lightY.toFixed(2)}px, 0px) scale(${(1.0 + scrollProgress * 0.12 + (isHovering ? 0.08 : 0)).toFixed(2)})`;
         lightEl.style.opacity = lightOpacity.toFixed(2);
       }
 

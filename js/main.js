@@ -77,102 +77,104 @@ $(document).ready(function () {
     if (lenis) lenis.start();
   });
 
-  // 4. Hero Banner Normal Horizontal Scroller on Mouse Scroll
-  function initHeroScrollBanner() {
-    const $section = $('#hero-banner');
-    const $track = $('#heroScrollerTrack');
-    const $cards = $('.hero-video-card');
-    const $videos = $('.hero-slide-video');
+  // 4. Global Floating 3D Bottle - Section Centering & Scroll Motion
+  function initGlobalFloatingBottle() {
+    const $bottleWrap = $('#pageGlobalBottleWrap');
+    const $bottleImg = $('#pageGlobalBottleImg');
 
-    if (!$section.length || !$track.length) return;
+    if (!$bottleWrap.length || !$bottleImg.length) return;
 
-    const sectionEl = $section.get(0);
-    const trackEl = $track.get(0);
+    const wrapEl = $bottleWrap.get(0);
+    const imgEl = $bottleImg.get(0);
 
-    // Ensure all slide videos play muted
-    $videos.each(function () {
-      this.muted = true;
-      const p = this.play();
-      if (p !== undefined) p.catch(() => {});
-    });
-
-    function updateHeroScroll() {
-      const rect = sectionEl.getBoundingClientRect();
+    function updateBottlePosition() {
+      const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      const scrollableDistance = rect.height - windowHeight;
+      const windowWidth = window.innerWidth;
+      const isMobile = windowWidth <= 767;
+      const isTablet = windowWidth <= 991;
 
-      if (scrollableDistance <= 0) {
-        trackEl.style.transform = 'translate3d(0px, 0px, 0px)';
-        $cards.removeClass('active').first().addClass('active');
-        return;
-      }
-
-      const scrolled = -rect.top;
-      const progress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
-
-      // 3 slides = 2 full viewport widths of total horizontal scroll translation
-      const maxHorizontal = window.innerWidth * 2;
-      const currentTranslateX = progress * maxHorizontal;
-
-      trackEl.style.transform = `translate3d(-${currentTranslateX.toFixed(2)}px, 0px, 0px)`;
-
-      // Determine active slide card
-      let activeIndex = 0;
-      if (progress < 0.33) {
-        activeIndex = 0;
-      } else if (progress < 0.66) {
-        activeIndex = 1;
-      } else {
-        activeIndex = 2;
-      }
-
-      // Update Card Active states & progress bars
-      $cards.each(function (i) {
-        const $bar = $(this).find('.hero-card-progress-bar');
-        if (i === activeIndex) {
-          $(this).addClass('active');
-          let cardProgress = 0;
-          if (activeIndex === 0) cardProgress = progress / 0.33;
-          else if (activeIndex === 1) cardProgress = (progress - 0.33) / 0.33;
-          else cardProgress = (progress - 0.66) / 0.34;
-          $bar.css('width', `${Math.min(Math.max(cardProgress * 100, 0), 100)}%`);
-        } else {
-          $(this).removeClass('active');
-          $bar.css('width', i < activeIndex ? '100%' : '0%');
+      // Check if near footer section to fade out
+      const $footer = $('.site-footer');
+      if ($footer.length && $footer.is(':visible')) {
+        const footerTop = $footer.offset().top;
+        if (footerTop > windowHeight && (scrollY + (windowHeight * 0.6) > footerTop)) {
+          wrapEl.style.opacity = '0';
+          return;
         }
-      });
+      }
+      wrapEl.style.opacity = '1';
+
+      // Default center position & scaling
+      let targetX = 0;
+      let targetY = 0;
+      let scale = 1.0;
+
+      const maxLeftX = isMobile ? -(windowWidth * 0.18) : (isTablet ? -(windowWidth * 0.26) : -(windowWidth * 0.32));
+      const $aboutSection = $('#about');
+
+      if ($aboutSection.length) {
+        const aboutTop = $aboutSection.offset().top;
+        const aboutHeight = $aboutSection.outerHeight();
+        const aboutBottom = aboutTop + aboutHeight;
+
+        // Transition zone from Section 1 (Hero) into Section 2 (About)
+        const startTransition = Math.max(0, aboutTop - windowHeight);
+        const fullTransition = aboutTop - (windowHeight * 0.15);
+
+        if (scrollY < startTransition) {
+          // Section 1 (Hero): Center
+          targetX = 0;
+          scale = 1.0;
+        } else if (scrollY >= startTransition && scrollY <= fullTransition) {
+          // Smooth glide from Center to Left
+          const t = (scrollY - startTransition) / (fullTransition - startTransition);
+          const easeT = Math.sin(t * (Math.PI / 2));
+          targetX = easeT * maxLeftX;
+          scale = 1.0 - (easeT * 0.12);
+        } else if (scrollY > fullTransition && scrollY <= aboutBottom) {
+          // Section 2 (About): Steady on Left Side
+          targetX = maxLeftX;
+          scale = 0.88;
+        } else {
+          // Transition from About towards next sections (returning to center)
+          const $stackSection = $('#craft-beer-stack');
+          if ($stackSection.length) {
+            const stackTop = $stackSection.offset().top;
+            if (scrollY < stackTop) {
+              const returnT = Math.min(Math.max((scrollY - aboutBottom) / (stackTop - aboutBottom), 0), 1);
+              const easeReturn = Math.sin(returnT * (Math.PI / 2));
+              targetX = (1 - easeReturn) * maxLeftX;
+              scale = 0.88 + (easeReturn * 0.17);
+            } else {
+              targetX = 0;
+              scale = 1.05;
+            }
+          } else {
+            targetX = 0;
+            scale = 1.0;
+          }
+        }
+      }
+
+      if (isMobile) {
+        scale *= 0.85;
+      } else if (isTablet) {
+        scale *= 0.92;
+      }
+
+      wrapEl.style.transform = `translate3d(calc(-50% + ${targetX.toFixed(2)}px), calc(-50% + ${targetY.toFixed(2)}px), 0px) scale(${scale.toFixed(3)})`;
+      imgEl.style.transform = 'none';
     }
 
-    // Click on any card to smoothly scroll into that card's slide position
-    $cards.on('click', function () {
-      const index = parseInt($(this).attr('data-video-index'), 10) || 0;
-      const rect = sectionEl.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      const scrollableDistance = rect.height - windowHeight;
-      const currentScroll = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
-      const sectionTop = currentScroll + rect.top;
-
-      let targetProgress = 0;
-      if (index === 1) targetProgress = 0.50;
-      if (index === 2) targetProgress = 0.98;
-
-      const targetScroll = sectionTop + (targetProgress * scrollableDistance);
-
-      if (lenis) {
-        lenis.scrollTo(targetScroll, { duration: 0.8 });
-      } else {
-        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-      }
-    });
-
     if (lenis) {
-      lenis.on('scroll', updateHeroScroll);
+      lenis.on('scroll', updateBottlePosition);
     } else {
       let isTicking = false;
       window.addEventListener('scroll', function () {
         if (!isTicking) {
           window.requestAnimationFrame(function () {
-            updateHeroScroll();
+            updateBottlePosition();
             isTicking = false;
           });
           isTicking = true;
@@ -180,11 +182,102 @@ $(document).ready(function () {
       }, { passive: true });
     }
 
-    window.addEventListener('resize', updateHeroScroll);
-    setTimeout(updateHeroScroll, 100);
+    window.addEventListener('resize', updateBottlePosition);
+    setTimeout(updateBottlePosition, 100);
   }
 
-  initHeroScrollBanner();
+  initGlobalFloatingBottle();
+
+  // 4b. Hero Mountain Interactive Scroll & Hover Parallax Engine
+  function initHeroMountainParallax() {
+    const $mountainSection = $('#hero-banner');
+    const $mountainImg = $('#heroMountainImg');
+    const $fog1 = $('.fog-layer-1');
+    const $fog2 = $('.fog-layer-2');
+    const $light = $('.mountain-light-sweep');
+
+    if (!$mountainSection.length || !$mountainImg.length) return;
+
+    const imgEl = $mountainImg.get(0);
+    const fog1El = $fog1.length ? $fog1.get(0) : null;
+    const fog2El = $fog2.length ? $fog2.get(0) : null;
+    const lightEl = $light.length ? $light.get(0) : null;
+
+    let targetMouseX = 0;
+    let targetMouseY = 0;
+    let currentMouseX = 0;
+    let currentMouseY = 0;
+    let isHovering = false;
+
+    // Mouse Hover & Move Listener (Desktop & Tablet)
+    $mountainSection.on('mousemove', function (e) {
+      isHovering = true;
+      const rect = this.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      targetMouseX = (mouseX / rect.width) - 0.5;
+      targetMouseY = (mouseY / rect.height) - 0.5;
+    });
+
+    $mountainSection.on('mouseenter', function () {
+      isHovering = true;
+    });
+
+    $mountainSection.on('mouseleave', function () {
+      isHovering = false;
+      targetMouseX = 0;
+      targetMouseY = 0;
+    });
+
+    function renderMountainScene() {
+      const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const scrollProgress = Math.min(Math.max(scrollY / (windowHeight * 1.1), 0), 1);
+
+      // Smooth mouse interpolation
+      currentMouseX += (targetMouseX - currentMouseX) * 0.07;
+      currentMouseY += (targetMouseY - currentMouseY) * 0.07;
+
+      // 1. Mountain Background Zoom & Elevation
+      const mountainScale = 1.02 + (scrollProgress * 0.16) + (isHovering ? 0.02 : 0);
+      const mountainX = currentMouseX * -28;
+      const mountainY = (currentMouseY * -18) - (scrollProgress * 45);
+      imgEl.style.transform = `translate3d(calc(-50% + ${mountainX.toFixed(2)}px), calc(-50% + ${mountainY.toFixed(2)}px), 0px) scale(${mountainScale.toFixed(3)})`;
+
+      // 2. Foreground Mountain Fog Layer 1
+      if (fog1El) {
+        const fog1X = (currentMouseX * -55) - (scrollProgress * 140);
+        const fog1Y = (currentMouseY * -28) - (scrollProgress * 30);
+        const fog1Opacity = 0.40 + (scrollProgress * 0.25) + (isHovering ? 0.10 : 0);
+        fog1El.style.transform = `translate3d(${fog1X.toFixed(2)}px, ${fog1Y.toFixed(2)}px, 0px)`;
+        fog1El.style.opacity = Math.min(fog1Opacity, 0.85).toFixed(2);
+      }
+
+      // 3. Midground Mountain Fog Layer 2
+      if (fog2El) {
+        const fog2X = (currentMouseX * 40) + (scrollProgress * 100);
+        const fog2Y = (currentMouseY * 20) - (scrollProgress * 20);
+        const fog2Opacity = 0.30 + (scrollProgress * 0.20) + (isHovering ? 0.08 : 0);
+        fog2El.style.transform = `translate3d(${fog2X.toFixed(2)}px, ${fog2Y.toFixed(2)}px, 0px)`;
+        fog2El.style.opacity = Math.min(fog2Opacity, 0.75).toFixed(2);
+      }
+
+      // 4. Sunlight Sweep & Ambient Ray Shimmer
+      if (lightEl) {
+        const lightX = currentMouseX * 50;
+        const lightY = currentMouseY * 25;
+        const lightOpacity = isHovering ? 0.55 : (0.25 + (scrollProgress * 0.25));
+        lightEl.style.transform = `translate3d(${lightX.toFixed(2)}px, ${lightY.toFixed(2)}px, 0px) scale(${(1.0 + scrollProgress * 0.1).toFixed(2)})`;
+        lightEl.style.opacity = lightOpacity.toFixed(2);
+      }
+
+      requestAnimationFrame(renderMountainScene);
+    }
+
+    renderMountainScene();
+  }
+
+  initHeroMountainParallax();
 
   // 5. Universal Smooth Anchor Scrolling (Local & Cross-Page Hashes)
   $(document).on('click', 'a[href*="#"]', function (e) {

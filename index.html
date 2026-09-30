@@ -70,97 +70,46 @@
         </div>
       </div>
 
-      <!-- Scroller Track with 3 Fullscreen Slides (Normal Scroller Motion) -->
-      <div class="hero-scroller-track-wrap" id="heroScrollerWrap">
-        <div class="hero-scroller-track" id="heroScrollerTrack">
-          
-          <!-- Slide 1: Craft Beer 01 (stackimg1.png) -->
-          <div class="hero-scroller-slide" data-slide-index="0">
-            <img src="assets/images/stackimg1.png" alt="Deejay Distilleries - Craft Beer 01" class="hero-slide-img">
-            <div class="hero-video-overlay"></div>
-            <div class="hero-slide-content">
-              <div class="hero-bottom-container">
-                <div class="hero-title-area">
-                  <h1 class="hero-main-title">DEEJAY DISTILLERIES</h1>
-                  <p class="hero-tagline">
-                    One of the leading manufacturer &amp; exporters of bottled alcohol in regions like West Africa, Middle East and South-East Asia.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2: Botanical Essence (stackimg2.png) -->
-          <div class="hero-scroller-slide" data-slide-index="1">
-            <img src="assets/images/stackimg2.png" alt="Botanical Essence - Strawberry Vodka" class="hero-slide-img">
-            <div class="hero-video-overlay"></div>
-            <div class="hero-slide-content">
-              <div class="hero-bottom-container">
-                <div class="hero-title-area">
-                  <h1 class="hero-main-title">BOTANICAL ESSENCE</h1>
-                  <p class="hero-tagline">
-                    Crafting world-class artisanal spirits with precision distillation and rare grain botanicals.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3: Heritage & Aging (stackimg3.png) -->
-          <div class="hero-scroller-slide" data-slide-index="2">
-            <img src="assets/images/stackimg3.png" alt="Heritage & Aging - Dark Lager" class="hero-slide-img">
-            <div class="hero-video-overlay"></div>
-            <div class="hero-slide-content">
-              <div class="hero-bottom-container">
-                <div class="hero-title-area">
-                  <h1 class="hero-main-title">HERITAGE &amp; AGING</h1>
-                  <p class="hero-tagline">
-                    Mastercraft heritage with temperature-controlled maturation for an unmistakably refined finish.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+      <!-- Animated Mountain Landscape Banner Wrap -->
+      <div class="hero-single-banner-wrap" id="heroMountainWrap">
+        <!-- Mountain Landscape with Cinematic Camera Drift -->
+        <div class="hero-mountain-bg-wrap">
+          <img src="assets/images/stackimg1.jpeg" alt="Deejay Distilleries Highland Mountains" class="hero-slide-img hero-mountain-img" id="heroMountainImg">
         </div>
-      </div>
 
-      <!-- Persistent Bottom Floating Controls & Video Cards -->
-      <div class="hero-floating-controls">
-        <div class="hero-bottom-container hero-controls-container">
-          <div class="hero-controls-left-spacer"></div>
-          <!-- <div class="hero-bottom-right-area">
-            <div class="hero-video-switcher-wrap">
-              <div class="hero-video-cards">
-                <div class="hero-video-card active" data-video-index="0" title="Slide 1: Craft Beer">
-                  <div class="hero-card-thumb-box">
-                    <img src="assets/images/stackimg1.png" alt="Craft Beer" class="hero-card-thumb">
-                  </div>
-                  <div class="hero-card-meta-tag">01 &bull; CRAFT BEER</div>
-                  <div class="hero-card-progress-bar"></div>
-                </div>
-                <div class="hero-video-card" data-video-index="1" title="Slide 2: Strawberry Vodka">
-                  <div class="hero-card-thumb-box">
-                    <img src="assets/images/stackimg2.png" alt="Strawberry Vodka" class="hero-card-thumb">
-                  </div>
-                  <div class="hero-card-meta-tag">02 &bull; VODKA</div>
-                  <div class="hero-card-progress-bar"></div>
-                </div>
-                <div class="hero-video-card" data-video-index="2" title="Slide 3: Dark Lager">
-                  <div class="hero-card-thumb-box">
-                    <img src="assets/images/stackimg3.png" alt="Dark Lager" class="hero-card-thumb">
-                  </div>
-                  <div class="hero-card-meta-tag">03 &bull; DARK LAGER</div>
-                  <div class="hero-card-progress-bar"></div>
-                </div>
-              </div>
+        <!-- Atmospheric Mountain Mist & Fog Layer 1 -->
+        <div class="mountain-fog-layer fog-layer-1"></div>
+
+        <!-- Atmospheric Mountain Mist & Fog Layer 2 -->
+        <div class="mountain-fog-layer fog-layer-2"></div>
+
+        <!-- Mountain Light Rays & Sunlight Sweep -->
+        <div class="mountain-light-sweep"></div>
+
+        <!-- Cinematic Gradient Overlay for Readability -->
+        <div class="hero-video-overlay"></div>
+
+        <!-- Banner Content -->
+        <div class="hero-slide-content">
+          <div class="hero-bottom-container">
+            <div class="hero-title-area">
+              <h1 class="hero-main-title">DEEJAY DISTILLERIES</h1>
+              <p class="hero-tagline">
+                One of the leading manufacturer &amp; exporters of bottled alcohol in regions like West Africa, Middle East and South-East Asia.
+              </p>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
 
     </div>
   </section>
+
+  <!-- Global Floating 3D Bottle (Rotates and Centers in Every Section on Scroll) -->
+  <div class="page-global-bottle-wrap" id="pageGlobalBottleWrap">
+    <div class="page-global-bottle-glow"></div>
+    <img src="assets/images/black_blue.png" alt="Black & Blue Cafe Rhum" class="page-global-bottle-img" id="pageGlobalBottleImg">
+  </div>
 
   <!-- ================= HERO TICKER BADGE STRIP ================= -->
   <div class="hero-ticker-strip">
@@ -336,11 +285,11 @@
         </div>
 
         <!-- Subtle Progress Indicator -->
-        <div class="benefits-progress-wrapper">
+        <!-- <div class="benefits-progress-wrapper">
           <div class="benefits-progress-track">
             <div class="benefits-progress-fill" id="benefitsProgressBar"></div>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>

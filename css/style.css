@@ -3286,6 +3286,7 @@ body {
   letter-spacing: -0.5px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  color: white;
 }
 
 .beer-stack-item-desc {
@@ -3294,6 +3295,7 @@ body {
   font-style: italic;
   line-height: 1.55;
   margin-bottom: 24px;
+  color: white;
 }
 
 .beer-stack-read-more {
@@ -3312,6 +3314,7 @@ body {
   width: fit-content;
   max-width: max-content;
   white-space: nowrap;
+  color: white;
 }
 
 .beer-stack-read-more:hover {
@@ -3442,18 +3445,18 @@ body {
 }
 
 /* Color theme adjustments for Card 1 (Light Theme) */
-.beer-stack-card:nth-child(1) .beer-stack-item-title {
+/* .beer-stack-card:nth-child(1) .beer-stack-item-title {
   color: #111111;
-}
+} */
 
-.beer-stack-card:nth-child(1) .beer-stack-item-desc {
+/* .beer-stack-card:nth-child(1) .beer-stack-item-desc {
   color: #444444;
 }
 
 .beer-stack-card:nth-child(1) .beer-stack-read-more {
   color: #111111;
   border-color: #111111;
-}
+} */
 
 .beer-stack-card:nth-child(1) .beer-stack-ing-label {
   color: #111111;

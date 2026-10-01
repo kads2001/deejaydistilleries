@@ -398,12 +398,12 @@ body {
 }
 
 .hero-slide-img {
-  animation: bannerKenBurnsZoom 16s ease-in-out infinite alternate;
+  animation: bannerKenBurnsZoom 14s ease-in-out infinite alternate;
   will-change: transform;
 }
 
 .hero-video-slide.active .hero-slide-img {
-  animation: bannerKenBurnsZoom 16s ease-in-out infinite alternate;
+  animation: bannerKenBurnsZoom 14s ease-in-out infinite alternate;
 }
 
 @keyframes bannerKenBurnsZoom {
@@ -412,11 +412,11 @@ body {
   }
 
   50% {
-    transform: translate(-50%, -50%) scale(1.02);
+    transform: translate(-50%, -50%) scale(1.08);
   }
 
   100% {
-    transform: translate(-50%, -50%) scale(1.04);
+    transform: translate(-50%, -50%) scale(1.1);
   }
 }
 
@@ -518,7 +518,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  perspective: 1200px;
+  perspective: 1400px;
   transform-style: preserve-3d;
   z-index: 1;
 }
@@ -620,7 +620,7 @@ body {
   height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   z-index: 1;
 }
 

@@ -1383,18 +1383,31 @@ $(document).ready(function () {
       }
     }
 
+    const progressLine = document.getElementById('showcaseProgressLine');
+
+    function updateProgressBar() {
+      if (!progressLine) return;
+      const maxTranslateX = getMaxTranslateX();
+      if (maxTranslateX > 0) {
+        const scrollPct = Math.min(Math.max(Math.abs(currentX) / maxTranslateX, 0), 1) * 100;
+        progressLine.style.width = `${scrollPct.toFixed(1)}%`;
+      }
+    }
+
     function renderLoop() {
       const delta = targetX - currentX;
 
       if (Math.abs(delta) < 0.05) {
         currentX = targetX;
         track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+        updateProgressBar();
         isRunning = false;
         return;
       }
 
       currentX += delta * 0.07;
       track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+      updateProgressBar();
       requestAnimationFrame(renderLoop);
     }
 

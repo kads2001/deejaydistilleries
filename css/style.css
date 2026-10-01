@@ -364,9 +364,11 @@ body {
   0% {
     transform: translate(-50%, -50%) scale(1.0);
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.08);
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1.14);
   }
@@ -502,8 +504,8 @@ body {
 
 .fog-layer-1 {
   background: radial-gradient(ellipse at 35% 65%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.14) 40%, transparent 70%),
-              radial-gradient(ellipse at 80% 55%, rgba(255, 255, 255, 0.28) 0%, transparent 60%),
-              radial-gradient(ellipse at 50% 80%, rgba(255, 255, 255, 0.20) 0%, transparent 65%);
+    radial-gradient(ellipse at 80% 55%, rgba(255, 255, 255, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(255, 255, 255, 0.20) 0%, transparent 65%);
   filter: blur(26px);
   opacity: 0.55;
   transition: opacity 0.3s ease;
@@ -511,7 +513,7 @@ body {
 
 .fog-layer-2 {
   background: radial-gradient(ellipse at 15% 75%, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.12) 45%, transparent 70%),
-              radial-gradient(ellipse at 65% 70%, rgba(255, 255, 255, 0.30) 0%, transparent 65%);
+    radial-gradient(ellipse at 65% 70%, rgba(255, 255, 255, 0.30) 0%, transparent 65%);
   filter: blur(34px);
   opacity: 0.45;
   transition: opacity 0.3s ease;
@@ -537,10 +539,12 @@ body {
     opacity: 0.25;
     transform: scale(0.98);
   }
+
   50% {
     opacity: 0.6;
     transform: scale(1.02);
   }
+
   100% {
     opacity: 0.35;
     transform: scale(1.0);
@@ -658,25 +662,30 @@ body {
 }
 
 @media (max-width: 1200px) {
+
   .bottle-image-layers,
   .page-global-bottle-img {
     height: 460px;
     max-height: 60vh;
   }
+
   .bottle-image-layers {
     width: 270px;
   }
 }
 
 @media (max-width: 991px) {
+
   .bottle-image-layers,
   .page-global-bottle-img {
     height: 370px;
     max-height: 50vh;
   }
+
   .bottle-image-layers {
     width: 220px;
   }
+
   .page-global-bottle-glow {
     width: 220px;
     height: 320px;
@@ -684,11 +693,13 @@ body {
 }
 
 @media (max-width: 767px) {
+
   .bottle-image-layers,
   .page-global-bottle-img {
     height: 280px;
     max-height: 40vh;
   }
+
   .bottle-image-layers {
     width: 170px;
   }
@@ -737,46 +748,15 @@ body {
   gap: 20px;
 }
 
-/* Left Navigation */
-.nav-left {
+/* Left Brand Crest Logo */
+.brand-left {
   display: flex;
-  align-items: center;
-  gap: 22px;
-  flex: 1 1 0%;
-  justify-content: flex-start;
-}
-
-/* Nav Links */
-.nav-custom-link {
-  color: #ffffff;
-  font-family: var(--font-main);
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: normal;
-  line-height: normal;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
-  white-space: nowrap;
-}
-
-.nav-custom-link:hover {
-  color: var(--gold-light);
-  text-shadow: 0px 0px 8px rgba(212, 175, 55, 0.6);
-}
-
-/* Center Brand Crest */
-.brand-center {
-  display: flex;
-  justify-content: center;
   align-items: center;
   flex: 0 0 auto;
-  text-align: center;
-  padding: 0 10px;
 }
 
 .brand-crest-logo {
-  height: 170px;
+  height: 120px;
   width: auto;
   filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.8));
   transition: transform 0.3s ease, height 0.3s ease;
@@ -787,16 +767,47 @@ body {
 }
 
 .site-header.scrolled .brand-crest-logo {
-  height: 65px;
+  height: 55px;
 }
 
-/* Right Navigation */
+/* Right Navigation & Menu Links */
 .nav-right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 14px;
+  gap: 24px;
   flex: 1 1 0%;
+}
+
+.nav-menu-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+@media (max-width: 1199px) {
+  .nav-menu-links {
+    display: none;
+  }
+}
+
+/* Nav Links */
+.nav-custom-link {
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.nav-custom-link:hover {
+  color: var(--gold-light, #f59e0b);
+  text-shadow: 0px 0px 8px rgba(212, 175, 55, 0.6);
 }
 
 /* Contact & Export Buttons in Nav */
@@ -820,7 +831,7 @@ body {
   max-width: max-content;
   white-space: nowrap;
   transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
 .btn-nav-contact:hover {
@@ -1361,7 +1372,7 @@ body {
 .about-left-img {
   width: 100%;
   height: auto;
-  max-height:100%;
+  max-height: 100%;
   object-fit: contain;
   transition: transform 0.4s ease;
 }
@@ -1723,7 +1734,8 @@ body {
   background-color: #ffffff;
   position: relative;
   width: 100%;
-  height: 360vh; /* Extended scroll track distance for a slower, graceful horizontal card reveal */
+  height: 360vh;
+  /* Extended scroll track distance for a slower, graceful horizontal card reveal */
 }
 
 .benefits-sticky-container {
@@ -1986,11 +1998,11 @@ body {
 
 /* ================= STYLE SHOWCASE & BRANDS SECTION (HORIZONTAL SCROLL) ================= */
 .style-showcase-section {
-  background-color: #ffffff;
+  background-color: #ebe5d8;
   position: relative;
   z-index: 10;
   width: 100%;
-  height: 380vh; /* Extended scroll height for slow, buttery smooth horizontal card travel */
+  height: 380vh;
 }
 
 .style-showcase-pin-wrapper {
@@ -2003,8 +2015,8 @@ body {
   justify-content: center;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 40px 0;
-  background-color: #ffffff;
+  padding: 30px 0;
+  background-color: #fff;
   z-index: 10;
 }
 
@@ -2147,6 +2159,39 @@ body {
   padding: 10px 0 20px 0;
 }
 
+/* Progressive Scroll Indicator Line Below Bottle Cards */
+.showcase-progress-bar-wrap {
+  width: 100%;
+  max-width: 100%;
+  /* margin: 24px auto 0 auto; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.showcase-progress-track {
+  width: 100%;
+  height: 3px;
+  background-color: rgba(100, 85, 65, 0.20);
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.showcase-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #1c1815;
+  border-radius: 4px;
+  will-change: width;
+  transition: width 0.1s linear;
+}
+
 .style-wine-triptych {
   display: flex;
   gap: 28px;
@@ -2163,111 +2208,141 @@ body {
   backface-visibility: hidden;
 }
 
+.style-showcase-top-eyebrow {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.style-showcase-top-eyebrow span {
+  font-family: var(--font-main);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #645645;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .wine-triptych-item {
     position: relative;
-    flex: 0 0 calc(50vw - 60px);
-    max-width: 648px;
-    height: 576px;
-    /* background-color: #ffffff; */
-    border-radius: 16px;
-    /* overflow: hidden; */
+    flex: 0 0 600px;
+    width: 526px;
+    height: 600px;
+    background-color: #ebe5d800;
+    border-radius: 0px;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* padding: 36px 40px; */
+    padding: 40px;
+    box-shadow: none;
+    border: none;
     cursor: pointer;
-    /* transition: transform 0.35s ease, box-shadow 0.35s ease; */
+    transition: transform 0.35s ease;
 }
-/* 
-.wine-triptych-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.09);
-} */
+
+.showcase-bg-text-watermark {
+  position: absolute;
+  top: 36%;
+  left: 0%;
+  width: 100%;
+  font-family: var(--font-main);
+  font-size: 56px;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(120, 100, 75, 0.22);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
+}
 
 .showcase-card-img-wrap {
   position: absolute;
-  top: 0;
-  left: 0px;
-  bottom: 0;
-  width: 50%;
-  height: 100%;
+  top: 50%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+  height: 600px;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
 }
 
 .wine-triptych-img {
-  height: 112%;
-  max-height: 112%;
+  height: 100%;
+  max-height: 600px;
   width: auto;
   object-fit: contain;
   display: block;
-  transform: translate3d(0, 0, 0);
+  filter: drop-shadow(18px 18px 28px rgba(35, 20, 10, 0.40));
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.12));
 }
 
 .wine-triptych-item:hover .wine-triptych-img {
-  transform: scale(1.06) translateY(-4px);
+  transform: scale(1.05) translateY(-4px);
 }
 
 .showcase-card-content {
-    position: absolute;
-    z-index: 2;
-    margin-left: 26%;
-    width: 37%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: left;
-    bottom: 15%;
+  position: absolute;
+  z-index: 3;
+  margin-left: 31%;
+  width: 44%;
+  display: flex;
+  flex-direction: column;
+  bottom: 23%;
 }
+
 .showcase-card-title {
   font-family: var(--font-main);
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 800;
-  color: #000000;
-  line-height: 1.2;
-  margin-bottom: 12px;
-  letter-spacing: -0.3px;
+  color: #1a1612;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .showcase-card-desc {
-  font-family: var(--font-main);
-  font-size: 14px;
-  font-weight: 400;
-  color: #666666;
-  line-height: 1.6;
+  font-family: 'Courier New', Courier, monospace, var(--font-main);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #4a4238;
+  line-height: 1.65;
   margin-bottom: 24px;
-  max-width: 320px;
+  max-width: 260px;
 }
 
 .showcase-card-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 28px;
-  border-radius: 30px;
-  background-color: transparent;
-  color: #000;
+  padding: 11px 26px;
+  border-radius: 2px;
+  background-color: #1c1815;
+  color: #ffffff;
   font-family: var(--font-main);
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: capitalize;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid black;
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.25s ease; */
+  border: none;
+  box-shadow: 0 4px 12px rgba(28, 24, 21, 0.25);
+  transition: all 0.25s ease;
 }
 
 .showcase-card-btn:hover {
   background-color: var(--gold-primary, #c5a059);
-  color: transparent;
+  color: #1c1815;
   transform: translateY(-2px);
-  /* box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 6px 18px rgba(197, 160, 89, 0.4);
 }
 
 .showcase-landing-card {

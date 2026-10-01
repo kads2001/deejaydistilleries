@@ -1394,6 +1394,34 @@ $(document).ready(function () {
       }
     }
 
+    function updateCenterCard() {
+      const outerRect = outer.getBoundingClientRect();
+      const outerCenter = outerRect.left + (outerRect.width / 2);
+
+      let closestItem = null;
+      let minDistance = Infinity;
+
+      const items = track.querySelectorAll('.wine-triptych-item');
+      items.forEach((item) => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + (itemRect.width / 2);
+        const distance = Math.abs(outerCenter - itemCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
+        }
+      });
+
+      items.forEach((item) => {
+        if (item === closestItem) {
+          item.classList.add('is-center');
+        } else {
+          item.classList.remove('is-center');
+        }
+      });
+    }
+
     function renderLoop() {
       const delta = targetX - currentX;
 
@@ -1401,6 +1429,7 @@ $(document).ready(function () {
         currentX = targetX;
         track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
         updateProgressBar();
+        updateCenterCard();
         isRunning = false;
         return;
       }
@@ -1408,6 +1437,7 @@ $(document).ready(function () {
       currentX += delta * 0.07;
       track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
       updateProgressBar();
+      updateCenterCard();
       requestAnimationFrame(renderLoop);
     }
 

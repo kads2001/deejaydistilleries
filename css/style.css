@@ -1219,7 +1219,7 @@ body {
 .hero-ticker-strip {
   width: 100%;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #000;
   /* border-top: 1px solid rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08); */
   padding: 14px 0;
@@ -1254,15 +1254,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #ffffff;
-  color: #2b2f38;
+  background-color: none;
+  color: #fff;
   font-family: var(--font-main);
-  font-size: 13.5px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.3px;
   line-height: 1;
   padding: 10px 20px;
-  border-radius: 50px !important;
+  /* border-radius: 50px !important; */
   white-space: nowrap;
   transition: all 0.25s ease;
   cursor: default;
@@ -1610,6 +1610,7 @@ body {
   justify-content: space-between;
   gap: 20px;
   padding-top: 45px;
+  width: 100%;
   border-top: 1px solid #eef0f3;
 }
 
@@ -1798,6 +1799,108 @@ body {
   padding-top: var(--section-py, 90px);
   padding-bottom: var(--section-py, 90px);
   box-sizing: border-box;
+}
+
+/* ================= VERTICAL HOVER GALLERY SECTION ================= */
+.vertical-hover-section {
+  width: 100%;
+  position: relative;
+  background-color: #06070a;
+  padding: 60px 0;
+  z-index: 10;
+}
+
+.vertical-hover-container {
+    width: 80% !important;
+    max-width: 80% !important;
+    margin: 0 auto !important;
+    display: flex;
+    gap: 0;
+    /* border-radius: 20px; */
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    display: flex;
+}
+.vertical-hover-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: #06070a;
+  transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease, opacity 0.5s ease;
+}
+
+.vertical-hover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+  will-change: transform;
+}
+
+.vertical-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(6, 7, 10, 0.1) 0%, rgba(6, 7, 10, 0.35) 100%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* Hover Accordion Effect: When container is hovered */
+/* .vertical-hover-container:hover .vertical-hover-item {
+  height: 180px;
+  filter: brightness(0.65);
+} */
+
+/* Hovered Item Expands */
+/* .vertical-hover-container .vertical-hover-item:hover {
+  height: 400px;
+  filter: brightness(1.08);
+} */
+
+/* .vertical-hover-container .vertical-hover-item:hover .vertical-hover-img {
+  transform: scale(1.06);
+} */
+
+@media (max-width: 991px) {
+  .vertical-hover-container {
+    width: 90% !important;
+    max-width: 90% !important;
+  }
+  .vertical-hover-item {
+    height: 180px;
+  }
+  .vertical-hover-container:hover .vertical-hover-item {
+    height: 140px;
+  }
+  .vertical-hover-container .vertical-hover-item:hover {
+    height: 300px;
+  }
+}
+
+@media (max-width: 575px) {
+  .vertical-hover-container {
+    width: 94% !important;
+    max-width: 94% !important;
+    border-radius: 12px;
+  }
+  .vertical-hover-item {
+    height: 140px;
+  }
+  .vertical-hover-container:hover .vertical-hover-item {
+    height: 110px;
+  }
+  .vertical-hover-container .vertical-hover-item:hover {
+    height: 220px;
+  }
 }
 
 /* Section 3 Docked Bottle Slot */
@@ -2200,21 +2303,22 @@ body {
 /* Horizontal Scroll Cards Track Outer Container */
 .style-wine-triptych-track-outer {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-  padding: 10px 0 20px 0;
+  padding: 20px 0;
+  border-radius: 12px;
 }
 
 /* Progressive Scroll Indicator Line Below Bottle Cards */
 .showcase-progress-bar-wrap {
   width: 100%;
   max-width: 100%;
-  /* margin: 24px auto 0 auto; */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 5;
+  margin-top: 15px;
 }
 
 .showcase-progress-track {
@@ -2240,7 +2344,7 @@ body {
 
 .style-wine-triptych {
   display: flex;
-  gap: 28px;
+  gap: 20px;
   flex-wrap: nowrap;
   width: max-content;
   margin: 0;
@@ -2272,21 +2376,29 @@ body {
 }
 
 .wine-triptych-item {
-    position: relative;
-    flex: 0 0 600px;
-    width: 526px;
-    height: 600px;
-    background-color: #ebe5d800;
-    border-radius: 0px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 40px;
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.35s ease;
+  position: relative;
+  flex: 0 0 560px;
+  width: 560px;
+  height: 500px;
+  background-color: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30px;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.70;
+  transform: scale(0.88);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+}
+
+.wine-triptych-item.is-center {
+  opacity: 1;
+  transform: scale(1.0);
+  z-index: 5;
 }
 
 .showcase-bg-text-watermark {
@@ -2311,7 +2423,7 @@ body {
   top: 50%;
   left: 36%;
   transform: translate(-50%, -50%);
-  height: 600px;
+  height: 480px;
   width: auto;
   display: flex;
   align-items: center;
@@ -2322,16 +2434,18 @@ body {
 
 .wine-triptych-img {
   height: 100%;
-  max-height: 600px;
+  max-height: 440px;
   width: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(18px 18px 28px rgba(35, 20, 10, 0.40));
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: drop-shadow(12px 12px 20px rgba(35, 20, 10, 0.30));
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+  transform: scale(0.90);
 }
 
-.wine-triptych-item:hover .wine-triptych-img {
-  transform: scale(1.05) translateY(-4px);
+.wine-triptych-item.is-center .wine-triptych-img {
+  transform: scale(1.22);
+  filter: drop-shadow(22px 22px 35px rgba(35, 20, 10, 0.50));
 }
 
 .showcase-card-content {

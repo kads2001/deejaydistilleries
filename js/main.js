@@ -13,13 +13,13 @@ $(document).ready(function () {
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.05,
-      touchMultiplier: 1.2,
+      wheelMultiplier: 0.85,
+      touchMultiplier: 1.0,
       infinite: false,
       autoResize: true
     });
@@ -1395,42 +1395,10 @@ $(document).ready(function () {
         return;
       }
 
-      currentX += delta * 0.14;
+      currentX += delta * 0.07;
       track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
       requestAnimationFrame(renderLoop);
     }
-
-    // Trigger smooth single-scroll slide animation on wheel gesture
-    let lastWheelTime = 0;
-    window.addEventListener('wheel', function (e) {
-      const now = Date.now();
-      if (now - lastWheelTime < 800) return;
-
-      const secRect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      const maxTranslateX = getMaxTranslateX();
-
-      // Check if section is pinned in viewport
-      if (secRect.top <= 100 && secRect.bottom >= windowHeight - 100) {
-        lastWheelTime = now;
-        isSingleScrollAnimating = true;
-
-        if (e.deltaY > 0) {
-          targetX = -maxTranslateX;
-        } else if (e.deltaY < 0) {
-          targetX = 0;
-        }
-
-        if (!isRunning) {
-          isRunning = true;
-          requestAnimationFrame(renderLoop);
-        }
-
-        setTimeout(function () {
-          isSingleScrollAnimating = false;
-        }, 850);
-      }
-    }, { passive: true });
 
     if (lenis) {
       lenis.on('scroll', calculateTarget);
@@ -1870,15 +1838,16 @@ $(document).ready(function () {
         const childNodes = Array.from(node.childNodes);
         childNodes.forEach((child) => {
           if (child.nodeType === Node.TEXT_NODE) {
-            const text = child.nodeValue;
-            if (text && text.trim().length > 0) {
+            const rawVal = child.nodeValue || '';
+            const text = rawVal.replace(/\s+/g, ' ').trim();
+            if (text.length > 0) {
               const fragment = document.createDocumentFragment();
               for (let i = 0; i < text.length; i++) {
                 const ch = text[i];
                 const span = document.createElement('span');
                 span.className = 'wave-char';
                 if (ch === ' ') {
-                  span.innerHTML = '&nbsp;';
+                  span.textContent = ' ';
                   span.classList.add('wave-space');
                 } else {
                   span.textContent = ch;
@@ -1887,6 +1856,8 @@ $(document).ready(function () {
                 fragment.appendChild(span);
               }
               node.replaceChild(fragment, child);
+            } else if (rawVal.length > 0) {
+              node.removeChild(child);
             }
           } else if (child.nodeType === Node.ELEMENT_NODE && !$(child).is('i, svg, img, input, textarea')) {
             processNode(child, counter);
@@ -1913,6 +1884,81 @@ $(document).ready(function () {
   }
 
   initButtonWaveEffect();
+
+  // 14. Multi-Video Hero Banner Slider (Manual Arrow, Indicator Dot & Swipe Controls)
+  function initHeroVideoSlider() {
+    const $sliderWrap = $('#heroVideoSlider');
+    if (!$sliderWrap.length) return;
+
+    const $track = $sliderWrap.find('.hero-slider-track');
+    const $slides = $sliderWrap.find('.hero-video-slide');
+    const totalSlides = $slides.length;
+    if (!totalSlides) return;
+
+    let currentSlide = 0;
+
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      currentSlide = index;
+
+      const translatePct = -(currentSlide * 25);
+      $track.css('transform', `translate3d(${translatePct}%, 0, 0)`);
+
+      $slides.removeClass('active').eq(currentSlide).addClass('active');
+      $('.hero-slider-dot').removeClass('active').eq(currentSlide).addClass('active');
+      $('#heroSlideNum').text(String(currentSlide + 1).padStart(2, '0'));
+    }
+
+    // Arrow button controls
+    $('.hero-prev-arrow').on('click', function (e) {
+      e.preventDefault();
+      goToSlide(currentSlide - 1);
+    });
+
+    $('.hero-next-arrow').on('click', function (e) {
+      e.preventDefault();
+      goToSlide(currentSlide + 1);
+    });
+
+    // Indicator dot controls
+    $(document).on('click', '.hero-slider-dot', function (e) {
+      e.preventDefault();
+      const targetIndex = parseInt($(this).attr('data-slide'), 10);
+      if (!isNaN(targetIndex)) {
+        goToSlide(targetIndex);
+      }
+    });
+
+    // Mouse Drag / Touch Swipe Navigation
+    let startX = 0;
+    let isDragging = false;
+
+    $sliderWrap.on('touchstart mousedown', function (e) {
+      startX = e.type === 'touchstart' ? e.originalEvent.touches[0].clientX : e.clientX;
+      isDragging = true;
+    });
+
+    $sliderWrap.on('touchend mouseup', function (e) {
+      if (!isDragging) return;
+      isDragging = false;
+      const endX = e.type === 'touchend' ? e.originalEvent.changedTouches[0].clientX : e.clientX;
+      const diffX = startX - endX;
+
+      if (Math.abs(diffX) > 40) {
+        if (diffX > 0) {
+          goToSlide(currentSlide + 1);
+        } else {
+          goToSlide(currentSlide - 1);
+        }
+      }
+    });
+
+    goToSlide(0);
+  }
+
+  initHeroVideoSlider();
 });
 
 

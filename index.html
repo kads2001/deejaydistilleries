@@ -157,63 +157,49 @@
 
     <div class="about-overview-container">
 
-      <!-- Top Row: Tag + Main Statement -->
-      <div class="about-overview-header-row">
-        <div class="about-overview-tag-col" data-aos="fade-up">
-          <span class="about-overview-tag">About Scalient</span>
-        </div>
-        <div class="about-overview-lead-col" data-aos="fade-up" data-aos-delay="100">
-          <p class="about-overview-lead">
-            At Scalient, we believe marketing isn't about selling <span class="about-inline-slot" id="inlineTeamSlot1"
-              aria-hidden="true"></span> it's about connecting. We're a full-service marketing agency built to help
-            brands grow <span class="about-inline-slot" id="inlineTeamSlot2" aria-hidden="true"></span> with purpose and
-            data-driven precision. <span class="about-lead-muted">From crafting compelling stories to executing
-              campaigns that convert, we blend strategy to turn attention into action.</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- Middle Row: Team Cards + Callout CTA -->
-      <div class="about-team-row">
-        <!-- Docked Bottle Slot for Section 2 (Sticks in place when scroll passes) -->
-        <div class="about-docked-bottle-slot" id="aboutDockedBottleSlot">
-          <img src="assets/images/black_blue.png" alt="Black & Blue Cafe Rhum" class="about-docked-bottle-img">
-        </div>
-
-        <div class="about-team-cards-wrap" id="aboutTeamCardsWrap">
-          <div class="about-team-card" id="aboutTeamCard1">
-            <img src="assets/images/about_team1.png" alt="Our Thinkers and Collaborators" class="about-team-img">
-          </div>
-          <div class="about-team-card" id="aboutTeamCard2">
-            <img src="assets/images/about_team12.webp" alt="Strategy and Innovation Meeting" class="about-team-img">
+      <!-- Grid Layout: Left Column (about.png Image) | Right Column (Lead Text + CTA Button) -->
+      <div class="about-grid-wrapper">
+        
+        <!-- Left Side Column -->
+        <div class="about-left-column" data-aos="fade-right">
+          <div class="about-left-img-box">
+            <img src="assets/images/about.png" alt="About Scalient - Deejay Distilleries" class="about-left-img">
           </div>
         </div>
 
-        <div class="about-team-callout" data-aos="fade-up" data-aos-delay="200">
-          <h4 class="about-callout-title">Our Bold and<br>Brilliant Thinkers</h4>
-          <a href="#brands" class="btn-lime-pill">
-            Learn More <i class="bi bi-arrow-right"></i>
-          </a>
+        <!-- Right Side Column -->
+        <div class="about-right-column" data-aos="fade-up" data-aos-delay="100">
+          <!-- Lead Paragraph -->
+          <div class="about-overview-lead-col">
+            <p class="about-overview-lead">
+              At Scalient, we believe marketing isn't about selling it's about connecting. We're a full-service marketing agency built to help brands grow with purpose and data-driven precision. From crafting compelling stories to executing campaigns that convert, we blend strategy to turn attention <span class="about-lead-muted">into action.</span>
+            </p>
+          </div>
+
+          <!-- Callout CTA Button -->
+          <div class="about-lead-cta">
+            <a href="#brands" class="btn-lime-pill">
+              Learn More <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
         </div>
+
       </div>
 
-      <!-- Bottom Row: 4 KPI / Counter Stats with Dividers -->
+      <!-- Bottom Row: 4 KPI / Counter Stats Cards -->
       <div class="about-stats-row" data-aos="fade-up" data-aos-delay="300">
         <div class="about-stat-col">
           <h3 class="about-stat-number">$74M</h3>
           <p class="about-stat-desc">Driving growth with strategy</p>
         </div>
-        <div class="about-stat-divider"></div>
         <div class="about-stat-col">
           <h3 class="about-stat-number">95%</h3>
           <p class="about-stat-desc">Building trusted partnerships</p>
         </div>
-        <div class="about-stat-divider"></div>
         <div class="about-stat-col">
           <h3 class="about-stat-number">+225</h3>
           <p class="about-stat-desc">Delivering industry success</p>
         </div>
-        <div class="about-stat-divider"></div>
         <div class="about-stat-col">
           <h3 class="about-stat-number">92%</h3>
           <p class="about-stat-desc">Turning traffic into growth</p>
@@ -224,7 +210,7 @@
   </section>
 
   <!-- ================= MODERN SOLUTIONS & LASTING BENEFITS SECTION ================= -->
-  <section class="benefits-solutions-section" id="benefits">
+  <section class="benefits-solutions-section d-none" id="benefits">
     <div class="benefits-sticky-container">
       <div class="benefits-solutions-container">
 
@@ -488,72 +474,65 @@
 
     </div>
   </section>
-  <!-- ================= STYLE SHOWCASE & BRANDS SECTION ================= -->
-  <section class="style-showcase-section " id="showcase">
-    <div class="style-showcase-container">
-      <div class="style-showcase-header" data-aos="fade-up">
-        <div class="style-showcase-header-left">
-          <h2 class="style-showcase-title">
-            Find your own <span class="title-italic-accent">unique style,</span><br>
-            and thousands of brands.
-          </h2>
-        </div>
-        <!-- <div class="style-showcase-header-right">
-          <span class="style-promo-tag">GET 15% DISCOUNT ON YOUR FIRST ORDER</span>
-          <a href="#brands" class="btn-shop-pill">SHOP NOW</a>
-        </div> -->
-      </div>
-      <div class="style-controls-bar" data-aos="fade-up" data-aos-delay="100">
-        <div class="style-filter-tabs">
-          <button class="filter-pill-btn active">ALL VARIETALS</button>
-          <button class="filter-pill-btn">ROSÉ</button>
-          <button class="filter-pill-btn">BLANC</button>
-          <button class="filter-pill-btn">ROUGE</button>
-        </div>
-      </div>
-
-      <!-- 3-Panel Wine Varietals Showcase (ROSÉ, BLANC, ROUGE) -->
-      <div class="style-wine-triptych" data-aos="fade-up" data-aos-delay="200">
-
-        <!-- Panel 1: ROSÉ -->
-        <div class="wine-triptych-item">
-          <img src="assets/images/proimg1.jpeg" alt="ROSÉ - Frais &amp; Fruité" class="wine-triptych-img">
-        </div>
-
-        <!-- Panel 2: BLANC (Showcase Bottle Landing Card Slot) -->
-        <div class="wine-triptych-item showcase-landing-card" id="showcaseBottleLandingCard">
-          <img src="assets/images/proimg1.jpeg" alt="BLANC - Équilibré &amp; Minéral" class="wine-triptych-img">
-          <div class="showcase-docked-bottle-wrap">
-            <img src="assets/images/proimg1.png" alt="Showcase Varietal Bottle" class="showcase-docked-bottle-img">
+  <!-- ================= STYLE SHOWCASE & BRANDS SECTION (HORIZONTAL SCROLL) ================= -->
+  <section class="style-showcase-section" id="showcase">
+    <div class="style-showcase-pin-wrapper">
+      <div class="style-showcase-container">
+        
+        <div class="style-showcase-header" data-aos="fade-up">
+          <div class="style-showcase-header-left">
+            <h2 class="style-showcase-title">
+              Find your own <span class="title-italic-accent">unique style,</span><br>
+              and thousands of brands.
+            </h2>
           </div>
         </div>
 
-        <!-- Panel 3: ROUGE -->
-        <div class="wine-triptych-item">
-          <img src="assets/images/proimg1.jpeg" alt="ROUGE - Riche &amp; Généreux" class="wine-triptych-img">
+        <div class="style-controls-bar" data-aos="fade-up" data-aos-delay="100">
+          <div class="style-filter-tabs">
+            <button class="filter-pill-btn active" data-filter="all">ALL VARIETALS</button>
+            <button class="filter-pill-btn" data-filter="gin">GIN</button>
+            <button class="filter-pill-btn" data-filter="rum">RUM</button>
+            <button class="filter-pill-btn" data-filter="whisky">WHISKY</button>
+            <button class="filter-pill-btn" data-filter="vodka">VODKA</button>
+          </div>
+        </div>
+
+        <!-- Horizontal Scroll Cards Track Outer Container -->
+        <div class="style-wine-triptych-track-outer">
+          <div class="style-wine-triptych" id="styleShowcaseTrack">
+
+            <div class="wine-triptych-item" data-category="gin">
+              <img src="assets/images/proimg1.png" alt="Blue Marine Gin" class="wine-triptych-img">
+            </div>
+
+            <div class="wine-triptych-item showcase-landing-card" id="showcaseBottleLandingCard" data-category="rum">
+              <img src="assets/images/proimg2.png" alt="Karan's Bullet XXX Rum" class="wine-triptych-img">
+              <div class="showcase-docked-bottle-wrap">
+                <img src="assets/images/proimg1.png" alt="Showcase Varietal Bottle" class="showcase-docked-bottle-img">
+              </div>
+            </div>
+
+            <div class="wine-triptych-item" data-category="whisky">
+              <img src="assets/images/proimg3.png" alt="Uncle 39 Premium Whisky" class="wine-triptych-img">
+            </div>
+
+            <div class="wine-triptych-item" data-category="vodka">
+              <img src="assets/images/proimg4.png" alt="Craft Distillation Blend" class="wine-triptych-img">
+            </div>
+
+            <div class="wine-triptych-item" data-category="rum">
+              <img src="assets/images/proimg5.png" alt="Reserve Dark Spirits" class="wine-triptych-img">
+            </div>
+
+            <div class="wine-triptych-item" data-category="whisky">
+              <img src="assets/images/proimg6.png" alt="Single Malt Craft Edition" class="wine-triptych-img">
+            </div>
+
+          </div>
         </div>
 
       </div>
-
-      <!-- Bottom Brand Partner Logos Strip -->
-      <div class="showcase-brand-strip d-none" data-aos="fade-up" data-aos-delay="300">
-        <div class="brand-strip-item">
-          <i class="bi bi-disc"></i> Blob
-        </div>
-        <div class="brand-strip-item">
-          <i class="bi bi-fingerprint"></i> Yallot
-        </div>
-        <div class="brand-strip-item">
-          <i class="bi bi-grid-3x3-gap-fill"></i> Bliss+
-        </div>
-        <div class="brand-strip-item">
-          <i class="bi bi-triangle-half"></i> Flare
-        </div>
-        <div class="brand-strip-item">
-          <i class="bi bi-asterisk"></i> Karan's
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -798,7 +777,7 @@
         <div class="product-news-left-col" data-aos="fade-up">
           <div class="editorial-card editorial-card-featured">
             <div class="editorial-img-wrapper editorial-img-featured">
-              <img src="assets/images/exhi.webp" alt="Global Spirits Expo Exhibition Hall" class="editorial-img">
+              <img src="assets/images/about_team1.png" alt="Global Spirits Expo Exhibition Hall" class="editorial-img">
             </div>
           </div>
         </div>
@@ -1174,6 +1153,10 @@
 
   <!-- AOS (Animate On Scroll) JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- GSAP 3 & ScrollTrigger Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Custom Main JS -->
   <script src="js/main.js"></script>

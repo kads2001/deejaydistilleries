@@ -33,6 +33,18 @@ $(document).ready(function () {
     requestAnimationFrame(raf);
   }
 
+  // GSAP 3 & ScrollTrigger Plugin Integration
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    if (lenis) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
+  }
+
   // Smooth Scroll Helper Function
   function smoothScrollTo(target, offset) {
     const targetOffset = typeof offset !== 'undefined' ? offset : -70;
@@ -1311,30 +1323,188 @@ $(document).ready(function () {
 
   initZoomBanner();
 
-  // 10. Style Showcase Filter & Arrows Controls
+  // 10. Style Showcase Filter & Single-Scroll Smooth Cards Animation
   function initStyleShowcase() {
     const $tabs = $('.filter-pill-btn');
-    const $grid = $('.style-gallery-grid');
-    const $prevBtn = $('#showcasePrev');
-    const $nextBtn = $('#showcaseNext');
+    const section = document.getElementById('showcase');
+    const track = document.getElementById('styleShowcaseTrack');
+    const outer = document.querySelector('.style-wine-triptych-track-outer');
 
     $tabs.on('click', function () {
       $tabs.removeClass('active');
       $(this).addClass('active');
+
+      const filter = $(this).attr('data-filter');
+      const $items = $('.wine-triptych-item');
+      if (!filter || filter === 'all') {
+        $items.css({ opacity: '1', transform: 'scale(1)' });
+      } else {
+        $items.each(function () {
+          const category = $(this).attr('data-category');
+          if (category === filter) {
+            $(this).css({ opacity: '1', transform: 'scale(1)' });
+          } else {
+            $(this).css({ opacity: '0.35', transform: 'scale(0.95)' });
+          }
+        });
+      }
     });
 
-    if ($grid.length && $prevBtn.length && $nextBtn.length) {
-      const scrollAmount = 300;
-      $prevBtn.on('click', function () {
-        $grid.get(0).scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      });
-      $nextBtn.on('click', function () {
-        $grid.get(0).scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      });
+    if (!section || !track || !outer) return;
+
+    let targetX = 0;
+    let currentX = 0;
+    let isRunning = false;
+    let isSingleScrollAnimating = false;
+
+    function getMaxTranslateX() {
+      return Math.max(0, track.scrollWidth - outer.clientWidth);
     }
+
+    function calculateTarget() {
+      if (isSingleScrollAnimating) return;
+
+      const secRect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      
+      const totalScrollable = section.offsetHeight - windowHeight;
+      if (totalScrollable <= 0) return;
+
+      const currentScroll = -secRect.top;
+      let progress = currentScroll / totalScrollable;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const maxTranslateX = getMaxTranslateX();
+      if (maxTranslateX <= 0) return;
+
+      targetX = - (progress * maxTranslateX);
+
+      if (!isRunning) {
+        isRunning = true;
+        requestAnimationFrame(renderLoop);
+      }
+    }
+
+    function renderLoop() {
+      const delta = targetX - currentX;
+
+      if (Math.abs(delta) < 0.05) {
+        currentX = targetX;
+        track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+        isRunning = false;
+        return;
+      }
+
+      currentX += delta * 0.14;
+      track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+      requestAnimationFrame(renderLoop);
+    }
+
+    // Trigger smooth single-scroll slide animation on wheel gesture
+    let lastWheelTime = 0;
+    window.addEventListener('wheel', function (e) {
+      const now = Date.now();
+      if (now - lastWheelTime < 800) return;
+
+      const secRect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const maxTranslateX = getMaxTranslateX();
+
+      // Check if section is pinned in viewport
+      if (secRect.top <= 100 && secRect.bottom >= windowHeight - 100) {
+        lastWheelTime = now;
+        isSingleScrollAnimating = true;
+
+        if (e.deltaY > 0) {
+          targetX = -maxTranslateX;
+        } else if (e.deltaY < 0) {
+          targetX = 0;
+        }
+
+        if (!isRunning) {
+          isRunning = true;
+          requestAnimationFrame(renderLoop);
+        }
+
+        setTimeout(function () {
+          isSingleScrollAnimating = false;
+        }, 850);
+      }
+    }, { passive: true });
+
+    if (lenis) {
+      lenis.on('scroll', calculateTarget);
+    }
+    window.addEventListener('scroll', calculateTarget, { passive: true });
+    window.addEventListener('resize', calculateTarget, { passive: true });
+
+    calculateTarget();
+    setTimeout(calculateTarget, 150);
   }
 
   initStyleShowcase();
+
+  // 10.2 Interactive 3D 360-Degree Mouse Hover Parallax for Hero Banner Background
+  function init3DBannerHover() {
+    const banner = document.getElementById('heroMountainWrap') || document.querySelector('.hero-single-banner-wrap');
+    const bgImg = document.getElementById('heroMountainImg') || document.querySelector('.hero-mountain-img');
+
+    if (!banner || !bgImg) return;
+
+    let bounds = banner.getBoundingClientRect();
+
+    function updateBounds() {
+      bounds = banner.getBoundingClientRect();
+    }
+    window.addEventListener('resize', updateBounds, { passive: true });
+    window.addEventListener('scroll', updateBounds, { passive: true });
+
+    banner.addEventListener('mousemove', function (e) {
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      // Normalized coordinates from center (-1.0 to +1.0)
+      const percentX = (mouseX / bounds.width - 0.5) * 2;
+      const percentY = (mouseY / bounds.height - 0.5) * 2;
+
+      // Horizontal left-right movement only
+      const translateX = percentX * 22; // Smooth 22px left/right move
+
+      if (window.gsap) {
+        gsap.to(bgImg, {
+          x: translateX,
+          y: 0,
+          rotateX: 0,
+          rotateY: 0,
+          scale: 1.05,
+          ease: "power2.out",
+          duration: 0.9,
+          overwrite: "auto"
+        });
+      } else {
+        bgImg.style.transform = `translate(-50%, -50%) translate3d(${translateX.toFixed(2)}px, 0, 0) scale(1.05)`;
+      }
+    });
+
+    banner.addEventListener('mouseleave', function () {
+      if (window.gsap) {
+        gsap.to(bgImg, {
+          x: 0,
+          y: 0,
+          rotateX: 0,
+          rotateY: 0,
+          scale: 1.02,
+          ease: "power3.out",
+          duration: 1.1,
+          overwrite: "auto"
+        });
+      } else {
+        bgImg.style.transform = `translate(-50%, -50%) translate3d(0, 0, 0) scale(1.02)`;
+      }
+    });
+  }
+
+  init3DBannerHover();
 
   // 10.1 Interactive Scroll Stacking Effect for Craft Beer Cards
   function initBeerStackScroll() {
@@ -1355,12 +1525,10 @@ $(document).ready(function () {
         // Progress of NEXT card sliding over THIS card (0 = next card entering viewport bottom, 1 = next card at top)
         const progress = Math.min(Math.max((windowHeight - nextRect.top) / windowHeight, 0), 1);
 
-        // Smooth 3D stack scale (1.0 -> 0.92), brightness (1.0 -> 0.65), and slight upward parallax
-        const scale = 1 - progress * 0.08;
-        const brightness = 1 - progress * 0.35;
-        const translateY = progress * -18;
+        // Smooth brightness tinting (scaling removed per design)
+        const brightness = 1 - progress * 0.3;
 
-        this.style.transform = `scale(${scale.toFixed(4)}) translateY(${translateY.toFixed(1)}px)`;
+        this.style.transform = 'none';
         this.style.filter = `brightness(${brightness.toFixed(3)})`;
       });
     }

@@ -277,6 +277,52 @@ body {
   overflow-x: clip;
 }
 
+/* ================= GLOBAL 80% CONTAINER WRAPPER ================= */
+.container,
+.nav-container,
+.hero-bottom-container,
+.style-showcase-container,
+.benefits-container,
+.recent-launches-container,
+.craft-beer-stack-container,
+.about-container,
+.site-footer-container {
+  width: 80% !important;
+  max-width: 80% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 991px) {
+  .container,
+  .nav-container,
+  .hero-bottom-container,
+  .style-showcase-container,
+  .benefits-container,
+  .recent-launches-container,
+  .craft-beer-stack-container,
+  .about-container,
+  .site-footer-container {
+    width: 90% !important;
+    max-width: 90% !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .container,
+  .nav-container,
+  .hero-bottom-container,
+  .style-showcase-container,
+  .benefits-container,
+  .recent-launches-container,
+  .craft-beer-stack-container,
+  .about-container,
+  .site-footer-container {
+    width: 94% !important;
+    max-width: 94% !important;
+  }
+}
+
 /* ================= HERO SECTION & VIDEO BACKGROUND ================= */
 .menu {
   gap: 20px;
@@ -352,12 +398,12 @@ body {
 }
 
 .hero-slide-img {
-  animation: bannerKenBurnsZoom 14s ease-in-out infinite alternate;
+  animation: bannerKenBurnsZoom 16s ease-in-out infinite alternate;
   will-change: transform;
 }
 
 .hero-video-slide.active .hero-slide-img {
-  animation: bannerKenBurnsZoom 14s ease-in-out infinite alternate;
+  animation: bannerKenBurnsZoom 16s ease-in-out infinite alternate;
 }
 
 @keyframes bannerKenBurnsZoom {
@@ -366,11 +412,11 @@ body {
   }
 
   50% {
-    transform: translate(-50%, -50%) scale(1.08);
+    transform: translate(-50%, -50%) scale(1.02);
   }
 
   100% {
-    transform: translate(-50%, -50%) scale(1.14);
+    transform: translate(-50%, -50%) scale(1.04);
   }
 }
 

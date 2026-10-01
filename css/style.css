@@ -179,7 +179,6 @@
 .recent-launches-container,
 .flavour-container,
 .zoom-banner-container,
-.beer-stack-container,
 .product-news-container,
 .blogs-container,
 .contact-minimal-container,
@@ -2188,7 +2187,7 @@ body {
 .showcase-card-img-wrap {
   position: absolute;
   top: 0;
-  left: -10px;
+  left: 0px;
   bottom: 0;
   width: 50%;
   height: 100%;

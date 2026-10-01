@@ -13,13 +13,13 @@ $(document).ready(function () {
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.85,
-      touchMultiplier: 1.0,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
       infinite: false,
       autoResize: true
     });
@@ -31,17 +31,11 @@ $(document).ready(function () {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-  }
 
-  // GSAP 3 & ScrollTrigger Plugin Integration
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-    if (lenis) {
+    // Sync with GSAP ScrollTrigger if present
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
       lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-      gsap.ticker.lagSmoothing(0);
     }
   }
 
@@ -51,12 +45,16 @@ $(document).ready(function () {
     if (!target) return;
 
     if (lenis) {
-      lenis.scrollTo(target, { offset: targetOffset, duration: 1.2 });
+      lenis.scrollTo(target, {
+        offset: targetOffset,
+        duration: 1.4,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
     } else {
       const elTop = $(target).offset() ? $(target).offset().top : 0;
       $('html, body').stop().animate({
         scrollTop: Math.max(0, elTop + targetOffset)
-      }, 700);
+      }, 850);
     }
   }
 

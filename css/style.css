@@ -352,6 +352,27 @@ body {
   z-index: 1;
 }
 
+.hero-slide-img {
+  animation: bannerKenBurnsZoom 14s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.hero-video-slide.active .hero-slide-img {
+  animation: bannerKenBurnsZoom 14s ease-in-out infinite alternate;
+}
+
+@keyframes bannerKenBurnsZoom {
+  0% {
+    transform: translate(-50%, -50%) scale(1.0);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.14);
+  }
+}
+
 .hero-eyebrow-badge {
   font-family: var(--font-main);
   font-size: 12px;

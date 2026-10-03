@@ -1811,36 +1811,39 @@ body {
 }
 
 .vertical-hover-container {
-    width: 80% !important;
-    max-width: 80% !important;
-    margin: 0 auto !important;
-    display: flex;
-    gap: 0;
-    /* border-radius: 20px; */
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    display: flex;
+  width: 80% !important;
+  max-width: 80% !important;
+  margin: 0 auto !important;
+  display: flex;
+  gap: 0;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  height: 600px;
+  justify-content: space-between;
 }
+
 .vertical-hover-item {
   position: relative;
-  width: 100%;
+  flex: none;
+  width: 20%;
   height: 100%;
   overflow: hidden;
   margin: 0;
   padding: 0;
   cursor: pointer;
   background-color: #06070a;
-  transition: height 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease, opacity 0.5s ease;
+transition: all 10s ease-in-out;
 }
 
 .vertical-hover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
-  will-change: transform;
 }
 
 .vertical-hover-overlay {
@@ -1849,40 +1852,45 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(6, 7, 10, 0.1) 0%, rgba(6, 7, 10, 0.35) 100%);
+  background: linear-gradient(180deg, rgba(6, 7, 10, 0) 0%, rgba(6, 7, 10, 0.3) 100%);
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 1s ease-in-out;
 }
 
-/* Hover Accordion Effect: When container is hovered */
-/* .vertical-hover-container:hover .vertical-hover-item {
-  height: 180px;
-  filter: brightness(0.65);
-} */
+/* When hovering on the container, shrink all items to 15% */
+.vertical-hover-container:hover .vertical-hover-item {
+  width: 15%;
+transition: all 0.5s ease-in-out;
+}
 
-/* Hovered Item Expands */
-/* .vertical-hover-container .vertical-hover-item:hover {
-  height: 400px;
-  filter: brightness(1.08);
-} */
+/* The hovered item expands to 40% */
+.vertical-hover-container .vertical-hover-item:hover {
+  width: 40%;
+transition: all 0.5s ease-in-out;
+}
 
-/* .vertical-hover-container .vertical-hover-item:hover .vertical-hover-img {
-  transform: scale(1.06);
-} */
+.vertical-hover-container:hover .vertical-hover-item .vertical-hover-overlay {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+.vertical-hover-container .vertical-hover-item:hover .vertical-hover-overlay {
+  opacity: 0;
+ transition: all 0.5s ease-in-out;
+
+}
 
 @media (max-width: 991px) {
   .vertical-hover-container {
     width: 90% !important;
     max-width: 90% !important;
-  }
-  .vertical-hover-item {
-    height: 180px;
+    height: 350px;
   }
   .vertical-hover-container:hover .vertical-hover-item {
-    height: 140px;
+    width: 15%;
   }
   .vertical-hover-container .vertical-hover-item:hover {
-    height: 300px;
+    width: 40%;
   }
 }
 
@@ -1891,15 +1899,13 @@ body {
     width: 94% !important;
     max-width: 94% !important;
     border-radius: 12px;
-  }
-  .vertical-hover-item {
-    height: 140px;
+    height: 250px;
   }
   .vertical-hover-container:hover .vertical-hover-item {
-    height: 110px;
+    width: 15%;
   }
   .vertical-hover-container .vertical-hover-item:hover {
-    height: 220px;
+    width: 40%;
   }
 }
 

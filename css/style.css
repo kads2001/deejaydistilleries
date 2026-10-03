@@ -277,6 +277,22 @@ body {
   overflow-x: clip;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.hero-main-title,
+.style-showcase-title,
+.benefits-section-title,
+.beer-stack-item-title,
+.about-stat-number,
+.showcase-card-title,
+.benefit-card-title {
+  font-family: 'Isometra', sans-serif !important;
+}
+
 /* ================= GLOBAL 80% CONTAINER WRAPPER ================= */
 .container,
 .nav-container,
@@ -294,6 +310,7 @@ body {
 }
 
 @media (max-width: 991px) {
+
   .container,
   .nav-container,
   .hero-bottom-container,
@@ -309,6 +326,7 @@ body {
 }
 
 @media (max-width: 575px) {
+
   .container,
   .nav-container,
   .hero-bottom-container,
@@ -1665,6 +1683,7 @@ body {
   .about-grid-wrapper {
     gap: 40px;
   }
+
   .about-left-column {
     flex: 0 0 300px;
   }
@@ -1698,6 +1717,7 @@ body {
     gap: 35px;
     margin-bottom: 50px;
   }
+
   .about-left-column {
     order: 1;
     flex: none;
@@ -1842,7 +1862,7 @@ body {
   padding: 0;
   cursor: pointer;
   background-color: #06070a;
-transition: all 10s ease-in-out;
+  transition: all 10s ease-in-out;
 }
 
 .vertical-hover-img {
@@ -1870,13 +1890,13 @@ transition: all 10s ease-in-out;
 /* When hovering on the container, shrink all items to 15% */
 .vertical-hover-container:hover .vertical-hover-item {
   width: 15%;
-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 /* The hovered item expands to 40% */
 .vertical-hover-container .vertical-hover-item:hover {
   width: 40%;
-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .vertical-hover-container:hover .vertical-hover-item .vertical-hover-overlay {
@@ -1886,7 +1906,7 @@ transition: all 0.5s ease-in-out;
 
 .vertical-hover-container .vertical-hover-item:hover .vertical-hover-overlay {
   opacity: 0;
- transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 
 }
 
@@ -1896,9 +1916,11 @@ transition: all 0.5s ease-in-out;
     max-width: 90% !important;
     height: 350px;
   }
+
   .vertical-hover-container:hover .vertical-hover-item {
     width: 15%;
   }
+
   .vertical-hover-container .vertical-hover-item:hover {
     width: 40%;
   }
@@ -1911,9 +1933,11 @@ transition: all 0.5s ease-in-out;
     border-radius: 12px;
     height: 250px;
   }
+
   .vertical-hover-container:hover .vertical-hover-item {
     width: 15%;
   }
+
   .vertical-hover-container .vertical-hover-item:hover {
     width: 40%;
   }
@@ -1948,16 +1972,50 @@ transition: all 0.5s ease-in-out;
   animation: scrollRightToLeft 25s linear infinite;
 }
 
+
 .marquee-item {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
+.marquee-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+
+.marquee-title {
+  font-family: 'Isometra', sans-serif !important;
+  font-size: 22px;
+  font-weight: 900;
+  color: #111111;
+  margin-bottom: 2px;
+}
+
+.marquee-desc {
+  font-family: var(--font-main);
+  font-size: 14px;
+  color: #333333;
+  margin: 0;
+  max-width: 250px;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+
+
 .marquee-item img {
-  height: 70px;
-  width: auto;
-  object-fit: contain;
-  filter: brightness(0.7) grayscale(0.3);
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: brightness(0.8) grayscale(0.2);
   transition: filter 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .marquee-item img:hover {
@@ -1968,6 +2026,7 @@ transition: all 0.5s ease-in-out;
   0% {
     transform: translateX(-50%);
   }
+
   100% {
     transform: translateX(0%);
   }
@@ -1977,15 +2036,24 @@ transition: all 0.5s ease-in-out;
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
 }
 
 @media (max-width: 991px) {
+
   .marquee-item img {
-    height: 55px;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(0.8) grayscale(0.2);
+    transition: filter 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
+
   .marquee-track {
     gap: 40px;
   }
@@ -1995,9 +2063,17 @@ transition: all 0.5s ease-in-out;
   .logo-marquee-wrap {
     padding: 25px 0;
   }
+
   .marquee-item img {
-    height: 40px;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(0.8) grayscale(0.2);
+    transition: filter 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
+
   .marquee-track {
     gap: 30px;
   }
@@ -2545,7 +2621,7 @@ transition: all 0.5s ease-in-out;
 
 .wine-triptych-item.is-center .wine-triptych-img {
   transform: scale(1.22);
-  filter: drop-shadow(22px 22px 35px rgba(35, 20, 10, 0.50));
+  /* filter: drop-shadow(22px 22px 35px rgba(35, 20, 10, 0.50)); */
 }
 
 .showcase-card-content {
@@ -2574,12 +2650,13 @@ transition: all 0.5s ease-in-out;
   font-size: 13.5px;
   font-weight: 600;
   color: #4a4238;
-  line-height: 1.65;
+  line-height: normal;
   margin-bottom: 24px;
   max-width: 260px;
 }
 
 .showcase-card-btn {
+  width: fit-content;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2596,6 +2673,7 @@ transition: all 0.5s ease-in-out;
   border: none;
   box-shadow: 0 4px 12px rgba(28, 24, 21, 0.25);
   transition: all 0.25s ease;
+  border-radius: 32px;
 }
 
 .showcase-card-btn:hover {
@@ -3525,26 +3603,26 @@ transition: all 0.5s ease-in-out;
 
 .beer-stack-layout-grid {
   display: grid;
-  grid-template-columns: 1fr minmax(260px, 460px) 1fr;
-  align-items: center;
+  grid-template-columns: 1fr;
+  align-items: start;
   width: 80%;
   max-width: 80%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   gap: 30px;
   pointer-events: auto;
 }
 
 /* Left Column */
 .beer-stack-col-left {
-  max-width: 440px;
+  max-width: 750px;
   text-align: left;
 }
 
 /* Alternating layout: 2nd card has content on right side */
 .beer-stack-card:nth-child(2) .beer-stack-col-left {
-  order: 3;
-  text-align: right;
-  margin-left: auto;
+  order: 1;
+  text-align: left;
+  /* margin-left: auto; */
 }
 
 .beer-stack-card:nth-child(2) .beer-stack-center-spacer {
@@ -3562,18 +3640,19 @@ transition: all 0.5s ease-in-out;
 
 .beer-stack-item-title {
   font-family: var(--font-main);
-  font-size: clamp(26px, 2.7vw, 44px);
+  font-size: clamp(26px, 2.7vw, 52px);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 72px;
   letter-spacing: -0.5px;
   text-transform: uppercase;
   margin-bottom: 16px;
   color: black;
+  max-width: 750px;
 }
 
 .beer-stack-item-desc {
   font-family: var(--font-main);
-  font-size: 15px;
+  font-size: 22px;
   font-style: italic;
   line-height: 1.55;
   margin-bottom: 24px;
@@ -3582,7 +3661,7 @@ transition: all 0.5s ease-in-out;
 
 .beer-stack-read-more {
   font-family: var(--font-main);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -3804,7 +3883,7 @@ transition: all 0.5s ease-in-out;
   }
 
   .beer-stack-layout-grid {
-    grid-template-columns: 1fr minmax(200px, 340px) 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
@@ -4021,8 +4100,8 @@ transition: all 0.5s ease-in-out;
 }
 
 .editorial-img-featured {
-  height: 640px;
-  max-height: calc(100vh - 140px);
+  height: 100%;
+  /* max-height: calc(100vh - 140px); */
 }
 
 .editorial-img-stacked {
@@ -4553,6 +4632,7 @@ transition: all 0.5s ease-in-out;
   .world-map-section {
     padding: 60px 0;
   }
+
   .world-map-wrap {
     height: 400px;
   }
@@ -4562,9 +4642,11 @@ transition: all 0.5s ease-in-out;
   .world-map-section {
     padding: 40px 0;
   }
+
   .world-map-wrap {
     height: 300px;
   }
+
   .world-map-header {
     margin-bottom: 30px;
   }
@@ -4706,10 +4788,11 @@ transition: all 0.5s ease-in-out;
 }
 
 .footer-top-grid {
-  display: grid;
-  grid-template-columns: 1.35fr 0.85fr 1.15fr 1.35fr;
-  gap: 40px;
-  margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
 }
 
 .footer-brand-logo {
@@ -4725,17 +4808,17 @@ transition: all 0.5s ease-in-out;
 }
 
 .footer-brand-logo img {
-  height: 38px;
+  height: 170px;
   width: auto;
 }
 
 .footer-brand-text {
   font-family: var(--font-main);
-  font-size: 13px;
-  line-height: 22px;
+  font-size: 24px;
+  line-height: 36px;
   color: #c5c7ce;
   margin-bottom: 24px;
-  max-width: 300px;
+  max-width: 600px;
 }
 
 .footer-socials-row {
@@ -4791,7 +4874,7 @@ transition: all 0.5s ease-in-out;
   color: #c5c7ce;
   text-decoration: none;
   font-family: var(--font-main);
-  font-size: 13.5px;
+  font-size: 22px;
   line-height: 20px;
   display: inline-flex;
   align-items: center;
@@ -4932,7 +5015,7 @@ transition: all 0.5s ease-in-out;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-family: var(--font-main);
-  font-size: 12px;
+  font-size: 20px;
   line-height: 18px;
   color: #888888;
 }

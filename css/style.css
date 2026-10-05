@@ -1279,7 +1279,7 @@ h6,
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: none;
+  /* background-color: none; */
   color: #fff;
   font-family: var(--font-main);
   font-size: 24px;
@@ -1287,7 +1287,7 @@ h6,
   letter-spacing: 0.3px;
   line-height: 1;
   padding: 10px 20px;
-  /* border-radius: 50px !important; */
+  border-radius: 50px !important;
   white-space: nowrap;
   transition: all 0.25s ease;
   cursor: default;
@@ -4622,7 +4622,7 @@ h6,
 
 .world-map-title {
   font-family: var(--font-main);
-  font-size: clamp(28px, 4vw, 52px);
+ font-size: clamp(30px, 4vw, 72px);
   font-weight: 700;
   color: #0b0c10; /* Changed to dark */
   letter-spacing: -0.5px;

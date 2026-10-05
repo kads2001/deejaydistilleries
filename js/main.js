@@ -2075,3 +2075,56 @@ $(document).ready(function() {
 
     requestAnimationFrame(scrollLoop);
   }
+document.addEventListener('DOMContentLoaded', function() {
+  const mapWrapper = document.querySelector('.world-map-image-wrapper');
+  if (!mapWrapper) return;
+
+  mapWrapper.style.position = 'relative';
+  mapWrapper.style.display = 'block'; // Ensure it wraps the image tightly
+
+  // Approximate top/left percentages for standard map
+  const countries = [
+    { name: 'ANGOLA', top: 65, left: 52 },
+    { name: 'BELIZE', top: 50, left: 22 },
+    { name: 'BENIN', top: 53, left: 48 },
+    { name: 'BURKINA FASO', top: 50, left: 47 },
+    { name: 'CAMEROON', top: 55, left: 50 },
+    { name: 'CENTRAL AFRICAN REPUBLIC', top: 53, left: 52 },
+    { name: 'DEMOCRATIC REPUBLIC OF CONGO', top: 60, left: 53 },
+    { name: 'REPUBLIC OF CONGO', top: 58, left: 51 },
+    { name: 'CUBA', top: 45, left: 25 },
+    { name: 'COTE D IVOIRE', top: 54, left: 45 },
+    { name: 'EQUATORIAL GUINEA', top: 56, left: 50 },
+    { name: 'GERMANY', top: 28, left: 50 },
+    { name: 'GHANA', top: 54, left: 47 },
+    { name: 'GUINEA', top: 52, left: 44 },
+    { name: 'HAITI', top: 47, left: 28 },
+    { name: 'IRAQ', top: 38, left: 58 },
+    { name: 'ISRAEL', top: 40, left: 56 },
+    { name: 'ITALY', top: 32, left: 51 },
+    { name: 'KENYA', top: 57, left: 58 },
+    { name: 'LIBERIA', top: 55, left: 44 },
+    { name: 'NIGER', top: 48, left: 49 },
+    { name: 'NIGERIA', top: 53, left: 49 },
+    { name: 'OMAN', top: 45, left: 62 },
+    { name: 'PANAMA', top: 53, left: 26 },
+    { name: 'RWANDA', top: 58, left: 56 },
+    { name: 'SIERRA LEONE', top: 54, left: 43 },
+    { name: 'SOUTH SUDAN', top: 52, left: 55 },
+    { name: 'SUDAN', top: 47, left: 55 },
+    { name: 'TANZANIA', top: 61, left: 57 },
+    { name: 'TOGO', top: 54, left: 48 },
+    { name: 'UGANDA', top: 57, left: 56 },
+    { name: 'UNITED ARAB EMIRATES', top: 43, left: 61 },
+    { name: 'ZAMBIA', top: 65, left: 55 }
+  ];
+
+  countries.forEach(country => {
+    const dot = document.createElement('div');
+    dot.className = 'map-glow-dot';
+    dot.style.top = country.top + '%';
+    dot.style.left = country.left + '%';
+    dot.title = country.name; // Tooltip on hover
+    mapWrapper.appendChild(dot);
+  });
+});

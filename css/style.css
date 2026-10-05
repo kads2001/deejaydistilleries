@@ -790,14 +790,21 @@ h6,
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(10, 12, 16, 0.88) !important;
+  background: rgb(255 255 255 / 88%) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding-top: 12px;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+.site-header.scrolled .nav-custom-link{
+  color: var(--gold-primary) !important;
+}
 
+.site-header.scrolled .btn-nav-contact{
+    /* color: var(--gold-primary) !important; */
+    border-color: var(--gold-primary) !important;
+}
 .nav-container {
   position: relative;
   display: flex;
@@ -859,7 +866,7 @@ h6,
 .nav-custom-link {
   color: #ffffff;
   font-family: var(--font-main);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.5px;
   line-height: normal;
@@ -878,7 +885,7 @@ h6,
 .btn-nav-contact {
   color: #ffffff;
   font-family: var(--font-main);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
   line-height: normal;
@@ -5611,4 +5618,227 @@ h6,
 
 
 .world-map-img { filter: invert(1); }
+
+
+/* ================= MINIMAL SITE FOOTER OVERRIDES ================= */
+.site-footer {
+  background: #f9f9f9;
+  background-color: #f9f9f9;
+  color: #333333;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  border-top: none;
+}
+
+.footer-bubble-bg-layer,
+.footer-bubbles-canvas,
+.footer-ambient-glow,
+.footer-video-overlay {
+  display: none;
+}
+
+.footer-minimal-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.footer-brand-logo {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-minimal-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 25px;
+  display: block;
+}
+
+.footer-minimal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  justify-content: center;
+}
+
+.footer-minimal-link {
+  color: #333333;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-minimal-link:hover {
+  color: var(--gold-primary);
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin-bottom: 30px;
+}
+
+.footer-minimal-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: #666666;
+}
+
+.footer-minimal-left {
+  text-align: left;
+}
+
+.footer-minimal-right {
+  display: flex;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .footer-minimal-bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .footer-minimal-left {
+    text-align: center;
+  }
+  
+  .footer-minimal-right {
+    justify-content: center;
+  }
+}
+
+/* ================= GLOWING MAP DOTS ================= */
+.map-glow-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--gold-primary, #c4893b);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--gold-primary, #c4893b);
+  animation: pulse-glow 2s infinite;
+}
+
+.map-glow-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--gold-primary, #c4893b);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px var(--gold-primary, #c4893b); }
+  50% { box-shadow: 0 0 16px var(--gold-primary, #c4893b), 0 0 20px rgba(196, 137, 59, 0.6); }
+}
+
+@keyframes pulse-ring {
+  0% { width: 8px; height: 8px; opacity: 0.8; }
+  100% { width: 24px; height: 24px; opacity: 0; }
+}
+
+/* Tooltip on hover */
+.map-glow-dot:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* ================= GLOBAL UNIFORM OVERRIDES (REQUESTED BY USER) ================= */
+
+/* Common Section Headings */
+h1, h2, h3, h4, h5, h6,
+.section-title, 
+.hero-main-title, 
+.style-showcase-title, 
+.benefits-section-title, 
+.about-section-title,
+.contact-section-title,
+  .world-map-title,
+.footer-col-title {
+  font-family: 'Bebas Neue', sans-serif !important;
+  /* color: var(--gold-primary) !important; */
+}
+
+/* Common Paragraphs */
+p, 
+.section-desc, 
+.about-desc, 
+.benefit-card-desc, 
+.hero-subtext, 
+.footer-brand-text,
+  .world-map-subtitle,
+.contact-info-text {
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+  line-height: 1.6 !important;
+  /* color: var(--gold-primary) !important; */
+}
+
+/* Common Buttons */
+button, 
+.btn, 
+a.btn, 
+.btn-hero-solid, 
+.btn-hero-outline, 
+.btn-gold-pill, 
+.btn-lime-pill,
+.btn-shop-pill, 
+.btn-contact-submit, 
+.btn-nav-contact,
+  .btn-gold-pill,
+.footer-newsletter-btn {
+  background-color: var(--gold-primary) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--gold-primary) !important;
+  border-radius: 50px !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+}
+
+/* Common Button Hover */
+button:hover, 
+.btn:hover, 
+a.btn:hover, 
+.btn-hero-solid:hover, 
+.btn-hero-outline:hover, 
+.btn-gold-pill:hover, 
+.btn-lime-pill:hover,
+.btn-shop-pill:hover, 
+.btn-contact-submit:hover, 
+.btn-nav-contact:hover,
+.footer-newsletter-btn:hover {
+  background-color: transparent !important;
+  color: var(--gold-primary) !important;
+}
 

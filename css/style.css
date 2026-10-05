@@ -1630,7 +1630,7 @@ h6,
   align-items: stretch;
   justify-content: space-between;
   gap: 20px;
-  padding-top: 45px;
+  /* padding-top: 45px; */
   width: 100%;
   border-top: 1px solid #eef0f3;
 }
@@ -1656,7 +1656,7 @@ h6,
 
 .about-stat-number {
     font-family: var(--font-main);
-    font-size: 80px;
+    font-size: 62px;
     font-weight: 600;
     color: #111111;
     line-height: 1.1;
@@ -2575,23 +2575,22 @@ h6,
 }
 
 .wine-triptych-item {
-  position: relative;
-  flex: 0 0 560px;
-  width: 560px;
-  height: 500px;
-  background-color: transparent;
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 30px;
-  box-shadow: none;
-  border: none;
-  cursor: pointer;
-  opacity: 0.70;
-  transform: scale(0.88);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+    position: relative;
+    flex: 0 0 560px;
+    width: 560px;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+    opacity: 1;
+    transform: 1;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
 }
 
 .wine-triptych-item.is-center {
@@ -5550,8 +5549,8 @@ h6,
 
 /* ================= LOGO SLIDER ================= */
 .logo-slider-wrap {
-  border-top: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea;
+  /* border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea; */
   position: relative;
   background-color: #fff;
   width: 100%;
@@ -5586,7 +5585,7 @@ h6,
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  gap: 80px;
+  gap: 20px;
   padding: 0 80px;
 }
 
@@ -5595,11 +5594,13 @@ h6,
 }
 
 .logo-track img {
-  height: 40px;
-  width: auto;
-  flex-shrink: 0;
-  filter: grayscale(100%) opacity(0.6);
-  transition: filter 0.3s ease;
+    height: 80px;
+    min-width: 100px;
+    flex-shrink: 0;
+    filter: grayscale(100%) opacity(0.6);
+    transition: filter 0.3s ease;
+    /* border: 1px solid black; */
+    padding: 10px;
 }
 
 .logo-track img:hover {

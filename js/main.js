@@ -9,23 +9,39 @@
 $(document).ready(function () {
   'use strict';
 
-  // 1. Initialize High-Performance Smooth Scrolling Engine (Lenis)
+  // =========================================================================
+  // 1. SMOOTH SCROLLING CONFIGURATION (Lenis)
+  // Customize these values below according to your preference!
+  // =========================================================================
+  const SMOOTH_SCROLL_SETTINGS = {
+    // Smoothness / Damping factor:
+    // 0.05 = Super silky & luxurious (slow drift)
+    // 0.08 - 0.1 = Perfectly balanced & buttery smooth (Recommended)
+    // 0.15+ = Snappy & quick
+    lerp: 0.085,
+
+    // Scroll speed / Distance per mouse wheel step:
+    // 0.8 = Slower / shorter travel
+    // 1.0 = Normal travel (Recommended)
+    // 1.2 - 1.5 = Faster / larger travel per wheel tick
+    wheelMultiplier: 1.0,
+
+    // Touchpad & Touch drag sensitivity
+    touchMultiplier: 1.5,
+
+    // Orientation & behavior
+    smoothWheel: true,
+    syncTouch: false,
+    infinite: false,
+    autoResize: true
+  };
+
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
-    lenis = new Lenis({
-      duration: 1.4,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
-      infinite: false,
-      autoResize: true
-    });
-
+    lenis = new Lenis(SMOOTH_SCROLL_SETTINGS);
     window.lenis = lenis;
 
+    // High performance RAF loop
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -39,24 +55,24 @@ $(document).ready(function () {
     }
   }
 
-  // Smooth Scroll Helper Function
-  function smoothScrollTo(target, offset) {
+  // Smooth Scroll Helper Function (can be called anywhere: window.smoothScrollTo('#about'))
+  window.smoothScrollTo = function(target, offset) {
     const targetOffset = typeof offset !== 'undefined' ? offset : -70;
     if (!target) return;
 
     if (lenis) {
       lenis.scrollTo(target, {
         offset: targetOffset,
-        duration: 1.4,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        lerp: SMOOTH_SCROLL_SETTINGS.lerp
       });
     } else {
       const elTop = $(target).offset() ? $(target).offset().top : 0;
       $('html, body').stop().animate({
         scrollTop: Math.max(0, elTop + targetOffset)
-      }, 850);
+      }, 800);
     }
-  }
+  };
+  const smoothScrollTo = window.smoothScrollTo;
 
   // 2. Navbar Scroll Transition
   function handleNavScroll() {

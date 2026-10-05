@@ -541,6 +541,32 @@ h6,
   z-index: 1;
 }
 
+/* Water Ripple Effect Layer (Scoped to Banner) */
+.full-mountain-image,
+.hero-ripple-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  z-index: 1;
+  pointer-events: auto !important;
+}
+
+.full-mountain-image canvas,
+.hero-ripple-bg canvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  pointer-events: auto !important;
+}
+
 .hero-mountain-img {
   position: absolute;
   top: 50%;
@@ -642,14 +668,14 @@ h6,
   z-index: 1;
 }
 
-/* Video Cinematic Dark Overlay */
+/* Video Cinematic Dark Overlay (Lightened for Vibrant Ripple Visibility) */
 .hero-video-overlay {
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(6, 7, 10, 0.42) 0%, rgba(6, 7, 10, 0.25) 40%, rgba(6, 7, 10, 0.35) 70%, rgba(6, 7, 10, 0.72) 100%);
+  background: linear-gradient(180deg, rgba(6, 7, 10, 0.28) 0%, rgba(6, 7, 10, 0.08) 35%, rgba(6, 7, 10, 0.18) 70%, rgba(6, 7, 10, 0.65) 100%);
   z-index: 3;
   pointer-events: none;
 }
@@ -2378,15 +2404,14 @@ h6,
 
 .style-showcase-section::before {
   left: 0;
-  background: white;
+    background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .style-showcase-section::after {
   right: 0;
-  background: white;
+   background: linear-gradient(to left, white 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-/* Header Row */
 .style-showcase-header {
   display: flex;
   align-items: flex-end;
@@ -4115,7 +4140,7 @@ h6,
 }
 
 .editorial-card-featured {
-  height: 100%;
+  height: 900px;
 }
 
 .editorial-img-wrapper {
@@ -5912,4 +5937,24 @@ a.btn:hover,
 .blogs-view-all-btn:hover {
   background-color: transparent !important;
   color: var(--gold-primary) !important;
+}
+
+/* ================= AOS ANIMATION ENHANCEMENTS ================= */
+[data-aos] {
+  pointer-events: auto;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+[data-aos="fade-up"] {
+  transform: translate3d(0, 36px, 0) !important;
+  opacity: 0 !important;
+  transition-property: transform, opacity !important;
+  transition-duration: 0.85s !important;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translate3d(0, 0, 0) !important;
+  opacity: 1 !important;
 }

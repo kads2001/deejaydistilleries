@@ -484,7 +484,93 @@ $(document).ready(function () {
     renderMountainScene();
   }
 
-  // initHeroMountainParallax();
+  // =========================================================================
+  // 4b. Hero Banner Water Ripple Effect (Fast, Crisp & Full-Banner Visible)
+  // =========================================================================
+  function initHeroBannerRipples() {
+    if (!$.fn || !$.fn.ripples) return;
+
+    try {
+      const $rippleBanner = $('.full-mountain-image, .hero-ripple-bg');
+      if ($rippleBanner.length) {
+        $rippleBanner.ripples({
+          resolution: 512,
+          dropRadius: 30,
+          perturbance: 0.14,
+          interactive: true
+        });
+
+        $rippleBanner.ripples('updateSize');
+
+        $(window).on('resize load', function () {
+          $rippleBanner.ripples('updateSize');
+        });
+
+        // Fast & unthrottled mouse tracking for instant water wave ripples on hover
+        $('#hero-banner, .hero-banner-sticky, .hero-video-slider-wrap').on('mousemove', function (e) {
+          const $active = $('.hero-video-slide.active .full-mountain-image, .full-mountain-image').first();
+          if ($active.length) {
+            const offset = $active.offset();
+            if (offset) {
+              const x = e.pageX - offset.left;
+              const y = e.pageY - offset.top;
+              $active.ripples('drop', x, y, 26, 0.12);
+            }
+          }
+        });
+
+        // Dramatic splash on click
+        $('#hero-banner, .hero-banner-sticky').on('mousedown', function (e) {
+          const $active = $('.hero-video-slide.active .full-mountain-image, .full-mountain-image').first();
+          if ($active.length) {
+            const offset = $active.offset();
+            if (offset) {
+              const x = e.pageX - offset.left;
+              const y = e.pageY - offset.top;
+              $active.ripples('drop', x, y, 52, 0.35);
+            }
+          }
+        });
+
+        // Touch swipe wave support for mobile / tablet
+        $('#hero-banner, .hero-banner-sticky').on('touchmove touchstart', function (e) {
+          const touches = e.originalEvent.touches || e.originalEvent.changedTouches;
+          if (touches && touches.length) {
+            const $active = $('.hero-video-slide.active .full-mountain-image, .full-mountain-image').first();
+            if ($active.length) {
+              const offset = $active.offset();
+              if (offset) {
+                const t = touches[0];
+                const x = t.pageX - offset.left;
+                const y = t.pageY - offset.top;
+                $active.ripples('drop', x, y, 32, 0.14);
+              }
+            }
+          }
+        });
+
+        // Ambient natural raindrops every 2 seconds on active banner
+        setInterval(function () {
+          const $active = $('.hero-video-slide.active .full-mountain-image, .full-mountain-image').first();
+          if ($active.length && $active.is(':visible')) {
+            const width = $active.innerWidth();
+            const height = $active.innerHeight();
+            if (width > 0 && height > 0) {
+              const x = Math.random() * width;
+              const y = Math.random() * height;
+              const radius = 28 + Math.random() * 22;
+              const strength = 0.09 + Math.random() * 0.08;
+              $active.ripples('drop', x, y, radius, strength);
+            }
+          }
+        }, 2000);
+      }
+    } catch (e) {
+      console.warn('Hero Banner ripples initialization error:', e);
+    }
+  }
+
+  initHeroBannerRipples();
 
   // 4c. Hero Animated Smoke & Mist Particle Canvas
   function initHeroSmokeCanvas() {
@@ -1849,22 +1935,135 @@ $(document).ready(function () {
 
   initFooterBubbles();
 
-  // 12. Initialize AOS (Animate On Scroll)
+  // 12. Universal Text & Component Fade-Up Auto-Attacher + AOS Initialization
+  function applyUniversalTextAOS() {
+    const textSelectors = [
+      'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+      'p',
+      '.hero-eyebrow-badge',
+      '.hero-main-title',
+      '.hero-tagline',
+      '.hero-action-btns a',
+      '.ticker-item',
+      '.about-overview-lead',
+      '.about-stat-col',
+      '.about-stat-number',
+      '.about-stat-desc',
+      '.about-main-title',
+      '.about-text-p',
+      '.about-explore-link',
+      '.beer-stack-item-title',
+      '.beer-stack-item-desc',
+      '.beer-stack-read-more',
+      '.benefit-card-title',
+      '.benefit-card-num',
+      '.style-showcase-title',
+      '.filter-pill-btn',
+      '.showcase-bg-text-watermark',
+      '.showcase-card-title',
+      '.showcase-card-desc',
+      '.showcase-card-btn',
+      '.recent-launches-tagline',
+      '.recent-launches-title',
+      '.recent-launches-view-all',
+      '.launch-card-title',
+      '.launch-card-desc',
+      '.launch-card-link',
+      '.flavour-tagline',
+      '.flavour-main-heading',
+      '.flavour-para',
+      '.flavour-cta-btn',
+      '.zoom-banner-badge',
+      '.zoom-banner-title',
+      '.zoom-banner-desc',
+      '.zoom-banner-btn',
+      '.product-news-tagline',
+      '.product-news-heading',
+      '.product-news-para',
+      '.product-news-cta-btn',
+      '.editorial-tag',
+      '.editorial-title',
+      '.editorial-desc',
+      '.editorial-link',
+      '.blogs-tagline',
+      '.blogs-main-heading',
+      '.blogs-view-all-btn',
+      '.blog-visual-title',
+      '.blog-visual-desc',
+      '.blog-text-headline',
+      '.blog-underline-link',
+      '.contact-hero-title',
+      '.contact-left-tagline',
+      '.world-map-title',
+      '.world-map-subtitle',
+      '.btn-gold-pill',
+      '.btn-lime-pill',
+      '.footer-col-title',
+      '.footer-brand-text',
+      '.footer-link-anchor',
+      '.footer-contact-item',
+      '.footer-minimal-link',
+      '.footer-minimal-left',
+      '.footer-partner-item'
+    ];
+
+    document.querySelectorAll(textSelectors.join(', ')).forEach((el) => {
+      // Don't override if custom animation is already set
+      if (!el.hasAttribute('data-aos')) {
+        el.setAttribute('data-aos', 'fade-up');
+
+        // Provide pleasant staggered delays for grouped text elements
+        const parent = el.closest('.hero-title-area, .about-overview-container, .about-text-content, .beer-stack-col-left, .editorial-content-box, .showcase-card-content, .recent-launches-header, .flavour-header-left, .product-news-header-left, .blogs-header-left, .contact-title-box, .world-map-header, .footer-minimal-top, .footer-top-grid, .footer-partners-row');
+        if (parent) {
+          const siblings = Array.from(parent.querySelectorAll(textSelectors.join(', ')));
+          const sibIndex = siblings.indexOf(el);
+          if (sibIndex > 0 && !el.hasAttribute('data-aos-delay')) {
+            el.setAttribute('data-aos-delay', Math.min(sibIndex * 80, 450).toString());
+          }
+        }
+      }
+    });
+  }
+
+  // Run text AOS auto-attacher before initializing AOS
+  applyUniversalTextAOS();
+
   if (typeof AOS !== 'undefined') {
     AOS.init({
-      duration: 800,
-      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      startEvent: 'DOMContentLoaded',
+      duration: 850,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
       once: true,
-      offset: 50,
-      delay: 0
+      offset: 30,
+      delay: 0,
+      disableMutationObserver: false
+    });
+
+    // Immediate and load-based triggers
+    AOS.refresh();
+
+    window.addEventListener('load', function () {
+      AOS.refresh();
     });
 
     window.addEventListener('resize', function () {
       AOS.refresh();
     });
-    window.addEventListener('load', function () {
+
+    setTimeout(function () {
       AOS.refresh();
-    });
+    }, 100);
+
+    setTimeout(function () {
+      AOS.refresh();
+    }, 500);
+
+    // Synchronize AOS with Lenis smooth scroll
+    if (lenis) {
+      lenis.on('scroll', function () {
+        AOS.refresh();
+      });
+    }
   }
 
   // 13. Interactive Button Text Wave Effect on Hover

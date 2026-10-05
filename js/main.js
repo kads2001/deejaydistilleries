@@ -2003,3 +2003,49 @@ $(document).ready(function () {
 });
 
 
+$(document).ready(function() {
+  const counters = document.querySelectorAll('.about-stat-number');
+  const duration = 2000; // Total duration in ms
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        if (counter.hasAttribute('data-animated')) return;
+        counter.setAttribute('data-animated', 'true');
+
+        const text = counter.innerText;
+        const match = text.match(/^([^0-9]*)([0-9]+)([^0-9]*)$/);
+        
+        if (match) {
+          const prefix = match[1];
+          const target = parseInt(match[2], 10);
+          const suffix = match[3];
+          
+          let startTimestamp = null;
+          
+          const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            const current = Math.floor(progress * target);
+            counter.innerText = prefix + current + suffix;
+            
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            } else {
+              counter.innerText = prefix + target + suffix;
+            }
+          };
+          
+          window.requestAnimationFrame(step);
+        }
+        observer.unobserve(counter);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+});

@@ -1000,7 +1000,7 @@ h6,
   font-family: var(--font-main);
   font-weight: 700;
   font-size: var(--font-hero-title, clamp(38px, 5.2vw, 76px));
-  letter-spacing: 12px;
+  letter-spacing: 8px;
   line-height: 1.05;
   text-transform: uppercase;
   color: #ffffff;
@@ -5842,3 +5842,74 @@ a.btn:hover,
   color: var(--gold-primary) !important;
 }
 
+
+
+/* ================= ALL BUTTONS SIZING UNIFICATION ================= */
+.btn-hero-solid, 
+.btn-hero-outline, 
+.btn-gold-pill, 
+.btn-lime-pill,
+.btn-shop-pill, 
+.btn-contact-submit, 
+.btn-nav-contact,
+.footer-newsletter-btn,
+.showcase-card-btn,
+.filter-pill-btn,
+.flavour-cta-btn,
+.product-news-cta-btn,
+.blogs-view-all-btn {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  padding: 11px 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: normal !important;
+  height: auto !important;
+  min-height: 40px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  gap: 8px !important;
+}
+
+/* Make sure the icons match */
+.btn-hero-solid i, 
+.btn-hero-outline i, 
+.btn-gold-pill i, 
+.btn-lime-pill i,
+.btn-shop-pill i, 
+.btn-contact-submit i, 
+.btn-nav-contact i,
+.footer-newsletter-btn i,
+.showcase-card-btn i,
+.filter-pill-btn i,
+.flavour-cta-btn i,
+.product-news-cta-btn i,
+.blogs-view-all-btn i {
+  font-size: 13px !important;
+}
+
+/* Ensure these extra buttons also get the Gold style */
+.showcase-card-btn,
+.filter-pill-btn,
+.flavour-cta-btn,
+.product-news-cta-btn,
+.blogs-view-all-btn {
+  background-color: var(--gold-primary) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--gold-primary) !important;
+  border-radius: 50px !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  text-transform: uppercase !important;
+  transition: all 0.3s ease !important;
+}
+
+.showcase-card-btn:hover,
+.filter-pill-btn:hover,
+.flavour-cta-btn:hover,
+.product-news-cta-btn:hover,
+.blogs-view-all-btn:hover {
+  background-color: transparent !important;
+  color: var(--gold-primary) !important;
+}

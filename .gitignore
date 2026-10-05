@@ -3,5 +3,5 @@ dist/
 build/
 .env
 *.zip
-*.mp4
-*.mov
+# *.mp4
+# *.mov

@@ -134,9 +134,9 @@
 }
 
 :root {
-  --font-main: 'Nunito', sans-serif;
-  --gold-primary: #c5a059;
-  --gold-hover: #b38e45;
+  --font-main: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  --gold-primary: #c4893b;
+  --gold-hover: #a8712e;
   --gold-light: #dfb76c;
   --color-black: #000000;
   --color-dark: #111111;
@@ -146,13 +146,13 @@
   --container-max: 1400px;
 
   /* Standard Typography Scale */
-  --font-hero-title: clamp(38px, 5.2vw, 76px);
-  --font-section-title: clamp(30px, 3.4vw, 48px);
+  --font-hero-title: clamp(38px, 7vw, 150px);
+  --font-section-title: clamp(30px, 4vw, 72px);
   --font-card-title-lg: clamp(22px, 2vw, 28px);
   --font-card-title-md: clamp(17px, 1.4vw, 21px);
   --font-card-title-sm: 16px;
   --font-eyebrow: 13px;
-  --font-lead-p: clamp(16px, 1.25vw, 19px);
+  --font-lead-p: clamp(16px, 1.25vw, 26px);
   --font-body-p: 15px;
   --font-caption: 13px;
 }
@@ -290,7 +290,7 @@ h6,
 .about-stat-number,
 .showcase-card-title,
 .benefit-card-title {
-  font-family: 'Isometra', sans-serif !important;
+  font-family: 'Bebas Neue', sans-serif !important;
 }
 
 /* ================= GLOBAL 80% CONTAINER WRAPPER ================= */
@@ -444,7 +444,7 @@ h6,
   font-weight: 800;
   letter-spacing: 2.2px;
   text-transform: uppercase;
-  color: var(--gold-primary, #c5a059);
+  color: var(--gold-primary, #c4893b);
   margin-bottom: 14px;
   display: inline-block;
   background: rgba(197, 160, 89, 0.12);
@@ -487,8 +487,8 @@ h6,
 }
 
 .hero-slider-arrow:hover {
-  background: var(--gold-primary, #c5a059);
-  border-color: var(--gold-primary, #c5a059);
+  background: var(--gold-primary, #c4893b);
+  border-color: var(--gold-primary, #c4893b);
   color: #0b0c10;
   transform: scale(1.08);
 }
@@ -511,7 +511,7 @@ h6,
 .hero-slider-dot.active {
   width: 28px;
   border-radius: 20px;
-  background: var(--gold-primary, #c5a059);
+  background: var(--gold-primary, #c4893b);
   box-shadow: 0 0 10px rgba(197, 160, 89, 0.6);
 }
 
@@ -1585,7 +1585,7 @@ h6,
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: var(--gold-primary, #c5a059);
+  background-color: var(--gold-primary, #c4893b);
   color: #ffffff !important;
   font-family: var(--font-main);
   font-size: 13px;
@@ -1594,7 +1594,7 @@ h6,
   text-transform: uppercase;
   padding: 12px 28px;
   border-radius: 50px !important;
-  border: 1px solid var(--gold-primary, #c5a059);
+  border: 1px solid var(--gold-primary, #c4893b);
   text-decoration: none;
   width: fit-content;
   max-width: max-content;
@@ -1612,9 +1612,9 @@ h6,
 
 .btn-lime-pill:hover,
 .btn-gold-pill:hover {
-  background-color: var(--gold-hover, #b38e45);
+  background-color: var(--gold-hover, #a8712e);
   color: #ffffff !important;
-  border-color: var(--gold-hover, #b38e45);
+  border-color: var(--gold-hover, #a8712e);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(197, 160, 89, 0.5);
 }
@@ -1655,21 +1655,21 @@ h6,
 }
 
 .about-stat-number {
-  font-family: var(--font-main);
-  font-size: 44px;
-  font-weight: 700;
-  color: #111111;
-  line-height: 1.1;
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
+    font-family: var(--font-main);
+    font-size: 80px;
+    font-weight: 600;
+    color: #111111;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: normal;
 }
 
 .about-stat-desc {
   font-family: var(--font-main);
-  font-size: 14px;
+  font-size: 18px;
   color: #333333;
   margin: 0;
-  line-height: 1.4;
+  line-height:normal;
   font-weight: 450;
   max-width: 180px;
 }
@@ -1989,13 +1989,12 @@ h6,
 
 
 .marquee-title {
-  font-family: 'Isometra', sans-serif !important;
-  font-size: 22px;
-  font-weight: 900;
-  color: #111111;
-  margin-bottom: 2px;
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 27px;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 2px;
 }
-
 .marquee-desc {
   font-family: var(--font-main);
   font-size: 14px;
@@ -2274,7 +2273,7 @@ h6,
 .benefits-progress-fill {
   height: 100%;
   width: 20%;
-  background: #c5a059;
+  background: #c4893b;
   border-radius: 99px;
   transition: width 0.1s linear;
 }
@@ -2394,7 +2393,7 @@ h6,
   font-size: var(--font-eyebrow, 13px);
   font-weight: 800;
   letter-spacing: 2px;
-  color: var(--gold-primary, #c5a059);
+  color: var(--gold-primary, #c4893b);
   text-transform: uppercase;
 }
 
@@ -2677,7 +2676,7 @@ h6,
 }
 
 .showcase-card-btn:hover {
-  background-color: var(--gold-primary, #c5a059);
+  background-color: var(--gold-primary, #c4893b);
   color: #1c1815;
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(197, 160, 89, 0.4);
@@ -2869,7 +2868,7 @@ h6,
 }
 
 .about-explore-link:hover {
-  color: var(--gold-primary, #c5a059);
+  color: var(--gold-primary, #c4893b);
 }
 
 .about-explore-link:hover i {
@@ -2960,7 +2959,7 @@ h6,
   font-weight: 800;
   letter-spacing: 2px;
   line-height: 18px;
-  color: var(--gold-primary, #c5a059);
+  color: var(--gold-primary, #c4893b);
   text-transform: uppercase;
   margin-bottom: 12px;
 }
@@ -3187,7 +3186,7 @@ h6,
   letter-spacing: 2px;
   line-height: 18px;
   text-transform: uppercase;
-  color: var(--gold-primary, #c5a059);
+  color: var(--gold-primary, #c4893b);
   margin-bottom: 12px;
   display: inline-block;
 }
@@ -3639,24 +3638,23 @@ h6,
 }
 
 .beer-stack-item-title {
-  font-family: var(--font-main);
-  font-size: clamp(26px, 2.7vw, 52px);
-  font-weight: 800;
-  line-height: 72px;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  color: black;
-  max-width: 750px;
+    font-family: var(--font-main);
+    font-size: clamp(26px, 4vw, 75px);
+    font-weight: 700;
+    line-height: 72px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: black;
+    max-width: 750px;
 }
 
 .beer-stack-item-desc {
-  font-family: var(--font-main);
-  font-size: 22px;
-  font-style: italic;
-  line-height: 1.55;
-  margin-bottom: 24px;
-  color: black;
+    font-family: var(--font-main);
+    font-size: 26px;
+    font-style: italic;
+    line-height: normal;
+    margin-bottom: 24px;
+    color: black;
 }
 
 .beer-stack-read-more {

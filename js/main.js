@@ -2049,3 +2049,29 @@ $(document).ready(function() {
     observer.observe(counter);
   });
 });
+
+  // Auto-scrolling logo marquee
+  const logoTrack = document.getElementById('logo-track');
+  if (logoTrack) {
+    let scrollSpeed = 1; // Pixels per frame
+    let isHovered = false;
+
+    // Pause on hover
+    logoTrack.addEventListener('mouseenter', () => isHovered = true);
+    logoTrack.addEventListener('mouseleave', () => isHovered = false);
+
+    const scrollLoop = () => {
+      if (!isHovered) {
+        logoTrack.scrollLeft += scrollSpeed;
+        
+        // When we've scrolled exactly halfway (the width of the first set of 24 logos), 
+        // silently reset to 0 to create a seamless loop
+        if (logoTrack.scrollLeft >= (logoTrack.scrollWidth / 2)) {
+          logoTrack.scrollLeft = 0;
+        }
+      }
+      requestAnimationFrame(scrollLoop);
+    };
+
+    requestAnimationFrame(scrollLoop);
+  }

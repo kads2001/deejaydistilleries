@@ -1,140 +1,11 @@
 /* ==========================================================================
    Deejay Distilleries - Stylesheet
-   Single Unified Font: Nunito
+   Single Unified Font Family: 'Anybody', 'Archivo Black', 'Isometra', sans-serif
    All dimensions, sizes, fonts, paddings & margins in PX ONLY
    ========================================================================== */
 
-/* Nunito Font Family */
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-ExtraLight.ttf') format('truetype');
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-ExtraLightItalic.ttf') format('truetype');
-  font-weight: 200;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-LightItalic.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-MediumItalic.ttf') format('truetype');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-SemiBoldItalic.ttf') format('truetype');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-BoldItalic.ttf') format('truetype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-ExtraBoldItalic.ttf') format('truetype');
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('../assets/fonts/Nunito-BlackItalic.ttf') format('truetype');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
 :root {
-  --font-main: 'Nunito', sans-serif;
+  --font-main: 'Anybody', 'Archivo Black', 'Isometra', sans-serif;
   --font-heading: 'Anybody', 'Archivo Black', 'Isometra', sans-serif;
   --gold-primary: #c4893b;
   --gold-hover: #a8712e;
@@ -164,7 +35,12 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: var(--font-main);
+  font-family: var(--font-heading) !important;
+}
+
+html,
+body {
+  font-family: var(--font-heading) !important;
 }
 
 /* Global Container Width Rules (90% width centered) */
@@ -815,9 +691,12 @@ h6,
   color: var(--gold-primary) !important;
 }
 
-.site-header.scrolled .btn-nav-contact{
-    /* color: var(--gold-primary) !important; */
-    border-color: var(--gold-primary) !important;
+.site-header.scrolled .btn-nav-contact {
+  color: var(--gold-primary) !important;
+  border-color: var(--gold-primary) !important;
+}
+.site-header.scrolled .mobile-nav-toggle {
+  color: var(--gold-primary) !important;
 }
 .nav-container {
   position: relative;
@@ -843,8 +722,8 @@ h6,
 .brand-crest-logo {
   height: 120px;
   width: auto;
-  /* filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.8)); */
-  transition: transform 0.3s ease, height 0.3s ease;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease, height 0.3s ease, filter 0.3s ease;
 }
 
 .brand-crest-logo:hover {
@@ -853,6 +732,7 @@ h6,
 
 .site-header.scrolled .brand-crest-logo {
   height: 90px;
+  filter: none;
 }
 
 /* Right Navigation & Menu Links */
@@ -1025,7 +905,7 @@ h6,
   font-family: var(--font-main);
   font-size: var(--font-lead-p, clamp(16px, 1.25vw, 19px));
   font-weight: 400;
-  font-style: italic;
+  /* font-style: italic; */
   color: #eceff1;
   line-height: 1.5;
   letter-spacing: normal;
@@ -2701,7 +2581,7 @@ h6,
 }
 
 .showcase-card-desc {
-  font-family: 'Courier New', Courier, monospace, var(--font-main);
+  font-family: var(--font-heading);
   font-size: 13.5px;
   font-weight: 600;
   color: #4a4238;
@@ -5809,27 +5689,32 @@ h1, h2, h3, h4, h5, h6,
 .benefits-section-title, 
 .about-section-title,
 .contact-section-title,
-  .world-map-title,
+.world-map-title,
 .footer-col-title {
-  font-family: var(--font-heading, 'Anybody', sans-serif) !important;
-  /* color: var(--gold-primary) !important; */
+  font-family: var(--font-heading) !important;
 }
 
-/* Common Paragraphs */
+/* Common Paragraphs & All Text */
 p, 
+span,
+a,
+li,
+label,
+input,
+textarea,
+select,
 .section-desc, 
 .about-desc, 
 .benefit-card-desc, 
 .hero-subtext, 
 .footer-brand-text,
-  .world-map-subtitle,
+.world-map-subtitle,
 .contact-info-text {
-  font-family: var(--font-main, 'Nunito', sans-serif) !important;
+  font-family: var(--font-heading) !important;
   line-height: 1.6 !important;
-  /* color: var(--gold-primary) !important; */
 }
 
-/* Common Buttons */
+/* Common Buttons & CTAs */
 button, 
 .btn, 
 a.btn, 
@@ -5840,13 +5725,13 @@ a.btn,
 .btn-shop-pill, 
 .btn-contact-submit, 
 .btn-nav-contact,
-  .btn-gold-pill,
+.btn-gold-pill,
 .footer-newsletter-btn {
   background-color: var(--gold-primary) !important;
   color: #ffffff !important;
   border: 2px solid var(--gold-primary) !important;
   border-radius: 50px !important;
-  font-family: var(--font-heading, 'Anybody', sans-serif) !important;
+  font-family: var(--font-heading) !important;
   letter-spacing: 0.5px !important;
   transition: all 0.3s ease !important;
   text-transform: capitalize !important;

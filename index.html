@@ -36,41 +36,40 @@
             </a>
           </div>
 
-          <!-- Navigation Menu & Contact Us Button Right Side -->
+          <!-- Navigation Right Side: Contact Us Button & Hamburger Menu Toggle -->
           <div class="nav-right" aria-label="Right Navigation">
-            <nav class="nav-menu-links">
-              <a href="#about" class="nav-custom-link">Our Story</a>
-              <a href="#brands" class="nav-custom-link">Our Brands</a>
-              <!-- <a href="#products" class="nav-custom-link">Process</a>
-              <a href="#products" class="nav-custom-link">R&amp;D + Quality</a> -->
-              <a href="#about" class="nav-custom-link">Global Reach</a>
-              <a href="#products" class="nav-custom-link">Exports</a>
-            </nav>
-            <a href="#contact" class="btn-nav-contact">Contact Us</a>
+            <!-- <a href="#contact" class="btn-nav-contact">Contact Us</a> -->
+            <button class="mobile-nav-toggle" id="mobileMenuOpen" aria-label="Open Navigation">
+              <i class="bi bi-list"></i>
+            </button>
           </div>
-
-          <button class="mobile-nav-toggle d-lg-none" id="mobileMenuOpen" aria-label="Open Navigation">
-            <i class="bi bi-list"></i>
-          </button>
         </div>
       </header>
 
-      <!-- Mobile Drawer Menu -->
-      <div class="mobile-nav-menu d-none" id="mobileNavDrawer">
+      <!-- Navigation Drawer Backdrop Overlay -->
+      <div class="nav-drawer-backdrop" id="navDrawerBackdrop"></div>
+
+      <!-- Fullscreen / Drawer Navigation Menu -->
+      <div class="mobile-nav-menu" id="mobileNavDrawer">
         <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close Navigation">&times;</button>
-        <img src="assets/images/logo.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
-        <a href="#about" class="nav-custom-link">Our Story</a>
-        <a href="#brands" class="nav-custom-link">Our Brands</a>
-        <a href="#products" class="nav-custom-link">Process</a>
-        <a href="#products" class="nav-custom-link">R&amp;D + Quality</a>
-        <a href="#about" class="nav-custom-link">Global Reach</a>
-        <a href="#products" class="nav-custom-link">Exports</a>
-        <a href="#contact" class="btn-nav-contact" style="margin-top: 16px;">Contact Us</a>
-        <div class="nav-socials" style="border-left: none; padding-left: 0; margin-top: 24px; justify-content: center;">
-          <a href="#" class="nav-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="nav-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="nav-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <div class="nav-drawer-header">
+          <img src="assets/images/logo.png" alt="Deejay Distilleries Crest" class="nav-drawer-logo">
         </div>
+        <nav class="nav-drawer-links">
+          <a href="#about" class="nav-custom-link">Our Story</a>
+          <a href="#brands" class="nav-custom-link">Our Brands</a>
+          <a href="#about" class="nav-custom-link">Global Reach</a>
+          <a href="#products" class="nav-custom-link">Exports</a>
+          <a href="#contact" class="nav-custom-link">Contact Us</a>
+        </nav>
+        <!-- <div class="nav-drawer-footer">
+          <a href="#contact" class="btn-nav-contact">Get In Touch</a>
+          <div class="nav-socials" style="border-left: none; padding-left: 0; margin-top: 10px; justify-content: center;">
+            <a href="#" class="nav-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="nav-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="nav-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div> -->
       </div>
 
       <!-- Interactive Multi-Video Hero Banner Slider Wrap -->
@@ -218,30 +217,21 @@
 
     <div class="about-overview-container">
 
-      <!-- Grid Layout: Left Video | Right Text & Stats -->
-      <div class="row align-items-stretch mb-5 pb-4">
+      <!-- Grid Layout: Left Content & Stats & Logos | Right Video Card -->
+      <div class="row about-overview-inner align-items-stretch gy-4 mb-5 pb-4">
 
-        <!-- Left Side Column - Video -->
-        <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
-          <div class="about-video-box rounded overflow-hidden shadow-lg h-100">
-            <video src="assets/videos/aboutusvideo.mp4" autoplay loop muted playsinline class="w-100 h-100"></video>
-          </div>
-        </div>
-
-        <!-- Right Side Column - Text, CTA, Stats -->
-        <div class="col-lg-7 d-flex flex-column justify-content-center" data-aos="fade-left" data-aos-delay="100">
+        <!-- Left Side Column - Text, CTA, Stats, Logos -->
+        <div class="col-lg-7 d-flex flex-column justify-content-center pe-lg-4" data-aos="fade-right">
 
           <!-- Section Heading -->
-          <div class="about-overview-header-box mb-4" data-aos="fade-up">
-
-            <h2 class="about-main-title" style="margin-top: 10px; margin-bottom: 14px;">
+          <div class="about-overview-header-box mb-3" data-aos="fade-up">
+            <h2 class="about-main-title">
               Crafting Excellence
-
             </h2>
           </div>
 
           <!-- Lead Paragraph -->
-          <div class="about-overview-lead-col mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="about-overview-lead-col mb-3" data-aos="fade-up" data-aos-delay="50">
             <p class="about-overview-lead">
               At Deejay Distilleries, we believe mastercraft distillation isn't just about manufacturing — it's about
               passion, purity, and heritage. We are a premier manufacturer &amp; exporter of world-class bottled spirits
@@ -250,37 +240,38 @@
           </div>
 
           <!-- Callout CTA Button -->
-          <div class="about-lead-cta mb-5" data-aos="fade-up" data-aos-delay="200">
-            <a href="#brands" class="btn-lime-pill">Explore Our Story <i class="bi bi-arrow-right"></i>
-            </a>
+          <div class="about-lead-cta mb-4" data-aos="fade-up" data-aos-delay="100">
+            <a href="#brands" class="btn-story-outline">Explore Our Story</a>
           </div>
 
-          <div class="about-stats-row" data-aos="fade-up" data-aos-delay="300">
+          <!-- Stats Row with Vertical Line Dividers -->
+          <div class="about-stats-row" data-aos="fade-up" data-aos-delay="150">
             <div class="about-stat-col">
               <h3 class="about-stat-number">74M</h3>
               <p class="about-stat-desc">Driving growth with strategy</p>
             </div>
+            <div class="about-stat-divider"></div>
             <div class="about-stat-col">
               <h3 class="about-stat-number">95%</h3>
               <p class="about-stat-desc">Building trusted partnerships</p>
             </div>
+            <div class="about-stat-divider"></div>
             <div class="about-stat-col">
               <h3 class="about-stat-number">+225</h3>
               <p class="about-stat-desc">Delivering industry success</p>
             </div>
+            <div class="about-stat-divider"></div>
             <div class="about-stat-col">
               <h3 class="about-stat-number">92%</h3>
               <p class="about-stat-desc">Turning traffic into growth</p>
             </div>
           </div>
 
-          <div class="logo-slider-wrap py-4" data-aos="fade-up" data-aos-delay="400">
+          <!-- Top Logo Divider -->
+          <div class="about-logos-divider-top"></div>
 
-            <!-- <button class="slider-arrow slider-prev"
-              onclick="document.getElementById('logo-track').scrollBy({left: -300, behavior: 'smooth'})">
-              <i class="bi bi-chevron-left"></i>
-            </button> -->
-
+          <!-- Logo Track Row -->
+          <div class="logo-slider-wrap" data-aos="fade-up" data-aos-delay="200">
             <div id="logo-track" class="logo-track d-flex align-items-center">
               <img src="assets/images/Logo's/1.png" alt="Logo 1">
               <img src="assets/images/Logo's/2.png" alt="Logo 2">
@@ -306,77 +297,166 @@
               <img src="assets/images/Logo's/22.png" alt="Logo 22">
               <img src="assets/images/Logo's/23.png" alt="Logo 23">
               <img src="assets/images/Logo's/24.png" alt="Logo 24">
-              <img src="assets/images/Logo's/1.png" alt="Logo 1">
-              <img src="assets/images/Logo's/2.png" alt="Logo 2">
-              <img src="assets/images/Logo's/3.png" alt="Logo 3">
-              <img src="assets/images/Logo's/4.png" alt="Logo 4">
-              <img src="assets/images/Logo's/5.png" alt="Logo 5">
-              <img src="assets/images/Logo's/6.png" alt="Logo 6">
-              <img src="assets/images/Logo's/7.png" alt="Logo 7">
-              <img src="assets/images/Logo's/8.png" alt="Logo 8">
-              <img src="assets/images/Logo's/9.png" alt="Logo 9">
-              <img src="assets/images/Logo's/10.png" alt="Logo 10">
-              <img src="assets/images/Logo's/11.png" alt="Logo 11">
-              <img src="assets/images/Logo's/12.png" alt="Logo 12">
-              <img src="assets/images/Logo's/13.png" alt="Logo 13">
-              <img src="assets/images/Logo's/14.png" alt="Logo 14">
-              <img src="assets/images/Logo's/15.png" alt="Logo 15">
-              <img src="assets/images/Logo's/16.png" alt="Logo 16">
-              <img src="assets/images/Logo's/17.png" alt="Logo 17">
-              <img src="assets/images/Logo's/18.png" alt="Logo 18">
-              <img src="assets/images/Logo's/19.png" alt="Logo 19">
-              <img src="assets/images/Logo's/20.png" alt="Logo 20">
-              <img src="assets/images/Logo's/21.png" alt="Logo 21">
-              <img src="assets/images/Logo's/22.png" alt="Logo 22">
-              <img src="assets/images/Logo's/23.png" alt="Logo 23">
-              <img src="assets/images/Logo's/24.png" alt="Logo 24">
             </div>
+          </div>
 
+          <!-- Bottom Logo Divider -->
+          <div class="about-logos-divider-bottom"></div>
 
-            <!-- <button class="slider-arrow slider-next"
-              onclick="document.getElementById('logo-track').scrollBy({left: 300, behavior: 'smooth'})">
-              <i class="bi bi-chevron-right"></i>
-            </button> -->
+        </div>
+
+        <!-- Right Side Column - Video Card with Poster Image & Modal Trigger -->
+        <div class="col-lg-5 ps-lg-4" data-aos="fade-left" data-aos-delay="100">
+          <div class="about-video-box rounded-4 overflow-hidden shadow-sm h-100 position-relative" id="aboutVideoCard" role="button" tabindex="0" aria-label="Play About Us Video">
+            <img src="assets/images/new.jpeg" alt="Deejay Distilleries Facility" class="about-poster-img w-100 h-100 object-fit-cover">
+            <div class="about-video-overlay-tint"></div>
+            <button class="about-video-play-btn" id="aboutPlayBtn" aria-label="Play Video">
+              <i class="bi bi-play-fill"></i>
+            </button>
           </div>
         </div>
 
-
       </div>
-
-      <!-- Bottom Row: 4 KPI / Counter Stats Cards -->
-
 
     </div>
   </section>
 
-  <!-- ================= VERTICAL HOVER GALLERY SECTION ================= -->
-  <section class="vertical-hover-section " id="hover-gallery">
-    <div class="vertical-hover-container">
-      <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="50">
-        <img src="assets/images/Hover1.jpg" alt="Deejay Distilleries Feature 1" class="vertical-hover-img">
-        <div class="vertical-hover-overlay"></div>
+  <!-- ================= POPULAR OF THE MONTH / HOVER SECTION ================= -->
+  <section class="vertical-hover-section" id="hover-gallery">
+    <div class="vertical-hover-wrapper">
+
+      <!-- Section Header -->
+      <div class="popular-section-header" data-aos="fade-up">
+        <h2 class="popular-section-title">
+          <span>POPULAR</span> <strong>OF THE MONTH</strong>
+        </h2>
       </div>
-      <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="100">
-        <img src="assets/images/Hover2.jpg" alt="Deejay Distilleries Feature 2" class="vertical-hover-img">
-        <div class="vertical-hover-overlay"></div>
-      </div>
-      <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="150">
-        <img src="assets/images/Hover3.jpg" alt="Deejay Distilleries Feature 3" class="vertical-hover-img">
-        <div class="vertical-hover-overlay"></div>
-      </div>
-      <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="200">
-        <img src="assets/images/Hover4.jpg" alt="Deejay Distilleries Feature 4" class="vertical-hover-img">
-        <div class="vertical-hover-overlay"></div>
-      </div>
-      <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="250">
-        <img src="assets/images/Hover5.jpg" alt="Deejay Distilleries Feature 5" class="vertical-hover-img">
-        <div class="vertical-hover-overlay"></div>
+
+      <!-- 3-Card Grid Container -->
+      <div class="vertical-hover-container">
+
+        <!-- Card 1: Mortlach Whisky -->
+        <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="50">
+          <img src="assets/images/Hover1.jpg" alt="Mortlach Whisky" class="vertical-hover-img">
+          <div class="vertical-hover-overlay"></div>
+          <div class="vertical-hover-content">
+            <h3 class="vertical-hover-title">MORTLACH<br>WHISKY</h3>
+            <p class="vertical-hover-price">STARTING AT <span class="price-val">$99</span></p>
+            <a href="#brands" class="btn-hover-shop">SHOP NOW</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Glenlivet Wine -->
+        <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="100">
+          <img src="assets/images/Hover2.jpg" alt="Glenlivet Wine" class="vertical-hover-img">
+          <div class="vertical-hover-overlay"></div>
+          <div class="vertical-hover-content">
+            <h3 class="vertical-hover-title">GLENLIVET<br>WINE</h3>
+            <p class="vertical-hover-price">STARTING AT <span class="price-val">$229</span></p>
+            <a href="#brands" class="btn-hover-shop">SHOP NOW</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Jim Beam Bourbon -->
+        <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="150">
+          <img src="assets/images/Hover3.jpg" alt="Jim Beam Bourbon" class="vertical-hover-img">
+          <div class="vertical-hover-overlay"></div>
+          <div class="vertical-hover-content">
+            <h3 class="vertical-hover-title">JIM BEAM<br>BOURBON</h3>
+            <p class="vertical-hover-price">STARTING AT <span class="price-val">$179</span></p>
+            <a href="#brands" class="btn-hover-shop">SHOP NOW</a>
+          </div>
+        </div>
+
       </div>
 
     </div>
+  </section>
 
-    <!-- Logo Marquee -->
+  <!-- ================= OUR PREMIUM PRODUCTS SECTION ================= -->
+  <section class="premium-products-section" id="premium-products">
+    <div class="premium-products-inner">
 
+      <!-- Section Header -->
+      <div class="premium-products-header">
+        <h2 class="premium-products-title">OUR PREMIUM PRODUCTS</h2>
+        <a href="#" class="premium-view-all">VIEW ALL <span>&rsaquo;</span></a>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="premium-products-grid">
+
+        <!-- Product Card 1 -->
+        <div class="premium-product-card">
+          <div class="ppc-img-wrap">
+            <img src="assets/images/proimg1.png" alt="DJ Single Malt Whisky" class="ppc-img">
+          </div>
+          <div class="ppc-body">
+            <h5 class="ppc-name">DJ Single Malt<br>Premium Whisky</h5>
+            <div class="ppc-stars">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="ppc-price">&#8377;2,499</p>
+            <a href="#" class="btn-add-to-cart">ADD TO CART</a>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="premium-product-card">
+          <div class="ppc-img-wrap">
+            <img src="assets/images/proimg2.png" alt="DJ Craft Rum" class="ppc-img">
+          </div>
+          <div class="ppc-body">
+            <h5 class="ppc-name">DJ Craft Dark<br>Reserve Rum</h5>
+            <div class="ppc-stars">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="ppc-price">&#8377;1,899</p>
+            <a href="#" class="btn-add-to-cart">ADD TO CART</a>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="premium-product-card">
+          <div class="ppc-img-wrap">
+            <img src="assets/images/proimg3.png" alt="DJ Premium Vodka" class="ppc-img">
+          </div>
+          <div class="ppc-body">
+            <h5 class="ppc-name">DJ Triple Distilled<br>Premium Vodka</h5>
+            <div class="ppc-stars">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="ppc-price">&#8377;1,599</p>
+            <a href="#" class="btn-add-to-cart">ADD TO CART</a>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div class="premium-product-card">
+          <div class="ppc-img-wrap">
+            <img src="assets/images/proimg4.png" alt="DJ Aged Brandy" class="ppc-img">
+          </div>
+          <div class="ppc-body">
+            <h5 class="ppc-name">DJ Aged Reserve<br>Premium Brandy</h5>
+            <div class="ppc-stars">
+              <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+            </div>
+            <p class="ppc-price">&#8377;2,199</p>
+            <a href="#" class="btn-add-to-cart">ADD TO CART</a>
+          </div>
+        </div>
+
+        <!-- Promo Banner Card -->
+        <div class="premium-promo-card">
+          <span class="promo-sale-badge">SALE NOW</span>
+          <h2 class="promo-heading">START<br>SAVING</h2>
+          <p class="promo-sub">10% off when you buy<br>3 or more</p>
+          <img src="assets/images/stackimg11.png" alt="Promo Bottles" class="promo-img">
+          <a href="#" class="btn-promo-shop">SHOP NOW</a>
+        </div>
+
+      </div>
+    </div>
   </section>
 
   <!-- ================= MODERN SOLUTIONS & LASTING BENEFITS SECTION ================= -->
@@ -650,25 +730,17 @@
 
     </div>
   </section>
-  <!-- ================= STYLE SHOWCASE & BRANDS SECTION (HORIZONTAL SCROLL) ================= -->
+  <!-- ================= STYLE SHOWCASE & BRANDS SECTION ================= -->
   <section class="style-showcase-section" id="showcase">
-    <div class="style-showcase-pin-wrapper">
-      <div class="style-showcase-container">
+    <div class="style-showcase-container">
 
-        <!-- <div class="style-showcase-top-eyebrow" data-aos="fade-up">
-          <span>FEATURED <i class="bi bi-plus" style="font-size: 13px; margin: 0 4px;"></i> FLAVORS</span>
-        </div> -->
-
-        <div class="style-showcase-header" data-aos="fade-up">
-          <div class="style-showcase-header-left">
-            <h2 class="style-showcase-title">
-              Find your own unique style,<br>
-              and thousands of brands
-            </h2>
-          </div>
-        </div>
-
-        <div class="style-controls-bar" data-aos="fade-up" data-aos-delay="100">
+      <!-- Header Row: Title & Filter Tabs on Left, Arrows & View All on Right -->
+      <div class="style-showcase-header" data-aos="fade-up">
+        <div class="style-showcase-header-left">
+          <h2 class="style-showcase-title">
+            Find your own unique style,<br>
+            and thousands of brands
+          </h2>
           <div class="style-filter-tabs">
             <button class="filter-pill-btn active" data-filter="all">All Varietals</button>
             <button class="filter-pill-btn" data-filter="gin">Gin</button>
@@ -678,149 +750,110 @@
           </div>
         </div>
 
-        <!-- Horizontal Scroll Cards Track Outer Container -->
-        <div class="style-wine-triptych-track-outer" data-aos="fade-up" data-aos-delay="200">
-          <div class="style-wine-triptych" id="styleShowcaseTrack">
-
-            <!-- Card 1: Grand Master's Whisky -->
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg6.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg1.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg2.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg3.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg4.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg5.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg6.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg6.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-            <div class="wine-triptych-item" data-category="whisky">
-              <div class="showcase-bg-text-watermark">MALT WHISKY &amp; GRAIN MALT WHISKY</div>
-              <div class="showcase-card-img-wrap">
-                <img src="assets/images/proimg6.png" alt="Grand Master's Whisky" class="wine-triptych-img">
-              </div>
-              <div class="showcase-card-content">
-                <h3 class="showcase-card-title">GRAND MASTER'S</h3>
-                <p class="showcase-card-desc">
-                  Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
-                </p>
-                <a href="#brands" class="showcase-card-btn">Shop Now</a>
-              </div>
-            </div>
-
-
+        <div class="style-showcase-header-right">
+          <div class="showcase-nav-arrows">
+            <button class="showcase-arrow-btn prev-arrow" id="showcasePrev" aria-label="Previous Products">
+              <i class="bi bi-arrow-left"></i>
+            </button>
+            <button class="showcase-arrow-btn next-arrow" id="showcaseNext" aria-label="Next Products">
+              <i class="bi bi-arrow-right"></i>
+            </button>
           </div>
+          <a href="#brands" class="btn-showcase-view-all">View All Product</a>
         </div>
-
-        <!-- Progressive Scroll Line Indicator Below Cards -->
-        <div class="showcase-progress-bar-wrap" data-aos="fade-up">
-          <div class="showcase-progress-track">
-            <div class="showcase-progress-line" id="showcaseProgressLine"></div>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Horizontal Scroll Cards Track Outer Container -->
+      <div class="style-wine-triptych-track-outer" data-aos="fade-up" data-aos-delay="150">
+        <div class="style-wine-triptych" id="styleShowcaseTrack">
+
+          <!-- Card 1: DUET RESERVE (Whisky) -->
+          <div class="wine-triptych-item" data-category="whisky">
+            <div class="showcase-card-img-wrap">
+              <img src="assets/images/proimg5.png" alt="Grand Master's Duet Reserve" class="wine-triptych-img">
+            </div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">GRAND MASTER'S</h3>
+              <p class="showcase-card-desc">
+                Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
+              </p>
+              <a href="#brands" class="showcase-card-btn">View Product</a>
+            </div>
+          </div>
+
+          <!-- Card 2: GRAND MASTER'S RED (Whisky) -->
+          <div class="wine-triptych-item" data-category="whisky">
+            <div class="showcase-card-img-wrap">
+              <img src="assets/images/proimg1.png" alt="Grand Master's Deluxe Whisky" class="wine-triptych-img">
+            </div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">GRAND MASTER'S</h3>
+              <p class="showcase-card-desc">
+                Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
+              </p>
+              <a href="#brands" class="showcase-card-btn">View Product</a>
+            </div>
+          </div>
+
+          <!-- Card 3: UNCLE 39 (Whisky) -->
+          <div class="wine-triptych-item" data-category="whisky">
+            <div class="showcase-card-img-wrap">
+              <img src="assets/images/proimg4.png" alt="Uncle 39 Classic Whisky" class="wine-triptych-img">
+            </div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">GRAND MASTER'S</h3>
+              <p class="showcase-card-desc">
+                Rich, smooth malt blended whisky crafted with fine grain spirits and aged to perfection.
+              </p>
+              <a href="#brands" class="showcase-card-btn">View Product</a>
+            </div>
+          </div>
+
+          <!-- Card 4: DJ CRAFT RUM (Rum) -->
+          <div class="wine-triptych-item" data-category="rum">
+            <div class="showcase-card-img-wrap">
+              <img src="assets/images/proimg2.png" alt="DJ Dark Reserve Rum" class="wine-triptych-img">
+            </div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">DJ CRAFT RUM</h3>
+              <p class="showcase-card-desc">
+                Artisanal dark reserve rum distilled from select sugarcane spirits with deep oak notes.
+              </p>
+              <a href="#brands" class="showcase-card-btn">View Product</a>
+            </div>
+          </div>
+
+          <!-- Card 5: DJ TRIPLE DISTILLED (Vodka) -->
+          <div class="wine-triptych-item" data-category="vodka">
+            <div class="showcase-card-img-wrap">
+              <img src="assets/images/proimg3.png" alt="DJ Triple Distilled Vodka" class="wine-triptych-img">
+            </div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">DJ ULTRA VODKA</h3>
+              <p class="showcase-card-desc">
+                Triple distilled ultra-pure grain vodka with exceptionally smooth, crisp finish.
+              </p>
+              <a href="#brands" class="showcase-card-btn">View Product</a>
+            </div>
+          </div>
+
+          <!-- Card 6: DJ BOTANICAL GIN (Gin) -->
+          <div class="wine-triptych-item" data-category="gin">
+            <div class="showcase-card-img-wrap">
+              <img src="assets/images/proimg6.png" alt="DJ Botanical Craft Gin" class="wine-triptych-img">
+            </div>
+            <div class="showcase-card-content">
+              <h3 class="showcase-card-title">DJ BOTANICAL GIN</h3>
+              <p class="showcase-card-desc">
+                Infused with handpicked wild botanicals and citrus zest for signature aroma.
+              </p>
+              <a href="#brands" class="showcase-card-btn">View Product</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1315,42 +1348,57 @@
     </div>
   </section>
 
-  <!-- ================= MINIMAL SITE FOOTER ================= -->
+  <!-- ================= SITE FOOTER ================= -->
   <footer class="site-footer" id="siteFooter">
-    <div class="footer-container">
+    <!-- Top Amber / Whiskey Brown Section -->
+    <div class="footer-top-block">
+      <div class="footer-container">
+        <!-- Centered Crest Logo -->
+        <div class="footer-minimal-top" data-aos="fade-up">
+          <a href="index.html" class="footer-brand-logo" aria-label="Deejay Distilleries Home">
+            <img src="assets/images/logo.png" alt="Deejay Distilleries Crest" class="footer-minimal-logo">
+          </a>
+        </div>
 
-      <!-- Top Section: Logo & Links -->
-      <div class="footer-minimal-top" data-aos="fade-up">
-        <a href="index.html" class="footer-brand-logo">
-          <img src="assets/images/logo.png" alt="Deejay Distilleries Crest" class="footer-minimal-logo">
-        </a>
-        <div class="footer-minimal-links">
+        <!-- Subtle Divider Line -->
+        <div class="footer-divider"></div>
+
+        <!-- Centered Navigation Links -->
+        <div class="footer-minimal-links" data-aos="fade-up" data-aos-delay="50">
           <a href="#about" class="footer-minimal-link">About Us</a>
           <a href="#brands" class="footer-minimal-link">Our Brands</a>
           <a href="#products" class="footer-minimal-link">Exports</a>
-          <a href="#blogs" class="footer-minimal-link">Domestic</a>
-          <a href="mailto:concierge@deejaydistilleries.com" class="footer-minimal-link">Contact Us</a>
+          <a href="#about" class="footer-minimal-link">Domestic</a>
+          <a href="#contact" class="footer-minimal-link">Contact Us</a>
+          <a href="#blogs" class="footer-minimal-link">Blog</a>
         </div>
       </div>
+    </div>
 
-      <!-- Divider -->
-      <div class="footer-divider"></div>
-
-      <!-- Bottom Section: Copyright & Legal -->
-      <div class="footer-minimal-bottom" data-aos="fade-up" data-aos-delay="100">
-        <div class="footer-minimal-left">
+    <!-- Bottom White Legal Bar -->
+    <div class="footer-bottom-block">
+      <div class="footer-container footer-bottom-inner" data-aos="fade-up" data-aos-delay="100">
+        <div class="footer-bottom-left">
           &copy; 2026 Deejay Distilleries Ltd. All Rights Reserved.
         </div>
-        <div class="footer-minimal-right">
-          <a href="#" class="footer-minimal-link">Security</a>
-          <a href="#" class="footer-minimal-link">Privacy &amp; Cookie Policy</a>
-          <a href="#" class="footer-minimal-link">Terms of Services</a>
+        <div class="footer-bottom-right">
+          <a href="#" class="footer-legal-link">Security</a>
+          <a href="#" class="footer-legal-link">Privacy &amp; Cookie Policy</a>
+          <a href="#" class="footer-legal-link">Terms of Services</a>
         </div>
       </div>
-
     </div>
   </footer>
 
+  <!-- ================= ABOUT US VIDEO POPUP MODAL ================= -->
+  <div class="video-modal-backdrop" id="videoModalBackdrop" aria-hidden="true" role="dialog" aria-label="About Us Video Player">
+    <div class="video-modal-dialog">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Close Video Player">&times;</button>
+      <div class="video-modal-content">
+        <video id="aboutPopupVideo" src="assets/videos/aboutusvideo.mp4" controls playsinline preload="metadata"></video>
+      </div>
+    </div>
+  </div>
 
   <!-- jQuery (Local with CDN fallback) -->
   <script src="js/jquery.min.js"></script>

@@ -90,17 +90,29 @@ $(document).ready(function () {
     $(window).on('scroll', handleNavScroll);
   }
 
-  // 3. Mobile Navigation Toggle
-  $('#mobileMenuOpen').on('click', function () {
+  // 3. Navigation Drawer Toggle (Desktop & Mobile)
+  function openNavDrawer() {
     $('#mobileNavDrawer').addClass('active');
+    $('#navDrawerBackdrop').addClass('active');
     $('body').css('overflow', 'hidden');
     if (lenis) lenis.stop();
-  });
+  }
 
-  $('#mobileMenuClose, .mobile-nav-menu .nav-custom-link, .mobile-nav-menu .btn-nav-contact').on('click', function () {
+  function closeNavDrawer() {
     $('#mobileNavDrawer').removeClass('active');
+    $('#navDrawerBackdrop').removeClass('active');
     $('body').css('overflow', 'auto');
     if (lenis) lenis.start();
+  }
+
+  $('#mobileMenuOpen').on('click', openNavDrawer);
+
+  $('#mobileMenuClose, #navDrawerBackdrop, .mobile-nav-menu .nav-custom-link, .mobile-nav-menu .btn-nav-contact').on('click', closeNavDrawer);
+
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape' && $('#mobileNavDrawer').hasClass('active')) {
+      closeNavDrawer();
+    }
   });
 
   // 4. Global Floating 3D Bottle - Multi-stage Section Journey, Sticking & Image Morphing
@@ -1336,134 +1348,104 @@ $(document).ready(function () {
 
   initZoomBanner();
 
-  // 10. Style Showcase Filter & Single-Scroll Smooth Cards Animation
+  // 10. Style Showcase Filter & Carousel Navigation
   function initStyleShowcase() {
     const $tabs = $('.filter-pill-btn');
-    const section = document.getElementById('showcase');
     const track = document.getElementById('styleShowcaseTrack');
     const outer = document.querySelector('.style-wine-triptych-track-outer');
+    const prevBtn = document.getElementById('showcasePrev');
+    const nextBtn = document.getElementById('showcaseNext');
+
+    if (!track || !outer) return;
+
+    let currentIndex = 0;
+    let currentFilter = 'all';
+
+    function getVisibleItems() {
+      return Array.from(track.querySelectorAll('.wine-triptych-item')).filter(item => {
+        return !item.classList.contains('is-hidden');
+      });
+    }
+
+    function getItemsPerView() {
+      const w = window.innerWidth;
+      if (w <= 767) return 1;
+      if (w <= 1199) return 2;
+      return 3;
+    }
+
+    function updateTrackPosition() {
+      const visibleItems = getVisibleItems();
+      const perView = getItemsPerView();
+      const maxIndex = Math.max(0, visibleItems.length - perView);
+
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+      }
+      if (currentIndex < 0) {
+        currentIndex = 0;
+      }
+
+      if (visibleItems.length > 0 && visibleItems[currentIndex]) {
+        const itemWidth = visibleItems[0].offsetWidth;
+        const offset = currentIndex * itemWidth;
+        track.style.transform = `translate3d(-${offset}px, 0, 0)`;
+      } else {
+        track.style.transform = `translate3d(0, 0, 0)`;
+      }
+
+      // Update button disabled states
+      if (prevBtn) prevBtn.disabled = currentIndex <= 0;
+      if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+    }
 
     $tabs.on('click', function () {
       $tabs.removeClass('active');
       $(this).addClass('active');
 
-      const filter = $(this).attr('data-filter');
+      currentFilter = $(this).attr('data-filter') || 'all';
       const $items = $('.wine-triptych-item');
-      if (!filter || filter === 'all') {
-        $items.css({ opacity: '1', transform: 'scale(1)' });
+
+      if (currentFilter === 'all') {
+        $items.removeClass('is-hidden');
       } else {
         $items.each(function () {
           const category = $(this).attr('data-category');
-          if (category === filter) {
-            $(this).css({ opacity: '1', transform: 'scale(1)' });
+          if (category === currentFilter) {
+            $(this).removeClass('is-hidden');
           } else {
-            $(this).css({ opacity: '0.35', transform: 'scale(0.95)' });
+            $(this).addClass('is-hidden');
           }
         });
       }
+
+      currentIndex = 0;
+      updateTrackPosition();
     });
 
-    if (!section || !track || !outer) return;
-
-    let targetX = 0;
-    let currentX = 0;
-    let isRunning = false;
-    let isSingleScrollAnimating = false;
-
-    function getMaxTranslateX() {
-      return Math.max(0, track.scrollWidth - outer.clientWidth);
-    }
-
-    function calculateTarget() {
-      if (isSingleScrollAnimating) return;
-
-      const secRect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      
-      const totalScrollable = section.offsetHeight - windowHeight;
-      if (totalScrollable <= 0) return;
-
-      const currentScroll = -secRect.top;
-      let progress = currentScroll / totalScrollable;
-      progress = Math.max(0, Math.min(1, progress));
-
-      const maxTranslateX = getMaxTranslateX();
-      if (maxTranslateX <= 0) return;
-
-      targetX = - (progress * maxTranslateX);
-
-      if (!isRunning) {
-        isRunning = true;
-        requestAnimationFrame(renderLoop);
-      }
-    }
-
-    const progressLine = document.getElementById('showcaseProgressLine');
-
-    function updateProgressBar() {
-      if (!progressLine) return;
-      const maxTranslateX = getMaxTranslateX();
-      if (maxTranslateX > 0) {
-        const scrollPct = Math.min(Math.max(Math.abs(currentX) / maxTranslateX, 0), 1) * 100;
-        progressLine.style.width = `${scrollPct.toFixed(1)}%`;
-      }
-    }
-
-    function updateCenterCard() {
-      const outerRect = outer.getBoundingClientRect();
-      const outerCenter = outerRect.left + (outerRect.width / 2);
-
-      let closestItem = null;
-      let minDistance = Infinity;
-
-      const items = track.querySelectorAll('.wine-triptych-item');
-      items.forEach((item) => {
-        const itemRect = item.getBoundingClientRect();
-        const itemCenter = itemRect.left + (itemRect.width / 2);
-        const distance = Math.abs(outerCenter - itemCenter);
-
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestItem = item;
-        }
-      });
-
-      items.forEach((item) => {
-        if (item === closestItem) {
-          item.classList.add('is-center');
-        } else {
-          item.classList.remove('is-center');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateTrackPosition();
         }
       });
     }
 
-    function renderLoop() {
-      const delta = targetX - currentX;
-
-      if (Math.abs(delta) < 0.05) {
-        currentX = targetX;
-        track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
-        updateProgressBar();
-        updateCenterCard();
-        isRunning = false;
-        return;
-      }
-
-      currentX += delta * 0.07;
-      track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
-      updateProgressBar();
-      updateCenterCard();
-      requestAnimationFrame(renderLoop);
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        const visibleItems = getVisibleItems();
+        const perView = getItemsPerView();
+        const maxIndex = Math.max(0, visibleItems.length - perView);
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateTrackPosition();
+        }
+      });
     }
 
-    if (lenis) {
-      lenis.on('scroll', calculateTarget);
-    }
-    window.addEventListener('scroll', calculateTarget, { passive: true });
-    window.addEventListener('resize', calculateTarget, { passive: true });
-
-    calculateTarget();
-    setTimeout(calculateTarget, 150);
+    window.addEventListener('resize', updateTrackPosition);
+    updateTrackPosition();
   }
 
   initStyleShowcase();
@@ -2254,5 +2236,65 @@ document.addEventListener('DOMContentLoaded', function() {
     dot.style.left = country.left + '%';
     dot.title = country.name; // Tooltip on hover
     mapWrapper.appendChild(dot);
+  });
+});
+
+// ================= ABOUT US VIDEO POPUP MODAL HANDLER =================
+document.addEventListener('DOMContentLoaded', function() {
+  const videoModalBackdrop = document.getElementById('videoModalBackdrop');
+  const videoModalClose = document.getElementById('videoModalClose');
+  const aboutVideoCard = document.getElementById('aboutVideoCard');
+  const aboutPlayBtn = document.getElementById('aboutPlayBtn');
+  const popupVideo = document.getElementById('aboutPopupVideo');
+
+  function openVideoModal() {
+    if (videoModalBackdrop && popupVideo) {
+      videoModalBackdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      popupVideo.currentTime = 0;
+      popupVideo.play().catch(function(err) {
+        console.log('Video autoplay prevented:', err);
+      });
+    }
+  }
+
+  function closeVideoModal() {
+    if (videoModalBackdrop && popupVideo) {
+      videoModalBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
+      popupVideo.pause();
+    }
+  }
+
+  if (aboutVideoCard) {
+    aboutVideoCard.addEventListener('click', openVideoModal);
+  }
+
+  if (aboutPlayBtn) {
+    aboutPlayBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openVideoModal();
+    });
+  }
+
+  if (videoModalClose) {
+    videoModalClose.addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeVideoModal();
+    });
+  }
+
+  if (videoModalBackdrop) {
+    videoModalBackdrop.addEventListener('click', function(e) {
+      if (e.target === videoModalBackdrop) {
+        closeVideoModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && videoModalBackdrop && videoModalBackdrop.classList.contains('active')) {
+      closeVideoModal();
+    }
   });
 });

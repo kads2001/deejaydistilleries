@@ -2147,15 +2147,15 @@ h6,
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  /* object-fit: cover;
+  object-position: center; */
   display: block;
-  transition: transform 0.6s ease;
+  /* transition: transform 0.6s ease; */
 }
 
-.vertical-hover-item:hover .vertical-hover-img {
+/* .vertical-hover-item:hover .vertical-hover-img {
   transform: scale(1.06);
-}
+} */
 
 .vertical-hover-overlay {
   position: absolute;
@@ -2313,7 +2313,7 @@ h6,
 
 .premium-products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr) 260px;
+  grid-template-columns: repeat(4, 1fr) 350px;
   gap: 0;
   border: 1px solid #e8e8e8;
   border-radius: 6px;
@@ -2323,12 +2323,14 @@ h6,
 .premium-product-card {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 28px 16px 22px;
   border-right: 1px solid #e8e8e8;
   background-color: #ffffff;
   transition: box-shadow 0.25s ease;
   text-align: center;
+  min-height: 500px;
 }
 
 .premium-product-card:hover {
@@ -2338,7 +2340,7 @@ h6,
 
 .ppc-img-wrap {
   width: 100%;
-  height: 200px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2346,7 +2348,7 @@ h6,
 }
 
 .ppc-img {
-  max-height: 180px;
+  max-height: 300px;
   max-width: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -2364,8 +2366,8 @@ h6,
 }
 
 .ppc-name {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 600;
   color: #1a1a1a;
   line-height: 1.4;
   margin-bottom: 10px;
@@ -2451,12 +2453,11 @@ h6,
 }
 
 .promo-img {
-  position: absolute;
-  bottom: 60px;
-  right: -10px;
-  height: 180px;
-  object-fit: contain;
-  opacity: 0.85;
+    position: absolute;
+    bottom: 88px;
+    height: 180px;
+    object-fit: contain;
+    opacity: 0.85;
 }
 
 .btn-promo-shop {
@@ -3093,15 +3094,15 @@ h6,
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  filter: drop-shadow(15px 15px 25px rgba(0, 0, 0, 0.32)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
+  /* filter: drop-shadow(15px 15px 25px rgba(0, 0, 0, 0.32)) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.18));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
-  transform: scale(0.92);
+  transform: scale(0.92); */
 }
 
 .wine-triptych-item.is-center .wine-triptych-img {
   max-height: 380px;
-  transform: scale(1.18);
-  filter: drop-shadow(18px 20px 30px rgba(0, 0, 0, 0.40)) drop-shadow(0 12px 18px rgba(0, 0, 0, 0.25));
+  /* transform: scale(1.18);
+  filter: drop-shadow(18px 20px 30px rgba(0, 0, 0, 0.40)) drop-shadow(0 12px 18px rgba(0, 0, 0, 0.25)); */
   z-index: 5;
 }
 
@@ -5221,6 +5222,20 @@ h6,
   text-align: left;
 }
 
+.footer-bottom-left a,
+.footer-bottom-bar a:not(.footer-bottom-link) {
+  color: #b4581b;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.footer-bottom-left a:hover,
+.footer-bottom-bar a:not(.footer-bottom-link):hover {
+  color: #8c3e0e;
+  text-decoration: underline;
+}
+
 .footer-bottom-right {
   display: flex;
   flex-wrap: wrap;
@@ -6165,7 +6180,7 @@ h6,
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  gap: 32px;
+  gap: 60px;
   padding: 4px 10px;
   display: flex;
   align-items: center;
@@ -6176,15 +6191,15 @@ h6,
 }
 
 .logo-track img {
-  height: 38px;
-  width: auto;
-  max-width: 100px;
-  min-width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-  padding: 2px 4px;
-  filter: grayscale(100%) opacity(0.8);
-  transition: filter 0.3s ease, transform 0.3s ease;
+    height: 150px;
+    width: 100%;
+    max-width: 180px;
+    min-width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    padding: 2px 4px;
+    filter: grayscale(100%) opacity(0.8);
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .logo-track img:hover {

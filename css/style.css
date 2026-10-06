@@ -134,8 +134,8 @@
 }
 
 :root {
-  --font-main: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-  --font-heading: 'Anybody', 'Archivo Black', sans-serif;
+  --font-main: 'Nunito', sans-serif;
+  --font-heading: 'Anybody', 'Archivo Black', 'Isometra', sans-serif;
   --gold-primary: #c4893b;
   --gold-hover: #a8712e;
   --gold-light: #dfb76c;
@@ -147,7 +147,7 @@
   --container-max: 1400px;
 
   /* Standard Typography Scale */
-  --font-hero-title: clamp(38px, 7vw, 150px);
+  --font-hero-title: clamp(38px, 7vw, 94px);
   --font-section-title: clamp(30px, 4vw, 72px);
   --font-card-title-lg: clamp(22px, 2vw, 28px);
   --font-card-title-md: clamp(17px, 1.4vw, 21px);
@@ -444,7 +444,7 @@ h6,
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 2.2px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--gold-primary, #c4893b);
   margin-bottom: 14px;
   display: inline-block;
@@ -807,8 +807,8 @@ h6,
   background: rgb(255 255 255 / 88%) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .site-header.scrolled .nav-custom-link{
@@ -884,7 +884,7 @@ h6,
   font-weight: 600;
   letter-spacing: 0.5px;
   line-height: normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   transition: color 0.25s ease, text-shadow 0.25s ease;
   white-space: nowrap;
@@ -903,7 +903,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1px;
   line-height: normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   padding: 10px 24px;
   border-radius: 50px !important;
@@ -1014,9 +1014,9 @@ h6,
   font-family: var(--font-main);
   font-weight: 700;
   font-size: var(--font-hero-title, clamp(38px, 5.2vw, 76px));
-  letter-spacing: 8px;
+  letter-spacing: 0px;
   line-height: 1.05;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #ffffff;
   margin-bottom: 12px;
 }
@@ -1058,7 +1058,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1px;
   line-height: normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   padding: 11px 28px;
   border-radius: 50px !important;
@@ -1090,7 +1090,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1px;
   line-height: normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   padding: 11px 28px;
   border-radius: 50px !important;
@@ -1186,7 +1186,7 @@ h6,
   color: #ffffff;
   z-index: 5;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .hero-card-progress-bar {
@@ -1622,7 +1622,7 @@ h6,
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.8px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 12px 28px;
   border-radius: 50px !important;
   border: 1px solid var(--gold-primary, #c4893b);
@@ -1867,19 +1867,19 @@ h6,
   width: 100%;
   position: relative;
   background-color: #06070a;
-  padding: 60px 0;
+  padding: 0px 0;
   z-index: 10;
 }
 
 .vertical-hover-container {
-  width: 80% !important;
-  max-width: 80% !important;
+  width:100% !important;
+  max-width: 100% !important;
   margin: 0 auto !important;
   display: flex;
   gap: 0;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  height: 600px;
+  height: 900px;
   justify-content: space-between;
 }
 
@@ -2160,7 +2160,7 @@ h6,
   line-height: 1.15;
   color: #11141a;
   letter-spacing: -0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: 0;
 }
 
@@ -2425,7 +2425,7 @@ h6,
   line-height: 1.15;
   color: #000;
   letter-spacing: -0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: 0;
 }
 
@@ -2448,7 +2448,7 @@ h6,
   font-weight: 800;
   letter-spacing: 2px;
   color: var(--gold-primary, #c4893b);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .btn-shop-pill {
@@ -2464,7 +2464,7 @@ h6,
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   width: fit-content;
   max-width: max-content;
@@ -2505,11 +2505,11 @@ h6,
   border: 2px solid var(--gold-primary, #c4893b);
   background-color: transparent;
   color: var(--gold-primary, #c4893b);
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   width: fit-content;
   max-width: max-content;
   white-space: nowrap;
@@ -2599,7 +2599,7 @@ h6,
   font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 3px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #645645;
   display: inline-flex;
   align-items: center;
@@ -2642,7 +2642,7 @@ h6,
   color: transparent;
   -webkit-text-stroke: 1px rgba(120, 100, 75, 0.22);
   letter-spacing: 4px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   pointer-events: none;
   z-index: 1;
   white-space: nowrap;
@@ -2697,7 +2697,7 @@ h6,
   line-height: 1.25;
   margin-bottom: 14px;
   letter-spacing: 1.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .showcase-card-desc {
@@ -2723,7 +2723,7 @@ h6,
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 1.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   border: none;
   box-shadow: 0 4px 12px rgba(28, 24, 21, 0.25);
@@ -2876,7 +2876,7 @@ h6,
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   line-height: 1.15;
   letter-spacing: -0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #000;
   margin-bottom: 0px;
 }
@@ -2911,7 +2911,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1.2px;
   line-height: 16px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #111111;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -2976,7 +2976,7 @@ h6,
   letter-spacing: 1.5px;
   line-height: 18px;
   color: #ffffff;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.85);
   pointer-events: none;
 }
@@ -3016,7 +3016,7 @@ h6,
   letter-spacing: 2px;
   line-height: 18px;
   color: var(--gold-primary, #c4893b);
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 12px;
 }
 
@@ -3027,7 +3027,7 @@ h6,
   line-height: 1.15;
   letter-spacing: -0.5px;
   color: #1a1a1a;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 0px;
 }
 
@@ -3037,7 +3037,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1.2px;
   color: #111111;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -3118,7 +3118,7 @@ h6,
   letter-spacing: 0.5px;
   color: #ffffff;
   margin-bottom: 10px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .launch-card-desc {
@@ -3143,7 +3143,7 @@ h6,
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #ffffff;
   text-decoration: none;
   display: inline-flex;
@@ -3241,7 +3241,7 @@ h6,
   font-weight: 800;
   letter-spacing: 2px;
   line-height: 18px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--gold-primary, #c4893b);
   margin-bottom: 12px;
   display: inline-block;
@@ -3254,7 +3254,7 @@ h6,
   line-height: 1.15;
   letter-spacing: -0.5px;
   color: #1a1a1a;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 14px;
 }
 
@@ -3285,7 +3285,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 16px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -3420,7 +3420,7 @@ h6,
   font-weight: 800;
   letter-spacing: 1.5px;
   line-height: 14px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #ffffff;
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.85);
@@ -3508,7 +3508,7 @@ h6,
   font-weight: 800;
   letter-spacing: 2px;
   line-height: 18px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--gold-light);
   margin-bottom: 14px;
 }
@@ -3519,7 +3519,7 @@ h6,
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #ffffff;
   margin-bottom: 18px;
 }
@@ -3546,7 +3546,7 @@ h6,
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.2px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   padding: 12px 28px;
   display: inline-flex;
@@ -3698,7 +3698,7 @@ h6,
     font-size: clamp(26px, 4vw, 75px);
     font-weight: 700;
     line-height: 72px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-bottom: 16px;
     color: black;
     max-width: 750px;
@@ -3718,7 +3718,7 @@ h6,
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 1.2px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -3788,7 +3788,7 @@ h6,
   font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 14px;
 }
 
@@ -3803,7 +3803,7 @@ h6,
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.8px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -3855,7 +3855,7 @@ h6,
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.8px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   white-space: nowrap;
 }
 
@@ -4043,7 +4043,7 @@ h6,
   font-weight: 800;
   letter-spacing: 2px;
   line-height: 18px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #705510;
   margin-bottom: 12px;
   display: inline-block;
@@ -4056,7 +4056,7 @@ h6,
   line-height: 1.15;
   letter-spacing: -0.5px;
   color: #000;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 14px;
 }
 
@@ -4080,7 +4080,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 16px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -4197,7 +4197,7 @@ h6,
     font-weight: 600;
     letter-spacing: 1.5px;
     line-height: 14px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: #ffffff;
     margin-bottom: 6px;
     display: inline-block;
@@ -4225,7 +4225,7 @@ h6,
     font-weight: 600;
     letter-spacing: 1.2px;
     line-height: 14px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: #fff;
     text-decoration: none;
     display: inline-flex;
@@ -4274,7 +4274,7 @@ h6,
   font-weight: 800;
   letter-spacing: 2px;
   line-height: 18px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #705510;
   margin-bottom: 12px;
   display: inline-block;
@@ -4287,7 +4287,7 @@ h6,
   line-height: 1.15;
   letter-spacing: -0.5px;
   color: #1a1a1a;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 0px;
 }
 
@@ -4297,7 +4297,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 16px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #111111;
   text-decoration: none;
   display: inline-flex;
@@ -4507,7 +4507,7 @@ h6,
   font-weight: 700;
   color: #111111;
   letter-spacing: -0.5px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin-bottom: 0px;
 }
 
@@ -4602,7 +4602,7 @@ h6,
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 16px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding: 14px 42px;
   border-radius: 50px !important;
   border: 1.5px solid #111111;
@@ -5000,7 +5000,7 @@ h6,
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -5049,7 +5049,7 @@ h6,
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #aaaaaa;
   display: flex;
   align-items: center;
@@ -5824,7 +5824,7 @@ p,
 .footer-brand-text,
   .world-map-subtitle,
 .contact-info-text {
-  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif !important;
+  font-family: var(--font-main, 'Nunito', sans-serif) !important;
   line-height: 1.6 !important;
   /* color: var(--gold-primary) !important; */
 }
@@ -5846,10 +5846,10 @@ a.btn,
   color: #ffffff !important;
   border: 2px solid var(--gold-primary) !important;
   border-radius: 50px !important;
-  font-family: 'Bebas Neue', sans-serif !important;
-  letter-spacing: 1px !important;
+  font-family: var(--font-heading, 'Anybody', sans-serif) !important;
+  letter-spacing: 0.5px !important;
   transition: all 0.3s ease !important;
-  text-transform: uppercase !important;
+  text-transform: capitalize !important;
 }
 
 /* Common Button Hover */
@@ -5859,7 +5859,7 @@ a.btn:hover,
 .btn-hero-solid:hover, 
 .btn-hero-outline:hover, 
 .btn-gold-pill:hover, 
-.btn-lime-pill:hover,
+.btn-lime-pill:hover, 
 .btn-shop-pill:hover, 
 .btn-contact-submit:hover, 
 .btn-nav-contact:hover,
@@ -5897,13 +5897,14 @@ a.btn:hover,
   text-align: center !important;
   white-space: nowrap !important;
   gap: 0px !important;
+  text-transform: capitalize !important;
 }
 
 /* Make sure the icons match */
 .btn-hero-solid i, 
 .btn-hero-outline i, 
 .btn-gold-pill i, 
-.btn-lime-pill i,
+.btn-lime-pill i, 
 .btn-shop-pill i, 
 .btn-contact-submit i, 
 .btn-nav-contact i,
@@ -5925,8 +5926,8 @@ a.btn:hover,
   color: #ffffff !important;
   border: 2px solid var(--gold-primary) !important;
   border-radius: 50px !important;
-  font-family: 'Bebas Neue', sans-serif !important;
-  text-transform: uppercase !important;
+  font-family: var(--font-heading, 'Anybody', sans-serif) !important;
+  text-transform: capitalize !important;
   transition: all 0.3s ease !important;
 }
 
@@ -5944,8 +5945,8 @@ a.btn:hover,
   color: var(--gold-primary) !important;
   border: 2px solid var(--gold-primary) !important;
   border-radius: 50px !important;
-  font-family: 'Bebas Neue', sans-serif !important;
-  text-transform: uppercase !important;
+  font-family: var(--font-heading, 'Anybody', sans-serif) !important;
+  text-transform: capitalize !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
 }
@@ -5955,6 +5956,51 @@ a.btn:hover,
   background-color: var(--gold-primary) !important;
   color: #ffffff !important;
   border-color: var(--gold-primary) !important;
+}
+
+/* ================= ALL TAGS AND CTAS CAPITALIZATION ================= */
+button,
+.btn,
+a.btn,
+[class*="btn-"],
+[class*="-btn"],
+[class*="-pill"],
+.btn-hero-solid,
+.btn-hero-outline,
+.btn-gold-pill,
+.btn-lime-pill,
+.btn-shop-pill,
+.btn-contact-submit,
+.btn-nav-contact,
+.footer-newsletter-btn,
+.showcase-card-btn,
+.filter-pill-btn,
+.flavour-cta-btn,
+.product-news-cta-btn,
+.blogs-view-all-btn,
+.zoom-banner-btn,
+.recent-launches-view-all,
+.about-explore-link,
+.editorial-link,
+.launch-card-link,
+.beer-stack-read-more,
+.link-view-details,
+.nav-custom-link,
+.hero-eyebrow-badge,
+.hero-badge,
+.style-promo-tag,
+.editorial-tag,
+.recent-launches-tagline,
+.benefits-tagline,
+.product-news-tagline,
+.blogs-tagline,
+.flavour-tagline,
+.zoom-banner-badge,
+.about-parallax-badge,
+.badge,
+.tag,
+.tab {
+  text-transform: capitalize !important;
 }
 
 /* ================= AOS ANIMATION ENHANCEMENTS ================= */

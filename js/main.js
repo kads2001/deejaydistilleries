@@ -1355,6 +1355,7 @@ $(document).ready(function () {
     const outer = document.querySelector('.style-wine-triptych-track-outer');
     const prevBtn = document.getElementById('showcasePrev');
     const nextBtn = document.getElementById('showcaseNext');
+    const progressLine = document.getElementById('showcaseProgressLine');
 
     if (!track || !outer) return;
 
@@ -1392,6 +1393,25 @@ $(document).ready(function () {
         track.style.transform = `translate3d(-${offset}px, 0, 0)`;
       } else {
         track.style.transform = `translate3d(0, 0, 0)`;
+      }
+
+      // Update Center Highlight Card
+      visibleItems.forEach((item, idx) => {
+        const centerOffset = perView === 3 ? currentIndex + 1 : (perView === 2 ? currentIndex : currentIndex);
+        if (idx === centerOffset) {
+          item.classList.add('is-center');
+        } else {
+          item.classList.remove('is-center');
+        }
+      });
+
+      // Update Progress Bar
+      if (progressLine) {
+        const totalSteps = Math.max(1, visibleItems.length - perView + 1);
+        const progressWidthPct = Math.max(15, 100 / Math.max(visibleItems.length, 1));
+        const progressOffsetPct = (currentIndex / Math.max(1, visibleItems.length - perView)) * (100 - progressWidthPct);
+        progressLine.style.width = `${progressWidthPct.toFixed(1)}%`;
+        progressLine.style.transform = `translateX(${progressOffsetPct.toFixed(1)}%)`;
       }
 
       // Update button disabled states

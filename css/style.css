@@ -541,9 +541,8 @@ h6,
   z-index: 1;
 }
 
-/* Water Ripple Effect Layer (Scoped to Banner) */
-.full-mountain-image,
-.hero-ripple-bg {
+/* Hero Banner Slide Background Layer */
+.full-mountain-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -553,18 +552,6 @@ h6,
   background-repeat: no-repeat !important;
   background-size: cover !important;
   z-index: 1;
-  pointer-events: auto !important;
-}
-
-.full-mountain-image canvas,
-.hero-ripple-bg canvas {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: 1 !important;
-  pointer-events: auto !important;
 }
 
 .hero-mountain-img {
@@ -855,7 +842,7 @@ h6,
 .brand-crest-logo {
   height: 120px;
   width: auto;
-  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.8));
+  /* filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.8)); */
   transition: transform 0.3s ease, height 0.3s ease;
 }
 
@@ -2502,33 +2489,35 @@ h6,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 22px;
+  padding: 10px 26px;
   border-radius: 50px !important;
-  border: 1px solid #e2e4e8;
-  background-color: #ffffff;
-  color: #333842;
-  font-family: var(--font-main);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
+  border: 2px solid var(--gold-primary, #c4893b);
+  background-color: transparent;
+  color: var(--gold-primary, #c4893b);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   width: fit-content;
   max-width: max-content;
   white-space: nowrap;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .filter-pill-btn:hover {
-  border-color: #111111;
-  color: #111111;
-  transform: translateY(-1px);
+  background-color: var(--gold-primary, #c4893b);
+  color: #ffffff;
+  border-color: var(--gold-primary, #c4893b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(196, 137, 59, 0.25);
 }
 
 .filter-pill-btn.active {
-  background-color: #111111;
+  background-color: var(--gold-primary, #c4893b);
   color: #ffffff;
-  border-color: #111111;
+  border-color: var(--gold-primary, #c4893b);
 }
 
 /* Horizontal Scroll Cards Track Outer Container */
@@ -2646,6 +2635,7 @@ h6,
   pointer-events: none;
   z-index: 1;
   white-space: nowrap;
+  display: none;
 }
 
 .showcase-card-img-wrap {
@@ -5917,7 +5907,6 @@ a.btn:hover,
 
 /* Ensure these extra buttons also get the Gold style */
 .showcase-card-btn,
-.filter-pill-btn,
 .flavour-cta-btn,
 .product-news-cta-btn,
 .blogs-view-all-btn {
@@ -5931,12 +5920,30 @@ a.btn:hover,
 }
 
 .showcase-card-btn:hover,
-.filter-pill-btn:hover,
 .flavour-cta-btn:hover,
 .product-news-cta-btn:hover,
 .blogs-view-all-btn:hover {
   background-color: transparent !important;
   color: var(--gold-primary) !important;
+}
+
+/* Filter Pill Tabs: Transparent background by default, filled on hover and when active (clicked) */
+.filter-pill-btn {
+  background-color: transparent !important;
+  color: var(--gold-primary) !important;
+  border: 2px solid var(--gold-primary) !important;
+  border-radius: 50px !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.filter-pill-btn:hover,
+.filter-pill-btn.active {
+  background-color: var(--gold-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--gold-primary) !important;
 }
 
 /* ================= AOS ANIMATION ENHANCEMENTS ================= */

@@ -2112,6 +2112,17 @@ h6,
   color: #000000;
 }
 
+.popular-section-para {
+  font-family: var(--font-main, sans-serif);
+  font-size: var(--font-body-p, 15px);
+  line-height: 1.65;
+  color: #444444;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-weight: 400;
+  max-width: 800px;
+}
+
 .vertical-hover-container {
   width: 100%;
   max-width: 100%;
@@ -2223,13 +2234,13 @@ h6,
   font-family: var(--font-main, sans-serif);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 0;
   text-transform: uppercase;
   text-decoration: none;
   padding: 9px 24px;
-  border-radius: 2px;
+  border-radius: 50px;
   border: 1px solid #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
   transition: all 0.25s ease;
 }
 
@@ -2238,7 +2249,7 @@ h6,
   border-color: #b4581b;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(180, 88, 27, 0.4);
+  box-shadow: none;
 }
 
 @media (max-width: 991px) {
@@ -2372,6 +2383,36 @@ h6,
   color: #1a1a1a;
   line-height: 1.4;
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.ppc-body p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 16px;
+  padding: 0 6px;
+}
+
+.ppc-body .btn-hover-shop {
+  border: 1.5px solid #1a1a1a;
+  background-color: transparent;
+  color: #1a1a1a;
+  border-radius: 50px;
+  box-shadow: none !important;
+  padding: 9px 24px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.ppc-body .btn-hover-shop:hover {
+  background-color: #b4581b;
+  border-color: #b4581b;
+  color: #ffffff;
+  box-shadow: none !important;
+  transform: translateY(-2px);
 }
 
 .ppc-stars {
@@ -2401,7 +2442,8 @@ h6,
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 50px;
+  box-shadow: none;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
@@ -2432,7 +2474,7 @@ h6,
   letter-spacing: 1.5px;
   text-transform: uppercase;
   padding: 4px 12px;
-  border-radius: 2px;
+  border-radius: 50px;
   margin-bottom: 18px;
 }
 
@@ -2478,7 +2520,8 @@ h6,
   letter-spacing: 1.2px;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 50px;
+  box-shadow: none;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
@@ -3235,14 +3278,14 @@ h6,
   filter: drop-shadow(18px 20px 30px rgba(0, 0, 0, 0.40)) drop-shadow(0 12px 18px rgba(0, 0, 0, 0.25)); */
   z-index: 5;
 }
-
+/* 
 .wine-triptych-item:hover .wine-triptych-img {
   transform: translateY(-4px) scale(1.02);
-}
-
+} */
+/* 
 .wine-triptych-item.is-center:hover .wine-triptych-img {
   transform: translateY(-4px) scale(1.22);
-}
+} */
 
 .showcase-card-content {
     flex: 1;
@@ -4841,7 +4884,7 @@ h6,
   font-family: var(--font-main);
   font-weight: 400;
   font-size: 34px;
-  line-height: 52px;
+  line-height: 36px;
   color: white;
   margin-bottom: 8px;
 }

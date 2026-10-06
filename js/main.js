@@ -14,22 +14,9 @@ $(document).ready(function () {
   // Customize these values below according to your preference!
   // =========================================================================
   const SMOOTH_SCROLL_SETTINGS = {
-    // Smoothness / Damping factor:
-    // 0.05 = Super silky & luxurious (slow drift)
-    // 0.08 - 0.1 = Perfectly balanced & buttery smooth (Recommended)
-    // 0.15+ = Snappy & quick
-    lerp: 0.085,
-
-    // Scroll speed / Distance per mouse wheel step:
-    // 0.8 = Slower / shorter travel
-    // 1.0 = Normal travel (Recommended)
-    // 1.2 - 1.5 = Faster / larger travel per wheel tick
+    lerp: 0.1,
     wheelMultiplier: 1.0,
-
-    // Touchpad & Touch drag sensitivity
-    touchMultiplier: 1.5,
-
-    // Orientation & behavior
+    touchMultiplier: 1.2,
     smoothWheel: true,
     syncTouch: false,
     infinite: false,
@@ -448,6 +435,12 @@ $(document).ready(function () {
     function renderMountainScene() {
       const scrollY = lenis ? lenis.scroll : (window.pageYOffset || document.documentElement.scrollTop);
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      if (scrollY > windowHeight * 1.3) {
+        requestAnimationFrame(renderMountainScene);
+        return;
+      }
+
       const scrollProgress = Math.min(Math.max(scrollY / (windowHeight * 1.1), 0), 1);
 
       // Snappy smooth mouse interpolation
@@ -2106,13 +2099,6 @@ $(document).ready(function () {
     setTimeout(function () {
       AOS.refresh();
     }, 500);
-
-    // Synchronize AOS with Lenis smooth scroll
-    if (lenis) {
-      lenis.on('scroll', function () {
-        AOS.refresh();
-      });
-    }
   }
 
   // 13. Interactive Button Text Wave Effect on Hover

@@ -692,7 +692,7 @@ h6,
 }
 
 .site-header.scrolled .btn-nav-contact {
-  color: var(--gold-primary) !important;
+  color: white !important;
   border-color: var(--gold-primary) !important;
 }
 .site-header.scrolled .mobile-nav-toggle {
@@ -895,7 +895,7 @@ h6,
   font-weight: 700;
   font-size: var(--font-hero-title, clamp(38px, 5.2vw, 76px));
   letter-spacing: 0px;
-  line-height: 1.05;
+  line-height: 1;
   text-transform: capitalize;
   color: #ffffff;
   margin-bottom: 12px;
@@ -5711,7 +5711,7 @@ select,
 .world-map-subtitle,
 .contact-info-text {
   font-family: var(--font-heading) !important;
-  line-height: 1.6 !important;
+  line-height: 1.4 !important;
 }
 
 /* Common Buttons & CTAs */

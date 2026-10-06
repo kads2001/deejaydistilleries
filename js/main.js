@@ -1348,8 +1348,9 @@ $(document).ready(function () {
 
   initZoomBanner();
 
-  // 10. Style Showcase Filter & Carousel Navigation
+  // 10. Style Showcase Filter, Arrow Carousel Navigation & Smooth Scroll Interaction
   function initStyleShowcase() {
+    const section = document.getElementById('showcase');
     const $tabs = $('.filter-pill-btn');
     const track = document.getElementById('styleShowcaseTrack');
     const outer = document.querySelector('.style-wine-triptych-track-outer');
@@ -1357,15 +1358,22 @@ $(document).ready(function () {
     const nextBtn = document.getElementById('showcaseNext');
     const progressLine = document.getElementById('showcaseProgressLine');
 
-    if (!track || !outer) return;
+    if (!track || !outer || !section) return;
 
-    let currentIndex = 0;
-    let currentFilter = 'all';
+    let currentX = 0;
+    let targetX = 0;
+    let isAnimating = false;
+    let isManualNav = false;
+    let manualTimeout = null;
 
     function getVisibleItems() {
       return Array.from(track.querySelectorAll('.wine-triptych-item')).filter(item => {
         return !item.classList.contains('is-hidden');
       });
+    }
+
+    function getMaxTranslateX() {
+      return Math.max(0, track.scrollWidth - outer.clientWidth);
     }
 
     function getItemsPerView() {
@@ -1375,55 +1383,162 @@ $(document).ready(function () {
       return 3;
     }
 
-    function updateTrackPosition() {
+    function getItemWidth() {
       const visibleItems = getVisibleItems();
-      const perView = getItemsPerView();
-      const maxIndex = Math.max(0, visibleItems.length - perView);
-
-      if (currentIndex > maxIndex) {
-        currentIndex = maxIndex;
+      if (visibleItems.length > 0) {
+        return visibleItems[0].offsetWidth;
       }
-      if (currentIndex < 0) {
-        currentIndex = 0;
-      }
+      return outer.clientWidth / getItemsPerView();
+    }
 
-      if (visibleItems.length > 0 && visibleItems[currentIndex]) {
-        const itemWidth = visibleItems[0].offsetWidth;
-        const offset = currentIndex * itemWidth;
-        track.style.transform = `translate3d(-${offset}px, 0, 0)`;
-      } else {
-        track.style.transform = `translate3d(0, 0, 0)`;
-      }
+    function updateCenterCard() {
+      const outerRect = outer.getBoundingClientRect();
+      const outerCenter = outerRect.left + (outerRect.width / 2);
 
-      // Update Center Highlight Card
-      visibleItems.forEach((item, idx) => {
-        const centerOffset = perView === 3 ? currentIndex + 1 : (perView === 2 ? currentIndex : currentIndex);
-        if (idx === centerOffset) {
+      const visibleItems = getVisibleItems();
+      let closestItem = null;
+      let minDistance = Infinity;
+
+      visibleItems.forEach((item) => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.left + (itemRect.width / 2);
+        const distance = Math.abs(outerCenter - itemCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestItem = item;
+        }
+      });
+
+      visibleItems.forEach((item) => {
+        if (item === closestItem) {
           item.classList.add('is-center');
         } else {
           item.classList.remove('is-center');
         }
       });
+    }
 
-      // Update Progress Bar
-      if (progressLine) {
-        const totalSteps = Math.max(1, visibleItems.length - perView + 1);
-        const progressWidthPct = Math.max(15, 100 / Math.max(visibleItems.length, 1));
-        const progressOffsetPct = (currentIndex / Math.max(1, visibleItems.length - perView)) * (100 - progressWidthPct);
-        progressLine.style.width = `${progressWidthPct.toFixed(1)}%`;
-        progressLine.style.transform = `translateX(${progressOffsetPct.toFixed(1)}%)`;
+    function updateProgressBar() {
+      if (!progressLine) return;
+      const maxTranslateX = getMaxTranslateX();
+      if (maxTranslateX > 0) {
+        const progressPct = Math.min(Math.max(Math.abs(currentX) / maxTranslateX, 0), 1);
+        const barWidth = 25;
+        const maxOffset = 100 - barWidth;
+        progressLine.style.width = `${barWidth}%`;
+        progressLine.style.transform = `translateX(${((progressPct * maxOffset) / (barWidth / 100)).toFixed(1)}%)`;
+      } else {
+        progressLine.style.width = `100%`;
+        progressLine.style.transform = `translateX(0%)`;
+      }
+    }
+
+    function updateArrowButtons() {
+      const maxTranslateX = getMaxTranslateX();
+      if (prevBtn) prevBtn.disabled = currentX >= -4;
+      if (nextBtn) nextBtn.disabled = maxTranslateX <= 0 || currentX <= -maxTranslateX + 4;
+    }
+
+    function renderLoop() {
+      const delta = targetX - currentX;
+
+      if (Math.abs(delta) < 0.25) {
+        currentX = targetX;
+        track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+        updateProgressBar();
+        updateCenterCard();
+        updateArrowButtons();
+        isAnimating = false;
+        return;
       }
 
-      // Update button disabled states
-      if (prevBtn) prevBtn.disabled = currentIndex <= 0;
-      if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+      currentX += delta * 0.1;
+      track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+      updateProgressBar();
+      updateCenterCard();
+      updateArrowButtons();
+      requestAnimationFrame(renderLoop);
+    }
+
+    function triggerRender() {
+      if (!isAnimating) {
+        isAnimating = true;
+        requestAnimationFrame(renderLoop);
+      }
+    }
+
+    function handleScroll() {
+      if (isManualNav) return;
+
+      const secRect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const totalScrollable = section.offsetHeight - windowHeight;
+
+      if (totalScrollable <= 0) {
+        targetX = 0;
+        triggerRender();
+        return;
+      }
+
+      // Starts exactly at 0 when section pins at top of screen (secRect.top <= 0)
+      // Scrolls all products until section reaches bottom (secRect.top = -totalScrollable)
+      const currentScrollPos = -secRect.top;
+      let progress = currentScrollPos / totalScrollable;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const maxTranslateX = getMaxTranslateX();
+      if (maxTranslateX <= 0) {
+        targetX = 0;
+      } else {
+        targetX = - (progress * maxTranslateX);
+      }
+
+      triggerRender();
+    }
+
+    function slideToIndex(stepDirection) {
+      isManualNav = true;
+      clearTimeout(manualTimeout);
+
+      const maxTranslateX = getMaxTranslateX();
+      const itemWidth = getItemWidth();
+      const currentPos = Math.abs(currentX);
+
+      let targetPos = 0;
+      if (stepDirection > 0) {
+        targetPos = Math.min(maxTranslateX, Math.ceil((currentPos + 10) / itemWidth) * itemWidth);
+      } else {
+        targetPos = Math.max(0, Math.floor((currentPos - 10) / itemWidth) * itemWidth);
+      }
+
+      targetX = -targetPos;
+      triggerRender();
+
+      manualTimeout = setTimeout(() => {
+        isManualNav = false;
+      }, 1200);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        slideToIndex(-1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        slideToIndex(1);
+      });
     }
 
     $tabs.on('click', function () {
       $tabs.removeClass('active');
       $(this).addClass('active');
 
-      currentFilter = $(this).attr('data-filter') || 'all';
+      const currentFilter = $(this).attr('data-filter') || 'all';
       const $items = $('.wine-triptych-item');
 
       if (currentFilter === 'all') {
@@ -1439,33 +1554,28 @@ $(document).ready(function () {
         });
       }
 
-      currentIndex = 0;
-      updateTrackPosition();
+      targetX = 0;
+      currentX = 0;
+      track.style.transform = `translate3d(0, 0, 0)`;
+      updateCenterCard();
+      updateProgressBar();
+      updateArrowButtons();
     });
 
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateTrackPosition();
-        }
-      });
+    if (typeof lenis !== 'undefined' && lenis) {
+      lenis.on('scroll', handleScroll);
     }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', () => {
+      handleScroll();
+      updateCenterCard();
+    }, { passive: true });
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        const visibleItems = getVisibleItems();
-        const perView = getItemsPerView();
-        const maxIndex = Math.max(0, visibleItems.length - perView);
-        if (currentIndex < maxIndex) {
-          currentIndex++;
-          updateTrackPosition();
-        }
-      });
-    }
-
-    window.addEventListener('resize', updateTrackPosition);
-    updateTrackPosition();
+    handleScroll();
+    setTimeout(() => {
+      handleScroll();
+      updateCenterCard();
+    }, 150);
   }
 
   initStyleShowcase();
@@ -1867,6 +1977,24 @@ $(document).ready(function () {
       '.about-main-title',
       '.about-text-p',
       '.about-explore-link',
+      '.btn-story-outline',
+      '.about-video-box',
+      '.popular-section-header',
+      '.popular-section-title',
+      '.vertical-hover-item',
+      '.vertical-hover-title',
+      '.vertical-hover-price',
+      '.btn-hover-shop',
+      '.premium-products-header',
+      '.premium-products-title',
+      '.premium-view-all',
+      '.premium-product-card',
+      '.ppc-name',
+      '.premium-promo-card',
+      '.promo-sale-badge',
+      '.promo-heading',
+      '.promo-sub',
+      '.btn-promo-shop',
       '.beer-stack-item-title',
       '.beer-stack-item-desc',
       '.beer-stack-read-more',
@@ -1878,6 +2006,9 @@ $(document).ready(function () {
       '.showcase-card-title',
       '.showcase-card-desc',
       '.showcase-card-btn',
+      '.showcase-arrow-btn',
+      '.btn-showcase-view-all',
+      '.showcase-progress-bar-wrap',
       '.recent-launches-tagline',
       '.recent-launches-title',
       '.recent-launches-view-all',
@@ -1911,6 +2042,7 @@ $(document).ready(function () {
       '.contact-left-tagline',
       '.world-map-title',
       '.world-map-subtitle',
+      '.world-map-img',
       '.btn-gold-pill',
       '.btn-lime-pill',
       '.footer-col-title',
@@ -1919,6 +2051,8 @@ $(document).ready(function () {
       '.footer-contact-item',
       '.footer-minimal-link',
       '.footer-minimal-left',
+      '.footer-bottom-left',
+      '.footer-bottom-right',
       '.footer-partner-item'
     ];
 
@@ -1928,7 +2062,7 @@ $(document).ready(function () {
         el.setAttribute('data-aos', 'fade-up');
 
         // Provide pleasant staggered delays for grouped text elements
-        const parent = el.closest('.hero-title-area, .about-overview-container, .about-text-content, .beer-stack-col-left, .editorial-content-box, .showcase-card-content, .recent-launches-header, .flavour-header-left, .product-news-header-left, .blogs-header-left, .contact-title-box, .world-map-header, .footer-minimal-top, .footer-top-grid, .footer-partners-row');
+        const parent = el.closest('.hero-title-area, .about-overview-container, .about-text-content, .about-stats-row, .vertical-hover-container, .premium-products-grid, .beer-stack-col-left, .editorial-content-box, .showcase-card-content, .recent-launches-header, .recent-launches-grid, .flavour-header-left, .product-news-header-left, .product-news-grid, .blogs-header-left, .blogs-grid, .contact-title-box, .world-map-header, .footer-minimal-top, .footer-top-grid, .footer-partners-row');
         if (parent) {
           const siblings = Array.from(parent.querySelectorAll(textSelectors.join(', ')));
           const sibIndex = siblings.indexOf(el);

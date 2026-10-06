@@ -135,6 +135,7 @@
 
 :root {
   --font-main: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+  --font-heading: 'Anybody', 'Archivo Black', sans-serif;
   --gold-primary: #c4893b;
   --gold-hover: #a8712e;
   --gold-light: #dfb76c;
@@ -290,7 +291,7 @@ h6,
 .about-stat-number,
 .showcase-card-title,
 .benefit-card-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-heading, 'Anybody', sans-serif);
 }
 
 /* ================= GLOBAL 80% CONTAINER WRAPPER ================= */
@@ -851,7 +852,7 @@ h6,
 }
 
 .site-header.scrolled .brand-crest-logo {
-  height: 55px;
+  height: 90px;
 }
 
 /* Right Navigation & Menu Links */
@@ -1312,48 +1313,58 @@ h6,
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
-/* .ticker-dot {
-  width: 8px;
-  height: 8px;
+.ticker-dot {
+  width: 9px;
+  height: 9px;
   border-radius: 50% !important;
   display: inline-block;
   flex-shrink: 0;
-} */
+  vertical-align: middle;
+}
 
 .dot-purple {
   background-color: #b055e8;
+  box-shadow: 0 0 6px rgba(176, 85, 232, 0.7);
 }
 
 .dot-orange {
   background-color: #f26522;
+  box-shadow: 0 0 6px rgba(242, 101, 34, 0.7);
 }
 
 .dot-green {
   background-color: #3bb54a;
+  box-shadow: 0 0 6px rgba(59, 181, 74, 0.7);
 }
 
 .dot-blue {
   background-color: #00aeef;
+  box-shadow: 0 0 6px rgba(0, 174, 239, 0.7);
 }
 
 .dot-yellow {
   background-color: #f7b731;
+  box-shadow: 0 0 6px rgba(247, 183, 49, 0.7);
 }
 
 .dot-red {
   background-color: #ea2027;
+  box-shadow: 0 0 6px rgba(234, 32, 39, 0.7);
 }
 
 .dot-cyan {
   background-color: #12cbc4;
+  box-shadow: 0 0 6px rgba(18, 203, 196, 0.7);
 }
 
 .dot-gold {
   background-color: #d4af37;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.7);
 }
 
 .dot-pink {
   background-color: #fd79a8;
+  box-shadow: 0 0 6px rgba(253, 121, 168, 0.7);
 }
 
 /* ================= ABOUT OVERVIEW & STATS SECTION ================= */
@@ -2011,7 +2022,7 @@ h6,
 
 
 .marquee-title {
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-heading, 'Anybody', sans-serif);
     font-size: 27px;
     font-weight: 600;
     color: #111111;
@@ -5800,7 +5811,7 @@ h1, h2, h3, h4, h5, h6,
 .contact-section-title,
   .world-map-title,
 .footer-col-title {
-  font-family: 'Bebas Neue', sans-serif !important;
+  font-family: var(--font-heading, 'Anybody', sans-serif) !important;
   /* color: var(--gold-primary) !important; */
 }
 

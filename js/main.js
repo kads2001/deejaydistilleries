@@ -2527,4 +2527,32 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   initAgeGate();
+
+  // =========================================================================
+  // FULLSCREEN PRELOADER
+  // =========================================================================
+  function initPreloader() {
+    const $preloader = $('#sitePreloader');
+    if (!$preloader.length) return;
+
+    let preloaderDismissed = false;
+    function hidePreloader() {
+      if (preloaderDismissed) return;
+      preloaderDismissed = true;
+      $preloader.addClass('loaded');
+      setTimeout(function () {
+        $preloader.css('display', 'none');
+      }, 700);
+    }
+
+    // Dismiss on window load with graceful minimum reveal
+    $(window).on('load', function () {
+      setTimeout(hidePreloader, 1000);
+    });
+
+    // Fallback safety timeout in case load event is delayed
+    setTimeout(hidePreloader, 2600);
+  }
+
+  initPreloader();
 });

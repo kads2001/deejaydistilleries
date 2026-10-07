@@ -22,6 +22,58 @@
 </head>
 
 <body>
+  <!-- ================= FULLSCREEN PRELOADER WITH LOGO & ZIGZAG LINES ================= -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-bg-glow"></div>
+
+    <!-- Top Zigzag Line (Left to Right) -->
+    <div class="zigzag-line-wrap zigzag-top">
+      <svg class="zigzag-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldZigzagGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b4581b" stop-opacity="0.15" />
+            <stop offset="30%" stop-color="#dfb76c" stop-opacity="0.9" />
+            <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+            <stop offset="70%" stop-color="#dfb76c" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#b4581b" stop-opacity="0.15" />
+          </linearGradient>
+          <filter id="goldGlowFilter1" x="-20%" y="-50%" width="140%" height="200%">
+            <feDropShadow dx="0" dy="0" stdDeviation="3.5" flood-color="#dfb76c" flood-opacity="0.75"/>
+          </filter>
+        </defs>
+        <path class="zigzag-path zigzag-path-1" d="M -240 30 L -220 10 L -200 30 L -180 10 L -160 30 L -140 10 L -120 30 L -100 10 L -80 30 L -60 10 L -40 30 L -20 10 L 0 30 L 20 10 L 40 30 L 60 10 L 80 30 L 100 10 L 120 30 L 140 10 L 160 30 L 180 10 L 200 30 L 220 10 L 240 30 L 260 10 L 280 30 L 300 10 L 320 30 L 340 10 L 360 30 L 380 10 L 400 30 L 420 10 L 440 30 L 460 10 L 480 30 L 500 10 L 520 30 L 540 10 L 560 30 L 580 10 L 600 30 L 620 10 L 640 30 L 660 10 L 680 30 L 700 10 L 720 30 L 740 10 L 760 30 L 780 10 L 800 30 L 820 10 L 840 30 L 860 10 L 880 30 L 900 10 L 920 30 L 940 10 L 960 30 L 980 10 L 1000 30 L 1020 10 L 1040 30 L 1060 10 L 1080 30 L 1100 10 L 1120 30 L 1140 10 L 1160 30 L 1180 10 L 1200 30 L 1220 10 L 1240 30 L 1260 10 L 1280 30 L 1300 10 L 1320 30 L 1340 10 L 1360 30 L 1380 10 L 1400 30 L 1420 10 L 1440 30 L 1460 10 L 1480 30 L 1500 10 L 1520 30 L 1540 10 L 1560 30 L 1580 10 L 1600 30 L 1620 10 L 1640 30 L 1660 10 L 1680 30" stroke="url(#goldZigzagGrad1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#goldGlowFilter1)"/>
+      </svg>
+    </div>
+
+    <!-- Center Logo & Brand Block -->
+    <div class="preloader-center-content">
+      <div class="preloader-logo-wrap">
+        <img src="assets/images/logo.png" alt="Deejay Distilleries Crest" class="preloader-logo">
+      </div>
+      <span class="preloader-brand-title">DEEJAY DISTILLERIES</span>
+      <span class="preloader-tagline">MASTER CRAFT DISTILLATION</span>
+    </div>
+
+    <!-- Bottom Zigzag Line (Left to Right) -->
+    <div class="zigzag-line-wrap zigzag-bottom">
+      <svg class="zigzag-svg" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldZigzagGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b4581b" stop-opacity="0.15" />
+            <stop offset="30%" stop-color="#dfb76c" stop-opacity="0.9" />
+            <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+            <stop offset="70%" stop-color="#dfb76c" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#b4581b" stop-opacity="0.15" />
+          </linearGradient>
+          <filter id="goldGlowFilter2" x="-20%" y="-50%" width="140%" height="200%">
+            <feDropShadow dx="0" dy="0" stdDeviation="3.5" flood-color="#dfb76c" flood-opacity="0.75"/>
+          </filter>
+        </defs>
+        <path class="zigzag-path zigzag-path-2" d="M -240 30 L -220 50 L -200 30 L -180 50 L -160 30 L -140 50 L -120 30 L -100 50 L -80 30 L -60 50 L -40 30 L -20 50 L 0 30 L 20 50 L 40 30 L 60 50 L 80 30 L 100 50 L 120 30 L 140 50 L 160 30 L 180 50 L 200 30 L 220 50 L 240 30 L 260 50 L 280 30 L 300 50 L 320 30 L 340 50 L 360 30 L 380 50 L 400 30 L 420 50 L 440 30 L 460 50 L 480 30 L 500 50 L 520 30 L 540 50 L 560 30 L 580 50 L 600 30 L 620 50 L 640 30 L 660 50 L 680 30 L 700 50 L 720 30 L 740 50 L 760 30 L 780 50 L 800 30 L 820 50 L 840 30 L 860 50 L 880 30 L 900 50 L 920 30 L 940 50 L 960 30 L 980 50 L 1000 30 L 1020 50 L 1040 30 L 1060 50 L 1080 30 L 1100 50 L 1120 30 L 1140 50 L 1160 30 L 1180 50 L 1200 30 L 1220 50 L 1240 30 L 1260 50 L 1280 30 L 1300 50 L 1320 30 L 1340 50 L 1360 30 L 1380 50 L 1400 30 L 1420 50 L 1440 30 L 1460 50 L 1480 30 L 1500 50 L 1520 30 L 1540 50 L 1560 30 L 1580 50 L 1600 30 L 1620 50 L 1640 30 L 1660 50 L 1680 30" stroke="url(#goldZigzagGrad2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#goldGlowFilter2)"/>
+      </svg>
+    </div>
+  </div>
+
   <!-- ================= HERO BANNER (NORMAL HORIZONTAL SCROLLER ON SCROLL) ================= -->
   <section class="hero-scroll-section" id="hero-banner">
     <div class="hero-banner-sticky">

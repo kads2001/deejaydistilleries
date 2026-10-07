@@ -20,6 +20,46 @@
 </head>
 
 <body>
+  <!-- ================= FULLSCREEN PRELOADER (CLASSIC LIGHT THEME WITH DUAL FLOWING WAVES) ================= -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-bg-glow"></div>
+
+    <!-- Center Logo & Brand Tagline -->
+    <div class="preloader-center-content">
+      <div class="preloader-logo-wrap">
+        <img src="assets/images/logo.png" alt="Deejay Distilleries Logo" class="preloader-logo">
+      </div>
+      <span class="preloader-tagline">QUALITY SPIRITS</span>
+    </div>
+
+    <!-- Intersecting Golden Wavy Lines across Lower Screen (Flowing Left to Right) -->
+    <div class="preloader-waves-wrap">
+      <svg class="preloader-waves-svg" viewBox="0 0 1920 160" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldWaveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#caa04c" stop-opacity="0.3" />
+            <stop offset="25%" stop-color="#b4581b" stop-opacity="0.9" />
+            <stop offset="50%" stop-color="#dfb76c" stop-opacity="1" />
+            <stop offset="75%" stop-color="#b4581b" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#caa04c" stop-opacity="0.4" />
+          </linearGradient>
+          <linearGradient id="goldWaveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b4581b" stop-opacity="0.25" />
+            <stop offset="25%" stop-color="#dfb76c" stop-opacity="0.85" />
+            <stop offset="55%" stop-color="#b4581b" stop-opacity="0.95" />
+            <stop offset="80%" stop-color="#dfb76c" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#b4581b" stop-opacity="0.3" />
+          </linearGradient>
+        </defs>
+        
+        <!-- Wavy Line 1 (Continuous smooth curve) -->
+        <path class="wave-path wave-path-1" d="M -800 65 C -600 15, -200 115, 0 65 C 200 15, 600 115, 800 65 C 1000 15, 1400 115, 1600 65 C 1800 15, 2200 115, 2400 65 C 2600 15, 3000 115, 3200 65" stroke="url(#goldWaveGrad1)" stroke-width="1.6" stroke-linecap="round"/>
+        
+        <!-- Wavy Line 2 (Intersecting smooth curve) -->
+        <path class="wave-path wave-path-2" d="M -800 90 C -550 145, -250 35, 0 90 C 250 145, 550 35, 800 90 C 1050 145, 1350 35, 1600 90 C 1850 145, 2150 35, 2400 90 C 2650 145, 2950 35, 3200 90" stroke="url(#goldWaveGrad2)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
 
   <!-- ================= SITE HEADER ================= -->
   <header class="site-header">

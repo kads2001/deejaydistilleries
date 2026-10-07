@@ -20,6 +20,46 @@
 </head>
 
 <body>
+  <!-- ================= FULLSCREEN PRELOADER (CLASSIC LIGHT THEME WITH DUAL FLOWING WAVES) ================= -->
+  <div class="site-preloader" id="sitePreloader" aria-hidden="true">
+    <div class="preloader-bg-glow"></div>
+
+    <!-- Center Logo & Brand Tagline -->
+    <div class="preloader-center-content">
+      <div class="preloader-logo-wrap">
+        <img src="assets/images/logo.png" alt="Deejay Distilleries Logo" class="preloader-logo">
+      </div>
+      <span class="preloader-tagline">QUALITY SPIRITS</span>
+    </div>
+
+    <!-- Intersecting Golden Wavy Lines across Lower Screen (Flowing Left to Right) -->
+    <div class="preloader-waves-wrap">
+      <svg class="preloader-waves-svg" viewBox="0 0 1920 160" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldWaveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#caa04c" stop-opacity="0.3" />
+            <stop offset="25%" stop-color="#b4581b" stop-opacity="0.9" />
+            <stop offset="50%" stop-color="#dfb76c" stop-opacity="1" />
+            <stop offset="75%" stop-color="#b4581b" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#caa04c" stop-opacity="0.4" />
+          </linearGradient>
+          <linearGradient id="goldWaveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b4581b" stop-opacity="0.25" />
+            <stop offset="25%" stop-color="#dfb76c" stop-opacity="0.85" />
+            <stop offset="55%" stop-color="#b4581b" stop-opacity="0.95" />
+            <stop offset="80%" stop-color="#dfb76c" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#b4581b" stop-opacity="0.3" />
+          </linearGradient>
+        </defs>
+        
+        <!-- Wavy Line 1 (Continuous smooth curve) -->
+        <path class="wave-path wave-path-1" d="M -800 65 C -600 15, -200 115, 0 65 C 200 15, 600 115, 800 65 C 1000 15, 1400 115, 1600 65 C 1800 15, 2200 115, 2400 65 C 2600 15, 3000 115, 3200 65" stroke="url(#goldWaveGrad1)" stroke-width="1.6" stroke-linecap="round"/>
+        
+        <!-- Wavy Line 2 (Intersecting smooth curve) -->
+        <path class="wave-path wave-path-2" d="M -800 90 C -550 145, -250 35, 0 90 C 250 145, 550 35, 800 90 C 1050 145, 1350 35, 1600 90 C 1850 145, 2150 35, 2400 90 C 2650 145, 2950 35, 3200 90" stroke="url(#goldWaveGrad2)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
 
   <!-- ================= SITE HEADER ================= -->
   <header class="site-header">
@@ -63,9 +103,9 @@
     <div class="inner-banner-overlay"></div>
     <div class="inner-banner-content" data-aos="fade-up">
       <div class="inner-banner-breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <span>About Us</span>
+        <a href="index.html">HOME</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-active">ABOUT US</span>
       </div>
       <h1 class="inner-banner-title">Crafting Excellence &amp; Global Heritage</h1>
       <p class="inner-banner-subtitle">
@@ -78,111 +118,64 @@
   <section class="about-overview-section" id="about">
     <div class="about-overview-container">
 
-      <!-- Grid Layout: Left Content & Stats & Logos | Right Video Card -->
-      <div class="row about-overview-inner align-items-stretch gy-4 mb-5 pb-4">
+      <!-- Section Heading -->
+      <div class="about-overview-header-box mb-3" data-aos="fade-up">
+        <h2 class="about-main-title">Crafting Excellence</h2>
+      </div>
 
-        <!-- Left Side Column - Text, CTA, Stats, Logos -->
-        <div class="col-lg-7 d-flex flex-column justify-content-center pe-lg-4" data-aos="fade-right">
+      <!-- Lead Paragraph -->
+      <div class="about-overview-lead-col mb-4" data-aos="fade-up" data-aos-delay="50">
+        <p class="about-overview-lead">
+       At Deejay Distilleries Pvt. Ltd. we are proud of our operation and production facilities which include state-of-the-art bottling lines fully equipped with tunnel bottle washing, filling, sealing and labelling machines with the capacity to produce as per the growing demand.
 
-          <!-- Section Heading -->
-          <div class="about-overview-header-box mb-3" data-aos="fade-up">
-            <h2 class="about-main-title">
-              Crafting Excellence
-            </h2>
-          </div>
+Our comprehensive range of brands and distribution enables us to reach a wider target audience at every occasion across the world. Deejay Distilleries Pvt. Ltd made its foray into the international markets a few years ago and is today considered one of the leading exporters of bottled alcohol in regions like West Africa, Middle East and South-East Asia. In the domestic market, we have a robust and expanding distribution chain in Maharashtra and also undertake inter-state export of our brands to Pondicherry, Delhi, Daman & Diu etc.
+        </p>
+        <p class="about-overview-lead mt-2">
+      Consistent quality both in terms of product offering as well as packaging have been instrumental in building a strong consumer equity for our brands. Our exhaustive range of brands are the key growth drivers and comprise Whisky, Vodka, Rum, Brandy, Gin and â€˜Exotic Spiritsâ€™ in varying pack sizes and alcohol strength, in order to comply with the global market requirements and enable better market penetration. Innovation and R & D form a crucial part of our growth strategy. We are a progressive thinking organization with continued investments in quality maintenance and process and product excellence. We are in constant search for potential export and domestic partners with whom we can set-up mutually beneficial business relationships.
 
-          <!-- Lead Paragraph -->
-          <div class="about-overview-lead-col mb-3" data-aos="fade-up" data-aos-delay="50">
-            <p class="about-overview-lead">
-              At Deejay Distilleries, we believe mastercraft distillation isn't just about manufacturing — it's about
-              passion, purity, and heritage. We are a premier manufacturer and exporter of world-class bottled spirits,
-              serving discerning markets across West Africa, the Middle East, South-East Asia, and key Indian markets.
-            </p>
-            <p class="about-overview-lead">
-              With a commitment to quality and craftsmanship, we combine time-honoured distillation techniques with
-              modern technology to create spirits that deliver exceptional taste and consistency.
-            </p>
-          </div>
+At Deejay Distillery Pvt. Ltd., we belive that any positive contribution to the society and enviornment is crucial for our sustainable growth and success. Keeping this in mind, we undertake productive Corporate Social Responsibility (CSR) initiatives in the areas of education, health, helping the disabled and environment conservation.
+        </p>
+      </div>
 
-          <!-- Callout CTA Button -->
-          <div class="about-lead-cta mb-4" data-aos="fade-up" data-aos-delay="100">
-            <a href="index.html#showcase" class="btn-story-outline">Explore Our Brands</a>
-          </div>
+      <!-- Callout CTA Button -->
+      <!-- <div class="about-lead-cta mb-5" data-aos="fade-up" data-aos-delay="100">
+        <a href="products.html" class="btn-story-outline">EXPLORE OUR BRANDS</a>
+      </div> -->
 
-          <!-- Stats Row with Vertical Line Dividers -->
-          <div class="about-stats-row" data-aos="fade-up" data-aos-delay="150">
-            <div class="about-stat-col">
-              <h3 class="about-stat-number">74M</h3>
-              <p class="about-stat-desc">Driving growth with strategy</p>
-            </div>
-            <div class="about-stat-divider"></div>
-            <div class="about-stat-col">
-              <h3 class="about-stat-number">95%</h3>
-              <p class="about-stat-desc">Building trusted partnerships</p>
-            </div>
-            <div class="about-stat-divider"></div>
-            <div class="about-stat-col">
-              <h3 class="about-stat-number">+225</h3>
-              <p class="about-stat-desc">Delivering industry success</p>
-            </div>
-            <div class="about-stat-divider"></div>
-            <div class="about-stat-col">
-              <h3 class="about-stat-number">92%</h3>
-              <p class="about-stat-desc">Turning traffic into growth</p>
-            </div>
-          </div>
-
-          <!-- Top Logo Divider -->
-          <div class="about-logos-divider-top"></div>
-
-          <!-- Logo Track Row -->
-          <div class="logo-slider-wrap" data-aos="fade-up" data-aos-delay="200">
-            <div id="logo-track" class="logo-track d-flex align-items-center">
-              <img src="assets/images/Logo's/1.png" alt="Logo 1">
-              <img src="assets/images/Logo's/2.png" alt="Logo 2">
-              <img src="assets/images/Logo's/3.png" alt="Logo 3">
-              <img src="assets/images/Logo's/4.png" alt="Logo 4">
-              <img src="assets/images/Logo's/5.png" alt="Logo 5">
-              <img src="assets/images/Logo's/6.png" alt="Logo 6">
-              <img src="assets/images/Logo's/7.png" alt="Logo 7">
-              <img src="assets/images/Logo's/8.png" alt="Logo 8">
-              <img src="assets/images/Logo's/9.png" alt="Logo 9">
-              <img src="assets/images/Logo's/10.png" alt="Logo 10">
-              <img src="assets/images/Logo's/11.png" alt="Logo 11">
-              <img src="assets/images/Logo's/12.png" alt="Logo 12">
-              <img src="assets/images/Logo's/13.png" alt="Logo 13">
-              <img src="assets/images/Logo's/14.png" alt="Logo 14">
-              <img src="assets/images/Logo's/15.png" alt="Logo 15">
-              <img src="assets/images/Logo's/16.png" alt="Logo 16">
-              <img src="assets/images/Logo's/17.png" alt="Logo 17">
-              <img src="assets/images/Logo's/18.png" alt="Logo 18">
-              <img src="assets/images/Logo's/19.png" alt="Logo 19">
-              <img src="assets/images/Logo's/20.png" alt="Logo 20">
-              <img src="assets/images/Logo's/21.png" alt="Logo 21">
-              <img src="assets/images/Logo's/22.png" alt="Logo 22">
-              <img src="assets/images/Logo's/23.png" alt="Logo 23">
-              <img src="assets/images/Logo's/24.png" alt="Logo 24">
-            </div>
-          </div>
-
-          <!-- Bottom Logo Divider -->
-          <div class="about-logos-divider-bottom"></div>
-
+      <!-- Full-Width Stats Row with Vertical Line Dividers -->
+      <div class="about-stats-row" data-aos="fade-up" data-aos-delay="150">
+        <div class="about-stat-col">
+          <h3 class="about-stat-number">74M</h3>
+          <p class="about-stat-desc">Driving growth with strategy</p>
         </div>
-
-        <!-- Right Side Column - Video Card with Poster Image & Modal Trigger -->
-        <div class="col-lg-5 ps-lg-4" data-aos="fade-left" data-aos-delay="100">
-          <div class="about-video-box rounded-4 overflow-hidden shadow-sm h-100 position-relative" id="aboutVideoCard"
-            role="button" tabindex="0" aria-label="Play About Us Video">
-            <img src="assets/images/new.jpeg" alt="Deejay Distilleries Facility"
-              class="about-poster-img w-100 h-100 object-fit-cover">
-            <div class="about-video-overlay-tint"></div>
-            <button class="about-video-play-btn" id="aboutPlayBtn" aria-label="Play Video">
-              <i class="bi bi-play-fill"></i>
-            </button>
-          </div>
+        <div class="about-stat-divider"></div>
+        <div class="about-stat-col">
+          <h3 class="about-stat-number">95%</h3>
+          <p class="about-stat-desc">Building trusted partnerships</p>
         </div>
+        <div class="about-stat-divider"></div>
+        <div class="about-stat-col">
+          <h3 class="about-stat-number">+225</h3>
+          <p class="about-stat-desc">Delivering industry success</p>
+        </div>
+        <div class="about-stat-divider"></div>
+        <div class="about-stat-col">
+          <h3 class="about-stat-number">92%</h3>
+          <p class="about-stat-desc">Turning traffic into growth</p>
+        </div>
+      </div>
 
+      <!-- Full-Width Facility Showcase Video Box -->
+      <div class="about-showcase-facility-wrap mt-5 pt-2" data-aos="fade-up" data-aos-delay="200">
+        <div class="about-video-box rounded-4 overflow-hidden shadow-sm position-relative" id="aboutVideoCard"
+          role="button" tabindex="0" aria-label="Play About Us Video">
+          <img src="assets/images/new.jpeg" alt="Deejay Distilleries Facility"
+            class="about-poster-img w-100 object-fit-cover">
+          <div class="about-video-overlay-tint"></div>
+          <button class="about-video-play-btn" id="aboutPlayBtn" aria-label="Play Video">
+            <i class="bi bi-play-fill"></i>
+          </button>
+        </div>
       </div>
 
     </div>

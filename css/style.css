@@ -92,8 +92,6 @@ html.lenis, html.lenis body {
 /* ================= BUTTON TEXT WAVE EFFECT ON HOVER ================= */
 .has-wave-effect {
   position: relative;
-  width: fit-content;
-  max-width: max-content;
 }
 
 .wave-char {
@@ -102,17 +100,21 @@ html.lenis, html.lenis body {
   will-change: transform;
   backface-visibility: hidden;
   transition: transform 0.2s ease;
+  pointer-events: none;
 }
 
 .wave-char.wave-space {
   display: inline-block;
   width: 0.28em;
   white-space: pre;
+  pointer-events: none;
 }
 
 /* Staggered fluid wave ripple across characters */
 .has-wave-effect:hover .wave-char,
-.btn-wave:hover .wave-char {
+.btn-wave:hover .wave-char,
+[class*="btn-"]:hover .wave-char,
+[class*="-btn"]:hover .wave-char {
   animation: btnTextWave 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: calc(var(--char-idx, 0) * 0.035s);
 }
@@ -689,7 +691,7 @@ h6,
   left: 0;
   width: 100%;
   z-index: 100;
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 22px;
   padding-left: 0px;
   padding-right: 0px;

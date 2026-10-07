@@ -2104,20 +2104,39 @@ $(document).ready(function () {
   // 13. Interactive Button Text Wave Effect on Hover
   function initButtonWaveEffect() {
     const selectors = [
+      '.btn',
+      'a.btn',
+      'button.btn',
+      '.btn-wave',
       '.btn-nav-contact',
       '.btn-hero-solid',
       '.btn-hero-outline',
-      '.btn-lime-pill',
-      '.btn-shop-pill',
+      '.btn-story-outline',
+      '.filter-pill-btn',
+      '.btn-showcase-view-all',
+      '.showcase-card-btn',
+      '.btn-hover-shop',
+      '.premium-view-all',
+      '.beer-stack-read-more',
+      '.recent-launches-view-all',
       '.flavour-cta-btn',
       '.zoom-banner-btn',
+      '.link-view-details',
+      '.about-explore-link',
       '.product-news-cta-btn',
       '.blogs-view-all-btn',
       '.btn-contact-submit',
       '.footer-newsletter-btn',
-      '.filter-pill-btn',
-      '.btn-wave',
-      '.btn'
+      '.btn-lime-pill',
+      '.btn-gold-pill',
+      '.btn-shop-pill',
+      '.btn-promo-shop',
+      '.btn-add-to-cart',
+      'button[type="submit"]',
+      'a[class*="btn-"]',
+      'a[class*="-btn"]',
+      'button[class*="btn-"]:not(.mobile-close-btn):not(.mobile-nav-toggle):not(.slider-nav-btn):not(.showcase-arrow-btn):not(.video-modal-close):not(.about-video-play-btn):not(.hero-video-toggle-btn):not(.video-control-btn)',
+      'button[class*="-btn"]:not(.mobile-close-btn):not(.mobile-nav-toggle):not(.slider-nav-btn):not(.showcase-arrow-btn):not(.video-modal-close):not(.about-video-play-btn):not(.hero-video-toggle-btn):not(.video-control-btn)'
     ].join(', ');
 
     $(selectors).each(function () {
@@ -2150,7 +2169,7 @@ $(document).ready(function () {
             } else if (rawVal.length > 0) {
               node.removeChild(child);
             }
-          } else if (child.nodeType === Node.ELEMENT_NODE && !$(child).is('i, svg, img, input, textarea')) {
+          } else if (child.nodeType === Node.ELEMENT_NODE && !$(child).is('i, svg, img, input, textarea, .wave-char')) {
             processNode(child, counter);
           }
         });
@@ -2161,7 +2180,7 @@ $(document).ready(function () {
     });
 
     // Replay wave animation crisply on every hover entry
-    $(document).on('mouseenter', '.has-wave-effect, .btn-wave', function () {
+    $(document).on('mouseenter', '.has-wave-effect, .btn-wave, [class*="btn-"], [class*="-btn"]', function () {
       const chars = this.querySelectorAll('.wave-char');
       if (!chars.length) return;
       chars.forEach((c) => {

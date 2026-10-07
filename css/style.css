@@ -3239,6 +3239,27 @@ h6,
   padding: 10px 0;
 }
 
+.style-wine-triptych-track-outer::before,
+.style-wine-triptych-track-outer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(60px, 9vw, 150px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.style-wine-triptych-track-outer::before {
+  left: 0;
+  background: linear-gradient(to right, #faf8f5 0%, rgba(250, 248, 245, 0.85) 35%, rgba(250, 248, 245, 0) 100%);
+}
+
+.style-wine-triptych-track-outer::after {
+  right: 0;
+  background: linear-gradient(to left, #faf8f5 0%, rgba(250, 248, 245, 0.85) 35%, rgba(250, 248, 245, 0) 100%);
+}
+
 .style-wine-triptych {
   display: flex;
   flex-wrap: nowrap;

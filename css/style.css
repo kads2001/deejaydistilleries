@@ -2205,19 +2205,18 @@ h6,
 }
 
 .vertical-hover-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  text-align: center;
-  z-index: 2;
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    width: 100%;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    text-align: center;
+    z-index: 2;
 }
-
 .vertical-hover-title {
     color: #ffffff;
     font-family: var(--font-main, sans-serif);
@@ -2238,6 +2237,7 @@ h6,
   text-transform: uppercase;
   margin: 0 0 16px 0;
   max-width: 330px;
+  text-align: left;
 }
 
 .vertical-hover-price .price-val {

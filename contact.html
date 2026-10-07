@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Deejay Distilleries - Premium Spirits Manufacturer &amp; Exporter</title>
+  <meta name="description"
+    content="Get in touch with Deejay Distilleries. Connect with us for distillery partnerships, exports, private label bottling, and distribution inquiries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&family=Archivo+Black&family=Isometra&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ================= SITE HEADER ================= -->
+  <header class="site-header">
+    <div class="nav-container">
+      <!-- Logo Left Side -->
+      <div class="brand-left">
+        <a href="index.html" title="Deejay Distilleries">
+          <img src="assets/images/logo.png" alt="Deejay Distilleries Royal Crest" class="brand-crest-logo">
+        </a>
+      </div>
+
+      <!-- Navigation Right Side: Contact Us Button & Hamburger Menu Toggle -->
+      <div class="nav-right" aria-label="Right Navigation">
+        <a href="contact.html" class="btn-nav-contact">Get In Touch</a>
+        <button class="mobile-nav-toggle" id="mobileMenuOpen" aria-label="Open Navigation">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Drawer Backdrop Overlay -->
+  <div class="nav-drawer-backdrop" id="navDrawerBackdrop"></div>
+
+  <!-- Fullscreen / Drawer Navigation Menu -->
+  <div class="mobile-nav-menu" id="mobileNavDrawer">
+    <button class="mobile-close-btn" id="mobileMenuClose" aria-label="Close Navigation">&times;</button>
+    <div class="nav-drawer-header">
+      <img src="assets/images/logo.png" alt="Deejay Distilleries Crest" class="nav-drawer-logo">
+    </div>
+    <nav class="nav-drawer-links">
+      <a href="index.html" class="nav-custom-link">Home</a>
+      <a href="about.html" class="nav-custom-link">About Us</a>
+      <a href="products.html" class="nav-custom-link">Products</a>
+      <a href="contact.html" class="nav-custom-link">Contact Us</a>
+    </nav>
+  </div>
+
+  <!-- ================= INNER PAGE BANNER ================= -->
+  <section class="inner-banner-section" id="inner-banner">
+    <div class="inner-banner-overlay"></div>
+    <div class="inner-banner-content" data-aos="fade-up">
+      <div class="inner-banner-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Contact Us</span>
+      </div>
+      <h1 class="inner-banner-title">Let's Connect &amp; Collaborate</h1>
+      <p class="inner-banner-subtitle">
+        Whether you are seeking global exports, distillery partnerships, or custom bottling, we are here to assist you.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= MINIMALIST CONTACT US SECTION ================= -->
+  <section class="contact-minimal-section" id="contact">
+    <div class="contact-minimal-container">
+
+      <!-- Big Hero Title with Underline -->
+      <div class="contact-title-box" data-aos="fade-up">
+        <h2 class="contact-hero-title">
+          Let's Build <br>
+          The Future Together
+        </h2>
+        <div class="contact-title-underline"></div>
+      </div>
+
+      <!-- Content Grid: Left Tagline + Right Underline Form -->
+      <div class="contact-content-grid">
+
+        <!-- Left Column -->
+        <div class="contact-left-col" data-aos="fade-up" data-aos-delay="100">
+          <p class="contact-left-tagline">
+            We are here to create solid and courageous brands that can leave a strong mark on the world.
+          </p>
+          <div class="mt-4 pt-2">
+            <p class="mb-2" style="font-size: 14px; font-weight: 600; color: #111;">Headquarters &amp; Distillery:</p>
+            <p style="font-size: 13px; color: #666; line-height: 1.6;">
+              Deejay Distilleries Ltd.<br>
+              Maharashtra, India
+            </p>
+            <p class="mt-3 mb-1" style="font-size: 14px; font-weight: 600; color: #111;">Email &amp; Inquiries:</p>
+            <p style="font-size: 13px; color: #666;">
+              <a href="mailto:info@deejaydistilleries.com" style="color: var(--gold-primary); text-decoration: none;">info@deejaydistilleries.com</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column: Minimalist Form -->
+        <div class="contact-right-col" data-aos="fade-up" data-aos-delay="150">
+          <form id="minimalContactForm">
+
+            <!-- Row 1: Name & Email -->
+            <div class="form-underline-row">
+              <div class="form-underline-col">
+                <input type="text" class="form-underline-input" id="contactName" placeholder="Name*" required>
+              </div>
+              <div class="form-underline-col">
+                <input type="email" class="form-underline-input" id="contactEmail" placeholder="Email*" required>
+              </div>
+            </div>
+
+            <!-- Row 2: Phone & Company -->
+            <div class="form-underline-row">
+              <div class="form-underline-col">
+                <input type="tel" class="form-underline-input" id="contactPhone" placeholder="Phone*" required>
+              </div>
+              <div class="form-underline-col">
+                <input type="text" class="form-underline-input" id="contactCompany" placeholder="Company">
+              </div>
+            </div>
+
+            <!-- Row 3: Services Dropdown -->
+            <div class="form-underline-group">
+              <select class="form-underline-input form-underline-select" id="contactServices" required>
+                <option value="" disabled selected>Select Inquiring Service</option>
+                <option value="distillery-partnership">Distillery Partnership &amp; Manufacturing</option>
+                <option value="export-distribution">Global Export &amp; Distribution</option>
+                <option value="private-label">Private Label &amp; Custom Bottling</option>
+                <option value="bulk-spirits">Bulk Spirits Supply</option>
+                <option value="brand-collaboration">Brand Collaboration</option>
+              </select>
+            </div>
+
+            <!-- Row 4: Message -->
+            <div class="form-underline-group">
+              <input type="text" class="form-underline-input" id="contactMessage" placeholder="Message*" required>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+              <button type="submit" class="btn-contact-submit">
+                Send Message
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= WORLD MAP SECTION ================= -->
+  <section class="world-map-section" id="global-presence">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <!-- Left Side: Content -->
+        <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-up">
+          <div class="world-map-header text-start m-0 p-0 mb-4">
+            <h2 class="world-map-title">Our Global Presence</h2>
+            <p class="world-map-subtitle mt-3">
+              Delivering premium spirits across the world. Our footprint extends across continents, bringing the finest
+              blends to discerning consumers globally. We take pride in our robust distribution network that ensures our
+              brands reach you wherever you are.
+            </p>
+          </div>
+          <a href="about.html" class="btn-story-outline m-0">Explore Our Story</a>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+          <div class="world-map-image-wrapper text-center">
+            <img src="assets/images/mapimga.png" alt="Global Presence Map" class="img-fluid rounded w-100 world-map-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SITE FOOTER ================= -->
+  <footer class="site-footer" id="siteFooter">
+    <!-- Top Amber / Whiskey Brown Section -->
+    <div class="footer-top-block">
+      <div class="footer-container">
+        <!-- Centered Crest Logo -->
+        <div class="footer-minimal-top" data-aos="fade-up">
+          <a href="index.html" class="footer-brand-logo" aria-label="Deejay Distilleries Home">
+            <img src="assets/images/logo.png" alt="Deejay Distilleries Crest" class="footer-minimal-logo">
+          </a>
+        </div>
+
+        <!-- Subtle Divider Line -->
+        <div class="footer-divider"></div>
+
+        <!-- Centered Navigation Links -->
+        <div class="footer-minimal-links" data-aos="fade-up" data-aos-delay="50">
+          <a href="index.html" class="footer-minimal-link">Home</a>
+          <a href="about.html" class="footer-minimal-link">About Us</a>
+          <a href="products.html" class="footer-minimal-link">Products</a>
+          <a href="contact.html" class="footer-minimal-link">Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom White Legal Bar -->
+    <div class="footer-bottom-block">
+      <div class="footer-container footer-bottom-inner" data-aos="fade-up" data-aos-delay="100">
+        <div class="footer-bottom-left">
+          &copy; 2026 Deejay Distilleries Ltd. All Rights Reserved. | Created by <a href="https://www.10dumbs.com"
+            target="_blank">10 Dumbs Inc.</a>
+        </div>
+        <div class="footer-bottom-right">
+          <a href="javascript:void(0);" class="footer-legal-link">Security</a>
+          <a href="javascript:void(0);" class="footer-legal-link">Privacy &amp; Cookie Policy</a>
+          <a href="javascript:void(0);" class="footer-legal-link">Terms of Services</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jQuery (Local with CDN fallback) -->
+  <script src="js/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>')</script>
+
+  <!-- Bootstrap 5 JS Bundle with Popper (Local with CDN fallback) -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script>window.bootstrap || document.write('<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"><\/script>')</script>
+
+  <!-- Lenis Smooth Scroll Engine (Local with CDN fallback) -->
+  <script src="js/lenis.min.js"></script>
+  <script>window.Lenis || document.write('<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"><\/script>')</script>
+
+  <!-- AOS (Animate On Scroll) JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- GSAP 3 & ScrollTrigger Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Main JS -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

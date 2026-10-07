@@ -241,6 +241,43 @@
     </div>
   </div>
 
+  <!-- ================= AGE VERIFICATION POPUP (AGE GATE) ================= -->
+  <div class="age-gate-overlay" id="ageGateModal" aria-modal="true" role="dialog" aria-labelledby="ageGateHeading">
+    <div class="age-gate-container">
+      <!-- Decorative Ambient Glow -->
+      <div class="age-gate-glow age-gate-glow-top"></div>
+
+      <!-- Main Content Card -->
+      <div class="age-gate-content">
+        <!-- Brand Crest Logo & Company Name -->
+        <div class="age-gate-brand">
+          <img src="assets/images/logo.png" alt="Deejay Distilleries Logo" class="age-gate-logo">
+          <span class="age-gate-brand-name">DEEJAY DISTILLERIES</span>
+        </div>
+
+        <!-- Prompt Eyebrow -->
+        <p class="age-gate-prompt">You must be 18 years old or older to enter this site.</p>
+
+        <!-- Main Heading Title -->
+        <h1 class="age-gate-title" id="ageGateHeading">I AM OVER 18</h1>
+
+        <!-- Action Choice Buttons (YES / NO) -->
+        <div class="age-gate-choice-btns">
+          <button type="button" class="age-gate-btn age-gate-btn-yes" id="ageGateYes">YES</button>
+          <button type="button" class="age-gate-btn age-gate-btn-no" id="ageGateNo">NO</button>
+        </div>
+
+        <!-- Underage Notice Message (hidden by default) -->
+        <div class="age-gate-error" id="ageGateError" role="alert" aria-live="polite"></div>
+
+        <!-- Legal Notice & Disclaimer -->
+        <p class="age-gate-disclaimer">
+          Use of this site is for personal use in countries and territories where the consumption of alcohol beverages is lawful, and for persons who are lawfully permitted to consume alcohol beverages. By entering here you agree to our <a href="javascript:void(0);">Terms and Conditions</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- jQuery (Local with CDN fallback) -->
   <script src="js/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>')</script>

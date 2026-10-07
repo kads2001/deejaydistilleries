@@ -2456,4 +2456,75 @@ document.addEventListener('DOMContentLoaded', function() {
       closeVideoModal();
     }
   });
+
+  // =========================================================================
+  // AGE VERIFICATION POPUP (AGE GATE - YES / NO FORMAT)
+  // =========================================================================
+  function initAgeGate() {
+    var $modal = $('#ageGateModal');
+    if (!$modal.length) return;
+
+    var $btnYes = $('#ageGateYes');
+    var $btnNo = $('#ageGateNo');
+    var $error = $('#ageGateError');
+
+    var isVerified = localStorage.getItem('dj_age_verified') === 'true';
+
+    function lockScroll() {
+      $('html, body').addClass('age-gate-locked');
+      if (typeof lenis !== 'undefined' && lenis && typeof lenis.stop === 'function') {
+        lenis.stop();
+      }
+    }
+
+    function unlockScroll() {
+      $('html, body').removeClass('age-gate-locked');
+      if (typeof lenis !== 'undefined' && lenis && typeof lenis.start === 'function') {
+        lenis.start();
+      }
+    }
+
+    if (!isVerified) {
+      $modal.addClass('active');
+      lockScroll();
+    } else {
+      $modal.removeClass('active').hide();
+      unlockScroll();
+    }
+
+    // YES Click - Age Verified
+    $btnYes.on('click', function (e) {
+      e.preventDefault();
+      localStorage.setItem('dj_age_verified', 'true');
+
+      $modal.css({
+        opacity: 0,
+        transition: 'opacity 0.4s ease'
+      });
+
+      setTimeout(function () {
+        $modal.removeClass('active').hide();
+        unlockScroll();
+      }, 400);
+    });
+
+    // NO Click - Underage Notice
+    $btnNo.on('click', function (e) {
+      e.preventDefault();
+      $error.text('You must be 18 years old or older to enter this site.');
+      $btnNo.css('border-color', '#ff4d4f');
+      setTimeout(function () {
+        window.location.href = 'https://www.google.com';
+      }, 2000);
+    });
+
+    // Global reset helper for testing
+    window.resetAgeGate = function () {
+      localStorage.removeItem('dj_age_verified');
+      sessionStorage.removeItem('dj_age_verified');
+      location.reload();
+    };
+  }
+
+  initAgeGate();
 });

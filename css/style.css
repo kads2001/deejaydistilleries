@@ -2226,7 +2226,7 @@ h6,
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: 0;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 0 0 8px 0;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
@@ -2236,7 +2236,7 @@ h6,
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  text-transform:capitalize;
   margin: 0 0 16px 0;
   max-width: 330px;
   text-align: left;
@@ -4843,7 +4843,7 @@ h6,
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 
 .editorial-card {

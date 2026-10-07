@@ -2555,4 +2555,38 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   initPreloader();
+
+  // =========================================================================
+  // PRODUCT CATALOG CATEGORY FILTER
+  // =========================================================================
+  function initProductFilter() {
+    const $filterBtns = $('.product-filter-btn');
+    const $productItems = $('.modern-product-item');
+
+    if (!$filterBtns.length || !$productItems.length) return;
+
+    $filterBtns.on('click', function () {
+      $filterBtns.removeClass('active');
+      $(this).addClass('active');
+
+      const filterVal = $(this).attr('data-filter');
+
+      $productItems.each(function () {
+        const itemCategory = $(this).attr('data-category');
+        if (filterVal === 'all' || itemCategory === filterVal) {
+          $(this).removeClass('is-hidden').fadeIn(350);
+        } else {
+          $(this).addClass('is-hidden').hide();
+        }
+      });
+
+      if (typeof AOS !== 'undefined') {
+        setTimeout(function () {
+          AOS.refresh();
+        }, 360);
+      }
+    });
+  }
+
+  initProductFilter();
 });

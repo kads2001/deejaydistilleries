@@ -7736,9 +7736,9 @@ html.age-gate-locked {
 .product-catalog-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 36px;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 32px;
 }
 
 .product-catalog-badge {
@@ -7771,21 +7771,23 @@ html.age-gate-locked {
   color: #111111;
   letter-spacing: -0.5px;
   margin-bottom: 12px;
+  text-align: left;
 }
 
 .product-catalog-subtitle {
   font-size: clamp(15px, 1.1vw, 17px);
   color: #666666;
-  max-width: 650px;
-  margin-bottom: 10px;
+  max-width: 720px;
+  margin-bottom: 0;
   line-height: 1.6;
+  text-align: left;
 }
 
 /* Category Filter Tabs Bar */
 .product-filter-tabs {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 48px;
@@ -7858,9 +7860,11 @@ button.product-filter-btn.active {
     margin-bottom: 32px;
     gap: 8px;
   }
-  .product-filter-btn {
-    padding: 8px 16px;
-    font-size: 12.5px;
+  .product-filter-tabs .product-filter-btn,
+  button.product-filter-btn {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    min-height: 38px !important;
   }
   .product-cards-grid {
     grid-template-columns: 1fr;
@@ -7871,7 +7875,7 @@ button.product-filter-btn.active {
 /* Modern Card Design (Matching Reference Image) */
 .modern-product-card {
   position: relative;
-  border-radius: 28px;
+  border-radius: 0px;
   overflow: hidden;
   background: #0d0e12;
   aspect-ratio: 3 / 4;
@@ -7987,6 +7991,7 @@ button.product-filter-btn.active {
   padding: 2px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   flex-shrink: 0;
+  display: none;
 }
 
 .modern-card-brand-name {

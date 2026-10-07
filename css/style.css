@@ -6987,7 +6987,7 @@ a.btn,
   }
 }
 
-/* ================= INNER PAGE BANNER WITH ZOOM EFFECT ================= */
+/* ================= INNER PAGE BANNER (STATIC BACKGROUND) ================= */
 .inner-banner-section {
   position: relative;
   width: 100%;
@@ -7011,10 +7011,6 @@ a.btn,
   height: 100%;
   background: url('../assets/images/aboutusbanner.png') center top / cover no-repeat;
   z-index: 0;
-  transform: scale(1.0);
-  transform-origin: center center;
-  animation: bannerKenBurnsZoom 14s ease-in-out infinite alternate;
-  will-change: transform;
 }
 
 .inner-banner-overlay {

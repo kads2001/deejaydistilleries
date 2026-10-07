@@ -1744,7 +1744,7 @@ h6,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 17px 26px;
+  padding: 11px 28px;
   border-radius: 50px !important;
   border: 1.5px solid #b4581b !important;
   color: #b4581b !important;
@@ -2339,6 +2339,7 @@ h6,
   color: #b4581b;
   text-decoration: none;
   text-transform: uppercase;
+  border: 1px solid #8a3e0f ;
 }
 
 .premium-view-all:hover {
@@ -4805,7 +4806,7 @@ h6,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  /* gap: 8px; */
   width: fit-content;
   max-width: max-content;
   white-space: nowrap;
@@ -6459,10 +6460,26 @@ h6,
   .filter-pill-btn,
   .flavour-cta-btn,
   .product-news-cta-btn,
-  .blogs-view-all-btn {
+  .blogs-view-all-btn,
+  .btn-story-outline,
+  .btn-showcase-view-all,
+  .btn-hover-shop,
+  .premium-view-all,
+  .beer-stack-read-more,
+  .recent-launches-view-all,
+  .zoom-banner-btn,
+  .link-view-details,
+  .about-explore-link,
+  .btn-promo-shop,
+  .btn-add-to-cart,
+  .btn,
+  a.btn,
+  button.btn {
     font-size: 15px !important;
     padding: 9px 20px !important;
     min-height: 38px !important;
+    line-height: normal !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -6759,7 +6776,21 @@ a.btn:hover,
 .filter-pill-btn,
 .flavour-cta-btn,
 .product-news-cta-btn,
-.blogs-view-all-btn {
+.blogs-view-all-btn,
+.btn-story-outline,
+.btn-showcase-view-all,
+.btn-hover-shop,
+.premium-view-all,
+.beer-stack-read-more,
+.recent-launches-view-all,
+.zoom-banner-btn,
+.link-view-details,
+.about-explore-link,
+.btn-promo-shop,
+.btn-add-to-cart,
+.btn,
+a.btn,
+button.btn {
   font-size: 18px !important;
   font-weight: 500 !important;
   letter-spacing: 0px !important;
@@ -6769,11 +6800,13 @@ a.btn:hover,
   justify-content: center !important;
   line-height: normal !important;
   height: auto !important;
-  min-height: 40px !important;
+  min-height: 44px !important;
   text-align: center !important;
   white-space: nowrap !important;
-  gap: 0px !important;
+  /* gap: 8px !important; */
   text-transform: capitalize !important;
+  border-radius: 50px !important;
+  box-sizing: border-box !important;
 }
 
 /* Make sure the icons match */
@@ -6789,7 +6822,16 @@ a.btn:hover,
 .filter-pill-btn i,
 .flavour-cta-btn i,
 .product-news-cta-btn i,
-.blogs-view-all-btn i {
+.blogs-view-all-btn i,
+.btn-story-outline i,
+.btn-showcase-view-all i,
+.btn-hover-shop i,
+.premium-view-all i,
+.beer-stack-read-more i,
+.recent-launches-view-all i,
+.zoom-banner-btn i,
+.link-view-details i,
+.about-explore-link i {
   font-size: 13px !important;
 }
 

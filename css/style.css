@@ -1863,90 +1863,166 @@ h6,
   line-height: 1;
 }
 
-/* Dual Image & Text Showcase Grid */
-.about-dual-showcase-wrap {
-  width: 100%;
-}
-
-.about-dual-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid #f0ede6;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-}
-
-.about-dual-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.09);
-  border-color: rgba(180, 88, 27, 0.25);
-}
-
-.about-dual-img-box {
+/* ================= WHO WE ARE SECTION (MODERN LIGHT LUXURY DESIGN) ================= */
+.about-who-section {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f5 50%, #ffffff 100%);
+  padding-top: var(--section-py, 100px);
+  padding-bottom: var(--section-py, 100px);
   position: relative;
+}
+
+.about-who-container {
   width: 100%;
-  height: 280px;
-  overflow: hidden;
-  background-color: #f7f6f2;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.about-brand-strip-section{
+  background-color:white;
 }
 
-@media (min-width: 992px) {
-  .about-dual-img-box {
-    height: 320px;
-  }
+.about-who-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    margin-bottom: 48px;
 }
 
-.about-dual-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+.about-who-card:last-child {
+  margin-bottom: 0;
 }
 
-.about-dual-card:hover .about-dual-img {
-  transform: scale(1.05);
+.about-who-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(180, 88, 27, 0.09);
+  border-color: rgba(180, 88, 27, 0.35);
 }
 
-.about-dual-content {
-  padding: 28px 26px 32px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.about-dual-tag {
-  display: inline-block;
+.about-who-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background: rgba(180, 88, 27, 0.08);
+  color: #b4581b;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #b4581b;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
-.about-dual-title {
+.about-who-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #b4581b;
+}
+
+.about-who-title {
   font-family: var(--font-heading, 'Anybody', sans-serif);
-  font-size: clamp(20px, 1.8vw, 24px);
+  font-size: clamp(24px, 2.4vw, 34px);
   font-weight: 800;
   color: #111111;
-  line-height: 1.3;
-  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  margin-bottom: 20px;
 }
 
-.about-dual-desc {
+.about-who-text {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 15px;
-  line-height: 1.65;
-  color: #555555;
-  margin-bottom: 0;
+  line-height: 1.75;
+  color: #4b515d;
+  margin-bottom: 16px;
   font-weight: 400;
+}
+
+.about-who-text:last-child {
+  margin-bottom: 0;
+}
+
+.about-who-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.about-who-feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #f8f6f0;
+  border: 1px solid #eae5db;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c3038;
+}
+
+.about-who-feature-pill i {
+  color: #b4581b;
+  font-size: 14px;
+}
+
+.about-who-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  background-color: #f0ede6;
+}
+
+.about-who-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.about-who-card:hover .about-who-img {
+  transform: scale(1.05);
+}
+
+.about-who-img-floating-tag {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 991px) {
+  .about-who-section {
+    padding-top: var(--section-py-mobile, 60px);
+    padding-bottom: var(--section-py-mobile, 60px);
+  }
+  .about-who-card {
+    padding: 28px 20px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+  }
+  .about-who-img-wrap {
+    min-height: 260px;
+    margin-top: 16px;
+  }
 }
 
 /* ================= VIDEO POPUP MODAL ================= */
@@ -6637,11 +6713,32 @@ h6,
 
 /* ================= LOGO SLIDER ================= */
 .logo-slider-wrap {
-  /* border-top: 1px solid #eaeaea;
-  border-bottom: 1px solid #eaeaea; */
   position: relative;
   background-color: #fff;
   width: 100%;
+  overflow: hidden;
+}
+
+.logo-slider-wrap::before,
+.logo-slider-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(50px, 8vw, 140px);
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.logo-slider-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff 15%, rgba(255, 255, 255, 0) 100%);
+}
+
+.logo-slider-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff 15%, rgba(255, 255, 255, 0) 100%);
 }
 
 .slider-arrow {

@@ -320,12 +320,12 @@ h6,
 }
 
 .hero-slide-img {
-  animation: bannerKenBurnsZoom 12s ease-in-out infinite alternate;
+  animation: bannerKenBurnsZoom 10s ease-in-out infinite alternate;
 }
 
 .hero-video-slide.active .hero-slide-img,
 .hero-video-slide.active .hero-slide-video {
-  animation: bannerKenBurnsZoom 12s ease-in-out infinite alternate;
+  animation: bannerKenBurnsZoom 10s ease-in-out infinite alternate;
 }
 
 @keyframes bannerKenBurnsZoom {
@@ -463,7 +463,7 @@ h6,
 }
 
 .hero-video-slide.active .full-mountain-image {
-  animation: bannerKenBurnsZoom 12s ease-in-out infinite alternate;
+  animation: bannerKenBurnsZoom 10s ease-in-out infinite alternate;
 }
 
 .hero-mountain-img {

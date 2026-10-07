@@ -705,11 +705,11 @@ h6,
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgb(255 255 255 / 88%) !important;
+      background: rgba(255, 255, 255, 0.884) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 

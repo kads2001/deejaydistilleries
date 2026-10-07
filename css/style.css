@@ -2577,7 +2577,7 @@ h6,
 }
 
 .ppc-name {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   color: #1a1a1a;
   line-height: 1.4;
@@ -7284,8 +7284,8 @@ button.btn {
 .flavour-cta-btn,
 .product-news-cta-btn,
 .blogs-view-all-btn {
-  background-color: var(--gold-primary) !important;
-  color: #ffffff !important;
+  background-color: transparent !important;
+  color: var(--gold-primary)  !important;
   border: 2px solid var(--gold-primary) !important;
   border-radius: 50px !important;
   font-family: var(--font-heading, 'Anybody', sans-serif) !important;
@@ -7391,7 +7391,7 @@ a.btn,
 .recent-launches-section,
 .flavour-sticky-container,
 .benefits-sticky-container,
-.style-showcase-section,
+/* .style-showcase-section, */
 .product-news-section,
 .blogs-section,
 .contact-minimal-section,

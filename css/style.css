@@ -718,7 +718,7 @@ h6,
 }
 
 .site-header.scrolled .btn-nav-contact {
-  color: white !important;
+  color:  var(--gold-primary) !important;
   border-color: var(--gold-primary) !important;
 }
 

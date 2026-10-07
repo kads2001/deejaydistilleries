@@ -1863,6 +1863,92 @@ h6,
   line-height: 1;
 }
 
+/* Dual Image & Text Showcase Grid */
+.about-dual-showcase-wrap {
+  width: 100%;
+}
+
+.about-dual-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #f0ede6;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.about-dual-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.09);
+  border-color: rgba(180, 88, 27, 0.25);
+}
+
+.about-dual-img-box {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background-color: #f7f6f2;
+}
+
+@media (min-width: 992px) {
+  .about-dual-img-box {
+    height: 320px;
+  }
+}
+
+.about-dual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.about-dual-card:hover .about-dual-img {
+  transform: scale(1.05);
+}
+
+.about-dual-content {
+  padding: 28px 26px 32px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.about-dual-tag {
+  display: inline-block;
+  font-family: var(--font-heading, 'Anybody', sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #b4581b;
+  margin-bottom: 10px;
+}
+
+.about-dual-title {
+  font-family: var(--font-heading, 'Anybody', sans-serif);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+
+.about-dual-desc {
+  font-family: var(--font-heading, 'Anybody', sans-serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: #555555;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
 /* ================= VIDEO POPUP MODAL ================= */
 .video-modal-backdrop {
   position: fixed;
@@ -6991,7 +7077,7 @@ a.btn,
 .inner-banner-section {
   position: relative;
   width: 100%;
-  min-height: 1100px;
+  min-height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7009,7 +7095,7 @@ a.btn,
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../assets/images/aboutusbanner.png') center top / cover no-repeat;
+  background: url('../assets/images/aboutusbanner.png') center center / cover no-repeat;
   z-index: 0;
 }
 

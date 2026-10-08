@@ -2472,7 +2472,7 @@ background: rgb(41 41 41 / 50%);
   left: 0;
   right: 0;
   width: 100%;
-  max-width:70%;
+  /* max-width:70%; */
   padding: 24px 22px;
   display: flex;
   align-items: flex-end;

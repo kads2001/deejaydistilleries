@@ -41,6 +41,7 @@
 html,
 body {
   font-family: var(--font-heading) !important;
+  box-sizing: border-box;
 }
 
 /* Lenis Smooth Scroll Core Rules */
@@ -8435,8 +8436,6 @@ button.product-filter-btn {
   font-size: 14px !important;
   font-weight: 700 !important;
   cursor: pointer !important;
-  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
   text-transform: capitalize !important;
   line-height: normal !important;
   height: auto !important;
@@ -8465,7 +8464,7 @@ button.product-filter-btn.active {
 .product-cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap:0px;
+  gap:20px;
 }
 
 @media (max-width: 1199px) {
@@ -8579,7 +8578,7 @@ button.product-filter-btn.active {
 }
 
 .modern-card-title {
-  font-size: clamp(20px, 1.75vw, 22px);
+  font-size: clamp(20px, 1.75vw, 17px);
   font-weight: 600;
   color: #000;
   line-height: 1.25;

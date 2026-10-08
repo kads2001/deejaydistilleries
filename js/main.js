@@ -2219,6 +2219,9 @@ $(document).ready(function () {
       $slides.removeClass('active').eq(currentSlide).addClass('active');
       $('.hero-slider-dot').removeClass('active').eq(currentSlide).addClass('active');
       $('#heroSlideNum').text(String(currentSlide + 1).padStart(2, '0'));
+      try {
+        $('.full-mountain-image').ripples('updateSize');
+      } catch (e) {}
     }
 
     // Arrow button controls
@@ -2589,4 +2592,58 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   initProductFilter();
+
+  // =========================================================================
+  // HERO BANNER WATER RIPPLE EFFECT (BOTTOM AREA & MOUSE INTERACTION)
+  // =========================================================================
+  function initHeroBannerRipples() {
+    const $target = $('.full-mountain-image');
+    if (!$target.length || typeof $.fn.ripples !== 'function') return;
+
+    try {
+      $target.each(function () {
+        const $el = $(this);
+        $el.ripples({
+          resolution: 512,
+          dropRadius: 22,
+          perturbance: 0.04,
+          interactive: true
+        });
+      });
+
+      // Ambient gentle water ripples on the bottom water area (70% - 95% height)
+      setInterval(function () {
+        const $activeSlideImg = $('.hero-video-slide.active .full-mountain-image');
+        if (!$activeSlideImg.length || !$activeSlideImg.is(':visible')) return;
+
+        const width = $activeSlideImg.innerWidth();
+        const height = $activeSlideImg.innerHeight();
+        if (width <= 0 || height <= 0) return;
+
+        // Position drop naturally in the bottom water area
+        const dropX = Math.random() * width;
+        const dropY = height * (0.70 + Math.random() * 0.25);
+        const dropRadius = 16 + Math.random() * 14;
+        const dropStrength = 0.02 + Math.random() * 0.03;
+
+        try {
+          $activeSlideImg.ripples('drop', dropX, dropY, dropRadius, dropStrength);
+        } catch (e) {}
+      }, 2500);
+
+      // Sizing update on window resize
+      $(window).on('resize', function () {
+        try {
+          $target.ripples('updateSize');
+        } catch (e) {}
+      });
+
+    } catch (e) {
+      // Safe fallback if WebGL is unsupported
+      console.warn('WebGL Ripples not supported or initialized:', e);
+    }
+  }
+
+  // Initialize ripples safely
+  initHeroBannerRipples();
 });

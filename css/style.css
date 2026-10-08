@@ -597,6 +597,14 @@ h6,
   z-index: 10;
   padding-bottom: 170px;
   width: 100%;
+  pointer-events: none;
+}
+
+.hero-slide-content a,
+.hero-slide-content button,
+.hero-slide-content .hero-action-btns,
+.hero-slide-content .hero-title-area {
+  pointer-events: auto;
 }
 
 /* ================= GLOBAL FLOATING 3D BOTTLE (PAGE-WIDE SCROLL MOTION & IMAGE MORPHING) ================= */

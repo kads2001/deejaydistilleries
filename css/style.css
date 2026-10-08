@@ -7558,7 +7558,6 @@ select,
   background: linear-gradient(135deg, #b4581b 0%, #8f4010 100%);
   border-color: var(--gold-primary, #b4581b);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(180, 88, 27, 0.3);
 }
 
 /* 12. Product News Header Button */
@@ -8411,14 +8410,15 @@ html.age-gate-locked {
   text-align: left;
 }
 
-/* Category Filter Tabs Bar */
+/* Category Filter Tabs Bar (Matching Home Page Style Showcase Filter Tabs) */
 .product-filter-tabs {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 48px;
+  gap: 10px;
+  margin-top: 24px;
+  margin-bottom: 40px;
 }
 
 .product-filter-tabs .product-filter-btn,
@@ -8426,38 +8426,38 @@ button.product-filter-btn {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 10px 24px !important;
+  padding: 12px 20px !important;
   border-radius: 50px !important;
-  border: 1.5px solid #d8cfc4 !important;
-  background-color: #ffffff !important;
-  background: #ffffff !important;
-  color: #1c1917 !important;
+  border: 1px solid #dcd5ca !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  color: #3a332a !important;
   font-family: var(--font-heading, 'Anybody', sans-serif) !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
   cursor: pointer !important;
-  text-transform: capitalize !important;
+  text-transform: uppercase !important;
   line-height: normal !important;
   height: auto !important;
-  min-height: 42px !important;
+  min-height: auto !important;
+  transition: all 0.25s ease !important;
+  outline: none !important;
 }
 
-.product-filter-tabs .product-filter-btn:hover,
-button.product-filter-btn:hover {
+.product-filter-tabs .product-filter-btn:hover:not(.active),
+button.product-filter-btn:hover:not(.active) {
   border-color: #b4581b !important;
-  background-color: #fdf6ee !important;
-  background: #fdf6ee !important;
   color: #b4581b !important;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .product-filter-tabs .product-filter-btn.active,
 button.product-filter-btn.active {
   background-color: #b4581b !important;
-  background: linear-gradient(135deg, #b4581b 0%, #8f4010 100%) !important;
+  background: #b4581b !important;
   color: #ffffff !important;
   border-color: #b4581b !important;
-  /* box-shadow: 0 8px 24px rgba(180, 88, 27, 0.35) !important;
-  transform: translateY(-2px); */
 }
 
 /* Modern Glass Product Card Grid */

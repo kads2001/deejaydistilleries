@@ -48,7 +48,9 @@ html.lenis,
 html.lenis body {
   height: auto;
 }
-
+.preloader-brand-title{
+  color:  #b4581b;
+}
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }

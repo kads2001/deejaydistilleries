@@ -2580,7 +2580,7 @@ h6,
   font-size: 18px;
   font-weight: 500;
   color: #1a1a1a;
-  line-height: 1.4;
+  line-height: 1.2;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -3553,7 +3553,7 @@ h6,
   font-weight: 700;
   text-decoration: none;
   text-transform: capitalize;
-  box-shadow: 0 6px 18px rgba(196, 137, 59, 0.40);
+  /* box-shadow: 0 6px 18px rgba(196, 137, 59, 0.40); */
   transition: all 0.3s ease;
   white-space: nowrap;
 }
@@ -3561,8 +3561,8 @@ h6,
 .showcase-card-btn:hover {
   background: #a86f26;
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(196, 137, 59, 0.55);
+  /* transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(196, 137, 59, 0.55); */
 }
 
 /* Progressive Scroll Indicator Line Below Cards */

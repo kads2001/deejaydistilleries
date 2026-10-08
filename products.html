@@ -71,9 +71,14 @@
         </a>
       </div>
 
-      <!-- Navigation Right Side: Contact Us Button & Hamburger Menu Toggle -->
+      <!-- Navigation Right Side: Desktop Menu + Exports Button + Mobile Toggle -->
       <div class="nav-right" aria-label="Right Navigation">
-        <a href="contact.html" class="btn-nav-contact">Get In Touch</a>
+        <nav class="nav-desktop-menu" aria-label="Main Navigation">
+          <a href="about.html" class="nav-header-link">Our Story</a>
+          <a href="products.html" class="nav-header-link">Our Brands</a>
+          <a href="index.html#global-presence" class="nav-header-link">Global Reach</a>
+          <a href="contact.html" class="btn-nav-export">Exports</a>
+        </nav>
         <button class="mobile-nav-toggle" id="mobileMenuOpen" aria-label="Open Navigation">
           <i class="bi bi-list"></i>
         </button>
@@ -92,9 +97,10 @@
     </div>
     <nav class="nav-drawer-links">
       <a href="index.html" class="nav-custom-link">Home</a>
-      <a href="about.html" class="nav-custom-link">About Us</a>
-      <a href="products.html" class="nav-custom-link">Products</a>
-      <a href="contact.html" class="nav-custom-link">Contact Us</a>
+      <a href="about.html" class="nav-custom-link">Our Story</a>
+      <a href="products.html" class="nav-custom-link">Our Brands</a>
+      <a href="index.html#global-presence" class="nav-custom-link">Global Reach</a>
+      <a href="contact.html" class="nav-custom-link">Exports</a>
     </nav>
   </div>
 
@@ -120,7 +126,10 @@
 
       <!-- Section Header -->
       <div class="premium-products-header" data-aos="fade-up">
-        <h2 class="premium-products-title">Our Premium Products</h2>
+        <div>
+          <span class="section-tag-badge">PREMIUM PRODUCTS</span>
+          <h2 class="premium-products-title">Our Premium Products</h2>
+        </div>
         <a href="#all-products" class="premium-view-all">VIEW ALL PRODUCTS</a>
       </div>
 
@@ -135,7 +144,7 @@
           <div class="ppc-body">
             <h5 class="ppc-name">UNCLE 39<br>Premium Whisky</h5>
             <p>Rich character, smooth finish and crafted for those who appreciate a distinctive whisky experience.</p>
-            <a href="contact.html" class="btn-hover-shop">Discover Brand &rarr;</a>
+            <a href="contact.html" class="btn-ppc-discover">Discover Brand</a>
           </div>
         </div>
 
@@ -147,7 +156,7 @@
           <div class="ppc-body">
             <h5 class="ppc-name">KNIGHT FOX <br> American Dry Gin</h5>
             <p>Distilled with fine botanicals delivering crisp juniper notes and an exceptionally clean, smooth finish.</p>
-            <a href="contact.html" class="btn-hover-shop">Discover Brand &rarr;</a>
+            <a href="contact.html" class="btn-ppc-discover">Discover Brand</a>
           </div>
         </div>
 
@@ -159,7 +168,7 @@
           <div class="ppc-body">
             <h5 class="ppc-name">CAPTAIN KOOK<br>Caribbean Pirate Rhum</h5>
             <p>A bold and rich rum infused with dark roast café notes for a warm, satisfying drinking experience.</p>
-            <a href="contact.html" class="btn-hover-shop">Discover Brand &rarr;</a>
+            <a href="contact.html" class="btn-ppc-discover">Discover Brand</a>
           </div>
         </div>
 
@@ -171,7 +180,7 @@
           <div class="ppc-body">
             <h5 class="ppc-name">BLUE MARINE <br>Premium GIN</h5>
             <p>Crafted with handpicked botanicals and citrus zest for a refreshing, exquisitely balanced palate.</p>
-            <a href="contact.html" class="btn-hover-shop">Discover Brand &rarr;</a>
+            <a href="contact.html" class="btn-ppc-discover">Discover Brand</a>
           </div>
         </div>
 
@@ -192,14 +201,8 @@
 
       <!-- Section Header -->
       <div class="product-catalog-header" data-aos="fade-up">
-        <!-- <div class="product-catalog-badge">
-          <span class="product-catalog-badge-dot"></span>
-          Complete Spirits Portfolio
-        </div> -->
+        <span class="section-tag-badge">ALL PRODUCTS</span>
         <h2 class="product-catalog-title">Explore All Brands &amp; Products</h2>
-        <!-- <p class="product-catalog-subtitle">
-          From award-winning single malts and botanical gins to artisanal vodkas and dark rums, filter through our world-class spirits.
-        </p> -->
       </div>
 
       <!-- Category Filter Tabs -->
@@ -443,43 +446,59 @@
 
       <!-- Section Header -->
       <div class="popular-section-header" data-aos="fade-up">
-        <h2 class="popular-section-title">Our Featured Brands</h2>
-        <p class="popular-section-para">Discover a diverse portfolio of spirits created for different tastes, occasions and markets.</p>
+        <div class="popular-header-left">
+          <span class="section-tag-badge">FEATURED BRANDS</span>
+          <h2 class="popular-section-title">Our Featured Brands</h2>
+          <p class="popular-section-para">Discover a diverse portfolio of spirits created for different tastes, occasions and markets.</p>
+        </div>
+        <a href="#all-products" class="popular-view-all">VIEW ALL</a>
       </div>
 
       <!-- 3-Card Grid Container -->
       <div class="vertical-hover-container">
 
-        <!-- Card 1: Mortlach Whisky -->
+        <!-- Card 1: Doctor Brandy -->
         <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="50">
-          <img src="assets/images/popularim1.jpg" alt="Mortlach Whisky" class="vertical-hover-img">
+          <img src="assets/images/popularim1.jpg" alt="Doctor Brandy" class="vertical-hover-img">
           <div class="vertical-hover-overlay"></div>
           <div class="vertical-hover-content">
-            <h3 class="vertical-hover-title">Doctor Brandy</h3>
-            <p class="vertical-hover-price">A smooth and refined brandy crafted for a rich, warming experience.</p>
-            <a href="contact.html" class="btn-hover-shop">Discover More</a>
+            <div class="vertical-hover-text-block">
+              <h3 class="vertical-hover-title">Doctor Brandy</h3>
+              <p class="vertical-hover-desc">A smooth and refined brandy crafted for a rich, warming experience.</p>
+            </div>
+            <a href="contact.html" class="vertical-hover-circle-btn" aria-label="Discover Doctor Brandy">
+              <i class="bi bi-arrow-right"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Card 2: Glenlivet Wine -->
+        <!-- Card 2: Captain Kock -->
         <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="100">
-          <img src="assets/images/popularim2.jpg" alt="Glenlivet Wine" class="vertical-hover-img">
+          <img src="assets/images/popularim2.jpg" alt="Captain Kock" class="vertical-hover-img">
           <div class="vertical-hover-overlay"></div>
           <div class="vertical-hover-content">
-            <h3 class="vertical-hover-title">Captain Kock</h3>
-            <p class="vertical-hover-price">A bold and smooth rum crafted with rich character and a warm palate.</p>
-            <a href="contact.html" class="btn-hover-shop">Discover More</a>
+            <div class="vertical-hover-text-block">
+              <h3 class="vertical-hover-title">Captain Kock</h3>
+              <p class="vertical-hover-desc">A bold and smooth rum crafted with rich character and a warm palate.</p>
+            </div>
+            <a href="contact.html" class="vertical-hover-circle-btn" aria-label="Discover Captain Kock">
+              <i class="bi bi-arrow-right"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Card 3: Jim Beam Bourbon -->
+        <!-- Card 3: Karan'si BULLET -->
         <div class="vertical-hover-item" data-aos="fade-up" data-aos-delay="150">
-          <img src="assets/images/popularim3.jpg" alt="Jim Beam Bourbon" class="vertical-hover-img">
+          <img src="assets/images/popularim3.jpg" alt="Karan'si BULLET" class="vertical-hover-img">
           <div class="vertical-hover-overlay"></div>
           <div class="vertical-hover-content">
-            <h3 class="vertical-hover-title">Karan'si BULLET</h3>
-            <p class="vertical-hover-price">Karan'si Bullet is an original blended XXX rum crafted with strength and rich notes.</p>
-            <a href="contact.html" class="btn-hover-shop">Discover More</a>
+            <div class="vertical-hover-text-block">
+              <h3 class="vertical-hover-title">Karan'si BULLET</h3>
+              <p class="vertical-hover-desc">Karan'si Bullet is an original blended XXX rum crafted with strength and rich notes.</p>
+            </div>
+            <a href="contact.html" class="vertical-hover-circle-btn" aria-label="Discover Karan'si Bullet">
+              <i class="bi bi-arrow-right"></i>
+            </a>
           </div>
         </div>
 

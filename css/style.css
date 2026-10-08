@@ -4993,13 +4993,13 @@ background: rgb(41 41 41 / 50%);
 
 /* ================= PRODUCT INNOVATIONS & NEWS SECTION ================= */
 .product-news-section {
-  background-color: #e5e5e5;
+  background-color: #faf8f5;
   color: #1a1a1a;
   padding-top: var(--section-py, 90px);
   padding-bottom: var(--section-py, 90px);
   position: relative;
   width: 100%;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  /* border-top: 1px solid rgba(0, 0, 0, 0.08); */
 }
 
 .product-news-container {

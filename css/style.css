@@ -353,7 +353,6 @@ h6,
   font-family: var(--font-main);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: 2.2px;
   text-transform: capitalize;
   color: var(--gold-primary, #c4893b);
   margin-bottom: 14px;
@@ -431,7 +430,6 @@ h6,
   font-size: 13px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 1px;
 }
 
 .hero-slider-counter strong {
@@ -807,7 +805,6 @@ h6,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: 0;
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.25s ease;
@@ -839,7 +836,6 @@ h6,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0;
   line-height: normal;
   text-decoration: none;
   text-transform: capitalize;
@@ -990,7 +986,6 @@ h6,
   font-size: clamp(22px, 3.2vw, 36px) !important;
   font-weight: 700 !important;
   line-height: 1.3 !important;
-  letter-spacing: 1px !important;
   color: #ffffff !important;
   text-decoration: none !important;
   text-transform: capitalize !important;
@@ -1102,7 +1097,6 @@ h6,
   font-family: var(--font-main);
   font-weight: 700;
   font-size: var(--font-hero-title, clamp(38px, 5.2vw, 76px));
-  letter-spacing: 0px;
   line-height: 1;
   text-transform: capitalize;
   color: #ffffff;
@@ -1116,7 +1110,6 @@ h6,
   /* font-style: italic; */
   color: #eceff1;
   line-height: 1.2;
-  letter-spacing: normal;
   margin-bottom: 0px;
   text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.9);
 }
@@ -1144,7 +1137,6 @@ h6,
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
   line-height: normal;
   text-transform: capitalize;
   text-decoration: none;
@@ -1174,7 +1166,6 @@ h6,
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
   line-height: normal;
   text-transform: capitalize;
   text-decoration: none;
@@ -1268,7 +1259,6 @@ h6,
   font-family: var(--font-main);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1px;
   color: #ffffff;
   z-index: 5;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
@@ -1385,7 +1375,6 @@ h6,
   font-family: var(--font-main);
   font-size: 24px;
   font-weight: 600;
-  letter-spacing: 0.3px;
   line-height: 1;
   padding: 10px 20px;
   border-radius: 50px !important;
@@ -1584,7 +1573,6 @@ h6,
   line-height: 1.65;
   font-weight: 500;
   color: #1a1a1a;
-  letter-spacing: normal;
   margin: 0;
 }
 
@@ -1701,7 +1689,6 @@ h6,
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.8px;
   text-transform: capitalize;
   padding: 12px 28px;
   border-radius: 50px !important;
@@ -1773,7 +1760,6 @@ h6,
   color: #000000;
   line-height: 1.1;
   margin-bottom: 6px;
-  letter-spacing: -0.5px;
 }
 
 .about-stat-desc {
@@ -1806,7 +1792,6 @@ h6,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -1957,7 +1942,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
@@ -1974,7 +1958,6 @@ background: rgb(41 41 41 / 50%);
   font-size: clamp(24px, 2.4vw, 34px);
   font-weight: 800;
   color: #111111;
-  letter-spacing: -0.3px;
   line-height: 1.25;
   margin-bottom: 20px;
 }
@@ -2053,7 +2036,6 @@ background: rgb(41 41 41 / 50%);
   font-size: 12px;
   font-weight: 700;
   color: #111111;
-  letter-spacing: 0.5px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
@@ -2352,7 +2334,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main, sans-serif);
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   font-weight: 700;
-  letter-spacing: -0.5px;
   color: #000000;
   text-transform: capitalize;
   line-height: 1.15;
@@ -2392,7 +2373,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.8px;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 0.3s ease;
@@ -2500,7 +2480,6 @@ background: rgb(41 41 41 / 50%);
   font-size: clamp(19px, 1.6vw, 23px);
   font-weight: 800;
   line-height: 1.2;
-  letter-spacing: 0.2px;
   text-transform: uppercase;
   margin: 0 0 6px 0;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
@@ -2513,7 +2492,6 @@ background: rgb(41 41 41 / 50%);
   font-size: 13px;
   font-weight: 500;
   line-height: 1.4;
-  letter-spacing: 0.2px;
   margin: 0;
   text-align: left;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
@@ -2598,7 +2576,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main, sans-serif);
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   font-weight: 700;
-  letter-spacing: -0.5px;
   color: #000000;
   text-transform: capitalize;
   line-height: 1.15;
@@ -2608,7 +2585,6 @@ background: rgb(41 41 41 / 50%);
 .premium-view-all {
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: normal;
   color: #b4581b;
   text-decoration: none;
   text-transform: uppercase;
@@ -2708,7 +2684,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.3px;
   text-decoration: none;
   text-transform: capitalize;
   margin: 14px auto 0 auto;
@@ -2727,7 +2702,6 @@ background: rgb(41 41 41 / 50%);
 .ppc-stars {
   color: #f5a623;
   font-size: 14px;
-  letter-spacing: 2px;
   margin-bottom: 10px;
 }
 
@@ -2747,7 +2721,6 @@ background: rgb(41 41 41 / 50%);
   color: #1a1a1a;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.2px;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
@@ -2780,7 +2753,6 @@ background: rgb(41 41 41 / 50%);
   color: #ffffff;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1.5px;
   text-transform: uppercase;
   padding: 4px 12px;
   border-radius: 50px;
@@ -2788,18 +2760,18 @@ background: rgb(41 41 41 / 50%);
 }
 
 .promo-heading {
-  font-size: 36px;
-  font-weight: 900;
+  font-size: 22px;
+  font-weight: 700;
   line-height: 1.1;
-  letter-spacing: 2px;
+  
   color: #ffffff;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
   text-transform: uppercase;
   z-index: 2;
 }
 
 .promo-sub {
-  font-size: 13px;
+  font-size: 14px;
   color: #fff;
   line-height: 1.5;
   z-index: 2;
@@ -2826,7 +2798,7 @@ background: rgb(41 41 41 / 50%);
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 50px;
@@ -3164,7 +3136,6 @@ background: rgb(41 41 41 / 50%);
   font-weight: 700;
   line-height: 1.15;
   color: #11141a;
-  letter-spacing: -0.5px;
   text-transform: capitalize;
   margin: 0;
 }
@@ -3266,7 +3237,6 @@ background: rgb(41 41 41 / 50%);
   font-weight: 700;
   color: #ffffff;
   line-height: 0.95;
-  letter-spacing: -0.5px;
   flex-shrink: 0;
   display: inline-flex;
   align-items: flex-start;
@@ -3288,7 +3258,6 @@ background: rgb(41 41 41 / 50%);
   line-height: 1.3;
   color: #ffffff;
   margin: 0;
-  letter-spacing: 0.1px;
 }
 
 /* Subtle Progress Indicator */
@@ -3412,7 +3381,6 @@ background: rgb(41 41 41 / 50%);
   font-weight: 700;
   line-height: 1.18;
   color: #000000;
-  letter-spacing: -0.5px;
   text-transform: capitalize;
   margin: 0;
 }
@@ -3660,7 +3628,6 @@ background: rgb(41 41 41 / 50%);
   font-size: 18px;
   font-weight: 800;
   color: #1a1a1a;
-  letter-spacing: 0.5px;
   text-transform: uppercase;
   margin-bottom: 12px;
   line-height: 1.25;
@@ -3912,7 +3879,6 @@ background: rgb(41 41 41 / 50%);
   font-weight: 700;
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   line-height: 1.15;
-  letter-spacing: -0.5px;
   text-transform: capitalize;
   color: #000;
   margin-bottom: 0px;
@@ -3936,7 +3902,6 @@ background: rgb(41 41 41 / 50%);
   color: #444444;
   margin-bottom: 20px;
   font-weight: 400;
-  letter-spacing: normal;
 }
 
 .about-explore-link {
@@ -3946,7 +3911,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.2px;
   line-height: 16px;
   text-transform: capitalize;
   color: #111111;
@@ -4010,7 +3974,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13.5px;
   font-weight: 800;
-  letter-spacing: 1.5px;
   line-height: 18px;
   color: #ffffff;
   text-transform: capitalize;
@@ -4050,7 +4013,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: 2px;
   line-height: 18px;
   color: var(--gold-primary, #c4893b);
   text-transform: capitalize;
@@ -4062,7 +4024,6 @@ background: rgb(41 41 41 / 50%);
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.5px;
   color: #1a1a1a;
   text-transform: capitalize;
   margin-bottom: 0px;
@@ -4072,7 +4033,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.2px;
   color: #111111;
   text-transform: capitalize;
   text-decoration: none;
@@ -4152,7 +4112,6 @@ background: rgb(41 41 41 / 50%);
   font-size: 30px;
   font-weight: 800;
   line-height: 36px;
-  letter-spacing: 0.5px;
   color: #ffffff;
   margin-bottom: 10px;
   text-transform: capitalize;
@@ -4179,7 +4138,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 1.5px;
   text-transform: capitalize;
   color: #ffffff;
   text-decoration: none;
@@ -4276,7 +4234,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: 2px;
   line-height: 18px;
   text-transform: capitalize;
   color: var(--gold-primary, #c4893b);
@@ -4289,7 +4246,6 @@ background: rgb(41 41 41 / 50%);
   font-weight: 700;
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   line-height: 1.15;
-  letter-spacing: -0.5px;
   color: #1a1a1a;
   text-transform: capitalize;
   margin-bottom: 14px;
@@ -4320,7 +4276,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
   line-height: 16px;
   text-transform: capitalize;
   text-decoration: none;
@@ -4455,7 +4410,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 10.5px;
   font-weight: 800;
-  letter-spacing: 1.5px;
   line-height: 14px;
   text-transform: capitalize;
   color: #ffffff;
@@ -4543,7 +4497,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: 2px;
   line-height: 18px;
   text-transform: capitalize;
   color: var(--gold-light);
@@ -4555,7 +4508,6 @@ background: rgb(41 41 41 / 50%);
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.5px;
   text-transform: capitalize;
   color: #ffffff;
   margin-bottom: 18px;
@@ -4582,7 +4534,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.2px;
   text-transform: capitalize;
   text-decoration: none;
   padding: 12px 28px;
@@ -4754,7 +4705,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 18px;
   font-weight: 700;
-  letter-spacing: 1.2px;
   text-transform: capitalize;
   text-decoration: none;
   display: inline-flex;
@@ -4824,7 +4774,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13.5px;
   font-weight: 800;
-  letter-spacing: 2px;
   text-transform: capitalize;
   margin-bottom: 14px;
 }
@@ -4839,7 +4788,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.8px;
   text-transform: capitalize;
   margin-bottom: 10px;
   display: flex;
@@ -4891,7 +4839,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.8px;
   text-transform: capitalize;
   white-space: nowrap;
 }
@@ -5078,7 +5025,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: 2px;
   line-height: 18px;
   text-transform: capitalize;
   color: #705510;
@@ -5091,7 +5037,6 @@ background: rgb(41 41 41 / 50%);
   font-weight: 700;
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   line-height: 1.15;
-  letter-spacing: -0.5px;
   color: #000;
   text-transform: capitalize;
   margin-bottom: 14px;
@@ -5115,7 +5060,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
   line-height: 16px;
   text-transform: capitalize;
   text-decoration: none;
@@ -5232,7 +5176,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 16.5px;
   font-weight: 600;
-  letter-spacing: 1.5px;
   line-height: 14px;
   text-transform: capitalize;
   color: #ffffff;
@@ -5261,7 +5204,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: 1.2px;
   line-height: 14px;
   text-transform: capitalize;
   color: #fff;
@@ -5311,7 +5253,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: 2px;
   line-height: 18px;
   text-transform: capitalize;
   color: #705510;
@@ -5324,7 +5265,6 @@ background: rgb(41 41 41 / 50%);
   font-weight: 700;
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   line-height: 1.15;
-  letter-spacing: -0.5px;
   color: #1a1a1a;
   text-transform: capitalize;
   margin-bottom: 0px;
@@ -5334,7 +5274,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
   line-height: 16px;
   text-transform: capitalize;
   color: #111111;
@@ -5421,7 +5360,6 @@ background: rgb(41 41 41 / 50%);
   font-family: var(--font-main);
   font-size: 16px;
   font-weight: 800;
-  letter-spacing: -0.2px;
   color: #ffffff;
 }
 
@@ -5440,7 +5378,6 @@ background: rgb(41 41 41 / 50%);
   font-size: 20px;
   font-weight: 700;
   line-height: 26px;
-  letter-spacing: -0.3px;
   color: #ffffff;
   margin-bottom: 10px;
 }
@@ -5545,7 +5482,6 @@ background: rgb(41 41 41 / 50%);
   line-height: 1.15;
   font-weight: 700;
   color: #111111;
-  letter-spacing: -0.5px;
   text-transform: capitalize;
   margin-bottom: 0px;
 }
@@ -5642,7 +5578,6 @@ button.btn-contact-submit,
   font-family: var(--font-heading, 'Anybody', sans-serif) !important;
   font-size: 15px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.5px !important;
   line-height: normal !important;
   text-transform: capitalize !important;
   padding: 14px 44px !important;
@@ -5705,7 +5640,6 @@ button.btn-contact-submit:hover,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 14px;
 }
@@ -5722,7 +5656,6 @@ button.btn-contact-submit:hover,
   font-size: clamp(28px, 3.2vw, 44px);
   font-weight: 800;
   color: #111111;
-  letter-spacing: -0.5px;
   margin-bottom: 12px;
 }
 
@@ -5787,7 +5720,6 @@ button.btn-contact-submit:hover,
   font-weight: 700;
   color: #111111;
   margin-bottom: 8px;
-  letter-spacing: -0.2px;
 }
 
 .contact-card-desc {
@@ -5820,7 +5752,6 @@ button.btn-contact-submit:hover,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 1.2px;
   color: #b4581b;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -5941,7 +5872,6 @@ button.btn-contact-submit:hover,
   font-weight: 700;
   color: #0b0c10;
   /* Changed to dark */
-  letter-spacing: -0.5px;
   margin-bottom: 12px;
 }
 
@@ -5950,7 +5880,6 @@ button.btn-contact-submit:hover,
   font-size: clamp(14px, 1.5vw, 18px);
   color: #4a4a4a;
   /* Changed to dark gray */
-  letter-spacing: 1px;
   margin: 0;
   line-height: 1.6;
 }
@@ -6077,7 +6006,7 @@ button.btn-contact-submit:hover,
   font-family: var(--font-main, sans-serif);
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  
   transition: opacity 0.25s ease;
   white-space: nowrap;
 }
@@ -6275,7 +6204,7 @@ button.btn-contact-submit:hover,
 
   .nav-custom-link {
     font-size: 14px;
-    letter-spacing: 0.3px;
+
   }
 
   .btn-nav-contact {
@@ -6757,7 +6686,7 @@ button.btn-contact-submit:hover,
   .mobile-nav-menu .nav-custom-link {
     font-size: 16px;
     line-height: 24px;
-    letter-spacing: 1.5px;
+
   }
 
   .mobile-close-btn {
@@ -7314,7 +7243,7 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7346,7 +7275,6 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 16px;
   font-weight: 600;
-  /* letter-spacing: 0.5px; */
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7379,7 +7307,6 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 16px;
   font-weight: 600;
-  /* letter-spacing: 0.5px; */
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7412,7 +7339,6 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.5px;
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7444,7 +7370,6 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13.5px;
   font-weight: 600;
-  letter-spacing: 0.3px;
   text-transform: capitalize;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -7475,7 +7400,6 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.3px;
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7503,7 +7427,6 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.3px;
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7577,7 +7500,6 @@ select,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1px;
   text-decoration: none;
   text-transform: uppercase;
   border-bottom: 2px solid var(--gold-primary, #b4581b);
@@ -7604,7 +7526,6 @@ padding: 10px 24px;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.3px;
   text-transform: capitalize;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -7637,7 +7558,6 @@ padding: 10px 24px;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.5px;
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7658,7 +7578,6 @@ padding: 10px 24px;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13.5px;
   font-weight: 700;
-  letter-spacing: 0.3px;
   text-decoration: none;
   text-transform: capitalize;
   border-bottom: 1.5px solid var(--gold-primary, #b4581b);
@@ -7685,7 +7604,6 @@ padding: 10px 24px;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.5px;
   text-decoration: none;
   text-transform: capitalize;
   transition: all 0.3s ease;
@@ -7713,7 +7631,6 @@ padding: 10px 24px;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -7743,7 +7660,6 @@ padding: 10px 24px;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 14px;
   font-weight: 800;
-  letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -7937,7 +7853,6 @@ padding: 10px 24px;
   font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
   margin-bottom: 16px;
   text-align: left;
 }
@@ -7963,7 +7878,6 @@ padding: 10px 24px;
   font-weight: 800;
   color: #ffffff;
   line-height: 1.15;
-  letter-spacing: -0.5px;
   text-transform: capitalize;
   margin-bottom: 18px;
   text-align: left;
@@ -8078,7 +7992,6 @@ html.age-gate-locked {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13.5px;
   font-weight: 700;
-  letter-spacing: 3.5px;
   color: var(--gold-light, #dfb76c);
   text-transform: uppercase;
 }
@@ -8089,7 +8002,6 @@ html.age-gate-locked {
   font-size: clamp(14px, 1.5vw, 17px);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.8px;
   margin-bottom: 18px;
 }
 
@@ -8099,7 +8011,6 @@ html.age-gate-locked {
   font-size: clamp(28px, 4.5vw, 44px);
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: 3px;
   line-height: 1.15;
   text-transform: uppercase;
   margin-bottom: 28px;
@@ -8128,7 +8039,6 @@ html.age-gate-locked {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -8311,7 +8221,6 @@ html.age-gate-locked {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: clamp(10px, 0.95vw, 12px);
   font-weight: 700;
-  letter-spacing: 5px;
   color: var(--gold-primary, #b4581b);
   text-transform: uppercase;
   margin-top: 2px;
@@ -8400,7 +8309,7 @@ html.age-gate-locked {
 
   .preloader-tagline {
     font-size: 10px;
-    letter-spacing: 3.5px;
+
   }
 }
 
@@ -8412,12 +8321,12 @@ html.age-gate-locked {
 
   .preloader-brand-title {
     font-size: 16px;
-    letter-spacing: 3px;
+
   }
 
   .preloader-tagline {
     font-size: 10px;
-    letter-spacing: 2px;
+
   }
 }
 
@@ -8457,7 +8366,6 @@ html.age-gate-locked {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 14px;
 }
@@ -8474,7 +8382,6 @@ html.age-gate-locked {
   font-size: clamp(30px, 3.5vw, 46px);
   font-weight: 800;
   color: #111111;
-  letter-spacing: -0.5px;
   margin-bottom: 12px;
   text-align: left;
 }
@@ -8512,7 +8419,6 @@ button.product-filter-btn {
   font-family: var(--font-heading, 'Anybody', sans-serif) !important;
   font-size: 14px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.4px !important;
   cursor: pointer !important;
   transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
@@ -8658,7 +8564,6 @@ button.product-filter-btn.active {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.4px;
   text-transform: lowercase;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
@@ -8678,7 +8583,6 @@ button.product-filter-btn.active {
   color: #ffffff;
   line-height: 1.25;
   margin-bottom: 10px;
-  letter-spacing: -0.3px;
 }
 
 .modern-card-brand-row {
@@ -8705,7 +8609,6 @@ button.product-filter-btn.active {
   font-size: 13px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.2px;
 }
 
 /* Filtering animation */
@@ -8724,7 +8627,6 @@ button.product-filter-btn.active {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 11.5px;
   font-weight: 800;
-  letter-spacing: 2px;
   text-transform: uppercase !important;
   color: #111111;
   background: none !important;

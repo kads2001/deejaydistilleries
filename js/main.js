@@ -2108,6 +2108,7 @@ $(document).ready(function () {
       'a.btn',
       'button.btn',
       '.btn-wave',
+      '.popular-view-all',
       '.btn-nav-contact',
       '.btn-hero-solid',
       '.btn-hero-outline',
@@ -2135,13 +2136,15 @@ $(document).ready(function () {
       'button[type="submit"]',
       'a[class*="btn-"]',
       'a[class*="-btn"]',
+      'a[class*="view-all"]',
+      '.has-wave-effect',
       'button[class*="btn-"]:not(.mobile-close-btn):not(.mobile-nav-toggle):not(.slider-nav-btn):not(.showcase-arrow-btn):not(.video-modal-close):not(.about-video-play-btn):not(.hero-video-toggle-btn):not(.video-control-btn)',
       'button[class*="-btn"]:not(.mobile-close-btn):not(.mobile-nav-toggle):not(.slider-nav-btn):not(.showcase-arrow-btn):not(.video-modal-close):not(.about-video-play-btn):not(.hero-video-toggle-btn):not(.video-control-btn)'
     ].join(', ');
 
     $(selectors).each(function () {
       const $btn = $(this);
-      if ($btn.hasClass('has-wave-effect')) return;
+      if ($btn.find('.wave-char').length > 0) return;
       $btn.addClass('has-wave-effect');
 
       function processNode(node, counter) {
@@ -2180,7 +2183,7 @@ $(document).ready(function () {
     });
 
     // Replay wave animation crisply on every hover entry
-    $(document).on('mouseenter', '.has-wave-effect, .btn-wave, [class*="btn-"], [class*="-btn"]', function () {
+    $(document).on('mouseenter', '.has-wave-effect, .btn-wave, .popular-view-all, [class*="btn-"], [class*="-btn"], [class*="view-all"]', function () {
       const chars = this.querySelectorAll('.wave-char');
       if (!chars.length) return;
       chars.forEach((c) => {

@@ -2410,14 +2410,15 @@ h6,
 } */
 
 .vertical-hover-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.9) 100%);
-  pointer-events: none;
-  transition: background 0.3s ease;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 350px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.9) 100%);
+    pointer-events: none;
+    transition: background 0.3s ease;
 }
 
 .vertical-hover-item:hover .vertical-hover-overlay {
@@ -3388,8 +3389,10 @@ h6,
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: space-between;
   gap: 14px;
   padding-top: 6px;
+  height: 100%;
 }
 
 .showcase-nav-arrows {

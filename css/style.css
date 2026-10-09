@@ -2722,7 +2722,7 @@ h6,
   display: inline-block;
   background-color: #c0392b;
   color: #ffffff;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
   padding: 4px 12px;
@@ -2732,7 +2732,7 @@ h6,
 
 .promo-heading {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
 
   color: #ffffff;
@@ -2755,30 +2755,36 @@ h6,
   height: 100%;
   object-fit: cover;
   opacity: 0.85;
+  width: 100%;
   left: 0;
 }
 
 .btn-promo-shop {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   bottom: 22px;
   left: 22px;
-  padding: 9px 22px;
+  padding: 8px 24px;
   border: 1.5px solid #ffffff;
   background-color: transparent;
   color: #ffffff;
-  font-size: 12px;
+  font-family: var(--font-heading, 'Anybody', sans-serif);
+  font-size: 13px;
   font-weight: 700;
-
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   border-radius: 50px;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .btn-promo-shop:hover {
   background-color: #ffffff;
-  color: #1a1a1a;
+  border-color: #ffffff;
+  color: #111111;
+  transform: translateY(-2px);
 }
 
 /* Responsive — Premium Products */

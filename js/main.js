@@ -2597,6 +2597,73 @@ document.addEventListener('DOMContentLoaded', function() {
   initProductFilter();
 
   // =========================================================================
+  // IN-CARD MULTI-IMAGE SLIDER
+  // =========================================================================
+  function initProductCardSliders() {
+    $('.modern-product-card.has-slider').each(function () {
+      const $card = $(this);
+      const $slides = $card.find('.modern-card-slide');
+      const $dots = $card.find('.card-slider-dot');
+      const $prev = $card.find('.card-slider-arrow.prev');
+      const $next = $card.find('.card-slider-arrow.next');
+      const total = $slides.length;
+      if (total <= 1) return;
+
+      let currentIndex = 0;
+
+      function goToSlide(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        currentIndex = index;
+
+        $slides.removeClass('active').eq(currentIndex).addClass('active');
+        $dots.removeClass('active').eq(currentIndex).addClass('active');
+      }
+
+      $next.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goToSlide(currentIndex + 1);
+      });
+
+      $prev.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goToSlide(currentIndex - 1);
+      });
+
+      $dots.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const idx = parseInt($(this).attr('data-index'), 10);
+        goToSlide(idx);
+      });
+
+      // Touch / Swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      $card.on('touchstart', function (e) {
+        touchStartX = e.originalEvent.touches[0].clientX;
+      });
+
+      $card.on('touchend', function (e) {
+        touchEndX = e.originalEvent.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            goToSlide(currentIndex + 1);
+          } else {
+            goToSlide(currentIndex - 1);
+          }
+        }
+      });
+    });
+  }
+
+  initProductCardSliders();
+
+  // =========================================================================
   // HERO BANNER WATER RIPPLE EFFECT (BOTTOM AREA & MOUSE INTERACTION)
   // =========================================================================
   function initHeroBannerRipples() {

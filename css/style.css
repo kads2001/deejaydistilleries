@@ -7512,7 +7512,7 @@ select,
   font-weight: 700;
   text-decoration: none;
   text-transform: capitalize;
-  border-bottom: 1.5px solid var(--gold-primary, #b4581b);
+  /* border-bottom: 1.5px solid var(--gold-primary, #b4581b); */
   padding-bottom: 2px;
   transition: all 0.25s ease;
 }

@@ -119,8 +119,11 @@ html.lenis body {
 /* Staggered fluid wave ripple across characters */
 .has-wave-effect:hover .wave-char,
 .btn-wave:hover .wave-char,
+.popular-view-all:hover .wave-char,
+.premium-view-all:hover .wave-char,
 [class*="btn-"]:hover .wave-char,
-[class*="-btn"]:hover .wave-char {
+[class*="-btn"]:hover .wave-char,
+[class*="view-all"]:hover .wave-char {
   animation: btnTextWave 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation-delay: calc(var(--char-idx, 0) * 0.035s);
 }
@@ -722,7 +725,7 @@ h6,
   left: 0;
   width: 100%;
   z-index: 100;
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 22px;
   padding-left: 0px;
   padding-right: 0px;
@@ -779,7 +782,7 @@ h6,
 }
 
 .brand-crest-logo {
-  height: 120px;
+  height: 170px;
   width: auto;
   filter: brightness(0) invert(1);
   transition: transform 0.3s ease, height 0.3s ease, filter 0.3s ease;
@@ -1871,7 +1874,7 @@ h6,
   font-size: 44px;
   color: rgba(255, 255, 255, 0.98);
   margin-left: 5px;
-  line-height: 1;
+  line-height: 12px;
 }
 
 /* ================= WHO WE ARE SECTION (MODERN LIGHT LUXURY DESIGN) ================= */
@@ -1896,18 +1899,17 @@ h6,
 }
 
 .about-who-card {
-  transition: transform 0.35s ease, border-color 0.35s ease;
   margin-bottom: 48px;
 }
 
 .about-who-card:last-child {
   margin-bottom: 0;
 }
-
+/* 
 .about-who-card:hover {
   transform: translateY(-4px);
   border-color: rgba(180, 88, 27, 0.35);
-}
+} */
 
 .about-who-badge {
   display: inline-flex;
@@ -2721,7 +2723,7 @@ h6,
   display: inline-block;
   background-color: #c0392b;
   color: #ffffff;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
   padding: 4px 12px;
@@ -2731,7 +2733,7 @@ h6,
 
 .promo-heading {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
 
   color: #ffffff;
@@ -2754,30 +2756,36 @@ h6,
   height: 100%;
   object-fit: cover;
   opacity: 0.85;
+  width: 100%;
   left: 0;
 }
 
 .btn-promo-shop {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   bottom: 22px;
   left: 22px;
-  padding: 9px 22px;
+  padding: 8px 24px;
   border: 1.5px solid #ffffff;
   background-color: transparent;
   color: #ffffff;
-  font-size: 12px;
+  font-family: var(--font-heading, 'Anybody', sans-serif);
+  font-size: 13px;
   font-weight: 700;
-
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   border-radius: 50px;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .btn-promo-shop:hover {
   background-color: #ffffff;
-  color: #1a1a1a;
+  border-color: #ffffff;
+  color: #111111;
+  transform: translateY(-2px);
 }
 
 /* Responsive — Premium Products */
@@ -5028,7 +5036,7 @@ h6,
 .product-news-cta-btn:hover {
   background: var(--gold-primary, #b4581b);
   color: #ffffff;
-  border-color: #111111;
+  border-color: var(--gold-primary, #b4581b);
   transform: translateY(-2px);
 }
 
@@ -5462,6 +5470,8 @@ h6,
 
 .contact-right-col {
   flex: 1;
+  max-width: 700px;
+  margin-left: auto;
 }
 
 .form-underline-row {
@@ -5520,8 +5530,9 @@ h6,
 .btn-contact-submit,
 button.btn-contact-submit,
 .contact-minimal-section .btn-contact-submit {
-  background-color: #111111 !important;
-  background: #111111 !important;
+  /* background-color: #111111 !important;
+  background: #111111 !important; */
+  background-color: var(--gold-primary, #b4581b) !important;
   color: #ffffff !important;
   font-family: var(--font-heading, 'Anybody', sans-serif) !important;
   font-size: 15px !important;
@@ -5530,7 +5541,7 @@ button.btn-contact-submit,
   text-transform: capitalize !important;
   padding: 14px 44px !important;
   border-radius: 50px !important;
-  border: 2px solid #111111 !important;
+  border: 2px solid #b4581b;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -7436,8 +7447,13 @@ select,
 
 .premium-view-all:hover {
   color: #fff;
+<<<<<<< HEAD
   border-color: #b4581b;
   background-color: #b4581b;
+=======
+  border-color: var(--gold-primary, #b4581b);
+  background-color: var(--gold-primary, #b4581b);
+>>>>>>> ad37e1231a746835af444c1c1bda8afa006f9dd0
 }
 .product-filter-btn {
   display: inline-flex;
@@ -7503,7 +7519,7 @@ select,
   font-weight: 700;
   text-decoration: none;
   text-transform: capitalize;
-  border-bottom: 1.5px solid var(--gold-primary, #b4581b);
+  /* border-bottom: 1.5px solid var(--gold-primary, #b4581b); */
   padding-bottom: 2px;
   transition: all 0.25s ease;
 }
@@ -7874,7 +7890,6 @@ html.age-gate-locked {
   top: -100px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--gold-primary, #b4581b);
 }
 
 /* Content Area */
@@ -7902,7 +7917,6 @@ html.age-gate-locked {
   width: 50%;
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 4px 14px rgba(180, 88, 27, 0.45));
 }
 
 .age-gate-brand-name {
@@ -7951,7 +7965,7 @@ html.age-gate-locked {
   justify-content: center;
   background: rgba(255, 255, 255, 0.03);
   border: 1.5px solid rgba(255, 255, 255, 0.35);
-  border-radius: 4px;
+  border-radius: 36px;
   color: #ffffff;
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: 15px;
@@ -8106,8 +8120,8 @@ html.age-gate-locked {
 }
 
 .preloader-logo-wrap {
-  width: 130px;
-  height: 95px;
+  width: 250px;
+  height: 150px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -8433,6 +8447,161 @@ button.product-filter-btn.active {
   z-index: 1;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       border: 1px solid #e8e8e8;
+}
+
+/* In-Card Product Image Slider */
+.modern-card-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.modern-card-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modern-card-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.modern-card-slide .modern-card-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center 38%;
+  padding: 24px 16px 80px;
+  border: none;
+  transition: transform 0.4s ease;
+}
+
+.modern-product-card:hover .modern-card-slide.active .modern-card-bg-img {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Bottle Size Tag Badge */
+.modern-card-size-tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 4;
+  background: rgba(17, 17, 17, 0.06);
+  color: #555555;
+  border: 1px solid rgba(17, 17, 17, 0.12);
+  font-family: var(--font-heading, 'Anybody', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.modern-product-card:hover .modern-card-size-tag {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+/* Slider Controls (Arrows & Dots) */
+.modern-card-slider-controls {
+  position: absolute;
+  bottom: 82px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 5;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.card-slider-arrow {
+  pointer-events: auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #dcdcdc;
+  background: rgba(255, 255, 255, 0.95);
+  color: #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  opacity: 0;
+  transform: scale(0.85);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.modern-product-card:hover .card-slider-arrow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card-slider-arrow:hover {
+  background: var(--gold-primary, #b4581b);
+  border-color: var(--gold-primary, #b4581b);
+  color: #ffffff;
+}
+
+.card-slider-dots {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 4px 8px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.card-slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cccccc;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.card-slider-dot:hover {
+  background: #888888;
+}
+
+.card-slider-dot.active {
+  background: var(--gold-primary, #b4581b);
+  width: 14px;
+  border-radius: 6px;
 }
 
 /* .modern-product-card:hover .modern-card-bg-img {

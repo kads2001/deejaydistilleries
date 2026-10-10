@@ -2108,6 +2108,7 @@ $(document).ready(function () {
       'a.btn',
       'button.btn',
       '.btn-wave',
+      '.popular-view-all',
       '.btn-nav-contact',
       '.btn-hero-solid',
       '.btn-hero-outline',
@@ -2135,13 +2136,15 @@ $(document).ready(function () {
       'button[type="submit"]',
       'a[class*="btn-"]',
       'a[class*="-btn"]',
+      'a[class*="view-all"]',
+      '.has-wave-effect',
       'button[class*="btn-"]:not(.mobile-close-btn):not(.mobile-nav-toggle):not(.slider-nav-btn):not(.showcase-arrow-btn):not(.video-modal-close):not(.about-video-play-btn):not(.hero-video-toggle-btn):not(.video-control-btn)',
       'button[class*="-btn"]:not(.mobile-close-btn):not(.mobile-nav-toggle):not(.slider-nav-btn):not(.showcase-arrow-btn):not(.video-modal-close):not(.about-video-play-btn):not(.hero-video-toggle-btn):not(.video-control-btn)'
     ].join(', ');
 
     $(selectors).each(function () {
       const $btn = $(this);
-      if ($btn.hasClass('has-wave-effect')) return;
+      if ($btn.find('.wave-char').length > 0) return;
       $btn.addClass('has-wave-effect');
 
       function processNode(node, counter) {
@@ -2180,7 +2183,7 @@ $(document).ready(function () {
     });
 
     // Replay wave animation crisply on every hover entry
-    $(document).on('mouseenter', '.has-wave-effect, .btn-wave, [class*="btn-"], [class*="-btn"]', function () {
+    $(document).on('mouseenter', '.has-wave-effect, .btn-wave, .popular-view-all, [class*="btn-"], [class*="-btn"], [class*="view-all"]', function () {
       const chars = this.querySelectorAll('.wave-char');
       if (!chars.length) return;
       chars.forEach((c) => {
@@ -2594,6 +2597,73 @@ document.addEventListener('DOMContentLoaded', function() {
   initProductFilter();
 
   // =========================================================================
+  // IN-CARD MULTI-IMAGE SLIDER
+  // =========================================================================
+  function initProductCardSliders() {
+    $('.modern-product-card.has-slider').each(function () {
+      const $card = $(this);
+      const $slides = $card.find('.modern-card-slide');
+      const $dots = $card.find('.card-slider-dot');
+      const $prev = $card.find('.card-slider-arrow.prev');
+      const $next = $card.find('.card-slider-arrow.next');
+      const total = $slides.length;
+      if (total <= 1) return;
+
+      let currentIndex = 0;
+
+      function goToSlide(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        currentIndex = index;
+
+        $slides.removeClass('active').eq(currentIndex).addClass('active');
+        $dots.removeClass('active').eq(currentIndex).addClass('active');
+      }
+
+      $next.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goToSlide(currentIndex + 1);
+      });
+
+      $prev.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goToSlide(currentIndex - 1);
+      });
+
+      $dots.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const idx = parseInt($(this).attr('data-index'), 10);
+        goToSlide(idx);
+      });
+
+      // Touch / Swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      $card.on('touchstart', function (e) {
+        touchStartX = e.originalEvent.touches[0].clientX;
+      });
+
+      $card.on('touchend', function (e) {
+        touchEndX = e.originalEvent.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            goToSlide(currentIndex + 1);
+          } else {
+            goToSlide(currentIndex - 1);
+          }
+        }
+      });
+    });
+  }
+
+  initProductCardSliders();
+
+  // =========================================================================
   // HERO BANNER WATER RIPPLE EFFECT (BOTTOM AREA & MOUSE INTERACTION)
   // =========================================================================
   function initHeroBannerRipples() {
@@ -2605,13 +2675,47 @@ document.addEventListener('DOMContentLoaded', function() {
         const $el = $(this);
         $el.ripples({
           resolution: 512,
-          dropRadius: 22,
-          perturbance: 0.04,
-          interactive: true
+          dropRadius: 18,
+          perturbance: 0.025,
+          interactive: false
         });
       });
 
-      // Ambient gentle water ripples on the bottom water area (70% - 95% height)
+      // Interactive mouse & touch ripples strictly on bottom water area (bottom ~35%)
+      let lastMoveTime = 0;
+      $('#hero-banner').on('mousemove touchmove', function (e) {
+        const now = Date.now();
+        if (now - lastMoveTime < 45) return;
+
+        const $activeSlideImg = $('.hero-video-slide.active .full-mountain-image');
+        if (!$activeSlideImg.length || !$activeSlideImg.is(':visible')) return;
+
+        const offset = $activeSlideImg.offset();
+        const width = $activeSlideImg.innerWidth();
+        const height = $activeSlideImg.innerHeight();
+        if (width <= 0 || height <= 0) return;
+
+        let pageX = e.pageX;
+        let pageY = e.pageY;
+        if (e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length > 0) {
+          pageX = e.originalEvent.touches[0].pageX;
+          pageY = e.originalEvent.touches[0].pageY;
+        }
+        if (pageX === undefined || pageY === undefined) return;
+
+        const relX = pageX - offset.left;
+        const relY = pageY - offset.top;
+
+        // Bottom water area only (65% to 100% of banner height)
+        if (relY >= height * 0.65 && relY <= height && relX >= 0 && relX <= width) {
+          lastMoveTime = now;
+          try {
+            $activeSlideImg.ripples('drop', relX, relY, 16, 0.02);
+          } catch (err) {}
+        }
+      });
+
+      // Ambient gentle water ripples restricted to bottom water area (72% - 95% height)
       setInterval(function () {
         const $activeSlideImg = $('.hero-video-slide.active .full-mountain-image');
         if (!$activeSlideImg.length || !$activeSlideImg.is(':visible')) return;
@@ -2620,16 +2724,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const height = $activeSlideImg.innerHeight();
         if (width <= 0 || height <= 0) return;
 
-        // Position drop naturally in the bottom water area
+        // Position drop strictly in the bottom water area
         const dropX = Math.random() * width;
-        const dropY = height * (0.70 + Math.random() * 0.25);
-        const dropRadius = 16 + Math.random() * 14;
-        const dropStrength = 0.02 + Math.random() * 0.03;
+        const dropY = height * (0.72 + Math.random() * 0.23);
+        const dropRadius = 15 + Math.random() * 12;
+        const dropStrength = 0.02 + Math.random() * 0.02;
 
         try {
           $activeSlideImg.ripples('drop', dropX, dropY, dropRadius, dropStrength);
         } catch (e) {}
-      }, 2500);
+      }, 2800);
 
       // Sizing update on window resize
       $(window).on('resize', function () {

@@ -580,12 +580,12 @@ h6,
 
 /* Video Cinematic Dark Overlay - Shadow only on bottom area */
 .hero-video-overlay {
- position: absolute;
-    /* top: 0; */
-    left: 0px;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
+  position: absolute;
+  /* top: 0; */
+  left: 0px;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
   background: linear-gradient(180deg,
       transparent 0%,
       transparent 40%,
@@ -1563,7 +1563,7 @@ h6,
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: clamp(16px, 1.25vw, 19px);
   line-height: 1.65;
-  font-weight: 500;
+  font-weight: 400;
   color: #1a1a1a;
   margin: 0;
 }
@@ -1743,7 +1743,7 @@ h6,
 .about-stat-number {
   font-family: var(--font-heading, 'Anybody', sans-serif);
   font-size: clamp(38px, 4vw, 54px);
-  font-weight: 700;
+  font-weight: 600;
   color: #000000;
   line-height: 1.1;
   margin-bottom: 6px;
@@ -1906,6 +1906,7 @@ h6,
 .about-who-card:last-child {
   margin-bottom: 0;
 }
+
 /* 
 .about-who-card:hover {
   transform: translateY(-4px);
@@ -2413,15 +2414,15 @@ h6,
 } */
 
 .vertical-hover-overlay {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    max-height: 350px;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.9) 100%);
-    pointer-events: none;
-    transition: background 0.3s ease;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: 350px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.9) 100%);
+  pointer-events: none;
+  transition: background 0.3s ease;
 }
 
 .vertical-hover-item:hover .vertical-hover-overlay {
@@ -2669,7 +2670,7 @@ h6,
 .btn-ppc-discover:hover,
 .ppc-body .btn-hover-shop:hover {
   background-color: #b4581b;
-  border-color:#b4581b;
+  border-color: #b4581b;
   color: #ffffff;
 }
 
@@ -7049,6 +7050,7 @@ button.btn-contact-submit:hover,
   flex-shrink: 0;
   padding: 2px 4px;
 }
+
 .about-video-box video {
   object-fit: cover;
 }
@@ -7451,6 +7453,7 @@ select,
   border-color: #b4581b;
   background-color: #b4581b;
 }
+
 .product-filter-btn {
   display: inline-flex;
   align-items: center;
@@ -8375,7 +8378,7 @@ button.product-filter-btn.active {
 .product-cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap:20px;
+  gap: 20px;
 }
 
 @media (max-width: 1199px) {
@@ -8442,7 +8445,7 @@ button.product-filter-btn.active {
   padding: 24px 16px 80px;
   z-index: 1;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      border: 1px solid #e8e8e8;
+  border: 1px solid #e8e8e8;
 }
 
 /* In-Card Product Image Slider */
@@ -8623,7 +8626,7 @@ button.product-filter-btn.active {
 }
 
 .modern-glass-badge {
-  display:none;
+  display: none;
   align-items: center;
   padding: 6px 18px;
   border-radius: 50px;
@@ -8644,8 +8647,8 @@ button.product-filter-btn.active {
 }
 
 .modern-card-title {
-  font-size: clamp(20px, 1.75vw, 17px);
-  font-weight: 600;
+  font-size: clamp(17px, 1.75vw, 17px);
+  font-weight: 400;
   color: #000;
   line-height: 1.25;
   margin-bottom: 10px;

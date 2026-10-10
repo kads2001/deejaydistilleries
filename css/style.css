@@ -725,7 +725,7 @@ h6,
   left: 0;
   width: 100%;
   z-index: 100;
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 22px;
   padding-left: 0px;
   padding-right: 0px;
@@ -782,7 +782,7 @@ h6,
 }
 
 .brand-crest-logo {
-  height: 120px;
+  height: 170px;
   width: auto;
   filter: brightness(0) invert(1);
   transition: transform 0.3s ease, height 0.3s ease, filter 0.3s ease;

@@ -7448,13 +7448,8 @@ select,
 
 .premium-view-all:hover {
   color: #fff;
-<<<<<<< HEAD
   border-color: #b4581b;
   background-color: #b4581b;
-=======
-  border-color: var(--gold-primary, #b4581b);
-  background-color: var(--gold-primary, #b4581b);
->>>>>>> ad37e1231a746835af444c1c1bda8afa006f9dd0
 }
 .product-filter-btn {
   display: inline-flex;

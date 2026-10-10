@@ -2675,8 +2675,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const $el = $(this);
         $el.ripples({
           resolution: 512,
-          dropRadius: 22,
-          perturbance: 0.04,
+          dropRadius: 19,
+          perturbance: 0.025,
           interactive: true
         });
       });
@@ -2693,13 +2693,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Position drop naturally in the bottom water area
         const dropX = Math.random() * width;
         const dropY = height * (0.70 + Math.random() * 0.25);
-        const dropRadius = 16 + Math.random() * 14;
-        const dropStrength = 0.02 + Math.random() * 0.03;
+        const dropRadius = 15 + Math.random() * 12;
+        const dropStrength = 0.02 + Math.random() * 0.02;
 
         try {
           $activeSlideImg.ripples('drop', dropX, dropY, dropRadius, dropStrength);
         } catch (e) {}
-      }, 2500);
+      }, 2800);
 
       // Sizing update on window resize
       $(window).on('resize', function () {

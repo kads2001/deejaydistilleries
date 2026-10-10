@@ -5219,16 +5219,20 @@ h6,
   .product-news-featured-card {
     grid-template-columns: 1fr;
   }
+
   .pn-featured-img-col {
     min-height: 280px;
     height: 280px;
   }
+
   .pn-featured-content-col {
     padding: 36px 28px;
   }
+
   .product-news-bottom-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .product-news-header-row {
     flex-direction: column;
     align-items: flex-start;
@@ -5241,9 +5245,11 @@ h6,
     padding-left: 20px;
     padding-right: 20px;
   }
+
   .pn-featured-content-col {
     padding: 28px 20px;
   }
+
   .product-news-bottom-grid {
     grid-template-columns: 1fr;
     gap: 20px;

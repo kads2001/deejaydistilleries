@@ -2675,13 +2675,47 @@ document.addEventListener('DOMContentLoaded', function() {
         const $el = $(this);
         $el.ripples({
           resolution: 512,
-          dropRadius: 19,
+          dropRadius: 18,
           perturbance: 0.025,
-          interactive: true
+          interactive: false
         });
       });
 
-      // Ambient gentle water ripples on the bottom water area (70% - 95% height)
+      // Interactive mouse & touch ripples strictly on bottom water area (bottom ~35%)
+      let lastMoveTime = 0;
+      $('#hero-banner').on('mousemove touchmove', function (e) {
+        const now = Date.now();
+        if (now - lastMoveTime < 45) return;
+
+        const $activeSlideImg = $('.hero-video-slide.active .full-mountain-image');
+        if (!$activeSlideImg.length || !$activeSlideImg.is(':visible')) return;
+
+        const offset = $activeSlideImg.offset();
+        const width = $activeSlideImg.innerWidth();
+        const height = $activeSlideImg.innerHeight();
+        if (width <= 0 || height <= 0) return;
+
+        let pageX = e.pageX;
+        let pageY = e.pageY;
+        if (e.originalEvent && e.originalEvent.touches && e.originalEvent.touches.length > 0) {
+          pageX = e.originalEvent.touches[0].pageX;
+          pageY = e.originalEvent.touches[0].pageY;
+        }
+        if (pageX === undefined || pageY === undefined) return;
+
+        const relX = pageX - offset.left;
+        const relY = pageY - offset.top;
+
+        // Bottom water area only (65% to 100% of banner height)
+        if (relY >= height * 0.65 && relY <= height && relX >= 0 && relX <= width) {
+          lastMoveTime = now;
+          try {
+            $activeSlideImg.ripples('drop', relX, relY, 16, 0.02);
+          } catch (err) {}
+        }
+      });
+
+      // Ambient gentle water ripples restricted to bottom water area (72% - 95% height)
       setInterval(function () {
         const $activeSlideImg = $('.hero-video-slide.active .full-mountain-image');
         if (!$activeSlideImg.length || !$activeSlideImg.is(':visible')) return;
@@ -2690,9 +2724,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const height = $activeSlideImg.innerHeight();
         if (width <= 0 || height <= 0) return;
 
-        // Position drop naturally in the bottom water area
+        // Position drop strictly in the bottom water area
         const dropX = Math.random() * width;
-        const dropY = height * (0.70 + Math.random() * 0.25);
+        const dropY = height * (0.72 + Math.random() * 0.23);
         const dropRadius = 15 + Math.random() * 12;
         const dropStrength = 0.02 + Math.random() * 0.02;
 

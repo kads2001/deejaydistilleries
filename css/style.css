@@ -3845,7 +3845,7 @@ h6,
 
 .about-main-title {
   font-family: var(--font-main);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--font-section-title, clamp(32px, 3.6vw, 54px));
   line-height: 1.15;
   text-transform: capitalize;

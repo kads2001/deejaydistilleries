@@ -2665,10 +2665,9 @@ h6,
 
 .btn-ppc-discover:hover,
 .ppc-body .btn-hover-shop:hover {
-  background-color: #111111;
-  border-color: #111111;
+  background-color: #b4581b;
+  border-color:#b4581b;
   color: #ffffff;
-  transform: translateY(-2px);
 }
 
 .ppc-stars {
@@ -3382,7 +3381,7 @@ h6,
 
 .filter-pill-btn:hover:not(.active) {
   border-color: #b4581b;
-  color: #b4581b;
+  color: #fff;
 }
 
 .style-showcase-header-right {
@@ -5027,7 +5026,7 @@ h6,
 }
 
 .product-news-cta-btn:hover {
-  background: #111111;
+  background: var(--gold-primary, #b4581b);
   color: #ffffff;
   border-color: #111111;
   transform: translateY(-2px);
@@ -7436,11 +7435,10 @@ select,
 }
 
 .premium-view-all:hover {
-  color: #111111;
-  border-color: #111111;
+  color: #fff;
+  border-color: #b4581b;
+  background-color: #b4581b;
 }
-
-/* 11. Products Page Catalog Filter Button */
 .product-filter-btn {
   display: inline-flex;
   align-items: center;

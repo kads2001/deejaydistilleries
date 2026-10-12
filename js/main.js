@@ -23,6 +23,9 @@ $(document).ready(function () {
     autoResize: true
   };
 
+  // Toggle for Hero Banner water ripple effect (false = completely disabled)
+  const rippleEffect = false;
+
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis(SMOOTH_SCROLL_SETTINGS);
@@ -2248,9 +2251,11 @@ $(document).ready(function () {
       $slides.removeClass('active').eq(currentSlide).addClass('active');
       $('.hero-slider-dot').removeClass('active').eq(currentSlide).addClass('active');
       $('#heroSlideNum').text(String(currentSlide + 1).padStart(2, '0'));
-      try {
-        $('.full-mountain-image').ripples('updateSize');
-      } catch (e) {}
+      if (rippleEffect) {
+        try {
+          $('.full-mountain-image').ripples('updateSize');
+        } catch (e) {}
+      }
     }
 
     // Arrow button controls
@@ -2690,9 +2695,10 @@ document.addEventListener('DOMContentLoaded', function() {
   initProductCardSliders();
 
   // =========================================================================
-  // HERO BANNER WATER RIPPLE EFFECT (BOTTOM AREA & MOUSE INTERACTION)
+  // HERO BANNER WATER RIPPLE EFFECT (DISABLED)
   // =========================================================================
   function initHeroBannerRipples() {
+    if (!rippleEffect) return;
     const $target = $('.full-mountain-image');
     if (!$target.length || typeof $.fn.ripples !== 'function') return;
 
@@ -2774,6 +2780,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Initialize ripples safely
-  initHeroBannerRipples();
+  // Initialize ripples safely (only if rippleEffect is true)
+  if (rippleEffect) {
+    initHeroBannerRipples();
+  }
 });

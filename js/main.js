@@ -1272,7 +1272,7 @@ $(document).ready(function () {
 
   initStickyBenefitsScroll();
 
-  // 7. Minimalist Contact Form Submission Handler
+  // 7. Modern & Minimalist Contact Form Submission Handler
   const $contactForm = $('#minimalContactForm');
   if ($contactForm.length) {
     $contactForm.on('submit', function (e) {
@@ -1280,6 +1280,32 @@ $(document).ready(function () {
       const name = $('#contactName').val();
       alert('Thank you, ' + name + '! Your message has been sent to Deejay Distilleries. Our team will contact you shortly.');
       $contactForm.get(0).reset();
+    });
+  }
+
+  const $modernContactForm = $('#modernContactForm');
+  if ($modernContactForm.length) {
+    $modernContactForm.on('submit', function (e) {
+      e.preventDefault();
+      const name = $('#contactName').val() || $('#contactFirstName').val() || 'there';
+      const $successMsg = $('#contactSuccessMsg');
+      const $submitBtn = $('#contactSubmitBtn');
+
+      $submitBtn.prop('disabled', true).text('Sending...');
+
+      setTimeout(function () {
+        $submitBtn.prop('disabled', false).text('Send Message');
+        if ($successMsg.length) {
+          $successMsg.find('span').text('Thank you, ' + name + '! Your message has been sent to Deejay Distilleries. Our team will get back to you shortly.');
+          $successMsg.slideDown(300);
+          setTimeout(function () {
+            $successMsg.slideUp(400);
+          }, 6000);
+        } else {
+          alert('Thank you, ' + name + '! Your message has been sent to Deejay Distilleries.');
+        }
+        $modernContactForm.get(0).reset();
+      }, 600);
     });
   }
 
